@@ -1,0 +1,108 @@
+type View {
+  id: ID! @id
+
+  welcome: Welcome!
+  company: Company!
+
+  menus: [Menu!]!
+
+  tests: [Test!]!
+  steps: [Step!]!
+}
+
+type Welcome {
+  id: ID! @id
+
+  title: String!
+  message: String!
+}
+
+type Company {
+  id: ID! @id
+
+  name: String!
+  abbr: String
+
+  logo: String
+}
+
+type Test {
+  id: ID! @id
+
+  title: String!
+
+  steps: [Step!]!
+  menus: [Menu!]!
+
+  results: [TestResult!]!
+}
+
+type Menu {
+  id: ID! @id
+
+  menu: Menu @relation(name: "SubMenu")
+
+  name: String!
+
+  items: [Menu!]! @relation(name: "SubMenu")
+}
+
+
+type Step {
+  id: ID! @id
+
+  question: String!
+
+  target: Menu! @relation(name: "StepTarget")
+
+  path: [Menu!]! @relation(name: "CorectPath")
+
+  results: [StepResult!]!
+}
+
+
+enum ResultStatus {
+  SUCESSES,
+  PARTIAL,
+  FAIL,
+  ABORTED
+}
+
+type TestResult {
+  id: ID! @id
+
+  parent: Test!
+
+  start: DateTime!
+  end: DateTime
+
+  time: TimeResult
+
+  steps: [StepResult!]!
+
+  status: ResultStatus! @default(value: ABORTED)
+}
+
+type TimeResult {
+  id: ID! @id
+
+  int: Int!
+  text: String!
+}
+
+type StepResult {
+  id: ID! @id
+
+  parent: Step!
+
+  resultParent: TestResult!
+
+  start: DateTime!
+  end: DateTime
+
+  time: TimeResult
+
+  path: [Menu!]!
+
+  status: ResultStatus! @default(value: ABORTED)
+}

@@ -1,0 +1,38 @@
+# Docker Swarm is required
+version: '3.7'
+services:
+  orm:
+    image: prismagraphql/prisma:1.31
+    ports:
+      - target: 4466
+        published: 4466
+        protocol: tcp
+        mode: host
+    environment:
+      PRISMA_CONFIG: |
+        port: 4466
+        databases:
+          default:
+            connector: mysql
+            host: db
+            user: root
+            password: prisma
+            port: 3306
+
+    networks:
+      database:
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: prisma
+    volumes:
+      - database_mysql:/var/lib/mysql
+    networks:
+      database:
+
+networks:
+  database:
+
+volumes:
+  database_mysql:

@@ -1,0 +1,20 @@
+{
+  "name": "ufrj-tester",
+  "version": "0.1.0",
+  "description": "",
+  "private": true,
+  "main": "index.js",
+  "author": "Vinícius Carvalho <vinicius.fc93@gmail.com>",
+  "license": "AGPL-3.0",
+  "scripts": {
+    "postinstall": "run-p install:*",
+    "install:app": "cd app/ && npm i ",
+    "install:server": "cd server/ && npm i && npx prisma deploy",
+    "start": "run-p start:*",
+    "start:app": "cd app/ && npm start",
+    "start:server": "cd server/ && npm start"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}

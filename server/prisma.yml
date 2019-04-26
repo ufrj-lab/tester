@@ -1,0 +1,12 @@
+endpoint: http://localhost:4466
+datamodel: ./db/datamodel.graphql
+
+generate:
+  - generator: typescript-client
+    output: ./src/generated/prisma-client/
+
+hooks:
+  post-deploy:
+    - npx nexus-prisma-generate --output ./src/generated/nexus-prisma
+seed:
+  run: npx ts-node ./db/seed.ts
