@@ -8,8 +8,8 @@
   "license": "AGPL-3.0",
   "scripts": {
     "postinstall": "run-p install:*",
-    "install:app": "cd app/ && npm i ",
-    "install:server": "cd server/ && npm i && prisma deploy",
+    "install:app": "cd app/ && npm i",
+    "install:server": "cd server/ && npm i",
     "lint": "run-p lint:*",
     "lint:prettier": "prettier --write '**/*.{ts,js,jsx,yml,json,md,graphql,html}'",
     "lint:app": "cd app/ && npm run lint",
