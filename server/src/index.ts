@@ -4,13 +4,14 @@ import { IContext, IRequest } from './interfaces'
 import { schema } from './schema'
 
 const server = new ApolloServer({
-    context: ({ req }: IRequest): IContext => ({
-        prisma,
-        request: req,
-    }),
-    schema
+   context: ({ req }: IRequest): IContext => ({
+      prisma,
+      request: req,
+   }),
+   schema,
 })
 
-server.listen().then(({ url }: ServerInfo) =>
-  console.log(`🚀 Server ready at ${url}`),
-)
+server
+   .listen()
+   // tslint:disable-next-line: no-console
+   .then(({ url }: ServerInfo) => console.log(`🚀 Server ready at ${url}`))

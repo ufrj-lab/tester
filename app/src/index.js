@@ -7,12 +7,4 @@ import App from './components/App'
 
 const root = document.querySelector('#root')
 
-render(
-  Providers(
-    App,
-    createClient()
-  ),
-  root
-)
-
-
+render(Providers(App, createClient()), root)

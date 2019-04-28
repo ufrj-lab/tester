@@ -1,0 +1,24 @@
+{
+  "projectName": "tester",
+  "projectOwner": "ufrj-lab",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "vfc93",
+      "name": "vfc93",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/15346403?v=4",
+      "profile": "https://github.com/vfc93",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "commitConvention": "none"
+}

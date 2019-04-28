@@ -1,135 +1,129 @@
 import { prisma } from '../src/generated/prisma-client'
 
 async function main() {
-  const setMenu = async (name: string, parent: Promise<string> | undefined = undefined): Promise<string> => prisma.createMenu({
-    menu: parent
-      ? {
-          connect: {
-            id: await parent
-          }
-        }
-      : undefined,
-    name,
-  }).id()
+   const setMenu = async (
+      name: string,
+      parent: Promise<string> | undefined = undefined,
+   ): Promise<string> =>
+      prisma
+         .createMenu({
+            menu: parent
+               ? {
+                    connect: {
+                       id: await parent,
+                    },
+                 }
+               : undefined,
+            name,
+         })
+         .id()
 
-  const setConnectArray = async (arr: Array<Promise<string>>) => ({
-    connect: (await Promise.all(arr)).map(id => ({ id }))
-  })
+   const setConnectArray = async (arr: Array<Promise<string>>) => ({
+      connect: (await Promise.all(arr)).map(id => ({ id })),
+   })
 
-  const setStep = async (question: string, target: Promise<string>, path: Array<Promise<string>>) => prisma.createStep({
-    target: {
-      connect: {
-        id: await target
-      }
-    },
-    question,
-    path: (await setConnectArray(path))
-  }).id()
+   const setStep = async (
+      question: string,
+      target: Promise<string>,
+      path: Array<Promise<string>>,
+   ) =>
+      prisma
+         .createStep({
+            path: await setConnectArray(path),
+            question,
+            target: {
+               connect: {
+                  id: await target,
+               },
+            },
+         })
+         .id()
 
+   const levelOne = [
+      setMenu('Persona'),
+      setMenu('Principal'),
+      setMenu('Secundário'),
+   ]
+   const [persona, principal, secundario] = levelOne
 
-  
-
-
-  const levelOne = [
-    setMenu('Persona'),
-    setMenu('Principal'),
-    setMenu('Secundário'),
-  ]
-  const [
-    persona,
-    principal,
-    secundario
-  ] = levelOne
-
-
-  const levelTwo = [
-    setMenu('Alunos', persona),
-    setMenu('Professores', persona),
-    setMenu('A universidade', principal),
-    setMenu('Ensino', principal),
-    setMenu('Eventos', secundario),
-    setMenu('Noticias', secundario), 
-  ]
-  const [
-    personaAluno,
-    personaProfessores,
-    principalAUniversidade,
-    principalEnsino,
-    secundarioEventos,
-    secundarioNoticias
-  ] = levelTwo
-
-
-  const menus = [
-    ...levelOne,
-    ...levelTwo
-  ]
-  const menusConnect = setConnectArray(menus)
-
-
-  const steps = [
-    setStep(
-      "Encontre serviços e informações para alunos",
+   const levelTwo = [
+      setMenu('Alunos', persona),
+      setMenu('Professores', persona),
+      setMenu('A universidade', principal),
+      setMenu('Ensino', principal),
+      setMenu('Eventos', secundario),
+      setMenu('Noticias', secundario),
+   ]
+   const [
       personaAluno,
-      [personaAluno]
-    ),
-    setStep(
-      "Encontre serviços e informações para professores",
       personaProfessores,
-      [personaProfessores]
-    ),
-    setStep(
-      "Encontre informações sobre a universidade",
       principalAUniversidade,
-      [principalAUniversidade]
-    ),
-    setStep(
-      "Encontre informações sobre ensino",
       principalEnsino,
-      [principalEnsino]
-    ),
-    setStep(
-      "Encontre eventos na ufrj",
       secundarioEventos,
-      [secundarioEventos]
-    ),
-    setStep(
-      "Encontre noticias sobre a ufrj",
       secundarioNoticias,
-      [secundarioNoticias]
-    )
-  ]
-  const stepsConnect = setConnectArray(steps)
+   ] = levelTwo
 
+   const menus = [...levelOne, ...levelTwo]
+   const menusConnect = setConnectArray(menus)
 
-  const commons = {
-    menus: (await menusConnect),
-    steps: (await stepsConnect)
-  }
+   const steps = [
+      setStep('Encontre serviços e informações para alunos', personaAluno, [
+         personaAluno,
+      ]),
+      setStep(
+         'Encontre serviços e informações para professores',
+         personaProfessores,
+         [personaProfessores],
+      ),
+      setStep(
+         'Encontre informações sobre a universidade',
+         principalAUniversidade,
+         [principalAUniversidade],
+      ),
+      setStep('Encontre informações sobre ensino', principalEnsino, [
+         principalEnsino,
+      ]),
+      setStep('Encontre eventos na ufrj', secundarioEventos, [
+         secundarioEventos,
+      ]),
+      setStep('Encontre noticias sobre a ufrj', secundarioNoticias, [
+         secundarioNoticias,
+      ]),
+   ]
+   const stepsConnect = setConnectArray(steps)
 
-  await prisma.createView({
-    ...commons,
-    company: {
-      create: {
-        name: 'Universidade Federal do Rio de Janeiro',
-        abbr: 'UFRJ'
-      }
-    },
-    welcome: {
-      create: {
-        title: 'Bem-vindo!',
-        message: '<p>Olá! Estamos criando o futuro, participe do teste e nos ajude a fazer da UFRJ um lugar melhor! =]</p>'
-      }
-    },
-    tests: {
-      create: [
-        {
-          ...commons,
-          title: 'Teste de navegação do novo portal',
-        }
-      ]
-    }
-  }).id()
+   const commons = {
+      menus: await menusConnect,
+      steps: await stepsConnect,
+   }
+
+   await prisma
+      .createView({
+         ...commons,
+         company: {
+            create: {
+               abbr: 'UFRJ',
+               name: 'Universidade Federal do Rio de Janeiro',
+            },
+         },
+         tests: {
+            create: [
+               {
+                  ...commons,
+                  title: 'Teste de navegação do novo portal',
+               },
+            ],
+         },
+         welcome: {
+            create: {
+               message:
+                  '<p>Olá! Estamos criando o futuro, participe do teste e nos ajude a fazer da UFRJ um lugar melhor! =]</p>',
+               title: 'Bem-vindo!',
+            },
+         },
+      })
+      .id()
 }
 
+// tslint:disable-next-line: no-console
 main().catch(e => console.error(e))

@@ -1,6 +1,6 @@
 {
   "name": "ufrj-tester",
-  "version": "0.1.0",
+  "version": "0.0.0-development",
   "description": "",
   "private": true,
   "main": "index.js",
@@ -9,12 +9,80 @@
   "scripts": {
     "postinstall": "run-p install:*",
     "install:app": "cd app/ && npm i ",
-    "install:server": "cd server/ && npm i && npx prisma deploy",
+    "install:server": "cd server/ && npm i && prisma deploy",
+    "lint": "run-p lint:*",
+    "lint:prettier": "prettier --write '**/*.{ts,js,jsx,yml,json,md,graphql,html}'",
+    "lint:app": "cd app/ && npm run lint",
+    "lint:server": "cd server/ && npm run lint",
     "start": "run-p start:*",
     "start:app": "cd app/ && npm start",
-    "start:server": "cd server/ && npm start"
+    "start:server": "cd server/ && npm start",
+    "release:test": "semantic-release --debug --no-ci --dry-run",
+    "contributors:add": "all-contributors add",
+    "contributors:generate": "all-contributors generate",
+    "commit": "git-cz"
   },
   "devDependencies": {
-    "npm-run-all": "^4.1.5"
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-conventional": "^7.5.0",
+    "all-contributors-cli": "^6.3.1",
+    "commitizen": "^3.1.1",
+    "cz-conventional-changelog": "^2.1.0",
+    "husky": "^2.1.0",
+    "lint-staged": "^8.1.5",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.17.0",
+    "semantic-release": "^15.13.12"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    ".all-contributorsrc": [
+      "npm run contributors:generate",
+      "git add"
+    ],
+    "*.{js,jsx}": [
+      "npm run lint:app",
+      "git add"
+    ],
+    "*.ts": [
+      "npm run lint:server",
+      "git add"
+    ],
+    "{.,}*.{ts,js,jsx,yml,json,md,graphql,html}": [
+      "npm run lint:prettier",
+      "git add"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "printWidth": 80,
+    "trailingComma": "all",
+    "semi": false,
+    "arrowParens": "avoid",
+    "proseWrap": "always"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "release": {
+    "branch": "master",
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github"
+    ]
   }
 }
