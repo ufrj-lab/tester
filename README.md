@@ -1,3 +1,6 @@
+# UFRJ Tester
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/ufrj-lab/tester.svg?style=flat-square)](https://greenkeeper.io/)
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 ## Contributors
