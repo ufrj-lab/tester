@@ -1,11 +1,11 @@
-import { Prisma } from './generated/prisma-client'
 import { IncomingMessage } from 'http'
+import { Prisma } from './generated/prisma-client'
 
 export interface IRequest {
-    req: IncomingMessage
+   req: IncomingMessage
 }
 
 export interface IContext {
-    prisma: Prisma
-    request: IncomingMessage
+   prisma: Prisma
+   request: IncomingMessage
 }

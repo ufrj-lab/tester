@@ -1,108 +1,106 @@
 type View {
-  id: ID! @id
+   id: ID! @id
 
-  welcome: Welcome!
-  company: Company!
+   welcome: Welcome! @relation(link: INLINE)
+   company: Company! @relation(link: INLINE)
 
-  menus: [Menu!]!
+   menus: [Menu!]! @relation(link: INLINE)
 
-  tests: [Test!]!
-  steps: [Step!]!
+   tests: [Test!]! @relation(link: INLINE)
+   steps: [Step!]! @relation(link: INLINE)
 }
 
 type Welcome {
-  id: ID! @id
+   id: ID! @id
 
-  title: String!
-  message: String!
+   title: String!
+   message: String!
 }
 
 type Company {
-  id: ID! @id
+   id: ID! @id
 
-  name: String!
-  abbr: String
+   name: String!
+   abbr: String
 
-  logo: String
+   logo: String
 }
 
 type Test {
-  id: ID! @id
+   id: ID! @id
 
-  title: String!
+   title: String!
 
-  steps: [Step!]!
-  menus: [Menu!]!
+   steps: [Step!]! @relation(link: INLINE)
+   menus: [Menu!]! @relation(link: INLINE)
 
-  results: [TestResult!]!
+   results: [TestResult!]!
 }
 
 type Menu {
-  id: ID! @id
+   id: ID! @id
 
-  menu: Menu @relation(name: "SubMenu")
+   menu: Menu @relation(name: "SubMenu")
 
-  name: String!
+   name: String!
 
-  items: [Menu!]! @relation(name: "SubMenu")
+   items: [Menu!]! @relation(link: INLINE, name: "SubMenu")
 }
-
 
 type Step {
-  id: ID! @id
+   id: ID! @id
 
-  question: String!
+   question: String!
 
-  target: Menu! @relation(name: "StepTarget")
+   target: Menu! @relation(link: INLINE, name: "StepTarget")
 
-  path: [Menu!]! @relation(name: "CorectPath")
+   path: [Menu!]! @relation(link: INLINE, name: "CorectPath")
 
-  results: [StepResult!]!
+   results: [StepResult!]!
 }
 
-
 enum ResultStatus {
-  SUCESSES,
-  PARTIAL,
-  FAIL,
-  ABORTED
+   SUCESSES
+   PARTIAL
+   FAIL
+   ABORTED
 }
 
 type TestResult {
-  id: ID! @id
+   id: ID! @id
 
-  parent: Test!
+   parent: Test! @relation(link: INLINE)
 
-  start: DateTime!
-  end: DateTime
+   start: DateTime!
+   end: DateTime
 
-  time: TimeResult
+   time: TimeResult @relation(link: INLINE)
 
-  steps: [StepResult!]!
+   steps: [StepResult!]! @relation(link: INLINE)
 
-  status: ResultStatus! @default(value: ABORTED)
+   status: ResultStatus! @default(value: ABORTED)
 }
 
 type TimeResult {
-  id: ID! @id
+   id: ID! @id
 
-  int: Int!
-  text: String!
+   int: Int!
+   text: String!
 }
 
 type StepResult {
-  id: ID! @id
+   id: ID! @id
 
-  parent: Step!
+   parent: Step! @relation(link: INLINE)
 
-  resultParent: TestResult!
+   resultParent: TestResult!
 
-  start: DateTime!
-  end: DateTime
+   start: DateTime!
+   end: DateTime
 
-  time: TimeResult
+   time: TimeResult @relation(link: INLINE)
 
-  path: [Menu!]!
+   path: [Menu!]! @relation(link: INLINE)
 
-  status: ResultStatus! @default(value: ABORTED)
+   status: ResultStatus! @default(value: ABORTED)
 }

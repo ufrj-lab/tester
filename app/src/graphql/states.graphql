@@ -1,6 +1,6 @@
 #import "./generated/schema.graphql"
 
 type State {
-    result: ID
-    current: Int! @default(value: 0)
+   result: ID
+   current: Int! @default(value: 0)
 }
