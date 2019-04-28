@@ -7,7 +7,7 @@ Thanks goes to these wonderful people
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-<table><tr><td align="center"><a href="https://github.com/vfc93"><img src="https://avatars2.githubusercontent.com/u/15346403?v=4" width="100px;" alt="vfc93"/><br /><sub><b>vfc93</b></sub></a><br /><a href="https://github.com/ufrj-lab/tester/commits?author=vfc93" title="Code">💻</a></td></tr></table>
+<table><tr><td align="center"><a href="http://ufrj.br"><img src="https://avatars2.githubusercontent.com/u/18464132?v=4" width="100px;" alt="Vinícius Carvalho"/><br /><sub><b>Vinícius Carvalho</b></sub></a><br /><a href="https://github.com/ufrj-lab/tester/commits?author=vinyfc93" title="Code">💻</a></td></tr></table>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
