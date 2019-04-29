@@ -43,7 +43,7 @@ export default ({ prefixTitle, first = 1, history }) => {
               <Mutation mutation={CREATE_TEST_RESULT}>
                 {create => (
                   <Mutation mutation={UPDATE_STATE}>
-                    {updateStates => (
+                    {updateState => (
                       <Link
                         to="/teste"
                         onClick={async event => {
@@ -64,7 +64,7 @@ export default ({ prefixTitle, first = 1, history }) => {
                               parent: id,
                             },
                           })
-                          await updateStates({
+                          await updateState({
                             variables: {
                               test: id,
                               result: resultID,

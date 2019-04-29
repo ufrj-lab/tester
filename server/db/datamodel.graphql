@@ -54,7 +54,7 @@ type Step {
 
    target: Menu! @relation(link: INLINE, name: "StepTarget")
 
-   path: [Menu!]! @relation(link: INLINE, name: "CorectPath")
+   path: [Menu!]! @relation(link: INLINE, name: "CorrectPath")
 
    results: [StepResult!]!
 }

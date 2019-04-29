@@ -51,6 +51,9 @@ export const GET_TEST = gql`
          steps {
             id
             question
+            path {
+               id
+            }
             target {
                id
             }

@@ -20,6 +20,7 @@ export const data = {
       __typename: 'State',
       test: null,
       result: null,
+      path: [],
       current: 0,
    },
 }

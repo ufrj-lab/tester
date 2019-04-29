@@ -2,6 +2,7 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import Home from './Home'
+import Tanks from './Tanks'
 import Test from './Test'
 import NotFound from './NotFound'
 
@@ -10,7 +11,7 @@ import { GET_BASIC } from '../graphql/Query'
 
 import { configPrefix } from '../utils'
 
-export default ({ first = 1 }) => (
+export default ({ first = 1, state }) => (
   <Query query={GET_BASIC} variables={{ first }}>
     {({ loading, error, data }) => {
       if (loading) return null
@@ -27,19 +28,25 @@ export default ({ first = 1 }) => (
           <Route
             exact
             path="/"
-            render={props => <Home {...props} prefixTitle={prefixTitle} />}
+            render={props => (
+              <Home {...props} state={state} prefixTitle={prefixTitle} />
+            )}
           />
           <Route
             exact
             path="/teste"
-            render={props => <Test {...props} prefixTitle={prefixTitle} />}
+            render={props => (
+              <Test {...props} state={state} prefixTitle={prefixTitle} />
+            )}
           />
           <Route exact path="/obrigado">
-            <Home prefixTitle={prefixTitle} />
+            <Tanks state={state} prefixTitle={prefixTitle} />
           </Route>
           <Route
             path="/:path"
-            render={props => <NotFound {...props} prefixTitle={prefixTitle} />}
+            render={props => (
+              <NotFound {...props} state={state} prefixTitle={prefixTitle} />
+            )}
           />
         </Switch>
       )

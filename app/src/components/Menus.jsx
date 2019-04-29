@@ -1,20 +1,25 @@
 import React from 'react'
-// import { Mutation } from 'react-apollo'
+import { Mutation } from 'react-apollo'
 
-// import { MUTATION_SET_PATH } from '../graphql/Mutations'
+// import { MUTATION_SET_PATH } from '../graphql/Mutation'
 
 const Items = ({ items }) =>
   items.map(({ id, name, items: menus }) => (
     <li key={id}>
-      {/* <Mutation mutation={MUTATION_SET_PATH} variables={{ menu: id }}>
-                {(func) => (
-                    <a href="/teste" onClick={event => {
-                        event.preventDefault()
-                        console.log(func)
-                    }}>{name}</a>
-                )}
-
-            </Mutation> */}
+      {
+        // <Mutation mutation={MUTATION_SET_PATH}>
+        //   {func => (
+        //     <a
+        //       href="/teste"
+        //       onClick={event => {
+        //         event.preventDefault()
+        //       }}
+        //     >
+        //       {name}
+        //     </a>
+        //   )}
+        // </Mutation>
+      }
       {menus.length > 0 && <Menus menus={menus} />}
     </li>
   ))

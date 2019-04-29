@@ -11,12 +11,21 @@ export const CREATE_TEST_RESULT = gql`
 `
 
 export const CREATE_STEP_RESULT = gql`
-   mutation createStepResult($parent: ID!, $result: ID!, $start: DateTime!) {
+   mutation createStepResult(
+      $parent: ID!
+      $result: ID!
+      $start: DateTime!
+      $end: DateTime!
+      $timeInt: Int!
+      $timeText: String!
+   ) {
       createStepResult(
          data: {
             start: $start
+            end: $end
             parent: { connect: { id: $parent } }
             resultParent: { connect: { id: $result } }
+            time: { create: { int: $timeInt, text: $timeText } }
          }
       ) {
          id

@@ -1,54 +1,107 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 
 import { Link, Redirect } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
-import { Query } from 'react-apollo'
+import { Query, Mutation } from 'react-apollo'
 
-import { GET_TEST, GET_STATE } from '../graphql/Query'
-// import { CREATE_STEP_RESULT } from '../graphql/Mutation'
+import { GET_TEST } from '../graphql/Query'
+import { CREATE_STEP_RESULT, UPDATE_STATE } from '../graphql/Mutation'
 
 import Menus from './Menus'
 
-export default ({ prefixTitle }) => (
-  <Query query={GET_STATE}>
-    {({ data }) => {
-      const { test: id } = data.state
+import { getTimeSemantic } from '../utils'
 
-      if (!id) return <Redirect to="/" />
+export default ({ prefixTitle, state }) => {
+  const [running, toggleRunning] = useState(false)
 
-      return (
-        <Query query={GET_TEST} variables={{ id }}>
-          {({ loading, error, data: { test } }) => {
-            if (loading) return null
-            if (error) return null
+  const [next, toggleNext] = useState(false)
 
-            const { menus, title } = test
+  const [timer, setTime] = useState(new Date())
 
-            return (
-              //         <Mutation mutation={CREATE_STEP_RESULT} variables={{}}>
-              //           {run => {
-              //             run()
-              //             return (
-              <Fragment>
-                <Helmet>
-                  <title>{prefixTitle(title)}</title>
-                </Helmet>
-                <header />
-                <main>
-                  <nav>
-                    <Menus menus={menus} />
-                  </nav>
-                  <Link to="/">Proximo</Link>
-                </main>
-              </Fragment>
-            )
-            //          }}
-            //        </Mutation>
-            //      )
-          }}
-        </Query>
-      )
-    }}
-  </Query>
-)
+  const { test: testID, current, result: resultID } = state
+
+  if (!testID) return <Redirect to="/" />
+
+  return (
+    <Mutation mutation={CREATE_STEP_RESULT}>
+      {create => {
+        return (
+          <Mutation mutation={UPDATE_STATE}>
+            {updateState => {
+              return (
+                <Query query={GET_TEST} variables={{ id: testID }}>
+                  {({ loading, error, data: { test } }) => {
+                    if (loading) return null
+                    if (error) return null
+
+                    const { menus, title, steps } = test
+
+                    const length = steps.length
+
+                    if (current + 1 > length) return <Redirect to="/obrigado" />
+
+                    const step = steps[current]
+
+                    return (
+                      <Fragment>
+                        <Helmet>
+                          <title>{prefixTitle(title)}</title>
+                        </Helmet>
+                        <header>
+                          <h1>
+                            Passo {current + 1} de {length}: {step.question}
+                          </h1>
+                        </header>
+                        <main>
+                          <nav>{/*<Menus menus={menus} />*/}</nav>
+                          <Link
+                            to="/teste"
+                            onClick={async event => {
+                              if (!running) event.preventDefault()
+                              else return
+
+                              toggleRunning(true)
+
+                              const end = new Date()
+
+                              const time = end - timer
+
+                              const data = await create({
+                                variables: {
+                                  start: timer,
+                                  end,
+                                  timeInt: time,
+                                  timeText: getTimeSemantic(time),
+                                  result: resultID,
+                                  parent: step.id,
+                                },
+                              })
+
+                              console.log(data)
+
+                              await updateState({
+                                variables: {
+                                  current: current + 1,
+                                },
+                              })
+
+                              setTime(new Date())
+                              toggleRunning(false)
+                            }}
+                          >
+                            Proximo
+                          </Link>
+                        </main>
+                      </Fragment>
+                    )
+                  }}
+                </Query>
+              )
+            }}
+          </Mutation>
+        )
+      }}
+    </Mutation>
+  )
+}
