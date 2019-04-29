@@ -1,33 +1,35 @@
 import React, { Fragment } from 'react'
 
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
-import { Query, Mutation } from 'react-apollo'
+import { Query } from 'react-apollo'
 
-import { GET_TEST } from '../graphql/Query'
-import { CREATE_STEP_RESULT } from '../graphql/Mutation'
+import { GET_TEST, GET_STATE } from '../graphql/Query'
+// import { CREATE_STEP_RESULT } from '../graphql/Mutation'
 
 import Menus from './Menus'
 
-export default ({
-  prefixTitle,
-  location: {
-    state: { id },
-  },
-}) => (
-  <Query query={GET_TEST} variables={{ id }}>
-    {({ loading, error, data: { test } }) => {
-      if (loading) return null
-      if (error) return null
+export default ({ prefixTitle }) => (
+  <Query query={GET_STATE}>
+    {({ data }) => {
+      const { test: id } = data.state
 
-      const { menus, title } = test
+      if (!id) return <Redirect to="/" />
 
       return (
-        <Mutation mutation={CREATE_STEP_RESULT} variables={{}}>
-          {run => {
-            run()
+        <Query query={GET_TEST} variables={{ id }}>
+          {({ loading, error, data: { test } }) => {
+            if (loading) return null
+            if (error) return null
+
+            const { menus, title } = test
+
             return (
+              //         <Mutation mutation={CREATE_STEP_RESULT} variables={{}}>
+              //           {run => {
+              //             run()
+              //             return (
               <Fragment>
                 <Helmet>
                   <title>{prefixTitle(title)}</title>
@@ -41,8 +43,11 @@ export default ({
                 </main>
               </Fragment>
             )
+            //          }}
+            //        </Mutation>
+            //      )
           }}
-        </Mutation>
+        </Query>
       )
     }}
   </Query>

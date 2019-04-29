@@ -1,5 +1,15 @@
 import gql from 'graphql-tag'
 
+export const GET_STATE = gql`
+   query getState {
+      state @client {
+         test
+         result
+         current
+      }
+   }
+`
+
 export const GET_BASIC = gql`
    query getBasic($first: Int!) {
       views(first: $first) {
