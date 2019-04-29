@@ -23,3 +23,9 @@ export const CREATE_STEP_RESULT = gql`
       }
    }
 `
+
+export const UPDATE_STATE = gql`
+   mutation updateState($test: ID, $result: ID, $current: Int) {
+      updateState(test: $test, result: $result, current: $current) @client
+   }
+`

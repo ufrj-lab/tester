@@ -16,8 +16,6 @@ export default ({ first = 1 }) => (
       if (loading) return null
       if (error) return null
 
-      console.log('BASIC', data)
-
       const [{ company }] = data.views
 
       const { abbr, name } = company
@@ -26,9 +24,11 @@ export default ({ first = 1 }) => (
 
       return (
         <Switch>
-          <Route exact path="/">
-            <Home prefixTitle={prefixTitle} />
-          </Route>
+          <Route
+            exact
+            path="/"
+            render={props => <Home {...props} prefixTitle={prefixTitle} />}
+          />
           <Route
             exact
             path="/teste"

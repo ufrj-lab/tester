@@ -26,7 +26,7 @@ export interface NexusGenInputs {
       abbr_not_in?: string[] | null // [String!]
       abbr_not_starts_with?: string | null // String
       abbr_starts_with?: string | null // String
-      AND?: Array<NexusGenInputs['CompanyWhereInput']> | null // [CompanyWhereInput!]
+      AND?: NexusGenInputs['CompanyWhereInput'][] | null // [CompanyWhereInput!]
       id?: string | null // ID
       id_contains?: string | null // ID
       id_ends_with?: string | null // ID
@@ -69,8 +69,6 @@ export interface NexusGenInputs {
       name_not_in?: string[] | null // [String!]
       name_not_starts_with?: string | null // String
       name_starts_with?: string | null // String
-      NOT?: Array<NexusGenInputs['CompanyWhereInput']> | null // [CompanyWhereInput!]
-      OR?: Array<NexusGenInputs['CompanyWhereInput']> | null // [CompanyWhereInput!]
    }
    MenuCreateInput: {
       // input type
@@ -81,13 +79,13 @@ export interface NexusGenInputs {
    }
    MenuCreateManyInput: {
       // input type
-      connect?: Array<NexusGenInputs['MenuWhereUniqueInput']> | null // [MenuWhereUniqueInput!]
-      create?: Array<NexusGenInputs['MenuCreateInput']> | null // [MenuCreateInput!]
+      connect?: NexusGenInputs['MenuWhereUniqueInput'][] | null // [MenuWhereUniqueInput!]
+      create?: NexusGenInputs['MenuCreateInput'][] | null // [MenuCreateInput!]
    }
    MenuCreateManyWithoutMenuInput: {
       // input type
-      connect?: Array<NexusGenInputs['MenuWhereUniqueInput']> | null // [MenuWhereUniqueInput!]
-      create?: Array<NexusGenInputs['MenuCreateWithoutMenuInput']> | null // [MenuCreateWithoutMenuInput!]
+      connect?: NexusGenInputs['MenuWhereUniqueInput'][] | null // [MenuWhereUniqueInput!]
+      create?: NexusGenInputs['MenuCreateWithoutMenuInput'][] | null // [MenuCreateWithoutMenuInput!]
    }
    MenuCreateOneInput: {
       // input type
@@ -113,7 +111,7 @@ export interface NexusGenInputs {
    }
    MenuScalarWhereInput: {
       // input type
-      AND?: Array<NexusGenInputs['MenuScalarWhereInput']> | null // [MenuScalarWhereInput!]
+      AND?: NexusGenInputs['MenuScalarWhereInput'][] | null // [MenuScalarWhereInput!]
       id?: string | null // ID
       id_contains?: string | null // ID
       id_ends_with?: string | null // ID
@@ -142,8 +140,8 @@ export interface NexusGenInputs {
       name_not_in?: string[] | null // [String!]
       name_not_starts_with?: string | null // String
       name_starts_with?: string | null // String
-      NOT?: Array<NexusGenInputs['MenuScalarWhereInput']> | null // [MenuScalarWhereInput!]
-      OR?: Array<NexusGenInputs['MenuScalarWhereInput']> | null // [MenuScalarWhereInput!]
+      NOT?: NexusGenInputs['MenuScalarWhereInput'][] | null // [MenuScalarWhereInput!]
+      OR?: NexusGenInputs['MenuScalarWhereInput'][] | null // [MenuScalarWhereInput!]
    }
    MenuUpdateDataInput: {
       // input type
@@ -157,21 +155,15 @@ export interface NexusGenInputs {
    }
    MenuUpdateManyInput: {
       // input type
-      connect?: Array<NexusGenInputs['MenuWhereUniqueInput']> | null // [MenuWhereUniqueInput!]
-      create?: Array<NexusGenInputs['MenuCreateInput']> | null // [MenuCreateInput!]
-      delete?: Array<NexusGenInputs['MenuWhereUniqueInput']> | null // [MenuWhereUniqueInput!]
-      deleteMany?: Array<NexusGenInputs['MenuScalarWhereInput']> | null // [MenuScalarWhereInput!]
-      disconnect?: Array<NexusGenInputs['MenuWhereUniqueInput']> | null // [MenuWhereUniqueInput!]
-      set?: Array<NexusGenInputs['MenuWhereUniqueInput']> | null // [MenuWhereUniqueInput!]
-      update?: Array<
-         NexusGenInputs['MenuUpdateWithWhereUniqueNestedInput']
-      > | null // [MenuUpdateWithWhereUniqueNestedInput!]
-      updateMany?: Array<
-         NexusGenInputs['MenuUpdateManyWithWhereNestedInput']
-      > | null // [MenuUpdateManyWithWhereNestedInput!]
-      upsert?: Array<
-         NexusGenInputs['MenuUpsertWithWhereUniqueNestedInput']
-      > | null // [MenuUpsertWithWhereUniqueNestedInput!]
+      connect?: NexusGenInputs['MenuWhereUniqueInput'][] | null // [MenuWhereUniqueInput!]
+      create?: NexusGenInputs['MenuCreateInput'][] | null // [MenuCreateInput!]
+      delete?: NexusGenInputs['MenuWhereUniqueInput'][] | null // [MenuWhereUniqueInput!]
+      deleteMany?: NexusGenInputs['MenuScalarWhereInput'][] | null // [MenuScalarWhereInput!]
+      disconnect?: NexusGenInputs['MenuWhereUniqueInput'][] | null // [MenuWhereUniqueInput!]
+      set?: NexusGenInputs['MenuWhereUniqueInput'][] | null // [MenuWhereUniqueInput!]
+      update?: NexusGenInputs['MenuUpdateWithWhereUniqueNestedInput'][] | null // [MenuUpdateWithWhereUniqueNestedInput!]
+      updateMany?: NexusGenInputs['MenuUpdateManyWithWhereNestedInput'][] | null // [MenuUpdateManyWithWhereNestedInput!]
+      upsert?: NexusGenInputs['MenuUpsertWithWhereUniqueNestedInput'][] | null // [MenuUpsertWithWhereUniqueNestedInput!]
    }
    MenuUpdateManyWithWhereNestedInput: {
       // input type
@@ -180,21 +172,19 @@ export interface NexusGenInputs {
    }
    MenuUpdateManyWithoutMenuInput: {
       // input type
-      connect?: Array<NexusGenInputs['MenuWhereUniqueInput']> | null // [MenuWhereUniqueInput!]
-      create?: Array<NexusGenInputs['MenuCreateWithoutMenuInput']> | null // [MenuCreateWithoutMenuInput!]
-      delete?: Array<NexusGenInputs['MenuWhereUniqueInput']> | null // [MenuWhereUniqueInput!]
-      deleteMany?: Array<NexusGenInputs['MenuScalarWhereInput']> | null // [MenuScalarWhereInput!]
-      disconnect?: Array<NexusGenInputs['MenuWhereUniqueInput']> | null // [MenuWhereUniqueInput!]
-      set?: Array<NexusGenInputs['MenuWhereUniqueInput']> | null // [MenuWhereUniqueInput!]
-      update?: Array<
-         NexusGenInputs['MenuUpdateWithWhereUniqueWithoutMenuInput']
-      > | null // [MenuUpdateWithWhereUniqueWithoutMenuInput!]
-      updateMany?: Array<
-         NexusGenInputs['MenuUpdateManyWithWhereNestedInput']
-      > | null // [MenuUpdateManyWithWhereNestedInput!]
-      upsert?: Array<
-         NexusGenInputs['MenuUpsertWithWhereUniqueWithoutMenuInput']
-      > | null // [MenuUpsertWithWhereUniqueWithoutMenuInput!]
+      connect?: NexusGenInputs['MenuWhereUniqueInput'][] | null // [MenuWhereUniqueInput!]
+      create?: NexusGenInputs['MenuCreateWithoutMenuInput'][] | null // [MenuCreateWithoutMenuInput!]
+      delete?: NexusGenInputs['MenuWhereUniqueInput'][] | null // [MenuWhereUniqueInput!]
+      deleteMany?: NexusGenInputs['MenuScalarWhereInput'][] | null // [MenuScalarWhereInput!]
+      disconnect?: NexusGenInputs['MenuWhereUniqueInput'][] | null // [MenuWhereUniqueInput!]
+      set?: NexusGenInputs['MenuWhereUniqueInput'][] | null // [MenuWhereUniqueInput!]
+      update?:
+         | NexusGenInputs['MenuUpdateWithWhereUniqueWithoutMenuInput'][]
+         | null // [MenuUpdateWithWhereUniqueWithoutMenuInput!]
+      updateMany?: NexusGenInputs['MenuUpdateManyWithWhereNestedInput'][] | null // [MenuUpdateManyWithWhereNestedInput!]
+      upsert?:
+         | NexusGenInputs['MenuUpsertWithWhereUniqueWithoutMenuInput'][]
+         | null // [MenuUpsertWithWhereUniqueWithoutMenuInput!]
    }
    MenuUpdateOneRequiredInput: {
       // input type
@@ -256,7 +246,7 @@ export interface NexusGenInputs {
    }
    MenuWhereInput: {
       // input type
-      AND?: Array<NexusGenInputs['MenuWhereInput']> | null // [MenuWhereInput!]
+      AND?: NexusGenInputs['MenuWhereInput'][] | null // [MenuWhereInput!]
       id?: string | null // ID
       id_contains?: string | null // ID
       id_ends_with?: string | null // ID
@@ -271,8 +261,6 @@ export interface NexusGenInputs {
       id_not_in?: string[] | null // [ID!]
       id_not_starts_with?: string | null // ID
       id_starts_with?: string | null // ID
-      items_every?: NexusGenInputs['MenuWhereInput'] | null // MenuWhereInput
-      items_none?: NexusGenInputs['MenuWhereInput'] | null // MenuWhereInput
       items_some?: NexusGenInputs['MenuWhereInput'] | null // MenuWhereInput
       menu?: NexusGenInputs['MenuWhereInput'] | null // MenuWhereInput
       name?: string | null // String
@@ -289,8 +277,6 @@ export interface NexusGenInputs {
       name_not_in?: string[] | null // [String!]
       name_not_starts_with?: string | null // String
       name_starts_with?: string | null // String
-      NOT?: Array<NexusGenInputs['MenuWhereInput']> | null // [MenuWhereInput!]
-      OR?: Array<NexusGenInputs['MenuWhereInput']> | null // [MenuWhereInput!]
    }
    MenuWhereUniqueInput: {
       // input type
@@ -306,8 +292,8 @@ export interface NexusGenInputs {
    }
    StepCreateManyInput: {
       // input type
-      connect?: Array<NexusGenInputs['StepWhereUniqueInput']> | null // [StepWhereUniqueInput!]
-      create?: Array<NexusGenInputs['StepCreateInput']> | null // [StepCreateInput!]
+      connect?: NexusGenInputs['StepWhereUniqueInput'][] | null // [StepWhereUniqueInput!]
+      create?: NexusGenInputs['StepCreateInput'][] | null // [StepCreateInput!]
    }
    StepCreateOneWithoutResultsInput: {
       // input type
@@ -334,17 +320,15 @@ export interface NexusGenInputs {
    }
    StepResultCreateManyWithoutParentInput: {
       // input type
-      connect?: Array<NexusGenInputs['StepResultWhereUniqueInput']> | null // [StepResultWhereUniqueInput!]
-      create?: Array<
-         NexusGenInputs['StepResultCreateWithoutParentInput']
-      > | null // [StepResultCreateWithoutParentInput!]
+      connect?: NexusGenInputs['StepResultWhereUniqueInput'][] | null // [StepResultWhereUniqueInput!]
+      create?: NexusGenInputs['StepResultCreateWithoutParentInput'][] | null // [StepResultCreateWithoutParentInput!]
    }
    StepResultCreateManyWithoutResultParentInput: {
       // input type
-      connect?: Array<NexusGenInputs['StepResultWhereUniqueInput']> | null // [StepResultWhereUniqueInput!]
-      create?: Array<
-         NexusGenInputs['StepResultCreateWithoutResultParentInput']
-      > | null // [StepResultCreateWithoutResultParentInput!]
+      connect?: NexusGenInputs['StepResultWhereUniqueInput'][] | null // [StepResultWhereUniqueInput!]
+      create?:
+         | NexusGenInputs['StepResultCreateWithoutResultParentInput'][]
+         | null // [StepResultCreateWithoutResultParentInput!]
    }
    StepResultCreateWithoutParentInput: {
       // input type
@@ -368,7 +352,7 @@ export interface NexusGenInputs {
    }
    StepResultScalarWhereInput: {
       // input type
-      AND?: Array<NexusGenInputs['StepResultScalarWhereInput']> | null // [StepResultScalarWhereInput!]
+      AND?: NexusGenInputs['StepResultScalarWhereInput'][] | null // [StepResultScalarWhereInput!]
       end?: any | null // DateTime
       end_gt?: any | null // DateTime
       end_gte?: any | null // DateTime
@@ -391,8 +375,8 @@ export interface NexusGenInputs {
       id_not_in?: string[] | null // [ID!]
       id_not_starts_with?: string | null // ID
       id_starts_with?: string | null // ID
-      NOT?: Array<NexusGenInputs['StepResultScalarWhereInput']> | null // [StepResultScalarWhereInput!]
-      OR?: Array<NexusGenInputs['StepResultScalarWhereInput']> | null // [StepResultScalarWhereInput!]
+      NOT?: NexusGenInputs['StepResultScalarWhereInput'][] | null // [StepResultScalarWhereInput!]
+      OR?: NexusGenInputs['StepResultScalarWhereInput'][] | null // [StepResultScalarWhereInput!]
       start?: any | null // DateTime
       start_gt?: any | null // DateTime
       start_gte?: any | null // DateTime
@@ -402,9 +386,9 @@ export interface NexusGenInputs {
       start_not?: any | null // DateTime
       start_not_in?: any[] | null // [DateTime!]
       status?: NexusGenEnums['ResultStatus'] | null // ResultStatus
-      status_in?: Array<NexusGenEnums['ResultStatus']> | null // [ResultStatus!]
+      status_in?: NexusGenEnums['ResultStatus'][] | null // [ResultStatus!]
       status_not?: NexusGenEnums['ResultStatus'] | null // ResultStatus
-      status_not_in?: Array<NexusGenEnums['ResultStatus']> | null // [ResultStatus!]
+      status_not_in?: NexusGenEnums['ResultStatus'][] | null // [ResultStatus!]
    }
    StepResultUpdateInput: {
       // input type
@@ -431,43 +415,41 @@ export interface NexusGenInputs {
    }
    StepResultUpdateManyWithoutParentInput: {
       // input type
-      connect?: Array<NexusGenInputs['StepResultWhereUniqueInput']> | null // [StepResultWhereUniqueInput!]
-      create?: Array<
-         NexusGenInputs['StepResultCreateWithoutParentInput']
-      > | null // [StepResultCreateWithoutParentInput!]
-      delete?: Array<NexusGenInputs['StepResultWhereUniqueInput']> | null // [StepResultWhereUniqueInput!]
-      deleteMany?: Array<NexusGenInputs['StepResultScalarWhereInput']> | null // [StepResultScalarWhereInput!]
-      disconnect?: Array<NexusGenInputs['StepResultWhereUniqueInput']> | null // [StepResultWhereUniqueInput!]
-      set?: Array<NexusGenInputs['StepResultWhereUniqueInput']> | null // [StepResultWhereUniqueInput!]
-      update?: Array<
-         NexusGenInputs['StepResultUpdateWithWhereUniqueWithoutParentInput']
-      > | null // [StepResultUpdateWithWhereUniqueWithoutParentInput!]
-      updateMany?: Array<
-         NexusGenInputs['StepResultUpdateManyWithWhereNestedInput']
-      > | null // [StepResultUpdateManyWithWhereNestedInput!]
-      upsert?: Array<
-         NexusGenInputs['StepResultUpsertWithWhereUniqueWithoutParentInput']
-      > | null // [StepResultUpsertWithWhereUniqueWithoutParentInput!]
+      connect?: NexusGenInputs['StepResultWhereUniqueInput'][] | null // [StepResultWhereUniqueInput!]
+      create?: NexusGenInputs['StepResultCreateWithoutParentInput'][] | null // [StepResultCreateWithoutParentInput!]
+      delete?: NexusGenInputs['StepResultWhereUniqueInput'][] | null // [StepResultWhereUniqueInput!]
+      deleteMany?: NexusGenInputs['StepResultScalarWhereInput'][] | null // [StepResultScalarWhereInput!]
+      disconnect?: NexusGenInputs['StepResultWhereUniqueInput'][] | null // [StepResultWhereUniqueInput!]
+      set?: NexusGenInputs['StepResultWhereUniqueInput'][] | null // [StepResultWhereUniqueInput!]
+      update?:
+         | NexusGenInputs['StepResultUpdateWithWhereUniqueWithoutParentInput'][]
+         | null // [StepResultUpdateWithWhereUniqueWithoutParentInput!]
+      updateMany?:
+         | NexusGenInputs['StepResultUpdateManyWithWhereNestedInput'][]
+         | null // [StepResultUpdateManyWithWhereNestedInput!]
+      upsert?:
+         | NexusGenInputs['StepResultUpsertWithWhereUniqueWithoutParentInput'][]
+         | null // [StepResultUpsertWithWhereUniqueWithoutParentInput!]
    }
    StepResultUpdateManyWithoutResultParentInput: {
       // input type
-      connect?: Array<NexusGenInputs['StepResultWhereUniqueInput']> | null // [StepResultWhereUniqueInput!]
-      create?: Array<
-         NexusGenInputs['StepResultCreateWithoutResultParentInput']
-      > | null // [StepResultCreateWithoutResultParentInput!]
-      delete?: Array<NexusGenInputs['StepResultWhereUniqueInput']> | null // [StepResultWhereUniqueInput!]
-      deleteMany?: Array<NexusGenInputs['StepResultScalarWhereInput']> | null // [StepResultScalarWhereInput!]
-      disconnect?: Array<NexusGenInputs['StepResultWhereUniqueInput']> | null // [StepResultWhereUniqueInput!]
-      set?: Array<NexusGenInputs['StepResultWhereUniqueInput']> | null // [StepResultWhereUniqueInput!]
-      update?: Array<
-         NexusGenInputs['StepResultUpdateWithWhereUniqueWithoutResultParentInput']
-      > | null // [StepResultUpdateWithWhereUniqueWithoutResultParentInput!]
-      updateMany?: Array<
-         NexusGenInputs['StepResultUpdateManyWithWhereNestedInput']
-      > | null // [StepResultUpdateManyWithWhereNestedInput!]
-      upsert?: Array<
-         NexusGenInputs['StepResultUpsertWithWhereUniqueWithoutResultParentInput']
-      > | null // [StepResultUpsertWithWhereUniqueWithoutResultParentInput!]
+      connect?: NexusGenInputs['StepResultWhereUniqueInput'][] | null // [StepResultWhereUniqueInput!]
+      create?:
+         | NexusGenInputs['StepResultCreateWithoutResultParentInput'][]
+         | null // [StepResultCreateWithoutResultParentInput!]
+      delete?: NexusGenInputs['StepResultWhereUniqueInput'][] | null // [StepResultWhereUniqueInput!]
+      deleteMany?: NexusGenInputs['StepResultScalarWhereInput'][] | null // [StepResultScalarWhereInput!]
+      disconnect?: NexusGenInputs['StepResultWhereUniqueInput'][] | null // [StepResultWhereUniqueInput!]
+      set?: NexusGenInputs['StepResultWhereUniqueInput'][] | null // [StepResultWhereUniqueInput!]
+      update?:
+         | NexusGenInputs['StepResultUpdateWithWhereUniqueWithoutResultParentInput'][]
+         | null // [StepResultUpdateWithWhereUniqueWithoutResultParentInput!]
+      updateMany?:
+         | NexusGenInputs['StepResultUpdateManyWithWhereNestedInput'][]
+         | null // [StepResultUpdateManyWithWhereNestedInput!]
+      upsert?:
+         | NexusGenInputs['StepResultUpsertWithWhereUniqueWithoutResultParentInput'][]
+         | null // [StepResultUpsertWithWhereUniqueWithoutResultParentInput!]
    }
    StepResultUpdateWithWhereUniqueWithoutParentInput: {
       // input type
@@ -513,7 +495,7 @@ export interface NexusGenInputs {
    }
    StepResultWhereInput: {
       // input type
-      AND?: Array<NexusGenInputs['StepResultWhereInput']> | null // [StepResultWhereInput!]
+      AND?: NexusGenInputs['StepResultWhereInput'][] | null // [StepResultWhereInput!]
       end?: any | null // DateTime
       end_gt?: any | null // DateTime
       end_gte?: any | null // DateTime
@@ -536,11 +518,7 @@ export interface NexusGenInputs {
       id_not_in?: string[] | null // [ID!]
       id_not_starts_with?: string | null // ID
       id_starts_with?: string | null // ID
-      NOT?: Array<NexusGenInputs['StepResultWhereInput']> | null // [StepResultWhereInput!]
-      OR?: Array<NexusGenInputs['StepResultWhereInput']> | null // [StepResultWhereInput!]
       parent?: NexusGenInputs['StepWhereInput'] | null // StepWhereInput
-      path_every?: NexusGenInputs['MenuWhereInput'] | null // MenuWhereInput
-      path_none?: NexusGenInputs['MenuWhereInput'] | null // MenuWhereInput
       path_some?: NexusGenInputs['MenuWhereInput'] | null // MenuWhereInput
       resultParent?: NexusGenInputs['TestResultWhereInput'] | null // TestResultWhereInput
       start?: any | null // DateTime
@@ -552,9 +530,9 @@ export interface NexusGenInputs {
       start_not?: any | null // DateTime
       start_not_in?: any[] | null // [DateTime!]
       status?: NexusGenEnums['ResultStatus'] | null // ResultStatus
-      status_in?: Array<NexusGenEnums['ResultStatus']> | null // [ResultStatus!]
+      status_in?: NexusGenEnums['ResultStatus'][] | null // [ResultStatus!]
       status_not?: NexusGenEnums['ResultStatus'] | null // ResultStatus
-      status_not_in?: Array<NexusGenEnums['ResultStatus']> | null // [ResultStatus!]
+      status_not_in?: NexusGenEnums['ResultStatus'][] | null // [ResultStatus!]
       time?: NexusGenInputs['TimeResultWhereInput'] | null // TimeResultWhereInput
    }
    StepResultWhereUniqueInput: {
@@ -563,7 +541,7 @@ export interface NexusGenInputs {
    }
    StepScalarWhereInput: {
       // input type
-      AND?: Array<NexusGenInputs['StepScalarWhereInput']> | null // [StepScalarWhereInput!]
+      AND?: NexusGenInputs['StepScalarWhereInput'][] | null // [StepScalarWhereInput!]
       id?: string | null // ID
       id_contains?: string | null // ID
       id_ends_with?: string | null // ID
@@ -578,8 +556,8 @@ export interface NexusGenInputs {
       id_not_in?: string[] | null // [ID!]
       id_not_starts_with?: string | null // ID
       id_starts_with?: string | null // ID
-      NOT?: Array<NexusGenInputs['StepScalarWhereInput']> | null // [StepScalarWhereInput!]
-      OR?: Array<NexusGenInputs['StepScalarWhereInput']> | null // [StepScalarWhereInput!]
+      NOT?: NexusGenInputs['StepScalarWhereInput'][] | null // [StepScalarWhereInput!]
+      OR?: NexusGenInputs['StepScalarWhereInput'][] | null // [StepScalarWhereInput!]
       question?: string | null // String
       question_contains?: string | null // String
       question_ends_with?: string | null // String
@@ -608,21 +586,15 @@ export interface NexusGenInputs {
    }
    StepUpdateManyInput: {
       // input type
-      connect?: Array<NexusGenInputs['StepWhereUniqueInput']> | null // [StepWhereUniqueInput!]
-      create?: Array<NexusGenInputs['StepCreateInput']> | null // [StepCreateInput!]
-      delete?: Array<NexusGenInputs['StepWhereUniqueInput']> | null // [StepWhereUniqueInput!]
-      deleteMany?: Array<NexusGenInputs['StepScalarWhereInput']> | null // [StepScalarWhereInput!]
-      disconnect?: Array<NexusGenInputs['StepWhereUniqueInput']> | null // [StepWhereUniqueInput!]
-      set?: Array<NexusGenInputs['StepWhereUniqueInput']> | null // [StepWhereUniqueInput!]
-      update?: Array<
-         NexusGenInputs['StepUpdateWithWhereUniqueNestedInput']
-      > | null // [StepUpdateWithWhereUniqueNestedInput!]
-      updateMany?: Array<
-         NexusGenInputs['StepUpdateManyWithWhereNestedInput']
-      > | null // [StepUpdateManyWithWhereNestedInput!]
-      upsert?: Array<
-         NexusGenInputs['StepUpsertWithWhereUniqueNestedInput']
-      > | null // [StepUpsertWithWhereUniqueNestedInput!]
+      connect?: NexusGenInputs['StepWhereUniqueInput'][] | null // [StepWhereUniqueInput!]
+      create?: NexusGenInputs['StepCreateInput'][] | null // [StepCreateInput!]
+      delete?: NexusGenInputs['StepWhereUniqueInput'][] | null // [StepWhereUniqueInput!]
+      deleteMany?: NexusGenInputs['StepScalarWhereInput'][] | null // [StepScalarWhereInput!]
+      disconnect?: NexusGenInputs['StepWhereUniqueInput'][] | null // [StepWhereUniqueInput!]
+      set?: NexusGenInputs['StepWhereUniqueInput'][] | null // [StepWhereUniqueInput!]
+      update?: NexusGenInputs['StepUpdateWithWhereUniqueNestedInput'][] | null // [StepUpdateWithWhereUniqueNestedInput!]
+      updateMany?: NexusGenInputs['StepUpdateManyWithWhereNestedInput'][] | null // [StepUpdateManyWithWhereNestedInput!]
+      upsert?: NexusGenInputs['StepUpsertWithWhereUniqueNestedInput'][] | null // [StepUpsertWithWhereUniqueNestedInput!]
    }
    StepUpdateManyWithWhereNestedInput: {
       // input type
@@ -660,7 +632,7 @@ export interface NexusGenInputs {
    }
    StepWhereInput: {
       // input type
-      AND?: Array<NexusGenInputs['StepWhereInput']> | null // [StepWhereInput!]
+      AND?: NexusGenInputs['StepWhereInput'][] | null // [StepWhereInput!]
       id?: string | null // ID
       id_contains?: string | null // ID
       id_ends_with?: string | null // ID
@@ -675,10 +647,6 @@ export interface NexusGenInputs {
       id_not_in?: string[] | null // [ID!]
       id_not_starts_with?: string | null // ID
       id_starts_with?: string | null // ID
-      NOT?: Array<NexusGenInputs['StepWhereInput']> | null // [StepWhereInput!]
-      OR?: Array<NexusGenInputs['StepWhereInput']> | null // [StepWhereInput!]
-      path_every?: NexusGenInputs['MenuWhereInput'] | null // MenuWhereInput
-      path_none?: NexusGenInputs['MenuWhereInput'] | null // MenuWhereInput
       path_some?: NexusGenInputs['MenuWhereInput'] | null // MenuWhereInput
       question?: string | null // String
       question_contains?: string | null // String
@@ -694,8 +662,6 @@ export interface NexusGenInputs {
       question_not_in?: string[] | null // [String!]
       question_not_starts_with?: string | null // String
       question_starts_with?: string | null // String
-      results_every?: NexusGenInputs['StepResultWhereInput'] | null // StepResultWhereInput
-      results_none?: NexusGenInputs['StepResultWhereInput'] | null // StepResultWhereInput
       results_some?: NexusGenInputs['StepResultWhereInput'] | null // StepResultWhereInput
       target?: NexusGenInputs['MenuWhereInput'] | null // MenuWhereInput
    }
@@ -774,7 +740,7 @@ export interface NexusGenInputs {
    }
    TestResultWhereInput: {
       // input type
-      AND?: Array<NexusGenInputs['TestResultWhereInput']> | null // [TestResultWhereInput!]
+      AND?: NexusGenInputs['TestResultWhereInput'][] | null // [TestResultWhereInput!]
       end?: any | null // DateTime
       end_gt?: any | null // DateTime
       end_gte?: any | null // DateTime
@@ -797,8 +763,6 @@ export interface NexusGenInputs {
       id_not_in?: string[] | null // [ID!]
       id_not_starts_with?: string | null // ID
       id_starts_with?: string | null // ID
-      NOT?: Array<NexusGenInputs['TestResultWhereInput']> | null // [TestResultWhereInput!]
-      OR?: Array<NexusGenInputs['TestResultWhereInput']> | null // [TestResultWhereInput!]
       parent?: NexusGenInputs['TestWhereInput'] | null // TestWhereInput
       start?: any | null // DateTime
       start_gt?: any | null // DateTime
@@ -809,11 +773,9 @@ export interface NexusGenInputs {
       start_not?: any | null // DateTime
       start_not_in?: any[] | null // [DateTime!]
       status?: NexusGenEnums['ResultStatus'] | null // ResultStatus
-      status_in?: Array<NexusGenEnums['ResultStatus']> | null // [ResultStatus!]
+      status_in?: NexusGenEnums['ResultStatus'][] | null // [ResultStatus!]
       status_not?: NexusGenEnums['ResultStatus'] | null // ResultStatus
-      status_not_in?: Array<NexusGenEnums['ResultStatus']> | null // [ResultStatus!]
-      steps_every?: NexusGenInputs['StepResultWhereInput'] | null // StepResultWhereInput
-      steps_none?: NexusGenInputs['StepResultWhereInput'] | null // StepResultWhereInput
+      status_not_in?: NexusGenEnums['ResultStatus'][] | null // [ResultStatus!]
       steps_some?: NexusGenInputs['StepResultWhereInput'] | null // StepResultWhereInput
       time?: NexusGenInputs['TimeResultWhereInput'] | null // TimeResultWhereInput
    }
@@ -841,7 +803,7 @@ export interface NexusGenInputs {
    }
    TestWhereInput: {
       // input type
-      AND?: Array<NexusGenInputs['TestWhereInput']> | null // [TestWhereInput!]
+      AND?: NexusGenInputs['TestWhereInput'][] | null // [TestWhereInput!]
       id?: string | null // ID
       id_contains?: string | null // ID
       id_ends_with?: string | null // ID
@@ -856,16 +818,8 @@ export interface NexusGenInputs {
       id_not_in?: string[] | null // [ID!]
       id_not_starts_with?: string | null // ID
       id_starts_with?: string | null // ID
-      menus_every?: NexusGenInputs['MenuWhereInput'] | null // MenuWhereInput
-      menus_none?: NexusGenInputs['MenuWhereInput'] | null // MenuWhereInput
       menus_some?: NexusGenInputs['MenuWhereInput'] | null // MenuWhereInput
-      NOT?: Array<NexusGenInputs['TestWhereInput']> | null // [TestWhereInput!]
-      OR?: Array<NexusGenInputs['TestWhereInput']> | null // [TestWhereInput!]
-      results_every?: NexusGenInputs['TestResultWhereInput'] | null // TestResultWhereInput
-      results_none?: NexusGenInputs['TestResultWhereInput'] | null // TestResultWhereInput
       results_some?: NexusGenInputs['TestResultWhereInput'] | null // TestResultWhereInput
-      steps_every?: NexusGenInputs['StepWhereInput'] | null // StepWhereInput
-      steps_none?: NexusGenInputs['StepWhereInput'] | null // StepWhereInput
       steps_some?: NexusGenInputs['StepWhereInput'] | null // StepWhereInput
       title?: string | null // String
       title_contains?: string | null // String
@@ -918,7 +872,7 @@ export interface NexusGenInputs {
    }
    TimeResultWhereInput: {
       // input type
-      AND?: Array<NexusGenInputs['TimeResultWhereInput']> | null // [TimeResultWhereInput!]
+      AND?: NexusGenInputs['TimeResultWhereInput'][] | null // [TimeResultWhereInput!]
       id?: string | null // ID
       id_contains?: string | null // ID
       id_ends_with?: string | null // ID
@@ -941,8 +895,6 @@ export interface NexusGenInputs {
       int_lte?: number | null // Int
       int_not?: number | null // Int
       int_not_in?: number[] | null // [Int!]
-      NOT?: Array<NexusGenInputs['TimeResultWhereInput']> | null // [TimeResultWhereInput!]
-      OR?: Array<NexusGenInputs['TimeResultWhereInput']> | null // [TimeResultWhereInput!]
       text?: string | null // String
       text_contains?: string | null // String
       text_ends_with?: string | null // String
@@ -964,7 +916,7 @@ export interface NexusGenInputs {
    }
    ViewWhereInput: {
       // input type
-      AND?: Array<NexusGenInputs['ViewWhereInput']> | null // [ViewWhereInput!]
+      AND?: NexusGenInputs['ViewWhereInput'][] | null // [ViewWhereInput!]
       company?: NexusGenInputs['CompanyWhereInput'] | null // CompanyWhereInput
       id?: string | null // ID
       id_contains?: string | null // ID
@@ -980,22 +932,14 @@ export interface NexusGenInputs {
       id_not_in?: string[] | null // [ID!]
       id_not_starts_with?: string | null // ID
       id_starts_with?: string | null // ID
-      menus_every?: NexusGenInputs['MenuWhereInput'] | null // MenuWhereInput
-      menus_none?: NexusGenInputs['MenuWhereInput'] | null // MenuWhereInput
       menus_some?: NexusGenInputs['MenuWhereInput'] | null // MenuWhereInput
-      NOT?: Array<NexusGenInputs['ViewWhereInput']> | null // [ViewWhereInput!]
-      OR?: Array<NexusGenInputs['ViewWhereInput']> | null // [ViewWhereInput!]
-      steps_every?: NexusGenInputs['StepWhereInput'] | null // StepWhereInput
-      steps_none?: NexusGenInputs['StepWhereInput'] | null // StepWhereInput
       steps_some?: NexusGenInputs['StepWhereInput'] | null // StepWhereInput
-      tests_every?: NexusGenInputs['TestWhereInput'] | null // TestWhereInput
-      tests_none?: NexusGenInputs['TestWhereInput'] | null // TestWhereInput
       tests_some?: NexusGenInputs['TestWhereInput'] | null // TestWhereInput
       welcome?: NexusGenInputs['WelcomeWhereInput'] | null // WelcomeWhereInput
    }
    WelcomeWhereInput: {
       // input type
-      AND?: Array<NexusGenInputs['WelcomeWhereInput']> | null // [WelcomeWhereInput!]
+      AND?: NexusGenInputs['WelcomeWhereInput'][] | null // [WelcomeWhereInput!]
       id?: string | null // ID
       id_contains?: string | null // ID
       id_ends_with?: string | null // ID
@@ -1024,8 +968,6 @@ export interface NexusGenInputs {
       message_not_in?: string[] | null // [String!]
       message_not_starts_with?: string | null // String
       message_starts_with?: string | null // String
-      NOT?: Array<NexusGenInputs['WelcomeWhereInput']> | null // [WelcomeWhereInput!]
-      OR?: Array<NexusGenInputs['WelcomeWhereInput']> | null // [WelcomeWhereInput!]
       title?: string | null // String
       title_contains?: string | null // String
       title_ends_with?: string | null // String
@@ -1044,28 +986,10 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
-   MenuOrderByInput:
-      | 'createdAt_ASC'
-      | 'createdAt_DESC'
-      | 'id_ASC'
-      | 'id_DESC'
-      | 'name_ASC'
-      | 'name_DESC'
-      | 'updatedAt_ASC'
-      | 'updatedAt_DESC'
+   MenuOrderByInput: 'id_ASC' | 'id_DESC' | 'name_ASC' | 'name_DESC'
    ResultStatus: 'ABORTED' | 'FAIL' | 'PARTIAL' | 'SUCESSES'
-   StepOrderByInput:
-      | 'createdAt_ASC'
-      | 'createdAt_DESC'
-      | 'id_ASC'
-      | 'id_DESC'
-      | 'question_ASC'
-      | 'question_DESC'
-      | 'updatedAt_ASC'
-      | 'updatedAt_DESC'
+   StepOrderByInput: 'id_ASC' | 'id_DESC' | 'question_ASC' | 'question_DESC'
    StepResultOrderByInput:
-      | 'createdAt_ASC'
-      | 'createdAt_DESC'
       | 'end_ASC'
       | 'end_DESC'
       | 'id_ASC'
@@ -1074,20 +998,8 @@ export interface NexusGenEnums {
       | 'start_DESC'
       | 'status_ASC'
       | 'status_DESC'
-      | 'updatedAt_ASC'
-      | 'updatedAt_DESC'
-   TestOrderByInput:
-      | 'createdAt_ASC'
-      | 'createdAt_DESC'
-      | 'id_ASC'
-      | 'id_DESC'
-      | 'title_ASC'
-      | 'title_DESC'
-      | 'updatedAt_ASC'
-      | 'updatedAt_DESC'
+   TestOrderByInput: 'id_ASC' | 'id_DESC' | 'title_ASC' | 'title_DESC'
    TestResultOrderByInput:
-      | 'createdAt_ASC'
-      | 'createdAt_DESC'
       | 'end_ASC'
       | 'end_DESC'
       | 'id_ASC'
@@ -1096,15 +1008,7 @@ export interface NexusGenEnums {
       | 'start_DESC'
       | 'status_ASC'
       | 'status_DESC'
-      | 'updatedAt_ASC'
-      | 'updatedAt_DESC'
-   ViewOrderByInput:
-      | 'createdAt_ASC'
-      | 'createdAt_DESC'
-      | 'id_ASC'
-      | 'id_DESC'
-      | 'updatedAt_ASC'
-      | 'updatedAt_DESC'
+   ViewOrderByInput: 'id_ASC' | 'id_DESC'
 }
 
 export interface NexusGenRootTypes {
@@ -1275,7 +1179,7 @@ export interface NexusGenFieldTypes {
    Menu: {
       // field return type
       id: string // ID!
-      items: Array<NexusGenRootTypes['Menu']> | null // [Menu!]
+      items: NexusGenRootTypes['Menu'][] | null // [Menu!]
       menu: NexusGenRootTypes['Menu'] | null // Menu
       name: string // String!
    }
@@ -1288,16 +1192,16 @@ export interface NexusGenFieldTypes {
    }
    Query: {
       // field return type
-      results: Array<NexusGenRootTypes['TestResult']> // [TestResult!]!
+      results: NexusGenRootTypes['TestResult'][] // [TestResult!]!
       test: NexusGenRootTypes['Test'] | null // Test
-      views: Array<NexusGenRootTypes['View']> // [View!]!
+      views: NexusGenRootTypes['View'][] // [View!]!
    }
    Step: {
       // field return type
       id: string // ID!
-      path: Array<NexusGenRootTypes['Menu']> | null // [Menu!]
+      path: NexusGenRootTypes['Menu'][] | null // [Menu!]
       question: string // String!
-      results: Array<NexusGenRootTypes['StepResult']> | null // [StepResult!]
+      results: NexusGenRootTypes['StepResult'][] | null // [StepResult!]
       target: NexusGenRootTypes['Menu'] // Menu!
    }
    StepResult: {
@@ -1305,7 +1209,7 @@ export interface NexusGenFieldTypes {
       end: any | null // DateTime
       id: string // ID!
       parent: NexusGenRootTypes['Step'] // Step!
-      path: Array<NexusGenRootTypes['Menu']> | null // [Menu!]
+      path: NexusGenRootTypes['Menu'][] | null // [Menu!]
       resultParent: NexusGenRootTypes['TestResult'] // TestResult!
       start: any // DateTime!
       status: NexusGenEnums['ResultStatus'] // ResultStatus!
@@ -1314,9 +1218,9 @@ export interface NexusGenFieldTypes {
    Test: {
       // field return type
       id: string // ID!
-      menus: Array<NexusGenRootTypes['Menu']> | null // [Menu!]
-      results: Array<NexusGenRootTypes['TestResult']> | null // [TestResult!]
-      steps: Array<NexusGenRootTypes['Step']> | null // [Step!]
+      menus: NexusGenRootTypes['Menu'][] | null // [Menu!]
+      results: NexusGenRootTypes['TestResult'][] | null // [TestResult!]
+      steps: NexusGenRootTypes['Step'][] | null // [Step!]
       title: string // String!
    }
    TestResult: {
@@ -1326,7 +1230,7 @@ export interface NexusGenFieldTypes {
       parent: NexusGenRootTypes['Test'] // Test!
       start: any // DateTime!
       status: NexusGenEnums['ResultStatus'] // ResultStatus!
-      steps: Array<NexusGenRootTypes['StepResult']> | null // [StepResult!]
+      steps: NexusGenRootTypes['StepResult'][] | null // [StepResult!]
       time: NexusGenRootTypes['TimeResult'] | null // TimeResult
    }
    TimeResult: {
@@ -1339,9 +1243,9 @@ export interface NexusGenFieldTypes {
       // field return type
       company: NexusGenRootTypes['Company'] // Company!
       id: string // ID!
-      menus: Array<NexusGenRootTypes['Menu']> | null // [Menu!]
-      steps: Array<NexusGenRootTypes['Step']> | null // [Step!]
-      tests: Array<NexusGenRootTypes['Test']> | null // [Test!]
+      menus: NexusGenRootTypes['Menu'][] | null // [Menu!]
+      steps: NexusGenRootTypes['Step'][] | null // [Step!]
+      tests: NexusGenRootTypes['Test'][] | null // [Test!]
       welcome: NexusGenRootTypes['Welcome'] // Welcome!
    }
    Welcome: {

@@ -3,8 +3,8 @@
  * Do not make changes to this file directly
  */
 
-import { GraphQLResolveInfo } from 'graphql'
 import { core } from 'nexus'
+import { GraphQLResolveInfo } from 'graphql'
 import * as prisma from '../prisma-client'
 
 declare global {

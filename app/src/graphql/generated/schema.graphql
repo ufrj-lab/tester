@@ -66,8 +66,6 @@ input CompanyWhereInput {
    name_not_in: [String!]
    name_not_starts_with: String
    name_starts_with: String
-   NOT: [CompanyWhereInput!]
-   OR: [CompanyWhereInput!]
 }
 
 scalar DateTime
@@ -127,14 +125,10 @@ input MenuCreateWithoutMenuInput {
 }
 
 enum MenuOrderByInput {
-   createdAt_ASC
-   createdAt_DESC
    id_ASC
    id_DESC
    name_ASC
    name_DESC
-   updatedAt_ASC
-   updatedAt_DESC
 }
 
 input MenuScalarWhereInput {
@@ -284,8 +278,6 @@ input MenuWhereInput {
    id_not_in: [ID!]
    id_not_starts_with: ID
    id_starts_with: ID
-   items_every: MenuWhereInput
-   items_none: MenuWhereInput
    items_some: MenuWhereInput
    menu: MenuWhereInput
    name: String
@@ -302,8 +294,6 @@ input MenuWhereInput {
    name_not_in: [String!]
    name_not_starts_with: String
    name_starts_with: String
-   NOT: [MenuWhereInput!]
-   OR: [MenuWhereInput!]
 }
 
 input MenuWhereUniqueInput {
@@ -402,14 +392,10 @@ input StepCreateWithoutResultsInput {
 }
 
 enum StepOrderByInput {
-   createdAt_ASC
-   createdAt_DESC
    id_ASC
    id_DESC
    question_ASC
    question_DESC
-   updatedAt_ASC
-   updatedAt_DESC
 }
 
 type StepResult {
@@ -473,8 +459,6 @@ input StepResultCreateWithoutResultParentInput {
 }
 
 enum StepResultOrderByInput {
-   createdAt_ASC
-   createdAt_DESC
    end_ASC
    end_DESC
    id_ASC
@@ -483,8 +467,6 @@ enum StepResultOrderByInput {
    start_DESC
    status_ASC
    status_DESC
-   updatedAt_ASC
-   updatedAt_DESC
 }
 
 input StepResultScalarWhereInput {
@@ -636,11 +618,7 @@ input StepResultWhereInput {
    id_not_in: [ID!]
    id_not_starts_with: ID
    id_starts_with: ID
-   NOT: [StepResultWhereInput!]
-   OR: [StepResultWhereInput!]
    parent: StepWhereInput
-   path_every: MenuWhereInput
-   path_none: MenuWhereInput
    path_some: MenuWhereInput
    resultParent: TestResultWhereInput
    start: DateTime
@@ -769,10 +747,6 @@ input StepWhereInput {
    id_not_in: [ID!]
    id_not_starts_with: ID
    id_starts_with: ID
-   NOT: [StepWhereInput!]
-   OR: [StepWhereInput!]
-   path_every: MenuWhereInput
-   path_none: MenuWhereInput
    path_some: MenuWhereInput
    question: String
    question_contains: String
@@ -788,8 +762,6 @@ input StepWhereInput {
    question_not_in: [String!]
    question_not_starts_with: String
    question_starts_with: String
-   results_every: StepResultWhereInput
-   results_none: StepResultWhereInput
    results_some: StepResultWhereInput
    target: MenuWhereInput
 }
@@ -843,14 +815,10 @@ input TestCreateWithoutResultsInput {
 }
 
 enum TestOrderByInput {
-   createdAt_ASC
-   createdAt_DESC
    id_ASC
    id_DESC
    title_ASC
    title_DESC
-   updatedAt_ASC
-   updatedAt_DESC
 }
 
 type TestResult {
@@ -896,8 +864,6 @@ input TestResultCreateWithoutStepsInput {
 }
 
 enum TestResultOrderByInput {
-   createdAt_ASC
-   createdAt_DESC
    end_ASC
    end_DESC
    id_ASC
@@ -906,8 +872,6 @@ enum TestResultOrderByInput {
    start_DESC
    status_ASC
    status_DESC
-   updatedAt_ASC
-   updatedAt_DESC
 }
 
 input TestResultUpdateInput {
@@ -963,8 +927,6 @@ input TestResultWhereInput {
    id_not_in: [ID!]
    id_not_starts_with: ID
    id_starts_with: ID
-   NOT: [TestResultWhereInput!]
-   OR: [TestResultWhereInput!]
    parent: TestWhereInput
    start: DateTime
    start_gt: DateTime
@@ -978,8 +940,6 @@ input TestResultWhereInput {
    status_in: [ResultStatus!]
    status_not: ResultStatus
    status_not_in: [ResultStatus!]
-   steps_every: StepResultWhereInput
-   steps_none: StepResultWhereInput
    steps_some: StepResultWhereInput
    time: TimeResultWhereInput
 }
@@ -1022,16 +982,8 @@ input TestWhereInput {
    id_not_in: [ID!]
    id_not_starts_with: ID
    id_starts_with: ID
-   menus_every: MenuWhereInput
-   menus_none: MenuWhereInput
    menus_some: MenuWhereInput
-   NOT: [TestWhereInput!]
-   OR: [TestWhereInput!]
-   results_every: TestResultWhereInput
-   results_none: TestResultWhereInput
    results_some: TestResultWhereInput
-   steps_every: StepWhereInput
-   steps_none: StepWhereInput
    steps_some: StepWhereInput
    title: String
    title_contains: String
@@ -1113,8 +1065,6 @@ input TimeResultWhereInput {
    int_lte: Int
    int_not: Int
    int_not_in: [Int!]
-   NOT: [TimeResultWhereInput!]
-   OR: [TimeResultWhereInput!]
    text: String
    text_contains: String
    text_ends_with: String
@@ -1169,12 +1119,8 @@ type View {
 }
 
 enum ViewOrderByInput {
-   createdAt_ASC
-   createdAt_DESC
    id_ASC
    id_DESC
-   updatedAt_ASC
-   updatedAt_DESC
 }
 
 input ViewWhereInput {
@@ -1194,16 +1140,8 @@ input ViewWhereInput {
    id_not_in: [ID!]
    id_not_starts_with: ID
    id_starts_with: ID
-   menus_every: MenuWhereInput
-   menus_none: MenuWhereInput
    menus_some: MenuWhereInput
-   NOT: [ViewWhereInput!]
-   OR: [ViewWhereInput!]
-   steps_every: StepWhereInput
-   steps_none: StepWhereInput
    steps_some: StepWhereInput
-   tests_every: TestWhereInput
-   tests_none: TestWhereInput
    tests_some: TestWhereInput
    welcome: WelcomeWhereInput
 }
@@ -1244,8 +1182,6 @@ input WelcomeWhereInput {
    message_not_in: [String!]
    message_not_starts_with: String
    message_starts_with: String
-   NOT: [WelcomeWhereInput!]
-   OR: [WelcomeWhereInput!]
    title: String
    title_contains: String
    title_ends_with: String

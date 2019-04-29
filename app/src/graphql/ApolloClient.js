@@ -8,12 +8,21 @@ import { ApolloLink } from 'apollo-link'
 import typeDefs from './typeDefs'
 import resolvers from './resolvers'
 
-const cache = new InMemoryCache()
+export const cache = new InMemoryCache()
 
-persistCache({
-   cache,
-   storage: window.localStorage,
-})
+// persistCache({
+//   cache,
+//   storage: window.localStorage,
+//})
+
+export const data = {
+   state: {
+      __typename: 'State',
+      test: null,
+      result: null,
+      current: 0,
+   },
+}
 
 export default (uri = 'http://localhost:4000') =>
    new ApolloClient({

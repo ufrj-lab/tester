@@ -4,8 +4,8 @@
 
 import { DocumentNode } from 'graphql'
 import {
-   BaseClientOptions,
    makePrismaClientClass,
+   BaseClientOptions,
    Model,
 } from 'prisma-client-lib'
 import { typeDefs } from './prisma-schema'
@@ -27,7 +27,7 @@ export interface Exists {
 
 export interface Node {}
 
-export type FragmentableArray<T> = Promise<T[]> & Fragmentable
+export type FragmentableArray<T> = Promise<Array<T>> & Fragmentable
 
 export interface Fragmentable {
    $fragment<T>(fragment: string | DocumentNode): Promise<T>
@@ -399,7 +399,9 @@ export interface Subscription {
    ) => WelcomeSubscriptionPayloadSubscription
 }
 
-export type ClientConstructor<T> = new (options?: BaseClientOptions) => T
+export interface ClientConstructor<T> {
+   new (options?: BaseClientOptions): T
+}
 
 /**
  * Types

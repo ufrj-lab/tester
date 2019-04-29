@@ -1,6 +1,15 @@
 #import "./generated/schema.graphql"
 
+extend type Query {
+   state: State!
+}
+
 type State {
+   test: ID
    result: ID
    current: Int! @default(value: 0)
+}
+
+extend type Mutation {
+   updateState(result: ID, test: ID, current: Int): State
 }
