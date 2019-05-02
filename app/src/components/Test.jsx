@@ -13,15 +13,31 @@ import Menus from './Menus'
 import { getTimeSemantic } from '../utils'
 
 export default ({ prefixTitle, state }) => {
-  const [running, toggleRunning] = useState(false)
+  const [running, setRunning] = useState(false)
 
-  const [next, toggleNext] = useState(false)
+  const [next, setNext] = useState(false)
 
   const [timer, setTime] = useState(new Date())
 
-  const { test: testID, current, result: resultID } = state
+  const [path, setPath] = useState([])
+
+  const initActive = {
+    parent: null,
+    actives: [],
+    last: null,
+  }
+
+  const [active, setActive] = useState(initActive)
+
+  const { test: testID, current, result: resultID, finish } = state
 
   if (!testID) return <Redirect to="/" />
+
+  if (finish) return <Redirect to="/obrigado" />
+
+  const nextCount = current + 1
+
+  console.log('STATE', state)
 
   return (
     <Mutation mutation={CREATE_STEP_RESULT}>
@@ -39,8 +55,6 @@ export default ({ prefixTitle, state }) => {
 
                     const length = steps.length
 
-                    if (current + 1 > length) return <Redirect to="/obrigado" />
-
                     const step = steps[current]
 
                     return (
@@ -54,40 +68,52 @@ export default ({ prefixTitle, state }) => {
                           </h1>
                         </header>
                         <main>
-                          <nav>{/*<Menus menus={menus} />*/}</nav>
+                          <nav>
+                            {
+                              <Menus
+                                menus={menus}
+                                next={{ next, setNext }}
+                                path={{ path, setPath }}
+                                active={{ active, setActive }}
+                              />
+                            }
+                          </nav>
                           <Link
+                            className={`btn ${next ? '' : '--disabled'}`}
                             to="/teste"
                             onClick={async event => {
-                              if (!running) event.preventDefault()
+                              if (!running && next) event.preventDefault()
                               else return
 
-                              toggleRunning(true)
+                              setRunning(true)
 
                               const end = new Date()
 
                               const time = end - timer
 
-                              const data = await create({
+                              await create({
                                 variables: {
                                   start: timer,
                                   end,
                                   timeInt: time,
                                   timeText: getTimeSemantic(time),
+                                  path,
                                   result: resultID,
                                   parent: step.id,
                                 },
                               })
 
-                              console.log(data)
-
                               await updateState({
                                 variables: {
-                                  current: current + 1,
+                                  finish: nextCount >= length,
+                                  current: nextCount,
                                 },
                               })
 
                               setTime(new Date())
-                              toggleRunning(false)
+                              setRunning(false)
+                              setNext(false)
+                              setActive(initActive)
                             }}
                           >
                             Proximo

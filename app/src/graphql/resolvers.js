@@ -1,5 +1,3 @@
-import gql from 'graphql-tag'
-
 import { GET_STATE } from './Query'
 
 export default {
@@ -20,32 +18,8 @@ export default {
             },
          }
 
-         console.log(data)
-
          cache.writeQuery({ query: GET_STATE, data })
          return data
       },
-   },
-   setPath: (_, { path: id }, { cache }) => {
-      const { state } = cache.readQuery({ query: GET_STATE })
-      const { path } = state
-      path.push(id)
-      const data = {
-         state: {
-            ...state,
-            path,
-         },
-      }
-      cache.writeQuery({ query: GET_STATE, data })
-      return data
-   },
-   clearPath: (_, _variables, { cache }) => {
-      const { state } = cache.readQuery({ query: GET_STATE })
-      const data = {
-         ...state,
-         path: [],
-      }
-      cache.writeQuery({ query: GET_STATE, data })
-      return data
    },
 }

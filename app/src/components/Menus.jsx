@@ -1,33 +1,70 @@
-import React from 'react'
-import { Mutation } from 'react-apollo'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
-// import { MUTATION_SET_PATH } from '../graphql/Mutation'
+const LinkMenu = ({
+  id,
+  next: { next, setNext },
+  path: { path, setPath },
+  active: { active, setActive },
+  name,
+}) => {
+  const { actives, last } = active
 
-const Items = ({ items }) =>
-  items.map(({ id, name, items: menus }) => (
-    <li key={id}>
-      {
-        // <Mutation mutation={MUTATION_SET_PATH}>
-        //   {func => (
-        //     <a
-        //       href="/teste"
-        //       onClick={event => {
-        //         event.preventDefault()
-        //       }}
-        //     >
-        //       {name}
-        //     </a>
-        //   )}
-        // </Mutation>
-      }
-      {menus.length > 0 && <Menus menus={menus} />}
-    </li>
-  ))
+  const include = actives.includes(id)
 
-export default function Menus({ menus }) {
+  console.log('ACTIVE', active)
+  return (
+    <Link
+      to="/teste"
+      className={`btn --menu${include ? ' --active' : ''}`}
+      onClick={event => {
+        event.preventDefault()
+
+        setPath([...path, { id }])
+
+        if (actives.length > 0) setNext(true)
+        else setNext(false)
+
+        if (last !== id) {
+          setPath([...path, { id }])
+          if (!include) {
+            setActive({
+              ...active,
+              last: id,
+              actives: [...actives, id],
+            })
+          }
+        }
+      }}
+    >
+      {name}
+    </Link>
+  )
+}
+const Items = ({ items, path, next, active }) =>
+  items.map(({ id, name, items: menus }) => {
+    const state = {
+      path,
+      next,
+      active,
+    }
+    return (
+      <li key={id}>
+        <LinkMenu {...{ ...state, id, name }} />
+        {menus.length > 0 && <Menus {...{ ...state, menus }} />}
+      </li>
+    )
+  })
+
+export default function Menus({ menus, path, next, active }) {
+  const state = {
+    path,
+    next,
+    active,
+  }
   return menus.map(({ id, name, items }) => (
-    <ul key={id}>
-      <Items name={name} items={items} />
+    <ul className="menu" key={id}>
+      <Items {...{ ...state, id, name, items }} />
     </ul>
   ))
 }

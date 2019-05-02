@@ -5,6 +5,7 @@ export const GET_STATE = gql`
       state @client {
          test
          result
+         finish
          current
       }
    }

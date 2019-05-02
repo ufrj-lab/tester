@@ -21,6 +21,7 @@ export const data = {
       test: null,
       result: null,
       path: [],
+      finish: false,
       current: 0,
    },
 }

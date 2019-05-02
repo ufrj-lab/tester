@@ -7,12 +7,10 @@ extend type Query {
 type State {
    test: ID
    result: ID
-   path: [ID]
+   finish: Boolean! @default(value: false)
    current: Int! @default(value: 0)
 }
 
 extend type Mutation {
-   updateState(result: ID, test: ID, step: ID, current: Int): State
-   setPath(path: ID): State
-   clearPath: State
+   updateState(result: ID, test: ID, current: Int): State
 }

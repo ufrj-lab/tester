@@ -16,6 +16,7 @@ export const CREATE_STEP_RESULT = gql`
       $result: ID!
       $start: DateTime!
       $end: DateTime!
+      $path: [MenuWhereUniqueInput!]!
       $timeInt: Int!
       $timeText: String!
    ) {
@@ -26,6 +27,7 @@ export const CREATE_STEP_RESULT = gql`
             parent: { connect: { id: $parent } }
             resultParent: { connect: { id: $result } }
             time: { create: { int: $timeInt, text: $timeText } }
+            path: { connect: $path }
          }
       ) {
          id
@@ -34,7 +36,17 @@ export const CREATE_STEP_RESULT = gql`
 `
 
 export const UPDATE_STATE = gql`
-   mutation updateState($test: ID, $result: ID, $current: Int) {
-      updateState(test: $test, result: $result, current: $current) @client
+   mutation updateState(
+      $test: ID
+      $result: ID
+      $current: Int
+      $finish: Boolean
+   ) {
+      updateState(
+         test: $test
+         result: $result
+         current: $current
+         finish: $finish
+      ) @client
    }
 `

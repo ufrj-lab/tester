@@ -39,9 +39,13 @@ export default ({ first = 1, state }) => (
               <Test {...props} state={state} prefixTitle={prefixTitle} />
             )}
           />
-          <Route exact path="/obrigado">
-            <Tanks state={state} prefixTitle={prefixTitle} />
-          </Route>
+          <Route
+            exact
+            path="/obrigado"
+            render={props => (
+              <Tanks {...props} state={state} prefixTitle={prefixTitle} />
+            )}
+          />
           <Route
             path="/:path"
             render={props => (

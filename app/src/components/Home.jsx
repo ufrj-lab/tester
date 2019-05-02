@@ -1,15 +1,17 @@
 import React, { Fragment, useState } from 'react'
 
 import { Helmet } from 'react-helmet'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 import { Query, Mutation } from 'react-apollo'
 
 import { GET_HOME } from '../graphql/Query'
 import { CREATE_TEST_RESULT, UPDATE_STATE } from '../graphql/Mutation'
 
-export default ({ prefixTitle, first = 1, history }) => {
-  const [running, toggleRunning] = useState(false)
+export default ({ prefixTitle, first = 1, history, state: { finish } }) => {
+  const [running, setRunning] = useState(false)
+
+  if (finish) return <Redirect to="/obrigado" />
 
   return (
     <Query query={GET_HOME} variables={{ first }}>
@@ -50,7 +52,7 @@ export default ({ prefixTitle, first = 1, history }) => {
                           if (!running) event.preventDefault()
                           else return
 
-                          toggleRunning(true)
+                          setRunning(true)
 
                           const href = event.currentTarget.getAttribute('href')
 
