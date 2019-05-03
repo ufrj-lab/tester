@@ -43,7 +43,12 @@ export default ({ first = 1, state }) => (
             exact
             path="/obrigado"
             render={props => (
-              <Tanks {...props} state={state} prefixTitle={prefixTitle} />
+              <Tanks
+                {...props}
+                company={company}
+                state={state}
+                prefixTitle={prefixTitle}
+              />
             )}
           />
           <Route

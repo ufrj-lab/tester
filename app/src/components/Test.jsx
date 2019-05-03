@@ -10,24 +10,98 @@ import { CREATE_STEP_RESULT, UPDATE_STATE } from '../graphql/Mutation'
 
 import Menus from './Menus'
 
+import { btnSetStyle } from './_styles'
+
 import { getTimeSemantic } from '../utils'
 
+const Btn = ({ mutations, ids, status, hooks, className }) => (
+  <Link
+    className={className}
+    to="/teste"
+    onClick={async event => {
+      const { running, timer, next, active, path } = hooks
+      if (!running.data && next.data) event.preventDefault()
+      else return
+
+      running.set(true)
+
+      const end = new Date()
+
+      const time = end - timer.data
+
+      const result = {
+        variables: {
+          start: timer.data,
+          end,
+          timeInt: time,
+          timeText: getTimeSemantic(time),
+          path: path.data,
+          result: ids.result,
+          parent: ids.parent,
+        },
+      }
+      console.log('RESULT', result)
+      await mutations.create(result)
+
+      await mutations.updateState({
+        variables: {
+          finish: status.nextCount >= status.length,
+          current: status.nextCount,
+        },
+      })
+
+      timer.set(new Date())
+      running.set(false)
+      next.set(false)
+      active.set(active.init)
+    }}
+  >
+    Proximo
+  </Link>
+)
+
+const BtnStyled = btnSetStyle(Btn)
+
 export default ({ prefixTitle, state }) => {
-  const [running, setRunning] = useState(false)
+  const [runningData, setRunning] = useState(false)
 
-  const [next, setNext] = useState(false)
+  const [nextData, setNext] = useState(false)
 
-  const [timer, setTime] = useState(new Date())
+  const [timerData, setTimer] = useState(new Date())
 
-  const [path, setPath] = useState([])
+  const [pathData, setPath] = useState([])
 
-  const initActive = {
+  const initActiveData = {
     parent: null,
     actives: [],
     last: null,
   }
 
-  const [active, setActive] = useState(initActive)
+  const [activeData, setActive] = useState(initActiveData)
+
+  const hooks = {
+    running: {
+      data: runningData,
+      set: setRunning,
+    },
+    next: {
+      data: nextData,
+      set: setNext,
+    },
+    timer: {
+      data: timerData,
+      set: setTimer,
+    },
+    path: {
+      data: pathData,
+      set: setPath,
+    },
+    active: {
+      init: initActiveData,
+      data: activeData,
+      set: setActive,
+    },
+  }
 
   const { test: testID, current, result: resultID, finish } = state
 
@@ -36,8 +110,6 @@ export default ({ prefixTitle, state }) => {
   if (finish) return <Redirect to="/obrigado" />
 
   const nextCount = current + 1
-
-  console.log('STATE', state)
 
   return (
     <Mutation mutation={CREATE_STEP_RESULT}>
@@ -57,6 +129,23 @@ export default ({ prefixTitle, state }) => {
 
                     const step = steps[current]
 
+                    const btnProps = {
+                      ids: {
+                        parent: step.id,
+                        result: resultID,
+                      },
+                      hooks,
+                      mutations: {
+                        create,
+                        updateState,
+                      },
+                      status: {
+                        nextCount,
+                        length,
+                      },
+                      disabled: !nextData,
+                    }
+
                     return (
                       <Fragment>
                         <Helmet>
@@ -69,55 +158,9 @@ export default ({ prefixTitle, state }) => {
                         </header>
                         <main>
                           <nav>
-                            {
-                              <Menus
-                                menus={menus}
-                                next={{ next, setNext }}
-                                path={{ path, setPath }}
-                                active={{ active, setActive }}
-                              />
-                            }
+                            <Menus {...{ menus, hooks }} />
                           </nav>
-                          <Link
-                            className={`btn ${next ? '' : '--disabled'}`}
-                            to="/teste"
-                            onClick={async event => {
-                              if (!running && next) event.preventDefault()
-                              else return
-
-                              setRunning(true)
-
-                              const end = new Date()
-
-                              const time = end - timer
-
-                              await create({
-                                variables: {
-                                  start: timer,
-                                  end,
-                                  timeInt: time,
-                                  timeText: getTimeSemantic(time),
-                                  path,
-                                  result: resultID,
-                                  parent: step.id,
-                                },
-                              })
-
-                              await updateState({
-                                variables: {
-                                  finish: nextCount >= length,
-                                  current: nextCount,
-                                },
-                              })
-
-                              setTime(new Date())
-                              setRunning(false)
-                              setNext(false)
-                              setActive(initActive)
-                            }}
-                          >
-                            Proximo
-                          </Link>
+                          <BtnStyled {...{ ...btnProps }} />
                         </main>
                       </Fragment>
                     )

@@ -39,6 +39,7 @@ export const GET_HOME = gql`
          }
          tests(first: $first) {
             id
+            title
          }
       }
    }

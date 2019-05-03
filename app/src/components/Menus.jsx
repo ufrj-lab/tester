@@ -1,39 +1,39 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
+import { linkMenuSetStyle } from './_styles'
 
-const LinkMenu = ({
-  id,
-  next: { next, setNext },
-  path: { path, setPath },
-  active: { active, setActive },
-  name,
-}) => {
-  const { actives, last } = active
+const LinkMenu = ({ id, hooks, name, className, selected, index }) => {
+  const { next, active, path } = hooks
 
-  const include = actives.includes(id)
+  const { actives, last } = active.data
 
-  console.log('ACTIVE', active)
+  if (actives.length > 0) next.set(true)
+  else next.set(false)
+
   return (
     <Link
       to="/teste"
-      className={`btn --menu${include ? ' --active' : ''}`}
+      className={className}
       onClick={event => {
         event.preventDefault()
 
-        setPath([...path, { id }])
-
-        if (actives.length > 0) setNext(true)
-        else setNext(false)
-
         if (last !== id) {
-          setPath([...path, { id }])
-          if (!include) {
-            setActive({
-              ...active,
-              last: id,
-              actives: [...actives, id],
-            })
-          }
+          path.set([...path.data, { id }])
+        }
+
+        if (selected) {
+          actives.splice(index, 1)
+          active.set({
+            ...active.data,
+            last: null,
+            actives: [...actives],
+          })
+        } else {
+          active.set({
+            ...active.data,
+            last: id,
+            actives: [...actives, id],
+          })
         }
       }}
     >
@@ -41,30 +41,33 @@ const LinkMenu = ({
     </Link>
   )
 }
-const Items = ({ items, path, next, active }) =>
+
+const LinkMenuStyled = linkMenuSetStyle(LinkMenu)
+const Items = ({ items, hooks }) =>
   items.map(({ id, name, items: menus }) => {
-    const state = {
-      path,
-      next,
-      active,
+    const { actives } = hooks.active.data
+    const index = actives.indexOf(id)
+
+    const linkProps = {
+      hooks,
+      id,
+      name,
+      index,
+      selected: index !== -1,
     }
+
     return (
       <li key={id}>
-        <LinkMenu {...{ ...state, id, name }} />
-        {menus.length > 0 && <Menus {...{ ...state, menus }} />}
+        <LinkMenuStyled {...{ ...linkProps }} />
+        {menus.length > 0 && <Menus {...{ hooks, menus }} />}
       </li>
     )
   })
 
-export default function Menus({ menus, path, next, active }) {
-  const state = {
-    path,
-    next,
-    active,
-  }
+export default function Menus({ menus, hooks }) {
   return menus.map(({ id, name, items }) => (
     <ul className="menu" key={id}>
-      <Items {...{ ...state, id, name, items }} />
+      <Items {...{ hooks, id, name, items }} />
     </ul>
   ))
 }

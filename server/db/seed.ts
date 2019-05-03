@@ -116,8 +116,17 @@ async function main() {
          },
          welcome: {
             create: {
-               message:
-                  '<p>Olá! Estamos criando o futuro, participe do teste e nos ajude a fazer da UFRJ um lugar melhor! =]</p>',
+               message: `
+               <p>Seja bem-vindo ao teste de navegação do Portal UFRJ! Obrigado por concordar em participar. Essa atividade deverá levar cerca de 10 minutos. Sua resposta nos ajudará a organizar o conteúdo do nosso novo portal.</p>
+               <h2>Instruções</h2>
+               <p>Como funciona o teste:</p>
+               <ol>
+                  <li>Será dada a você a tarefa de encontrar uma informação dentro de um menu.</li>
+                  <li>Navegue pelo menu até que encontre o link onde acreditaria encontrar a informação solicitada.</li>
+                  <li>Se não for pelo caminho que gostaria, você pode voltar clicando nos links de cima.</li>
+               </ol>
+               <i>Não estamos testando suas habilidade, não há respostas erradas.</i>
+               `,
                title: 'Bem-vindo!',
             },
          },

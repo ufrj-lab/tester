@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 import Router from './Router'
 
 import { Query } from 'react-apollo'
 import { GET_STATE } from '../graphql/Query'
 
+import GlobalStyle from './_styles'
+
 export default () => (
-  <Query query={GET_STATE}>
-    {({ data: { state } }) => <Router state={state} />}
-  </Query>
+  <Fragment>
+    <GlobalStyle />
+    <Query query={GET_STATE}>
+      {({ data: { state } }) => <Router state={state} />}
+    </Query>
+  </Fragment>
 )
