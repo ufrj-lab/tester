@@ -1,40 +1,71 @@
-type View {
+type Key {
    id: ID! @id
-
-   welcome: Welcome! @relation(link: INLINE)
-   company: Company! @relation(link: INLINE)
-
-   menus: [Menu!]! @relation(link: INLINE)
-
-   tests: [Test!]! @relation(link: INLINE)
-   steps: [Step!]! @relation(link: INLINE)
+   userTypes: [KeyUserType!]! @relation(onDelete: CASCADE)
+   testResultStatus: [KeyTestResultStatus!]! @relation(onDelete: CASCADE)
+   stepResultStatus: [KeyStepResultStatus!]! @relation(onDelete: CASCADE)
+   languages: [KeyLanguage!]! @relation(onDelete: CASCADE)
 }
 
-type Welcome {
+type KeyUserType {
    id: ID! @id
+   key: String! @unique
+}
 
-   title: String!
-   message: String!
+type KeyLanguage {
+   id: ID! @id
+   key: String! @unique
+}
+
+type KeyTestResultStatus {
+   id: ID! @id
+   key: String! @unique
+}
+
+type KeyStepResultStatus {
+   id: ID! @id
+   key: String! @unique
+}
+
+type MultiLanguageContent {
+   id: ID! @id
+   pt: String!
+   en: String
+}
+
+type Message {
+   id: ID! @id
+   title: MultiLanguageContent! @relation(name: "Title", onDelete: CASCADE)
+   message: MultiLanguageContent! @relation(name: "Message", onDelete: CASCADE)
 }
 
 type Company {
    id: ID! @id
 
-   name: String!
+   name: String! @unique
    abbr: String
 
-   logo: String
+   welcome: Message! @relation(onDelete: CASCADE)
+   tests: [Test!]! @relation(onDelete: CASCADE)
 }
 
 type Test {
    id: ID! @id
 
-   title: String!
+   publics: [KeyUserType!]!
 
-   steps: [Step!]! @relation(link: INLINE)
-   menus: [Menu!]! @relation(link: INLINE)
+   languages: [KeyLanguage]!
 
-   results: [TestResult!]!
+   instruction: Message! @relation(onDelete: CASCADE)
+   company: Company!
+
+   title: MultiLanguageContent! @relation(onDelete: CASCADE)
+
+   steps: [Step!]! @relation(onDelete: CASCADE)
+   menus: [Menu!]! @relation(onDelete: CASCADE)
+
+   results: [TestResult!]! @relation(onDelete: CASCADE)
+
+   keys: Key!
 }
 
 type Menu {
@@ -44,86 +75,53 @@ type Menu {
 
    menus: [Menu!]! @relation(name: "SubMenu")
 
-   name: String!
+   name: MultiLanguageContent! @relation(onDelete: CASCADE)
 
-   items: [Menu!]! @relation(link: INLINE, name: "SubMenu")
-}
-
-type Path {
-   id: ID! @id
-   parent: Step!
-   paths: [Menu!]! @relation(link: INLINE)
-}
-
-type Keys {
-   id: ID! @id
-   userType: [KeyUserType!]! @relation(link: INLINE)
-   resultStatus: [KeyResultStatus!]! @relation(link: INLINE)
-}
-
-type KeyUserType {
-   id: ID! @id
-   key: String! @unique
-   steps: [Step!]!
-}
-
-type KeyResultStatus {
-   id: ID! @id
-   key: String! @unique
-   results: [TestResult!]!
+   items: [Menu!]! @relation(name: "SubMenu", onDelete: CASCADE)
 }
 
 type Step {
    id: ID! @id
 
-   parent: Test
+   type: [KeyUserType!]!
 
-   type: [KeyUserType!]! @relation(link: INLINE)
+   question: MultiLanguageContent! @relation(onDelete: CASCADE)
 
-   question: String!
+   targets: [Menu!]! @relation(name: "TargetsInTheStep")
 
-   targets: [Menu!]! @relation(link: INLINE, name: "StepTarget")
+   paths: [[Menu!]!]! @relation(name: "PathsInTheStep")
 
-   paths: [Path!]! @relation(link: INLINE)
-
-   results: [StepResult!]!
+   results: [StepResult!]! @relation(onDelete: CASCADE)
 }
 
 type TestResult {
    id: ID! @id
 
-   parent: Test! @relation(link: INLINE)
+   parent: Test!
 
    start: DateTime!
    end: DateTime
 
-   time: TimeResult @relation(link: INLINE)
+   duration: Int!
 
-   steps: [StepResult!]! @relation(link: INLINE)
+   steps: [StepResult!]! @relation(onDelete: CASCADE)
 
-   status: KeyResultStatus! @relation(link: INLINE)
-}
-
-type TimeResult {
-   id: ID! @id
-
-   int: Int!
-   text: String!
+   status: KeyTestResultStatus!
 }
 
 type StepResult {
    id: ID! @id
 
-   parent: Step! @relation(link: INLINE)
+   parent: Step!
 
-   resultParent: TestResult!
+   result: TestResult!
 
    start: DateTime!
    end: DateTime
 
-   time: TimeResult @relation(link: INLINE)
+   time: Int!
 
-   path: [Menu!]! @relation(link: INLINE)
+   path: [Menu!]!
 
-   status: KeyResultStatus! @relation(link: INLINE)
+   status: KeyStepResultStatus!
 }

@@ -7,11 +7,19 @@ export const typeDefs = /* GraphQL */ `
       count: Int!
    }
 
-   type AggregateKeyResultStatus {
+   type AggregateKey {
       count: Int!
    }
 
-   type AggregateKeys {
+   type AggregateKeyLanguage {
+      count: Int!
+   }
+
+   type AggregateKeyStepResultStatus {
+      count: Int!
+   }
+
+   type AggregateKeyTestResultStatus {
       count: Int!
    }
 
@@ -23,7 +31,11 @@ export const typeDefs = /* GraphQL */ `
       count: Int!
    }
 
-   type AggregatePath {
+   type AggregateMessage {
+      count: Int!
+   }
+
+   type AggregateMultiLanguageContent {
       count: Int!
    }
 
@@ -43,18 +55,6 @@ export const typeDefs = /* GraphQL */ `
       count: Int!
    }
 
-   type AggregateTimeResult {
-      count: Int!
-   }
-
-   type AggregateView {
-      count: Int!
-   }
-
-   type AggregateWelcome {
-      count: Int!
-   }
-
    type BatchPayload {
       count: Long!
    }
@@ -63,7 +63,16 @@ export const typeDefs = /* GraphQL */ `
       id: ID!
       name: String!
       abbr: String
-      logo: String
+      welcome: Message!
+      tests(
+         where: TestWhereInput
+         orderBy: TestOrderByInput
+         skip: Int
+         after: String
+         before: String
+         first: Int
+         last: Int
+      ): [Test!]
    }
 
    type CompanyConnection {
@@ -76,12 +85,20 @@ export const typeDefs = /* GraphQL */ `
       id: ID
       name: String!
       abbr: String
-      logo: String
+      welcome: MessageCreateOneInput!
+      tests: TestCreateManyWithoutCompanyInput
    }
 
-   input CompanyCreateOneInput {
-      create: CompanyCreateInput
+   input CompanyCreateOneWithoutTestsInput {
+      create: CompanyCreateWithoutTestsInput
       connect: CompanyWhereUniqueInput
+   }
+
+   input CompanyCreateWithoutTestsInput {
+      id: ID
+      name: String!
+      abbr: String
+      welcome: MessageCreateOneInput!
    }
 
    type CompanyEdge {
@@ -96,15 +113,12 @@ export const typeDefs = /* GraphQL */ `
       name_DESC
       abbr_ASC
       abbr_DESC
-      logo_ASC
-      logo_DESC
    }
 
    type CompanyPreviousValues {
       id: ID!
       name: String!
       abbr: String
-      logo: String
    }
 
    type CompanySubscriptionPayload {
@@ -123,34 +137,34 @@ export const typeDefs = /* GraphQL */ `
       AND: [CompanySubscriptionWhereInput!]
    }
 
-   input CompanyUpdateDataInput {
-      name: String
-      abbr: String
-      logo: String
-   }
-
    input CompanyUpdateInput {
       name: String
       abbr: String
-      logo: String
+      welcome: MessageUpdateOneRequiredInput
+      tests: TestUpdateManyWithoutCompanyInput
    }
 
    input CompanyUpdateManyMutationInput {
       name: String
       abbr: String
-      logo: String
    }
 
-   input CompanyUpdateOneRequiredInput {
-      create: CompanyCreateInput
-      update: CompanyUpdateDataInput
-      upsert: CompanyUpsertNestedInput
+   input CompanyUpdateOneRequiredWithoutTestsInput {
+      create: CompanyCreateWithoutTestsInput
+      update: CompanyUpdateWithoutTestsDataInput
+      upsert: CompanyUpsertWithoutTestsInput
       connect: CompanyWhereUniqueInput
    }
 
-   input CompanyUpsertNestedInput {
-      update: CompanyUpdateDataInput!
-      create: CompanyCreateInput!
+   input CompanyUpdateWithoutTestsDataInput {
+      name: String
+      abbr: String
+      welcome: MessageUpdateOneRequiredInput
+   }
+
+   input CompanyUpsertWithoutTestsInput {
+      update: CompanyUpdateWithoutTestsDataInput!
+      create: CompanyCreateWithoutTestsInput!
    }
 
    input CompanyWhereInput {
@@ -196,257 +210,21 @@ export const typeDefs = /* GraphQL */ `
       abbr_not_starts_with: String
       abbr_ends_with: String
       abbr_not_ends_with: String
-      logo: String
-      logo_not: String
-      logo_in: [String!]
-      logo_not_in: [String!]
-      logo_lt: String
-      logo_lte: String
-      logo_gt: String
-      logo_gte: String
-      logo_contains: String
-      logo_not_contains: String
-      logo_starts_with: String
-      logo_not_starts_with: String
-      logo_ends_with: String
-      logo_not_ends_with: String
+      welcome: MessageWhereInput
+      tests_some: TestWhereInput
       AND: [CompanyWhereInput!]
    }
 
    input CompanyWhereUniqueInput {
       id: ID
+      name: String
    }
 
    scalar DateTime
 
-   type KeyResultStatus {
+   type Key {
       id: ID!
-      key: String!
-      results(
-         where: TestResultWhereInput
-         orderBy: TestResultOrderByInput
-         skip: Int
-         after: String
-         before: String
-         first: Int
-         last: Int
-      ): [TestResult!]
-   }
-
-   type KeyResultStatusConnection {
-      pageInfo: PageInfo!
-      edges: [KeyResultStatusEdge]!
-      aggregate: AggregateKeyResultStatus!
-   }
-
-   input KeyResultStatusCreateInput {
-      id: ID
-      key: String!
-      results: TestResultCreateManyWithoutStatusInput
-   }
-
-   input KeyResultStatusCreateManyInput {
-      create: [KeyResultStatusCreateInput!]
-      connect: [KeyResultStatusWhereUniqueInput!]
-   }
-
-   input KeyResultStatusCreateOneInput {
-      create: KeyResultStatusCreateInput
-      connect: KeyResultStatusWhereUniqueInput
-   }
-
-   input KeyResultStatusCreateOneWithoutResultsInput {
-      create: KeyResultStatusCreateWithoutResultsInput
-      connect: KeyResultStatusWhereUniqueInput
-   }
-
-   input KeyResultStatusCreateWithoutResultsInput {
-      id: ID
-      key: String!
-   }
-
-   type KeyResultStatusEdge {
-      node: KeyResultStatus!
-      cursor: String!
-   }
-
-   enum KeyResultStatusOrderByInput {
-      id_ASC
-      id_DESC
-      key_ASC
-      key_DESC
-   }
-
-   type KeyResultStatusPreviousValues {
-      id: ID!
-      key: String!
-   }
-
-   input KeyResultStatusScalarWhereInput {
-      id: ID
-      id_not: ID
-      id_in: [ID!]
-      id_not_in: [ID!]
-      id_lt: ID
-      id_lte: ID
-      id_gt: ID
-      id_gte: ID
-      id_contains: ID
-      id_not_contains: ID
-      id_starts_with: ID
-      id_not_starts_with: ID
-      id_ends_with: ID
-      id_not_ends_with: ID
-      key: String
-      key_not: String
-      key_in: [String!]
-      key_not_in: [String!]
-      key_lt: String
-      key_lte: String
-      key_gt: String
-      key_gte: String
-      key_contains: String
-      key_not_contains: String
-      key_starts_with: String
-      key_not_starts_with: String
-      key_ends_with: String
-      key_not_ends_with: String
-      AND: [KeyResultStatusScalarWhereInput!]
-      OR: [KeyResultStatusScalarWhereInput!]
-      NOT: [KeyResultStatusScalarWhereInput!]
-   }
-
-   type KeyResultStatusSubscriptionPayload {
-      mutation: MutationType!
-      node: KeyResultStatus
-      updatedFields: [String!]
-      previousValues: KeyResultStatusPreviousValues
-   }
-
-   input KeyResultStatusSubscriptionWhereInput {
-      mutation_in: [MutationType!]
-      updatedFields_contains: String
-      updatedFields_contains_every: [String!]
-      updatedFields_contains_some: [String!]
-      node: KeyResultStatusWhereInput
-      AND: [KeyResultStatusSubscriptionWhereInput!]
-   }
-
-   input KeyResultStatusUpdateDataInput {
-      key: String
-      results: TestResultUpdateManyWithoutStatusInput
-   }
-
-   input KeyResultStatusUpdateInput {
-      key: String
-      results: TestResultUpdateManyWithoutStatusInput
-   }
-
-   input KeyResultStatusUpdateManyDataInput {
-      key: String
-   }
-
-   input KeyResultStatusUpdateManyInput {
-      create: [KeyResultStatusCreateInput!]
-      update: [KeyResultStatusUpdateWithWhereUniqueNestedInput!]
-      upsert: [KeyResultStatusUpsertWithWhereUniqueNestedInput!]
-      delete: [KeyResultStatusWhereUniqueInput!]
-      connect: [KeyResultStatusWhereUniqueInput!]
-      set: [KeyResultStatusWhereUniqueInput!]
-      disconnect: [KeyResultStatusWhereUniqueInput!]
-      deleteMany: [KeyResultStatusScalarWhereInput!]
-      updateMany: [KeyResultStatusUpdateManyWithWhereNestedInput!]
-   }
-
-   input KeyResultStatusUpdateManyMutationInput {
-      key: String
-   }
-
-   input KeyResultStatusUpdateManyWithWhereNestedInput {
-      where: KeyResultStatusScalarWhereInput!
-      data: KeyResultStatusUpdateManyDataInput!
-   }
-
-   input KeyResultStatusUpdateOneRequiredInput {
-      create: KeyResultStatusCreateInput
-      update: KeyResultStatusUpdateDataInput
-      upsert: KeyResultStatusUpsertNestedInput
-      connect: KeyResultStatusWhereUniqueInput
-   }
-
-   input KeyResultStatusUpdateOneRequiredWithoutResultsInput {
-      create: KeyResultStatusCreateWithoutResultsInput
-      update: KeyResultStatusUpdateWithoutResultsDataInput
-      upsert: KeyResultStatusUpsertWithoutResultsInput
-      connect: KeyResultStatusWhereUniqueInput
-   }
-
-   input KeyResultStatusUpdateWithoutResultsDataInput {
-      key: String
-   }
-
-   input KeyResultStatusUpdateWithWhereUniqueNestedInput {
-      where: KeyResultStatusWhereUniqueInput!
-      data: KeyResultStatusUpdateDataInput!
-   }
-
-   input KeyResultStatusUpsertNestedInput {
-      update: KeyResultStatusUpdateDataInput!
-      create: KeyResultStatusCreateInput!
-   }
-
-   input KeyResultStatusUpsertWithoutResultsInput {
-      update: KeyResultStatusUpdateWithoutResultsDataInput!
-      create: KeyResultStatusCreateWithoutResultsInput!
-   }
-
-   input KeyResultStatusUpsertWithWhereUniqueNestedInput {
-      where: KeyResultStatusWhereUniqueInput!
-      update: KeyResultStatusUpdateDataInput!
-      create: KeyResultStatusCreateInput!
-   }
-
-   input KeyResultStatusWhereInput {
-      id: ID
-      id_not: ID
-      id_in: [ID!]
-      id_not_in: [ID!]
-      id_lt: ID
-      id_lte: ID
-      id_gt: ID
-      id_gte: ID
-      id_contains: ID
-      id_not_contains: ID
-      id_starts_with: ID
-      id_not_starts_with: ID
-      id_ends_with: ID
-      id_not_ends_with: ID
-      key: String
-      key_not: String
-      key_in: [String!]
-      key_not_in: [String!]
-      key_lt: String
-      key_lte: String
-      key_gt: String
-      key_gte: String
-      key_contains: String
-      key_not_contains: String
-      key_starts_with: String
-      key_not_starts_with: String
-      key_ends_with: String
-      key_not_ends_with: String
-      results_some: TestResultWhereInput
-      AND: [KeyResultStatusWhereInput!]
-   }
-
-   input KeyResultStatusWhereUniqueInput {
-      id: ID
-      key: String
-   }
-
-   type Keys {
-      id: ID!
-      userType(
+      userTypes(
          where: KeyUserTypeWhereInput
          orderBy: KeyUserTypeOrderByInput
          skip: Int
@@ -455,65 +233,98 @@ export const typeDefs = /* GraphQL */ `
          first: Int
          last: Int
       ): [KeyUserType!]
-      resultStatus(
-         where: KeyResultStatusWhereInput
-         orderBy: KeyResultStatusOrderByInput
+      testResultStatus(
+         where: KeyTestResultStatusWhereInput
+         orderBy: KeyTestResultStatusOrderByInput
          skip: Int
          after: String
          before: String
          first: Int
          last: Int
-      ): [KeyResultStatus!]
+      ): [KeyTestResultStatus!]
+      stepResultStatus(
+         where: KeyStepResultStatusWhereInput
+         orderBy: KeyStepResultStatusOrderByInput
+         skip: Int
+         after: String
+         before: String
+         first: Int
+         last: Int
+      ): [KeyStepResultStatus!]
+      languages(
+         where: KeyLanguageWhereInput
+         orderBy: KeyLanguageOrderByInput
+         skip: Int
+         after: String
+         before: String
+         first: Int
+         last: Int
+      ): [KeyLanguage!]
    }
 
-   type KeysConnection {
+   type KeyConnection {
       pageInfo: PageInfo!
-      edges: [KeysEdge]!
-      aggregate: AggregateKeys!
+      edges: [KeyEdge]!
+      aggregate: AggregateKey!
    }
 
-   input KeysCreateInput {
+   input KeyCreateInput {
       id: ID
-      userType: KeyUserTypeCreateManyInput
-      resultStatus: KeyResultStatusCreateManyInput
+      userTypes: KeyUserTypeCreateManyInput
+      testResultStatus: KeyTestResultStatusCreateManyInput
+      stepResultStatus: KeyStepResultStatusCreateManyInput
+      languages: KeyLanguageCreateManyInput
    }
 
-   type KeysEdge {
-      node: Keys!
+   input KeyCreateOneInput {
+      create: KeyCreateInput
+      connect: KeyWhereUniqueInput
+   }
+
+   type KeyEdge {
+      node: Key!
       cursor: String!
    }
 
-   enum KeysOrderByInput {
+   type KeyLanguage {
+      id: ID!
+      key: String!
+   }
+
+   type KeyLanguageConnection {
+      pageInfo: PageInfo!
+      edges: [KeyLanguageEdge]!
+      aggregate: AggregateKeyLanguage!
+   }
+
+   input KeyLanguageCreateInput {
+      id: ID
+      key: String!
+   }
+
+   input KeyLanguageCreateManyInput {
+      create: [KeyLanguageCreateInput!]
+      connect: [KeyLanguageWhereUniqueInput!]
+   }
+
+   type KeyLanguageEdge {
+      node: KeyLanguage!
+      cursor: String!
+   }
+
+   enum KeyLanguageOrderByInput {
       id_ASC
       id_DESC
+      key_ASC
+      key_DESC
    }
 
-   type KeysPreviousValues {
+   type KeyLanguagePreviousValues {
       id: ID!
+      key: String!
    }
 
-   type KeysSubscriptionPayload {
-      mutation: MutationType!
-      node: Keys
-      updatedFields: [String!]
-      previousValues: KeysPreviousValues
-   }
-
-   input KeysSubscriptionWhereInput {
-      mutation_in: [MutationType!]
-      updatedFields_contains: String
-      updatedFields_contains_every: [String!]
-      updatedFields_contains_some: [String!]
-      node: KeysWhereInput
-      AND: [KeysSubscriptionWhereInput!]
-   }
-
-   input KeysUpdateInput {
-      userType: KeyUserTypeUpdateManyInput
-      resultStatus: KeyResultStatusUpdateManyInput
-   }
-
-   input KeysWhereInput {
+   input KeyLanguageScalarWhereInput {
       id: ID
       id_not: ID
       id_in: [ID!]
@@ -528,27 +339,548 @@ export const typeDefs = /* GraphQL */ `
       id_not_starts_with: ID
       id_ends_with: ID
       id_not_ends_with: ID
-      userType_some: KeyUserTypeWhereInput
-      resultStatus_some: KeyResultStatusWhereInput
-      AND: [KeysWhereInput!]
+      key: String
+      key_not: String
+      key_in: [String!]
+      key_not_in: [String!]
+      key_lt: String
+      key_lte: String
+      key_gt: String
+      key_gte: String
+      key_contains: String
+      key_not_contains: String
+      key_starts_with: String
+      key_not_starts_with: String
+      key_ends_with: String
+      key_not_ends_with: String
+      AND: [KeyLanguageScalarWhereInput!]
+      OR: [KeyLanguageScalarWhereInput!]
+      NOT: [KeyLanguageScalarWhereInput!]
    }
 
-   input KeysWhereUniqueInput {
+   type KeyLanguageSubscriptionPayload {
+      mutation: MutationType!
+      node: KeyLanguage
+      updatedFields: [String!]
+      previousValues: KeyLanguagePreviousValues
+   }
+
+   input KeyLanguageSubscriptionWhereInput {
+      mutation_in: [MutationType!]
+      updatedFields_contains: String
+      updatedFields_contains_every: [String!]
+      updatedFields_contains_some: [String!]
+      node: KeyLanguageWhereInput
+      AND: [KeyLanguageSubscriptionWhereInput!]
+   }
+
+   input KeyLanguageUpdateDataInput {
+      key: String
+   }
+
+   input KeyLanguageUpdateInput {
+      key: String
+   }
+
+   input KeyLanguageUpdateManyDataInput {
+      key: String
+   }
+
+   input KeyLanguageUpdateManyInput {
+      create: [KeyLanguageCreateInput!]
+      update: [KeyLanguageUpdateWithWhereUniqueNestedInput!]
+      upsert: [KeyLanguageUpsertWithWhereUniqueNestedInput!]
+      delete: [KeyLanguageWhereUniqueInput!]
+      connect: [KeyLanguageWhereUniqueInput!]
+      set: [KeyLanguageWhereUniqueInput!]
+      disconnect: [KeyLanguageWhereUniqueInput!]
+      deleteMany: [KeyLanguageScalarWhereInput!]
+      updateMany: [KeyLanguageUpdateManyWithWhereNestedInput!]
+   }
+
+   input KeyLanguageUpdateManyMutationInput {
+      key: String
+   }
+
+   input KeyLanguageUpdateManyWithWhereNestedInput {
+      where: KeyLanguageScalarWhereInput!
+      data: KeyLanguageUpdateManyDataInput!
+   }
+
+   input KeyLanguageUpdateWithWhereUniqueNestedInput {
+      where: KeyLanguageWhereUniqueInput!
+      data: KeyLanguageUpdateDataInput!
+   }
+
+   input KeyLanguageUpsertWithWhereUniqueNestedInput {
+      where: KeyLanguageWhereUniqueInput!
+      update: KeyLanguageUpdateDataInput!
+      create: KeyLanguageCreateInput!
+   }
+
+   input KeyLanguageWhereInput {
       id: ID
+      id_not: ID
+      id_in: [ID!]
+      id_not_in: [ID!]
+      id_lt: ID
+      id_lte: ID
+      id_gt: ID
+      id_gte: ID
+      id_contains: ID
+      id_not_contains: ID
+      id_starts_with: ID
+      id_not_starts_with: ID
+      id_ends_with: ID
+      id_not_ends_with: ID
+      key: String
+      key_not: String
+      key_in: [String!]
+      key_not_in: [String!]
+      key_lt: String
+      key_lte: String
+      key_gt: String
+      key_gte: String
+      key_contains: String
+      key_not_contains: String
+      key_starts_with: String
+      key_not_starts_with: String
+      key_ends_with: String
+      key_not_ends_with: String
+      AND: [KeyLanguageWhereInput!]
+   }
+
+   input KeyLanguageWhereUniqueInput {
+      id: ID
+      key: String
+   }
+
+   enum KeyOrderByInput {
+      id_ASC
+      id_DESC
+   }
+
+   type KeyPreviousValues {
+      id: ID!
+   }
+
+   type KeyStepResultStatus {
+      id: ID!
+      key: String!
+   }
+
+   type KeyStepResultStatusConnection {
+      pageInfo: PageInfo!
+      edges: [KeyStepResultStatusEdge]!
+      aggregate: AggregateKeyStepResultStatus!
+   }
+
+   input KeyStepResultStatusCreateInput {
+      id: ID
+      key: String!
+   }
+
+   input KeyStepResultStatusCreateManyInput {
+      create: [KeyStepResultStatusCreateInput!]
+      connect: [KeyStepResultStatusWhereUniqueInput!]
+   }
+
+   input KeyStepResultStatusCreateOneInput {
+      create: KeyStepResultStatusCreateInput
+      connect: KeyStepResultStatusWhereUniqueInput
+   }
+
+   type KeyStepResultStatusEdge {
+      node: KeyStepResultStatus!
+      cursor: String!
+   }
+
+   enum KeyStepResultStatusOrderByInput {
+      id_ASC
+      id_DESC
+      key_ASC
+      key_DESC
+   }
+
+   type KeyStepResultStatusPreviousValues {
+      id: ID!
+      key: String!
+   }
+
+   input KeyStepResultStatusScalarWhereInput {
+      id: ID
+      id_not: ID
+      id_in: [ID!]
+      id_not_in: [ID!]
+      id_lt: ID
+      id_lte: ID
+      id_gt: ID
+      id_gte: ID
+      id_contains: ID
+      id_not_contains: ID
+      id_starts_with: ID
+      id_not_starts_with: ID
+      id_ends_with: ID
+      id_not_ends_with: ID
+      key: String
+      key_not: String
+      key_in: [String!]
+      key_not_in: [String!]
+      key_lt: String
+      key_lte: String
+      key_gt: String
+      key_gte: String
+      key_contains: String
+      key_not_contains: String
+      key_starts_with: String
+      key_not_starts_with: String
+      key_ends_with: String
+      key_not_ends_with: String
+      AND: [KeyStepResultStatusScalarWhereInput!]
+      OR: [KeyStepResultStatusScalarWhereInput!]
+      NOT: [KeyStepResultStatusScalarWhereInput!]
+   }
+
+   type KeyStepResultStatusSubscriptionPayload {
+      mutation: MutationType!
+      node: KeyStepResultStatus
+      updatedFields: [String!]
+      previousValues: KeyStepResultStatusPreviousValues
+   }
+
+   input KeyStepResultStatusSubscriptionWhereInput {
+      mutation_in: [MutationType!]
+      updatedFields_contains: String
+      updatedFields_contains_every: [String!]
+      updatedFields_contains_some: [String!]
+      node: KeyStepResultStatusWhereInput
+      AND: [KeyStepResultStatusSubscriptionWhereInput!]
+   }
+
+   input KeyStepResultStatusUpdateDataInput {
+      key: String
+   }
+
+   input KeyStepResultStatusUpdateInput {
+      key: String
+   }
+
+   input KeyStepResultStatusUpdateManyDataInput {
+      key: String
+   }
+
+   input KeyStepResultStatusUpdateManyInput {
+      create: [KeyStepResultStatusCreateInput!]
+      update: [KeyStepResultStatusUpdateWithWhereUniqueNestedInput!]
+      upsert: [KeyStepResultStatusUpsertWithWhereUniqueNestedInput!]
+      delete: [KeyStepResultStatusWhereUniqueInput!]
+      connect: [KeyStepResultStatusWhereUniqueInput!]
+      set: [KeyStepResultStatusWhereUniqueInput!]
+      disconnect: [KeyStepResultStatusWhereUniqueInput!]
+      deleteMany: [KeyStepResultStatusScalarWhereInput!]
+      updateMany: [KeyStepResultStatusUpdateManyWithWhereNestedInput!]
+   }
+
+   input KeyStepResultStatusUpdateManyMutationInput {
+      key: String
+   }
+
+   input KeyStepResultStatusUpdateManyWithWhereNestedInput {
+      where: KeyStepResultStatusScalarWhereInput!
+      data: KeyStepResultStatusUpdateManyDataInput!
+   }
+
+   input KeyStepResultStatusUpdateOneRequiredInput {
+      create: KeyStepResultStatusCreateInput
+      update: KeyStepResultStatusUpdateDataInput
+      upsert: KeyStepResultStatusUpsertNestedInput
+      connect: KeyStepResultStatusWhereUniqueInput
+   }
+
+   input KeyStepResultStatusUpdateWithWhereUniqueNestedInput {
+      where: KeyStepResultStatusWhereUniqueInput!
+      data: KeyStepResultStatusUpdateDataInput!
+   }
+
+   input KeyStepResultStatusUpsertNestedInput {
+      update: KeyStepResultStatusUpdateDataInput!
+      create: KeyStepResultStatusCreateInput!
+   }
+
+   input KeyStepResultStatusUpsertWithWhereUniqueNestedInput {
+      where: KeyStepResultStatusWhereUniqueInput!
+      update: KeyStepResultStatusUpdateDataInput!
+      create: KeyStepResultStatusCreateInput!
+   }
+
+   input KeyStepResultStatusWhereInput {
+      id: ID
+      id_not: ID
+      id_in: [ID!]
+      id_not_in: [ID!]
+      id_lt: ID
+      id_lte: ID
+      id_gt: ID
+      id_gte: ID
+      id_contains: ID
+      id_not_contains: ID
+      id_starts_with: ID
+      id_not_starts_with: ID
+      id_ends_with: ID
+      id_not_ends_with: ID
+      key: String
+      key_not: String
+      key_in: [String!]
+      key_not_in: [String!]
+      key_lt: String
+      key_lte: String
+      key_gt: String
+      key_gte: String
+      key_contains: String
+      key_not_contains: String
+      key_starts_with: String
+      key_not_starts_with: String
+      key_ends_with: String
+      key_not_ends_with: String
+      AND: [KeyStepResultStatusWhereInput!]
+   }
+
+   input KeyStepResultStatusWhereUniqueInput {
+      id: ID
+      key: String
+   }
+
+   type KeySubscriptionPayload {
+      mutation: MutationType!
+      node: Key
+      updatedFields: [String!]
+      previousValues: KeyPreviousValues
+   }
+
+   input KeySubscriptionWhereInput {
+      mutation_in: [MutationType!]
+      updatedFields_contains: String
+      updatedFields_contains_every: [String!]
+      updatedFields_contains_some: [String!]
+      node: KeyWhereInput
+      AND: [KeySubscriptionWhereInput!]
+   }
+
+   type KeyTestResultStatus {
+      id: ID!
+      key: String!
+   }
+
+   type KeyTestResultStatusConnection {
+      pageInfo: PageInfo!
+      edges: [KeyTestResultStatusEdge]!
+      aggregate: AggregateKeyTestResultStatus!
+   }
+
+   input KeyTestResultStatusCreateInput {
+      id: ID
+      key: String!
+   }
+
+   input KeyTestResultStatusCreateManyInput {
+      create: [KeyTestResultStatusCreateInput!]
+      connect: [KeyTestResultStatusWhereUniqueInput!]
+   }
+
+   input KeyTestResultStatusCreateOneInput {
+      create: KeyTestResultStatusCreateInput
+      connect: KeyTestResultStatusWhereUniqueInput
+   }
+
+   type KeyTestResultStatusEdge {
+      node: KeyTestResultStatus!
+      cursor: String!
+   }
+
+   enum KeyTestResultStatusOrderByInput {
+      id_ASC
+      id_DESC
+      key_ASC
+      key_DESC
+   }
+
+   type KeyTestResultStatusPreviousValues {
+      id: ID!
+      key: String!
+   }
+
+   input KeyTestResultStatusScalarWhereInput {
+      id: ID
+      id_not: ID
+      id_in: [ID!]
+      id_not_in: [ID!]
+      id_lt: ID
+      id_lte: ID
+      id_gt: ID
+      id_gte: ID
+      id_contains: ID
+      id_not_contains: ID
+      id_starts_with: ID
+      id_not_starts_with: ID
+      id_ends_with: ID
+      id_not_ends_with: ID
+      key: String
+      key_not: String
+      key_in: [String!]
+      key_not_in: [String!]
+      key_lt: String
+      key_lte: String
+      key_gt: String
+      key_gte: String
+      key_contains: String
+      key_not_contains: String
+      key_starts_with: String
+      key_not_starts_with: String
+      key_ends_with: String
+      key_not_ends_with: String
+      AND: [KeyTestResultStatusScalarWhereInput!]
+      OR: [KeyTestResultStatusScalarWhereInput!]
+      NOT: [KeyTestResultStatusScalarWhereInput!]
+   }
+
+   type KeyTestResultStatusSubscriptionPayload {
+      mutation: MutationType!
+      node: KeyTestResultStatus
+      updatedFields: [String!]
+      previousValues: KeyTestResultStatusPreviousValues
+   }
+
+   input KeyTestResultStatusSubscriptionWhereInput {
+      mutation_in: [MutationType!]
+      updatedFields_contains: String
+      updatedFields_contains_every: [String!]
+      updatedFields_contains_some: [String!]
+      node: KeyTestResultStatusWhereInput
+      AND: [KeyTestResultStatusSubscriptionWhereInput!]
+   }
+
+   input KeyTestResultStatusUpdateDataInput {
+      key: String
+   }
+
+   input KeyTestResultStatusUpdateInput {
+      key: String
+   }
+
+   input KeyTestResultStatusUpdateManyDataInput {
+      key: String
+   }
+
+   input KeyTestResultStatusUpdateManyInput {
+      create: [KeyTestResultStatusCreateInput!]
+      update: [KeyTestResultStatusUpdateWithWhereUniqueNestedInput!]
+      upsert: [KeyTestResultStatusUpsertWithWhereUniqueNestedInput!]
+      delete: [KeyTestResultStatusWhereUniqueInput!]
+      connect: [KeyTestResultStatusWhereUniqueInput!]
+      set: [KeyTestResultStatusWhereUniqueInput!]
+      disconnect: [KeyTestResultStatusWhereUniqueInput!]
+      deleteMany: [KeyTestResultStatusScalarWhereInput!]
+      updateMany: [KeyTestResultStatusUpdateManyWithWhereNestedInput!]
+   }
+
+   input KeyTestResultStatusUpdateManyMutationInput {
+      key: String
+   }
+
+   input KeyTestResultStatusUpdateManyWithWhereNestedInput {
+      where: KeyTestResultStatusScalarWhereInput!
+      data: KeyTestResultStatusUpdateManyDataInput!
+   }
+
+   input KeyTestResultStatusUpdateOneRequiredInput {
+      create: KeyTestResultStatusCreateInput
+      update: KeyTestResultStatusUpdateDataInput
+      upsert: KeyTestResultStatusUpsertNestedInput
+      connect: KeyTestResultStatusWhereUniqueInput
+   }
+
+   input KeyTestResultStatusUpdateWithWhereUniqueNestedInput {
+      where: KeyTestResultStatusWhereUniqueInput!
+      data: KeyTestResultStatusUpdateDataInput!
+   }
+
+   input KeyTestResultStatusUpsertNestedInput {
+      update: KeyTestResultStatusUpdateDataInput!
+      create: KeyTestResultStatusCreateInput!
+   }
+
+   input KeyTestResultStatusUpsertWithWhereUniqueNestedInput {
+      where: KeyTestResultStatusWhereUniqueInput!
+      update: KeyTestResultStatusUpdateDataInput!
+      create: KeyTestResultStatusCreateInput!
+   }
+
+   input KeyTestResultStatusWhereInput {
+      id: ID
+      id_not: ID
+      id_in: [ID!]
+      id_not_in: [ID!]
+      id_lt: ID
+      id_lte: ID
+      id_gt: ID
+      id_gte: ID
+      id_contains: ID
+      id_not_contains: ID
+      id_starts_with: ID
+      id_not_starts_with: ID
+      id_ends_with: ID
+      id_not_ends_with: ID
+      key: String
+      key_not: String
+      key_in: [String!]
+      key_not_in: [String!]
+      key_lt: String
+      key_lte: String
+      key_gt: String
+      key_gte: String
+      key_contains: String
+      key_not_contains: String
+      key_starts_with: String
+      key_not_starts_with: String
+      key_ends_with: String
+      key_not_ends_with: String
+      AND: [KeyTestResultStatusWhereInput!]
+   }
+
+   input KeyTestResultStatusWhereUniqueInput {
+      id: ID
+      key: String
+   }
+
+   input KeyUpdateDataInput {
+      userTypes: KeyUserTypeUpdateManyInput
+      testResultStatus: KeyTestResultStatusUpdateManyInput
+      stepResultStatus: KeyStepResultStatusUpdateManyInput
+      languages: KeyLanguageUpdateManyInput
+   }
+
+   input KeyUpdateInput {
+      userTypes: KeyUserTypeUpdateManyInput
+      testResultStatus: KeyTestResultStatusUpdateManyInput
+      stepResultStatus: KeyStepResultStatusUpdateManyInput
+      languages: KeyLanguageUpdateManyInput
+   }
+
+   input KeyUpdateOneRequiredInput {
+      create: KeyCreateInput
+      update: KeyUpdateDataInput
+      upsert: KeyUpsertNestedInput
+      connect: KeyWhereUniqueInput
+   }
+
+   input KeyUpsertNestedInput {
+      update: KeyUpdateDataInput!
+      create: KeyCreateInput!
    }
 
    type KeyUserType {
       id: ID!
       key: String!
-      steps(
-         where: StepWhereInput
-         orderBy: StepOrderByInput
-         skip: Int
-         after: String
-         before: String
-         first: Int
-         last: Int
-      ): [Step!]
    }
 
    type KeyUserTypeConnection {
@@ -560,22 +892,11 @@ export const typeDefs = /* GraphQL */ `
    input KeyUserTypeCreateInput {
       id: ID
       key: String!
-      steps: StepCreateManyWithoutTypeInput
    }
 
    input KeyUserTypeCreateManyInput {
       create: [KeyUserTypeCreateInput!]
       connect: [KeyUserTypeWhereUniqueInput!]
-   }
-
-   input KeyUserTypeCreateManyWithoutStepsInput {
-      create: [KeyUserTypeCreateWithoutStepsInput!]
-      connect: [KeyUserTypeWhereUniqueInput!]
-   }
-
-   input KeyUserTypeCreateWithoutStepsInput {
-      id: ID
-      key: String!
    }
 
    type KeyUserTypeEdge {
@@ -647,12 +968,10 @@ export const typeDefs = /* GraphQL */ `
 
    input KeyUserTypeUpdateDataInput {
       key: String
-      steps: StepUpdateManyWithoutTypeInput
    }
 
    input KeyUserTypeUpdateInput {
       key: String
-      steps: StepUpdateManyWithoutTypeInput
    }
 
    input KeyUserTypeUpdateManyDataInput {
@@ -675,25 +994,9 @@ export const typeDefs = /* GraphQL */ `
       key: String
    }
 
-   input KeyUserTypeUpdateManyWithoutStepsInput {
-      create: [KeyUserTypeCreateWithoutStepsInput!]
-      delete: [KeyUserTypeWhereUniqueInput!]
-      connect: [KeyUserTypeWhereUniqueInput!]
-      set: [KeyUserTypeWhereUniqueInput!]
-      disconnect: [KeyUserTypeWhereUniqueInput!]
-      update: [KeyUserTypeUpdateWithWhereUniqueWithoutStepsInput!]
-      upsert: [KeyUserTypeUpsertWithWhereUniqueWithoutStepsInput!]
-      deleteMany: [KeyUserTypeScalarWhereInput!]
-      updateMany: [KeyUserTypeUpdateManyWithWhereNestedInput!]
-   }
-
    input KeyUserTypeUpdateManyWithWhereNestedInput {
       where: KeyUserTypeScalarWhereInput!
       data: KeyUserTypeUpdateManyDataInput!
-   }
-
-   input KeyUserTypeUpdateWithoutStepsDataInput {
-      key: String
    }
 
    input KeyUserTypeUpdateWithWhereUniqueNestedInput {
@@ -701,21 +1004,10 @@ export const typeDefs = /* GraphQL */ `
       data: KeyUserTypeUpdateDataInput!
    }
 
-   input KeyUserTypeUpdateWithWhereUniqueWithoutStepsInput {
-      where: KeyUserTypeWhereUniqueInput!
-      data: KeyUserTypeUpdateWithoutStepsDataInput!
-   }
-
    input KeyUserTypeUpsertWithWhereUniqueNestedInput {
       where: KeyUserTypeWhereUniqueInput!
       update: KeyUserTypeUpdateDataInput!
       create: KeyUserTypeCreateInput!
-   }
-
-   input KeyUserTypeUpsertWithWhereUniqueWithoutStepsInput {
-      where: KeyUserTypeWhereUniqueInput!
-      update: KeyUserTypeUpdateWithoutStepsDataInput!
-      create: KeyUserTypeCreateWithoutStepsInput!
    }
 
    input KeyUserTypeWhereInput {
@@ -747,13 +1039,38 @@ export const typeDefs = /* GraphQL */ `
       key_not_starts_with: String
       key_ends_with: String
       key_not_ends_with: String
-      steps_some: StepWhereInput
       AND: [KeyUserTypeWhereInput!]
    }
 
    input KeyUserTypeWhereUniqueInput {
       id: ID
       key: String
+   }
+
+   input KeyWhereInput {
+      id: ID
+      id_not: ID
+      id_in: [ID!]
+      id_not_in: [ID!]
+      id_lt: ID
+      id_lte: ID
+      id_gt: ID
+      id_gte: ID
+      id_contains: ID
+      id_not_contains: ID
+      id_starts_with: ID
+      id_not_starts_with: ID
+      id_ends_with: ID
+      id_not_ends_with: ID
+      userTypes_some: KeyUserTypeWhereInput
+      testResultStatus_some: KeyTestResultStatusWhereInput
+      stepResultStatus_some: KeyStepResultStatusWhereInput
+      languages_some: KeyLanguageWhereInput
+      AND: [KeyWhereInput!]
+   }
+
+   input KeyWhereUniqueInput {
+      id: ID
    }
 
    scalar Long
@@ -770,7 +1087,7 @@ export const typeDefs = /* GraphQL */ `
          first: Int
          last: Int
       ): [Menu!]
-      name: String!
+      name: MultiLanguageContent!
       items(
          where: MenuWhereInput
          orderBy: MenuOrderByInput
@@ -792,7 +1109,7 @@ export const typeDefs = /* GraphQL */ `
       id: ID
       root: Boolean
       menus: MenuCreateManyWithoutItemsInput
-      name: String!
+      name: MultiLanguageContentCreateOneInput!
       items: MenuCreateManyWithoutMenusInput
    }
 
@@ -815,13 +1132,13 @@ export const typeDefs = /* GraphQL */ `
       id: ID
       root: Boolean
       menus: MenuCreateManyWithoutItemsInput
-      name: String!
+      name: MultiLanguageContentCreateOneInput!
    }
 
    input MenuCreateWithoutMenusInput {
       id: ID
       root: Boolean
-      name: String!
+      name: MultiLanguageContentCreateOneInput!
       items: MenuCreateManyWithoutMenusInput
    }
 
@@ -835,14 +1152,11 @@ export const typeDefs = /* GraphQL */ `
       id_DESC
       root_ASC
       root_DESC
-      name_ASC
-      name_DESC
    }
 
    type MenuPreviousValues {
       id: ID!
       root: Boolean!
-      name: String!
    }
 
    input MenuScalarWhereInput {
@@ -862,20 +1176,6 @@ export const typeDefs = /* GraphQL */ `
       id_not_ends_with: ID
       root: Boolean
       root_not: Boolean
-      name: String
-      name_not: String
-      name_in: [String!]
-      name_not_in: [String!]
-      name_lt: String
-      name_lte: String
-      name_gt: String
-      name_gte: String
-      name_contains: String
-      name_not_contains: String
-      name_starts_with: String
-      name_not_starts_with: String
-      name_ends_with: String
-      name_not_ends_with: String
       AND: [MenuScalarWhereInput!]
       OR: [MenuScalarWhereInput!]
       NOT: [MenuScalarWhereInput!]
@@ -900,20 +1200,19 @@ export const typeDefs = /* GraphQL */ `
    input MenuUpdateDataInput {
       root: Boolean
       menus: MenuUpdateManyWithoutItemsInput
-      name: String
+      name: MultiLanguageContentUpdateOneRequiredInput
       items: MenuUpdateManyWithoutMenusInput
    }
 
    input MenuUpdateInput {
       root: Boolean
       menus: MenuUpdateManyWithoutItemsInput
-      name: String
+      name: MultiLanguageContentUpdateOneRequiredInput
       items: MenuUpdateManyWithoutMenusInput
    }
 
    input MenuUpdateManyDataInput {
       root: Boolean
-      name: String
    }
 
    input MenuUpdateManyInput {
@@ -930,7 +1229,6 @@ export const typeDefs = /* GraphQL */ `
 
    input MenuUpdateManyMutationInput {
       root: Boolean
-      name: String
    }
 
    input MenuUpdateManyWithoutItemsInput {
@@ -965,12 +1263,12 @@ export const typeDefs = /* GraphQL */ `
    input MenuUpdateWithoutItemsDataInput {
       root: Boolean
       menus: MenuUpdateManyWithoutItemsInput
-      name: String
+      name: MultiLanguageContentUpdateOneRequiredInput
    }
 
    input MenuUpdateWithoutMenusDataInput {
       root: Boolean
-      name: String
+      name: MultiLanguageContentUpdateOneRequiredInput
       items: MenuUpdateManyWithoutMenusInput
    }
 
@@ -1025,25 +1323,247 @@ export const typeDefs = /* GraphQL */ `
       root: Boolean
       root_not: Boolean
       menus_some: MenuWhereInput
-      name: String
-      name_not: String
-      name_in: [String!]
-      name_not_in: [String!]
-      name_lt: String
-      name_lte: String
-      name_gt: String
-      name_gte: String
-      name_contains: String
-      name_not_contains: String
-      name_starts_with: String
-      name_not_starts_with: String
-      name_ends_with: String
-      name_not_ends_with: String
+      name: MultiLanguageContentWhereInput
       items_some: MenuWhereInput
       AND: [MenuWhereInput!]
    }
 
    input MenuWhereUniqueInput {
+      id: ID
+   }
+
+   type Message {
+      id: ID!
+      title: MultiLanguageContent!
+      message: MultiLanguageContent!
+   }
+
+   type MessageConnection {
+      pageInfo: PageInfo!
+      edges: [MessageEdge]!
+      aggregate: AggregateMessage!
+   }
+
+   input MessageCreateInput {
+      id: ID
+      title: MultiLanguageContentCreateOneInput!
+      message: MultiLanguageContentCreateOneInput!
+   }
+
+   input MessageCreateOneInput {
+      create: MessageCreateInput
+      connect: MessageWhereUniqueInput
+   }
+
+   type MessageEdge {
+      node: Message!
+      cursor: String!
+   }
+
+   enum MessageOrderByInput {
+      id_ASC
+      id_DESC
+   }
+
+   type MessagePreviousValues {
+      id: ID!
+   }
+
+   type MessageSubscriptionPayload {
+      mutation: MutationType!
+      node: Message
+      updatedFields: [String!]
+      previousValues: MessagePreviousValues
+   }
+
+   input MessageSubscriptionWhereInput {
+      mutation_in: [MutationType!]
+      updatedFields_contains: String
+      updatedFields_contains_every: [String!]
+      updatedFields_contains_some: [String!]
+      node: MessageWhereInput
+      AND: [MessageSubscriptionWhereInput!]
+   }
+
+   input MessageUpdateDataInput {
+      title: MultiLanguageContentUpdateOneRequiredInput
+      message: MultiLanguageContentUpdateOneRequiredInput
+   }
+
+   input MessageUpdateInput {
+      title: MultiLanguageContentUpdateOneRequiredInput
+      message: MultiLanguageContentUpdateOneRequiredInput
+   }
+
+   input MessageUpdateOneRequiredInput {
+      create: MessageCreateInput
+      update: MessageUpdateDataInput
+      upsert: MessageUpsertNestedInput
+      connect: MessageWhereUniqueInput
+   }
+
+   input MessageUpsertNestedInput {
+      update: MessageUpdateDataInput!
+      create: MessageCreateInput!
+   }
+
+   input MessageWhereInput {
+      id: ID
+      id_not: ID
+      id_in: [ID!]
+      id_not_in: [ID!]
+      id_lt: ID
+      id_lte: ID
+      id_gt: ID
+      id_gte: ID
+      id_contains: ID
+      id_not_contains: ID
+      id_starts_with: ID
+      id_not_starts_with: ID
+      id_ends_with: ID
+      id_not_ends_with: ID
+      title: MultiLanguageContentWhereInput
+      message: MultiLanguageContentWhereInput
+      AND: [MessageWhereInput!]
+   }
+
+   input MessageWhereUniqueInput {
+      id: ID
+   }
+
+   type MultiLanguageContent {
+      id: ID!
+      pt: String!
+      en: String
+   }
+
+   type MultiLanguageContentConnection {
+      pageInfo: PageInfo!
+      edges: [MultiLanguageContentEdge]!
+      aggregate: AggregateMultiLanguageContent!
+   }
+
+   input MultiLanguageContentCreateInput {
+      id: ID
+      pt: String!
+      en: String
+   }
+
+   input MultiLanguageContentCreateOneInput {
+      create: MultiLanguageContentCreateInput
+      connect: MultiLanguageContentWhereUniqueInput
+   }
+
+   type MultiLanguageContentEdge {
+      node: MultiLanguageContent!
+      cursor: String!
+   }
+
+   enum MultiLanguageContentOrderByInput {
+      id_ASC
+      id_DESC
+      pt_ASC
+      pt_DESC
+      en_ASC
+      en_DESC
+   }
+
+   type MultiLanguageContentPreviousValues {
+      id: ID!
+      pt: String!
+      en: String
+   }
+
+   type MultiLanguageContentSubscriptionPayload {
+      mutation: MutationType!
+      node: MultiLanguageContent
+      updatedFields: [String!]
+      previousValues: MultiLanguageContentPreviousValues
+   }
+
+   input MultiLanguageContentSubscriptionWhereInput {
+      mutation_in: [MutationType!]
+      updatedFields_contains: String
+      updatedFields_contains_every: [String!]
+      updatedFields_contains_some: [String!]
+      node: MultiLanguageContentWhereInput
+      AND: [MultiLanguageContentSubscriptionWhereInput!]
+   }
+
+   input MultiLanguageContentUpdateDataInput {
+      pt: String
+      en: String
+   }
+
+   input MultiLanguageContentUpdateInput {
+      pt: String
+      en: String
+   }
+
+   input MultiLanguageContentUpdateManyMutationInput {
+      pt: String
+      en: String
+   }
+
+   input MultiLanguageContentUpdateOneRequiredInput {
+      create: MultiLanguageContentCreateInput
+      update: MultiLanguageContentUpdateDataInput
+      upsert: MultiLanguageContentUpsertNestedInput
+      connect: MultiLanguageContentWhereUniqueInput
+   }
+
+   input MultiLanguageContentUpsertNestedInput {
+      update: MultiLanguageContentUpdateDataInput!
+      create: MultiLanguageContentCreateInput!
+   }
+
+   input MultiLanguageContentWhereInput {
+      id: ID
+      id_not: ID
+      id_in: [ID!]
+      id_not_in: [ID!]
+      id_lt: ID
+      id_lte: ID
+      id_gt: ID
+      id_gte: ID
+      id_contains: ID
+      id_not_contains: ID
+      id_starts_with: ID
+      id_not_starts_with: ID
+      id_ends_with: ID
+      id_not_ends_with: ID
+      pt: String
+      pt_not: String
+      pt_in: [String!]
+      pt_not_in: [String!]
+      pt_lt: String
+      pt_lte: String
+      pt_gt: String
+      pt_gte: String
+      pt_contains: String
+      pt_not_contains: String
+      pt_starts_with: String
+      pt_not_starts_with: String
+      pt_ends_with: String
+      pt_not_ends_with: String
+      en: String
+      en_not: String
+      en_in: [String!]
+      en_not_in: [String!]
+      en_lt: String
+      en_lte: String
+      en_gt: String
+      en_gte: String
+      en_contains: String
+      en_not_contains: String
+      en_starts_with: String
+      en_not_starts_with: String
+      en_ends_with: String
+      en_not_ends_with: String
+      AND: [MultiLanguageContentWhereInput!]
+   }
+
+   input MultiLanguageContentWhereUniqueInput {
       id: ID
    }
 
@@ -1064,25 +1584,74 @@ export const typeDefs = /* GraphQL */ `
       ): Company!
       deleteCompany(where: CompanyWhereUniqueInput!): Company
       deleteManyCompanies(where: CompanyWhereInput): BatchPayload!
-      createKeyResultStatus(data: KeyResultStatusCreateInput!): KeyResultStatus!
-      updateKeyResultStatus(
-         data: KeyResultStatusUpdateInput!
-         where: KeyResultStatusWhereUniqueInput!
-      ): KeyResultStatus
-      updateManyKeyResultStatuses(
-         data: KeyResultStatusUpdateManyMutationInput!
-         where: KeyResultStatusWhereInput
+      createKey(data: KeyCreateInput!): Key!
+      updateKey(data: KeyUpdateInput!, where: KeyWhereUniqueInput!): Key
+      upsertKey(
+         where: KeyWhereUniqueInput!
+         create: KeyCreateInput!
+         update: KeyUpdateInput!
+      ): Key!
+      deleteKey(where: KeyWhereUniqueInput!): Key
+      deleteManyKeys(where: KeyWhereInput): BatchPayload!
+      createKeyLanguage(data: KeyLanguageCreateInput!): KeyLanguage!
+      updateKeyLanguage(
+         data: KeyLanguageUpdateInput!
+         where: KeyLanguageWhereUniqueInput!
+      ): KeyLanguage
+      updateManyKeyLanguages(
+         data: KeyLanguageUpdateManyMutationInput!
+         where: KeyLanguageWhereInput
       ): BatchPayload!
-      upsertKeyResultStatus(
-         where: KeyResultStatusWhereUniqueInput!
-         create: KeyResultStatusCreateInput!
-         update: KeyResultStatusUpdateInput!
-      ): KeyResultStatus!
-      deleteKeyResultStatus(
-         where: KeyResultStatusWhereUniqueInput!
-      ): KeyResultStatus
-      deleteManyKeyResultStatuses(
-         where: KeyResultStatusWhereInput
+      upsertKeyLanguage(
+         where: KeyLanguageWhereUniqueInput!
+         create: KeyLanguageCreateInput!
+         update: KeyLanguageUpdateInput!
+      ): KeyLanguage!
+      deleteKeyLanguage(where: KeyLanguageWhereUniqueInput!): KeyLanguage
+      deleteManyKeyLanguages(where: KeyLanguageWhereInput): BatchPayload!
+      createKeyStepResultStatus(
+         data: KeyStepResultStatusCreateInput!
+      ): KeyStepResultStatus!
+      updateKeyStepResultStatus(
+         data: KeyStepResultStatusUpdateInput!
+         where: KeyStepResultStatusWhereUniqueInput!
+      ): KeyStepResultStatus
+      updateManyKeyStepResultStatuses(
+         data: KeyStepResultStatusUpdateManyMutationInput!
+         where: KeyStepResultStatusWhereInput
+      ): BatchPayload!
+      upsertKeyStepResultStatus(
+         where: KeyStepResultStatusWhereUniqueInput!
+         create: KeyStepResultStatusCreateInput!
+         update: KeyStepResultStatusUpdateInput!
+      ): KeyStepResultStatus!
+      deleteKeyStepResultStatus(
+         where: KeyStepResultStatusWhereUniqueInput!
+      ): KeyStepResultStatus
+      deleteManyKeyStepResultStatuses(
+         where: KeyStepResultStatusWhereInput
+      ): BatchPayload!
+      createKeyTestResultStatus(
+         data: KeyTestResultStatusCreateInput!
+      ): KeyTestResultStatus!
+      updateKeyTestResultStatus(
+         data: KeyTestResultStatusUpdateInput!
+         where: KeyTestResultStatusWhereUniqueInput!
+      ): KeyTestResultStatus
+      updateManyKeyTestResultStatuses(
+         data: KeyTestResultStatusUpdateManyMutationInput!
+         where: KeyTestResultStatusWhereInput
+      ): BatchPayload!
+      upsertKeyTestResultStatus(
+         where: KeyTestResultStatusWhereUniqueInput!
+         create: KeyTestResultStatusCreateInput!
+         update: KeyTestResultStatusUpdateInput!
+      ): KeyTestResultStatus!
+      deleteKeyTestResultStatus(
+         where: KeyTestResultStatusWhereUniqueInput!
+      ): KeyTestResultStatus
+      deleteManyKeyTestResultStatuses(
+         where: KeyTestResultStatusWhereInput
       ): BatchPayload!
       createKeyUserType(data: KeyUserTypeCreateInput!): KeyUserType!
       updateKeyUserType(
@@ -1100,15 +1669,6 @@ export const typeDefs = /* GraphQL */ `
       ): KeyUserType!
       deleteKeyUserType(where: KeyUserTypeWhereUniqueInput!): KeyUserType
       deleteManyKeyUserTypes(where: KeyUserTypeWhereInput): BatchPayload!
-      createKeys(data: KeysCreateInput!): Keys!
-      updateKeys(data: KeysUpdateInput!, where: KeysWhereUniqueInput!): Keys
-      upsertKeys(
-         where: KeysWhereUniqueInput!
-         create: KeysCreateInput!
-         update: KeysUpdateInput!
-      ): Keys!
-      deleteKeys(where: KeysWhereUniqueInput!): Keys
-      deleteManyKeyses(where: KeysWhereInput): BatchPayload!
       createMenu(data: MenuCreateInput!): Menu!
       updateMenu(data: MenuUpdateInput!, where: MenuWhereUniqueInput!): Menu
       updateManyMenus(
@@ -1122,21 +1682,42 @@ export const typeDefs = /* GraphQL */ `
       ): Menu!
       deleteMenu(where: MenuWhereUniqueInput!): Menu
       deleteManyMenus(where: MenuWhereInput): BatchPayload!
-      createPath(data: PathCreateInput!): Path!
-      updatePath(data: PathUpdateInput!, where: PathWhereUniqueInput!): Path
-      upsertPath(
-         where: PathWhereUniqueInput!
-         create: PathCreateInput!
-         update: PathUpdateInput!
-      ): Path!
-      deletePath(where: PathWhereUniqueInput!): Path
-      deleteManyPaths(where: PathWhereInput): BatchPayload!
+      createMessage(data: MessageCreateInput!): Message!
+      updateMessage(
+         data: MessageUpdateInput!
+         where: MessageWhereUniqueInput!
+      ): Message
+      upsertMessage(
+         where: MessageWhereUniqueInput!
+         create: MessageCreateInput!
+         update: MessageUpdateInput!
+      ): Message!
+      deleteMessage(where: MessageWhereUniqueInput!): Message
+      deleteManyMessages(where: MessageWhereInput): BatchPayload!
+      createMultiLanguageContent(
+         data: MultiLanguageContentCreateInput!
+      ): MultiLanguageContent!
+      updateMultiLanguageContent(
+         data: MultiLanguageContentUpdateInput!
+         where: MultiLanguageContentWhereUniqueInput!
+      ): MultiLanguageContent
+      updateManyMultiLanguageContents(
+         data: MultiLanguageContentUpdateManyMutationInput!
+         where: MultiLanguageContentWhereInput
+      ): BatchPayload!
+      upsertMultiLanguageContent(
+         where: MultiLanguageContentWhereUniqueInput!
+         create: MultiLanguageContentCreateInput!
+         update: MultiLanguageContentUpdateInput!
+      ): MultiLanguageContent!
+      deleteMultiLanguageContent(
+         where: MultiLanguageContentWhereUniqueInput!
+      ): MultiLanguageContent
+      deleteManyMultiLanguageContents(
+         where: MultiLanguageContentWhereInput
+      ): BatchPayload!
       createStep(data: StepCreateInput!): Step!
       updateStep(data: StepUpdateInput!, where: StepWhereUniqueInput!): Step
-      updateManySteps(
-         data: StepUpdateManyMutationInput!
-         where: StepWhereInput
-      ): BatchPayload!
       upsertStep(
          where: StepWhereUniqueInput!
          create: StepCreateInput!
@@ -1162,10 +1743,6 @@ export const typeDefs = /* GraphQL */ `
       deleteManyStepResults(where: StepResultWhereInput): BatchPayload!
       createTest(data: TestCreateInput!): Test!
       updateTest(data: TestUpdateInput!, where: TestWhereUniqueInput!): Test
-      updateManyTests(
-         data: TestUpdateManyMutationInput!
-         where: TestWhereInput
-      ): BatchPayload!
       upsertTest(
          where: TestWhereUniqueInput!
          create: TestCreateInput!
@@ -1189,47 +1766,6 @@ export const typeDefs = /* GraphQL */ `
       ): TestResult!
       deleteTestResult(where: TestResultWhereUniqueInput!): TestResult
       deleteManyTestResults(where: TestResultWhereInput): BatchPayload!
-      createTimeResult(data: TimeResultCreateInput!): TimeResult!
-      updateTimeResult(
-         data: TimeResultUpdateInput!
-         where: TimeResultWhereUniqueInput!
-      ): TimeResult
-      updateManyTimeResults(
-         data: TimeResultUpdateManyMutationInput!
-         where: TimeResultWhereInput
-      ): BatchPayload!
-      upsertTimeResult(
-         where: TimeResultWhereUniqueInput!
-         create: TimeResultCreateInput!
-         update: TimeResultUpdateInput!
-      ): TimeResult!
-      deleteTimeResult(where: TimeResultWhereUniqueInput!): TimeResult
-      deleteManyTimeResults(where: TimeResultWhereInput): BatchPayload!
-      createView(data: ViewCreateInput!): View!
-      updateView(data: ViewUpdateInput!, where: ViewWhereUniqueInput!): View
-      upsertView(
-         where: ViewWhereUniqueInput!
-         create: ViewCreateInput!
-         update: ViewUpdateInput!
-      ): View!
-      deleteView(where: ViewWhereUniqueInput!): View
-      deleteManyViews(where: ViewWhereInput): BatchPayload!
-      createWelcome(data: WelcomeCreateInput!): Welcome!
-      updateWelcome(
-         data: WelcomeUpdateInput!
-         where: WelcomeWhereUniqueInput!
-      ): Welcome
-      updateManyWelcomes(
-         data: WelcomeUpdateManyMutationInput!
-         where: WelcomeWhereInput
-      ): BatchPayload!
-      upsertWelcome(
-         where: WelcomeWhereUniqueInput!
-         create: WelcomeCreateInput!
-         update: WelcomeUpdateInput!
-      ): Welcome!
-      deleteWelcome(where: WelcomeWhereUniqueInput!): Welcome
-      deleteManyWelcomes(where: WelcomeWhereInput): BatchPayload!
    }
 
    enum MutationType {
@@ -1247,147 +1783,6 @@ export const typeDefs = /* GraphQL */ `
       hasPreviousPage: Boolean!
       startCursor: String
       endCursor: String
-   }
-
-   type Path {
-      id: ID!
-      parent: Step!
-      paths(
-         where: MenuWhereInput
-         orderBy: MenuOrderByInput
-         skip: Int
-         after: String
-         before: String
-         first: Int
-         last: Int
-      ): [Menu!]
-   }
-
-   type PathConnection {
-      pageInfo: PageInfo!
-      edges: [PathEdge]!
-      aggregate: AggregatePath!
-   }
-
-   input PathCreateInput {
-      id: ID
-      parent: StepCreateOneWithoutPathsInput!
-      paths: MenuCreateManyInput
-   }
-
-   input PathCreateManyWithoutParentInput {
-      create: [PathCreateWithoutParentInput!]
-      connect: [PathWhereUniqueInput!]
-   }
-
-   input PathCreateWithoutParentInput {
-      id: ID
-      paths: MenuCreateManyInput
-   }
-
-   type PathEdge {
-      node: Path!
-      cursor: String!
-   }
-
-   enum PathOrderByInput {
-      id_ASC
-      id_DESC
-   }
-
-   type PathPreviousValues {
-      id: ID!
-   }
-
-   input PathScalarWhereInput {
-      id: ID
-      id_not: ID
-      id_in: [ID!]
-      id_not_in: [ID!]
-      id_lt: ID
-      id_lte: ID
-      id_gt: ID
-      id_gte: ID
-      id_contains: ID
-      id_not_contains: ID
-      id_starts_with: ID
-      id_not_starts_with: ID
-      id_ends_with: ID
-      id_not_ends_with: ID
-      AND: [PathScalarWhereInput!]
-      OR: [PathScalarWhereInput!]
-      NOT: [PathScalarWhereInput!]
-   }
-
-   type PathSubscriptionPayload {
-      mutation: MutationType!
-      node: Path
-      updatedFields: [String!]
-      previousValues: PathPreviousValues
-   }
-
-   input PathSubscriptionWhereInput {
-      mutation_in: [MutationType!]
-      updatedFields_contains: String
-      updatedFields_contains_every: [String!]
-      updatedFields_contains_some: [String!]
-      node: PathWhereInput
-      AND: [PathSubscriptionWhereInput!]
-   }
-
-   input PathUpdateInput {
-      parent: StepUpdateOneRequiredWithoutPathsInput
-      paths: MenuUpdateManyInput
-   }
-
-   input PathUpdateManyWithoutParentInput {
-      create: [PathCreateWithoutParentInput!]
-      delete: [PathWhereUniqueInput!]
-      connect: [PathWhereUniqueInput!]
-      set: [PathWhereUniqueInput!]
-      disconnect: [PathWhereUniqueInput!]
-      update: [PathUpdateWithWhereUniqueWithoutParentInput!]
-      upsert: [PathUpsertWithWhereUniqueWithoutParentInput!]
-      deleteMany: [PathScalarWhereInput!]
-   }
-
-   input PathUpdateWithoutParentDataInput {
-      paths: MenuUpdateManyInput
-   }
-
-   input PathUpdateWithWhereUniqueWithoutParentInput {
-      where: PathWhereUniqueInput!
-      data: PathUpdateWithoutParentDataInput!
-   }
-
-   input PathUpsertWithWhereUniqueWithoutParentInput {
-      where: PathWhereUniqueInput!
-      update: PathUpdateWithoutParentDataInput!
-      create: PathCreateWithoutParentInput!
-   }
-
-   input PathWhereInput {
-      id: ID
-      id_not: ID
-      id_in: [ID!]
-      id_not_in: [ID!]
-      id_lt: ID
-      id_lte: ID
-      id_gt: ID
-      id_gte: ID
-      id_contains: ID
-      id_not_contains: ID
-      id_starts_with: ID
-      id_not_starts_with: ID
-      id_ends_with: ID
-      id_not_ends_with: ID
-      parent: StepWhereInput
-      paths_some: MenuWhereInput
-      AND: [PathWhereInput!]
-   }
-
-   input PathWhereUniqueInput {
-      id: ID
    }
 
    type Query {
@@ -1410,25 +1805,86 @@ export const typeDefs = /* GraphQL */ `
          first: Int
          last: Int
       ): CompanyConnection!
-      keyResultStatus(where: KeyResultStatusWhereUniqueInput!): KeyResultStatus
-      keyResultStatuses(
-         where: KeyResultStatusWhereInput
-         orderBy: KeyResultStatusOrderByInput
+      key(where: KeyWhereUniqueInput!): Key
+      keys(
+         where: KeyWhereInput
+         orderBy: KeyOrderByInput
          skip: Int
          after: String
          before: String
          first: Int
          last: Int
-      ): [KeyResultStatus]!
-      keyResultStatusesConnection(
-         where: KeyResultStatusWhereInput
-         orderBy: KeyResultStatusOrderByInput
+      ): [Key]!
+      keysConnection(
+         where: KeyWhereInput
+         orderBy: KeyOrderByInput
          skip: Int
          after: String
          before: String
          first: Int
          last: Int
-      ): KeyResultStatusConnection!
+      ): KeyConnection!
+      keyLanguage(where: KeyLanguageWhereUniqueInput!): KeyLanguage
+      keyLanguages(
+         where: KeyLanguageWhereInput
+         orderBy: KeyLanguageOrderByInput
+         skip: Int
+         after: String
+         before: String
+         first: Int
+         last: Int
+      ): [KeyLanguage]!
+      keyLanguagesConnection(
+         where: KeyLanguageWhereInput
+         orderBy: KeyLanguageOrderByInput
+         skip: Int
+         after: String
+         before: String
+         first: Int
+         last: Int
+      ): KeyLanguageConnection!
+      keyStepResultStatus(
+         where: KeyStepResultStatusWhereUniqueInput!
+      ): KeyStepResultStatus
+      keyStepResultStatuses(
+         where: KeyStepResultStatusWhereInput
+         orderBy: KeyStepResultStatusOrderByInput
+         skip: Int
+         after: String
+         before: String
+         first: Int
+         last: Int
+      ): [KeyStepResultStatus]!
+      keyStepResultStatusesConnection(
+         where: KeyStepResultStatusWhereInput
+         orderBy: KeyStepResultStatusOrderByInput
+         skip: Int
+         after: String
+         before: String
+         first: Int
+         last: Int
+      ): KeyStepResultStatusConnection!
+      keyTestResultStatus(
+         where: KeyTestResultStatusWhereUniqueInput!
+      ): KeyTestResultStatus
+      keyTestResultStatuses(
+         where: KeyTestResultStatusWhereInput
+         orderBy: KeyTestResultStatusOrderByInput
+         skip: Int
+         after: String
+         before: String
+         first: Int
+         last: Int
+      ): [KeyTestResultStatus]!
+      keyTestResultStatusesConnection(
+         where: KeyTestResultStatusWhereInput
+         orderBy: KeyTestResultStatusOrderByInput
+         skip: Int
+         after: String
+         before: String
+         first: Int
+         last: Int
+      ): KeyTestResultStatusConnection!
       keyUserType(where: KeyUserTypeWhereUniqueInput!): KeyUserType
       keyUserTypes(
          where: KeyUserTypeWhereInput
@@ -1448,25 +1904,6 @@ export const typeDefs = /* GraphQL */ `
          first: Int
          last: Int
       ): KeyUserTypeConnection!
-      keys(where: KeysWhereUniqueInput!): Keys
-      keyses(
-         where: KeysWhereInput
-         orderBy: KeysOrderByInput
-         skip: Int
-         after: String
-         before: String
-         first: Int
-         last: Int
-      ): [Keys]!
-      keysesConnection(
-         where: KeysWhereInput
-         orderBy: KeysOrderByInput
-         skip: Int
-         after: String
-         before: String
-         first: Int
-         last: Int
-      ): KeysConnection!
       menu(where: MenuWhereUniqueInput!): Menu
       menus(
          where: MenuWhereInput
@@ -1486,25 +1923,46 @@ export const typeDefs = /* GraphQL */ `
          first: Int
          last: Int
       ): MenuConnection!
-      path(where: PathWhereUniqueInput!): Path
-      paths(
-         where: PathWhereInput
-         orderBy: PathOrderByInput
+      message(where: MessageWhereUniqueInput!): Message
+      messages(
+         where: MessageWhereInput
+         orderBy: MessageOrderByInput
          skip: Int
          after: String
          before: String
          first: Int
          last: Int
-      ): [Path]!
-      pathsConnection(
-         where: PathWhereInput
-         orderBy: PathOrderByInput
+      ): [Message]!
+      messagesConnection(
+         where: MessageWhereInput
+         orderBy: MessageOrderByInput
          skip: Int
          after: String
          before: String
          first: Int
          last: Int
-      ): PathConnection!
+      ): MessageConnection!
+      multiLanguageContent(
+         where: MultiLanguageContentWhereUniqueInput!
+      ): MultiLanguageContent
+      multiLanguageContents(
+         where: MultiLanguageContentWhereInput
+         orderBy: MultiLanguageContentOrderByInput
+         skip: Int
+         after: String
+         before: String
+         first: Int
+         last: Int
+      ): [MultiLanguageContent]!
+      multiLanguageContentsConnection(
+         where: MultiLanguageContentWhereInput
+         orderBy: MultiLanguageContentOrderByInput
+         skip: Int
+         after: String
+         before: String
+         first: Int
+         last: Int
+      ): MultiLanguageContentConnection!
       step(where: StepWhereUniqueInput!): Step
       steps(
          where: StepWhereInput
@@ -1581,69 +2039,11 @@ export const typeDefs = /* GraphQL */ `
          first: Int
          last: Int
       ): TestResultConnection!
-      timeResult(where: TimeResultWhereUniqueInput!): TimeResult
-      timeResults(
-         where: TimeResultWhereInput
-         orderBy: TimeResultOrderByInput
-         skip: Int
-         after: String
-         before: String
-         first: Int
-         last: Int
-      ): [TimeResult]!
-      timeResultsConnection(
-         where: TimeResultWhereInput
-         orderBy: TimeResultOrderByInput
-         skip: Int
-         after: String
-         before: String
-         first: Int
-         last: Int
-      ): TimeResultConnection!
-      view(where: ViewWhereUniqueInput!): View
-      views(
-         where: ViewWhereInput
-         orderBy: ViewOrderByInput
-         skip: Int
-         after: String
-         before: String
-         first: Int
-         last: Int
-      ): [View]!
-      viewsConnection(
-         where: ViewWhereInput
-         orderBy: ViewOrderByInput
-         skip: Int
-         after: String
-         before: String
-         first: Int
-         last: Int
-      ): ViewConnection!
-      welcome(where: WelcomeWhereUniqueInput!): Welcome
-      welcomes(
-         where: WelcomeWhereInput
-         orderBy: WelcomeOrderByInput
-         skip: Int
-         after: String
-         before: String
-         first: Int
-         last: Int
-      ): [Welcome]!
-      welcomesConnection(
-         where: WelcomeWhereInput
-         orderBy: WelcomeOrderByInput
-         skip: Int
-         after: String
-         before: String
-         first: Int
-         last: Int
-      ): WelcomeConnection!
       node(id: ID!): Node
    }
 
    type Step {
       id: ID!
-      parent: Test
       type(
          where: KeyUserTypeWhereInput
          orderBy: KeyUserTypeOrderByInput
@@ -1653,7 +2053,7 @@ export const typeDefs = /* GraphQL */ `
          first: Int
          last: Int
       ): [KeyUserType!]
-      question: String!
+      question: MultiLanguageContent!
       targets(
          where: MenuWhereInput
          orderBy: MenuOrderByInput
@@ -1664,14 +2064,14 @@ export const typeDefs = /* GraphQL */ `
          last: Int
       ): [Menu!]
       paths(
-         where: PathWhereInput
-         orderBy: PathOrderByInput
+         where: MenuWhereInput
+         orderBy: MenuOrderByInput
          skip: Int
          after: String
          before: String
          first: Int
          last: Int
-      ): [Path!]
+      ): [Menu!]
       results(
          where: StepResultWhereInput
          orderBy: StepResultOrderByInput
@@ -1691,11 +2091,10 @@ export const typeDefs = /* GraphQL */ `
 
    input StepCreateInput {
       id: ID
-      parent: TestCreateOneWithoutStepsInput
-      type: KeyUserTypeCreateManyWithoutStepsInput
-      question: String!
+      type: KeyUserTypeCreateManyInput
+      question: MultiLanguageContentCreateOneInput!
       targets: MenuCreateManyInput
-      paths: PathCreateManyWithoutParentInput
+      paths: MenuCreateManyInput
       results: StepResultCreateManyWithoutParentInput
    }
 
@@ -1704,60 +2103,17 @@ export const typeDefs = /* GraphQL */ `
       connect: [StepWhereUniqueInput!]
    }
 
-   input StepCreateManyWithoutParentInput {
-      create: [StepCreateWithoutParentInput!]
-      connect: [StepWhereUniqueInput!]
-   }
-
-   input StepCreateManyWithoutTypeInput {
-      create: [StepCreateWithoutTypeInput!]
-      connect: [StepWhereUniqueInput!]
-   }
-
-   input StepCreateOneWithoutPathsInput {
-      create: StepCreateWithoutPathsInput
-      connect: StepWhereUniqueInput
-   }
-
    input StepCreateOneWithoutResultsInput {
       create: StepCreateWithoutResultsInput
       connect: StepWhereUniqueInput
    }
 
-   input StepCreateWithoutParentInput {
-      id: ID
-      type: KeyUserTypeCreateManyWithoutStepsInput
-      question: String!
-      targets: MenuCreateManyInput
-      paths: PathCreateManyWithoutParentInput
-      results: StepResultCreateManyWithoutParentInput
-   }
-
-   input StepCreateWithoutPathsInput {
-      id: ID
-      parent: TestCreateOneWithoutStepsInput
-      type: KeyUserTypeCreateManyWithoutStepsInput
-      question: String!
-      targets: MenuCreateManyInput
-      results: StepResultCreateManyWithoutParentInput
-   }
-
    input StepCreateWithoutResultsInput {
       id: ID
-      parent: TestCreateOneWithoutStepsInput
-      type: KeyUserTypeCreateManyWithoutStepsInput
-      question: String!
+      type: KeyUserTypeCreateManyInput
+      question: MultiLanguageContentCreateOneInput!
       targets: MenuCreateManyInput
-      paths: PathCreateManyWithoutParentInput
-   }
-
-   input StepCreateWithoutTypeInput {
-      id: ID
-      parent: TestCreateOneWithoutStepsInput
-      question: String!
-      targets: MenuCreateManyInput
-      paths: PathCreateManyWithoutParentInput
-      results: StepResultCreateManyWithoutParentInput
+      paths: MenuCreateManyInput
    }
 
    type StepEdge {
@@ -1768,22 +2124,19 @@ export const typeDefs = /* GraphQL */ `
    enum StepOrderByInput {
       id_ASC
       id_DESC
-      question_ASC
-      question_DESC
    }
 
    type StepPreviousValues {
       id: ID!
-      question: String!
    }
 
    type StepResult {
       id: ID!
       parent: Step!
-      resultParent: TestResult!
+      result: TestResult!
       start: DateTime!
       end: DateTime
-      time: TimeResult
+      time: Int!
       path(
          where: MenuWhereInput
          orderBy: MenuOrderByInput
@@ -1793,7 +2146,7 @@ export const typeDefs = /* GraphQL */ `
          first: Int
          last: Int
       ): [Menu!]
-      status: KeyResultStatus!
+      status: KeyStepResultStatus!
    }
 
    type StepResultConnection {
@@ -1805,12 +2158,12 @@ export const typeDefs = /* GraphQL */ `
    input StepResultCreateInput {
       id: ID
       parent: StepCreateOneWithoutResultsInput!
-      resultParent: TestResultCreateOneWithoutStepsInput!
+      result: TestResultCreateOneWithoutStepsInput!
       start: DateTime!
       end: DateTime
-      time: TimeResultCreateOneInput
+      time: Int!
       path: MenuCreateManyInput
-      status: KeyResultStatusCreateOneInput!
+      status: KeyStepResultStatusCreateOneInput!
    }
 
    input StepResultCreateManyWithoutParentInput {
@@ -1818,29 +2171,29 @@ export const typeDefs = /* GraphQL */ `
       connect: [StepResultWhereUniqueInput!]
    }
 
-   input StepResultCreateManyWithoutResultParentInput {
-      create: [StepResultCreateWithoutResultParentInput!]
+   input StepResultCreateManyWithoutResultInput {
+      create: [StepResultCreateWithoutResultInput!]
       connect: [StepResultWhereUniqueInput!]
    }
 
    input StepResultCreateWithoutParentInput {
       id: ID
-      resultParent: TestResultCreateOneWithoutStepsInput!
+      result: TestResultCreateOneWithoutStepsInput!
       start: DateTime!
       end: DateTime
-      time: TimeResultCreateOneInput
+      time: Int!
       path: MenuCreateManyInput
-      status: KeyResultStatusCreateOneInput!
+      status: KeyStepResultStatusCreateOneInput!
    }
 
-   input StepResultCreateWithoutResultParentInput {
+   input StepResultCreateWithoutResultInput {
       id: ID
       parent: StepCreateOneWithoutResultsInput!
       start: DateTime!
       end: DateTime
-      time: TimeResultCreateOneInput
+      time: Int!
       path: MenuCreateManyInput
-      status: KeyResultStatusCreateOneInput!
+      status: KeyStepResultStatusCreateOneInput!
    }
 
    type StepResultEdge {
@@ -1855,12 +2208,15 @@ export const typeDefs = /* GraphQL */ `
       start_DESC
       end_ASC
       end_DESC
+      time_ASC
+      time_DESC
    }
 
    type StepResultPreviousValues {
       id: ID!
       start: DateTime!
       end: DateTime
+      time: Int!
    }
 
    input StepResultScalarWhereInput {
@@ -1894,6 +2250,14 @@ export const typeDefs = /* GraphQL */ `
       end_lte: DateTime
       end_gt: DateTime
       end_gte: DateTime
+      time: Int
+      time_not: Int
+      time_in: [Int!]
+      time_not_in: [Int!]
+      time_lt: Int
+      time_lte: Int
+      time_gt: Int
+      time_gte: Int
       AND: [StepResultScalarWhereInput!]
       OR: [StepResultScalarWhereInput!]
       NOT: [StepResultScalarWhereInput!]
@@ -1917,22 +2281,24 @@ export const typeDefs = /* GraphQL */ `
 
    input StepResultUpdateInput {
       parent: StepUpdateOneRequiredWithoutResultsInput
-      resultParent: TestResultUpdateOneRequiredWithoutStepsInput
+      result: TestResultUpdateOneRequiredWithoutStepsInput
       start: DateTime
       end: DateTime
-      time: TimeResultUpdateOneInput
+      time: Int
       path: MenuUpdateManyInput
-      status: KeyResultStatusUpdateOneRequiredInput
+      status: KeyStepResultStatusUpdateOneRequiredInput
    }
 
    input StepResultUpdateManyDataInput {
       start: DateTime
       end: DateTime
+      time: Int
    }
 
    input StepResultUpdateManyMutationInput {
       start: DateTime
       end: DateTime
+      time: Int
    }
 
    input StepResultUpdateManyWithoutParentInput {
@@ -1947,14 +2313,14 @@ export const typeDefs = /* GraphQL */ `
       updateMany: [StepResultUpdateManyWithWhereNestedInput!]
    }
 
-   input StepResultUpdateManyWithoutResultParentInput {
-      create: [StepResultCreateWithoutResultParentInput!]
+   input StepResultUpdateManyWithoutResultInput {
+      create: [StepResultCreateWithoutResultInput!]
       delete: [StepResultWhereUniqueInput!]
       connect: [StepResultWhereUniqueInput!]
       set: [StepResultWhereUniqueInput!]
       disconnect: [StepResultWhereUniqueInput!]
-      update: [StepResultUpdateWithWhereUniqueWithoutResultParentInput!]
-      upsert: [StepResultUpsertWithWhereUniqueWithoutResultParentInput!]
+      update: [StepResultUpdateWithWhereUniqueWithoutResultInput!]
+      upsert: [StepResultUpsertWithWhereUniqueWithoutResultInput!]
       deleteMany: [StepResultScalarWhereInput!]
       updateMany: [StepResultUpdateManyWithWhereNestedInput!]
    }
@@ -1965,21 +2331,21 @@ export const typeDefs = /* GraphQL */ `
    }
 
    input StepResultUpdateWithoutParentDataInput {
-      resultParent: TestResultUpdateOneRequiredWithoutStepsInput
+      result: TestResultUpdateOneRequiredWithoutStepsInput
       start: DateTime
       end: DateTime
-      time: TimeResultUpdateOneInput
+      time: Int
       path: MenuUpdateManyInput
-      status: KeyResultStatusUpdateOneRequiredInput
+      status: KeyStepResultStatusUpdateOneRequiredInput
    }
 
-   input StepResultUpdateWithoutResultParentDataInput {
+   input StepResultUpdateWithoutResultDataInput {
       parent: StepUpdateOneRequiredWithoutResultsInput
       start: DateTime
       end: DateTime
-      time: TimeResultUpdateOneInput
+      time: Int
       path: MenuUpdateManyInput
-      status: KeyResultStatusUpdateOneRequiredInput
+      status: KeyStepResultStatusUpdateOneRequiredInput
    }
 
    input StepResultUpdateWithWhereUniqueWithoutParentInput {
@@ -1987,9 +2353,9 @@ export const typeDefs = /* GraphQL */ `
       data: StepResultUpdateWithoutParentDataInput!
    }
 
-   input StepResultUpdateWithWhereUniqueWithoutResultParentInput {
+   input StepResultUpdateWithWhereUniqueWithoutResultInput {
       where: StepResultWhereUniqueInput!
-      data: StepResultUpdateWithoutResultParentDataInput!
+      data: StepResultUpdateWithoutResultDataInput!
    }
 
    input StepResultUpsertWithWhereUniqueWithoutParentInput {
@@ -1998,10 +2364,10 @@ export const typeDefs = /* GraphQL */ `
       create: StepResultCreateWithoutParentInput!
    }
 
-   input StepResultUpsertWithWhereUniqueWithoutResultParentInput {
+   input StepResultUpsertWithWhereUniqueWithoutResultInput {
       where: StepResultWhereUniqueInput!
-      update: StepResultUpdateWithoutResultParentDataInput!
-      create: StepResultCreateWithoutResultParentInput!
+      update: StepResultUpdateWithoutResultDataInput!
+      create: StepResultCreateWithoutResultInput!
    }
 
    input StepResultWhereInput {
@@ -2020,7 +2386,7 @@ export const typeDefs = /* GraphQL */ `
       id_ends_with: ID
       id_not_ends_with: ID
       parent: StepWhereInput
-      resultParent: TestResultWhereInput
+      result: TestResultWhereInput
       start: DateTime
       start_not: DateTime
       start_in: [DateTime!]
@@ -2037,9 +2403,16 @@ export const typeDefs = /* GraphQL */ `
       end_lte: DateTime
       end_gt: DateTime
       end_gte: DateTime
-      time: TimeResultWhereInput
+      time: Int
+      time_not: Int
+      time_in: [Int!]
+      time_not_in: [Int!]
+      time_lt: Int
+      time_lte: Int
+      time_gt: Int
+      time_gte: Int
       path_some: MenuWhereInput
-      status: KeyResultStatusWhereInput
+      status: KeyStepResultStatusWhereInput
       AND: [StepResultWhereInput!]
    }
 
@@ -2062,20 +2435,6 @@ export const typeDefs = /* GraphQL */ `
       id_not_starts_with: ID
       id_ends_with: ID
       id_not_ends_with: ID
-      question: String
-      question_not: String
-      question_in: [String!]
-      question_not_in: [String!]
-      question_lt: String
-      question_lte: String
-      question_gt: String
-      question_gte: String
-      question_contains: String
-      question_not_contains: String
-      question_starts_with: String
-      question_not_starts_with: String
-      question_ends_with: String
-      question_not_ends_with: String
       AND: [StepScalarWhereInput!]
       OR: [StepScalarWhereInput!]
       NOT: [StepScalarWhereInput!]
@@ -2098,25 +2457,19 @@ export const typeDefs = /* GraphQL */ `
    }
 
    input StepUpdateDataInput {
-      parent: TestUpdateOneWithoutStepsInput
-      type: KeyUserTypeUpdateManyWithoutStepsInput
-      question: String
+      type: KeyUserTypeUpdateManyInput
+      question: MultiLanguageContentUpdateOneRequiredInput
       targets: MenuUpdateManyInput
-      paths: PathUpdateManyWithoutParentInput
+      paths: MenuUpdateManyInput
       results: StepResultUpdateManyWithoutParentInput
    }
 
    input StepUpdateInput {
-      parent: TestUpdateOneWithoutStepsInput
-      type: KeyUserTypeUpdateManyWithoutStepsInput
-      question: String
+      type: KeyUserTypeUpdateManyInput
+      question: MultiLanguageContentUpdateOneRequiredInput
       targets: MenuUpdateManyInput
-      paths: PathUpdateManyWithoutParentInput
+      paths: MenuUpdateManyInput
       results: StepResultUpdateManyWithoutParentInput
-   }
-
-   input StepUpdateManyDataInput {
-      question: String
    }
 
    input StepUpdateManyInput {
@@ -2128,47 +2481,6 @@ export const typeDefs = /* GraphQL */ `
       set: [StepWhereUniqueInput!]
       disconnect: [StepWhereUniqueInput!]
       deleteMany: [StepScalarWhereInput!]
-      updateMany: [StepUpdateManyWithWhereNestedInput!]
-   }
-
-   input StepUpdateManyMutationInput {
-      question: String
-   }
-
-   input StepUpdateManyWithoutParentInput {
-      create: [StepCreateWithoutParentInput!]
-      delete: [StepWhereUniqueInput!]
-      connect: [StepWhereUniqueInput!]
-      set: [StepWhereUniqueInput!]
-      disconnect: [StepWhereUniqueInput!]
-      update: [StepUpdateWithWhereUniqueWithoutParentInput!]
-      upsert: [StepUpsertWithWhereUniqueWithoutParentInput!]
-      deleteMany: [StepScalarWhereInput!]
-      updateMany: [StepUpdateManyWithWhereNestedInput!]
-   }
-
-   input StepUpdateManyWithoutTypeInput {
-      create: [StepCreateWithoutTypeInput!]
-      delete: [StepWhereUniqueInput!]
-      connect: [StepWhereUniqueInput!]
-      set: [StepWhereUniqueInput!]
-      disconnect: [StepWhereUniqueInput!]
-      update: [StepUpdateWithWhereUniqueWithoutTypeInput!]
-      upsert: [StepUpsertWithWhereUniqueWithoutTypeInput!]
-      deleteMany: [StepScalarWhereInput!]
-      updateMany: [StepUpdateManyWithWhereNestedInput!]
-   }
-
-   input StepUpdateManyWithWhereNestedInput {
-      where: StepScalarWhereInput!
-      data: StepUpdateManyDataInput!
-   }
-
-   input StepUpdateOneRequiredWithoutPathsInput {
-      create: StepCreateWithoutPathsInput
-      update: StepUpdateWithoutPathsDataInput
-      upsert: StepUpsertWithoutPathsInput
-      connect: StepWhereUniqueInput
    }
 
    input StepUpdateOneRequiredWithoutResultsInput {
@@ -2178,56 +2490,16 @@ export const typeDefs = /* GraphQL */ `
       connect: StepWhereUniqueInput
    }
 
-   input StepUpdateWithoutParentDataInput {
-      type: KeyUserTypeUpdateManyWithoutStepsInput
-      question: String
-      targets: MenuUpdateManyInput
-      paths: PathUpdateManyWithoutParentInput
-      results: StepResultUpdateManyWithoutParentInput
-   }
-
-   input StepUpdateWithoutPathsDataInput {
-      parent: TestUpdateOneWithoutStepsInput
-      type: KeyUserTypeUpdateManyWithoutStepsInput
-      question: String
-      targets: MenuUpdateManyInput
-      results: StepResultUpdateManyWithoutParentInput
-   }
-
    input StepUpdateWithoutResultsDataInput {
-      parent: TestUpdateOneWithoutStepsInput
-      type: KeyUserTypeUpdateManyWithoutStepsInput
-      question: String
+      type: KeyUserTypeUpdateManyInput
+      question: MultiLanguageContentUpdateOneRequiredInput
       targets: MenuUpdateManyInput
-      paths: PathUpdateManyWithoutParentInput
-   }
-
-   input StepUpdateWithoutTypeDataInput {
-      parent: TestUpdateOneWithoutStepsInput
-      question: String
-      targets: MenuUpdateManyInput
-      paths: PathUpdateManyWithoutParentInput
-      results: StepResultUpdateManyWithoutParentInput
+      paths: MenuUpdateManyInput
    }
 
    input StepUpdateWithWhereUniqueNestedInput {
       where: StepWhereUniqueInput!
       data: StepUpdateDataInput!
-   }
-
-   input StepUpdateWithWhereUniqueWithoutParentInput {
-      where: StepWhereUniqueInput!
-      data: StepUpdateWithoutParentDataInput!
-   }
-
-   input StepUpdateWithWhereUniqueWithoutTypeInput {
-      where: StepWhereUniqueInput!
-      data: StepUpdateWithoutTypeDataInput!
-   }
-
-   input StepUpsertWithoutPathsInput {
-      update: StepUpdateWithoutPathsDataInput!
-      create: StepCreateWithoutPathsInput!
    }
 
    input StepUpsertWithoutResultsInput {
@@ -2239,18 +2511,6 @@ export const typeDefs = /* GraphQL */ `
       where: StepWhereUniqueInput!
       update: StepUpdateDataInput!
       create: StepCreateInput!
-   }
-
-   input StepUpsertWithWhereUniqueWithoutParentInput {
-      where: StepWhereUniqueInput!
-      update: StepUpdateWithoutParentDataInput!
-      create: StepCreateWithoutParentInput!
-   }
-
-   input StepUpsertWithWhereUniqueWithoutTypeInput {
-      where: StepWhereUniqueInput!
-      update: StepUpdateWithoutTypeDataInput!
-      create: StepCreateWithoutTypeInput!
    }
 
    input StepWhereInput {
@@ -2268,24 +2528,10 @@ export const typeDefs = /* GraphQL */ `
       id_not_starts_with: ID
       id_ends_with: ID
       id_not_ends_with: ID
-      parent: TestWhereInput
       type_some: KeyUserTypeWhereInput
-      question: String
-      question_not: String
-      question_in: [String!]
-      question_not_in: [String!]
-      question_lt: String
-      question_lte: String
-      question_gt: String
-      question_gte: String
-      question_contains: String
-      question_not_contains: String
-      question_starts_with: String
-      question_not_starts_with: String
-      question_ends_with: String
-      question_not_ends_with: String
+      question: MultiLanguageContentWhereInput
       targets_some: MenuWhereInput
-      paths_some: PathWhereInput
+      paths_some: MenuWhereInput
       results_some: StepResultWhereInput
       AND: [StepWhereInput!]
    }
@@ -2296,15 +2542,24 @@ export const typeDefs = /* GraphQL */ `
 
    type Subscription {
       company(where: CompanySubscriptionWhereInput): CompanySubscriptionPayload
-      keyResultStatus(
-         where: KeyResultStatusSubscriptionWhereInput
-      ): KeyResultStatusSubscriptionPayload
+      key(where: KeySubscriptionWhereInput): KeySubscriptionPayload
+      keyLanguage(
+         where: KeyLanguageSubscriptionWhereInput
+      ): KeyLanguageSubscriptionPayload
+      keyStepResultStatus(
+         where: KeyStepResultStatusSubscriptionWhereInput
+      ): KeyStepResultStatusSubscriptionPayload
+      keyTestResultStatus(
+         where: KeyTestResultStatusSubscriptionWhereInput
+      ): KeyTestResultStatusSubscriptionPayload
       keyUserType(
          where: KeyUserTypeSubscriptionWhereInput
       ): KeyUserTypeSubscriptionPayload
-      keys(where: KeysSubscriptionWhereInput): KeysSubscriptionPayload
       menu(where: MenuSubscriptionWhereInput): MenuSubscriptionPayload
-      path(where: PathSubscriptionWhereInput): PathSubscriptionPayload
+      message(where: MessageSubscriptionWhereInput): MessageSubscriptionPayload
+      multiLanguageContent(
+         where: MultiLanguageContentSubscriptionWhereInput
+      ): MultiLanguageContentSubscriptionPayload
       step(where: StepSubscriptionWhereInput): StepSubscriptionPayload
       stepResult(
          where: StepResultSubscriptionWhereInput
@@ -2313,16 +2568,31 @@ export const typeDefs = /* GraphQL */ `
       testResult(
          where: TestResultSubscriptionWhereInput
       ): TestResultSubscriptionPayload
-      timeResult(
-         where: TimeResultSubscriptionWhereInput
-      ): TimeResultSubscriptionPayload
-      view(where: ViewSubscriptionWhereInput): ViewSubscriptionPayload
-      welcome(where: WelcomeSubscriptionWhereInput): WelcomeSubscriptionPayload
    }
 
    type Test {
       id: ID!
-      title: String!
+      publics(
+         where: KeyUserTypeWhereInput
+         orderBy: KeyUserTypeOrderByInput
+         skip: Int
+         after: String
+         before: String
+         first: Int
+         last: Int
+      ): [KeyUserType!]
+      languages(
+         where: KeyLanguageWhereInput
+         orderBy: KeyLanguageOrderByInput
+         skip: Int
+         after: String
+         before: String
+         first: Int
+         last: Int
+      ): [KeyLanguage!]
+      instruction: Message!
+      company: Company!
+      title: MultiLanguageContent!
       steps(
          where: StepWhereInput
          orderBy: StepOrderByInput
@@ -2350,6 +2620,7 @@ export const typeDefs = /* GraphQL */ `
          first: Int
          last: Int
       ): [TestResult!]
+      keys: Key!
    }
 
    type TestConnection {
@@ -2360,14 +2631,19 @@ export const typeDefs = /* GraphQL */ `
 
    input TestCreateInput {
       id: ID
-      title: String!
-      steps: StepCreateManyWithoutParentInput
+      publics: KeyUserTypeCreateManyInput
+      languages: KeyLanguageCreateManyInput
+      instruction: MessageCreateOneInput!
+      company: CompanyCreateOneWithoutTestsInput!
+      title: MultiLanguageContentCreateOneInput!
+      steps: StepCreateManyInput
       menus: MenuCreateManyInput
       results: TestResultCreateManyWithoutParentInput
+      keys: KeyCreateOneInput!
    }
 
-   input TestCreateManyInput {
-      create: [TestCreateInput!]
+   input TestCreateManyWithoutCompanyInput {
+      create: [TestCreateWithoutCompanyInput!]
       connect: [TestWhereUniqueInput!]
    }
 
@@ -2376,23 +2652,28 @@ export const typeDefs = /* GraphQL */ `
       connect: TestWhereUniqueInput
    }
 
-   input TestCreateOneWithoutStepsInput {
-      create: TestCreateWithoutStepsInput
-      connect: TestWhereUniqueInput
+   input TestCreateWithoutCompanyInput {
+      id: ID
+      publics: KeyUserTypeCreateManyInput
+      languages: KeyLanguageCreateManyInput
+      instruction: MessageCreateOneInput!
+      title: MultiLanguageContentCreateOneInput!
+      steps: StepCreateManyInput
+      menus: MenuCreateManyInput
+      results: TestResultCreateManyWithoutParentInput
+      keys: KeyCreateOneInput!
    }
 
    input TestCreateWithoutResultsInput {
       id: ID
-      title: String!
-      steps: StepCreateManyWithoutParentInput
+      publics: KeyUserTypeCreateManyInput
+      languages: KeyLanguageCreateManyInput
+      instruction: MessageCreateOneInput!
+      company: CompanyCreateOneWithoutTestsInput!
+      title: MultiLanguageContentCreateOneInput!
+      steps: StepCreateManyInput
       menus: MenuCreateManyInput
-   }
-
-   input TestCreateWithoutStepsInput {
-      id: ID
-      title: String!
-      menus: MenuCreateManyInput
-      results: TestResultCreateManyWithoutParentInput
+      keys: KeyCreateOneInput!
    }
 
    type TestEdge {
@@ -2403,13 +2684,10 @@ export const typeDefs = /* GraphQL */ `
    enum TestOrderByInput {
       id_ASC
       id_DESC
-      title_ASC
-      title_DESC
    }
 
    type TestPreviousValues {
       id: ID!
-      title: String!
    }
 
    type TestResult {
@@ -2417,7 +2695,7 @@ export const typeDefs = /* GraphQL */ `
       parent: Test!
       start: DateTime!
       end: DateTime
-      time: TimeResult
+      duration: Int!
       steps(
          where: StepResultWhereInput
          orderBy: StepResultOrderByInput
@@ -2427,7 +2705,7 @@ export const typeDefs = /* GraphQL */ `
          first: Int
          last: Int
       ): [StepResult!]
-      status: KeyResultStatus!
+      status: KeyTestResultStatus!
    }
 
    type TestResultConnection {
@@ -2441,18 +2719,13 @@ export const typeDefs = /* GraphQL */ `
       parent: TestCreateOneWithoutResultsInput!
       start: DateTime!
       end: DateTime
-      time: TimeResultCreateOneInput
-      steps: StepResultCreateManyWithoutResultParentInput
-      status: KeyResultStatusCreateOneWithoutResultsInput!
+      duration: Int!
+      steps: StepResultCreateManyWithoutResultInput
+      status: KeyTestResultStatusCreateOneInput!
    }
 
    input TestResultCreateManyWithoutParentInput {
       create: [TestResultCreateWithoutParentInput!]
-      connect: [TestResultWhereUniqueInput!]
-   }
-
-   input TestResultCreateManyWithoutStatusInput {
-      create: [TestResultCreateWithoutStatusInput!]
       connect: [TestResultWhereUniqueInput!]
    }
 
@@ -2465,18 +2738,9 @@ export const typeDefs = /* GraphQL */ `
       id: ID
       start: DateTime!
       end: DateTime
-      time: TimeResultCreateOneInput
-      steps: StepResultCreateManyWithoutResultParentInput
-      status: KeyResultStatusCreateOneWithoutResultsInput!
-   }
-
-   input TestResultCreateWithoutStatusInput {
-      id: ID
-      parent: TestCreateOneWithoutResultsInput!
-      start: DateTime!
-      end: DateTime
-      time: TimeResultCreateOneInput
-      steps: StepResultCreateManyWithoutResultParentInput
+      duration: Int!
+      steps: StepResultCreateManyWithoutResultInput
+      status: KeyTestResultStatusCreateOneInput!
    }
 
    input TestResultCreateWithoutStepsInput {
@@ -2484,8 +2748,8 @@ export const typeDefs = /* GraphQL */ `
       parent: TestCreateOneWithoutResultsInput!
       start: DateTime!
       end: DateTime
-      time: TimeResultCreateOneInput
-      status: KeyResultStatusCreateOneWithoutResultsInput!
+      duration: Int!
+      status: KeyTestResultStatusCreateOneInput!
    }
 
    type TestResultEdge {
@@ -2500,12 +2764,15 @@ export const typeDefs = /* GraphQL */ `
       start_DESC
       end_ASC
       end_DESC
+      duration_ASC
+      duration_DESC
    }
 
    type TestResultPreviousValues {
       id: ID!
       start: DateTime!
       end: DateTime
+      duration: Int!
    }
 
    input TestResultScalarWhereInput {
@@ -2539,6 +2806,14 @@ export const typeDefs = /* GraphQL */ `
       end_lte: DateTime
       end_gt: DateTime
       end_gte: DateTime
+      duration: Int
+      duration_not: Int
+      duration_in: [Int!]
+      duration_not_in: [Int!]
+      duration_lt: Int
+      duration_lte: Int
+      duration_gt: Int
+      duration_gte: Int
       AND: [TestResultScalarWhereInput!]
       OR: [TestResultScalarWhereInput!]
       NOT: [TestResultScalarWhereInput!]
@@ -2564,19 +2839,21 @@ export const typeDefs = /* GraphQL */ `
       parent: TestUpdateOneRequiredWithoutResultsInput
       start: DateTime
       end: DateTime
-      time: TimeResultUpdateOneInput
-      steps: StepResultUpdateManyWithoutResultParentInput
-      status: KeyResultStatusUpdateOneRequiredWithoutResultsInput
+      duration: Int
+      steps: StepResultUpdateManyWithoutResultInput
+      status: KeyTestResultStatusUpdateOneRequiredInput
    }
 
    input TestResultUpdateManyDataInput {
       start: DateTime
       end: DateTime
+      duration: Int
    }
 
    input TestResultUpdateManyMutationInput {
       start: DateTime
       end: DateTime
+      duration: Int
    }
 
    input TestResultUpdateManyWithoutParentInput {
@@ -2587,18 +2864,6 @@ export const typeDefs = /* GraphQL */ `
       disconnect: [TestResultWhereUniqueInput!]
       update: [TestResultUpdateWithWhereUniqueWithoutParentInput!]
       upsert: [TestResultUpsertWithWhereUniqueWithoutParentInput!]
-      deleteMany: [TestResultScalarWhereInput!]
-      updateMany: [TestResultUpdateManyWithWhereNestedInput!]
-   }
-
-   input TestResultUpdateManyWithoutStatusInput {
-      create: [TestResultCreateWithoutStatusInput!]
-      delete: [TestResultWhereUniqueInput!]
-      connect: [TestResultWhereUniqueInput!]
-      set: [TestResultWhereUniqueInput!]
-      disconnect: [TestResultWhereUniqueInput!]
-      update: [TestResultUpdateWithWhereUniqueWithoutStatusInput!]
-      upsert: [TestResultUpsertWithWhereUniqueWithoutStatusInput!]
       deleteMany: [TestResultScalarWhereInput!]
       updateMany: [TestResultUpdateManyWithWhereNestedInput!]
    }
@@ -2618,35 +2883,22 @@ export const typeDefs = /* GraphQL */ `
    input TestResultUpdateWithoutParentDataInput {
       start: DateTime
       end: DateTime
-      time: TimeResultUpdateOneInput
-      steps: StepResultUpdateManyWithoutResultParentInput
-      status: KeyResultStatusUpdateOneRequiredWithoutResultsInput
-   }
-
-   input TestResultUpdateWithoutStatusDataInput {
-      parent: TestUpdateOneRequiredWithoutResultsInput
-      start: DateTime
-      end: DateTime
-      time: TimeResultUpdateOneInput
-      steps: StepResultUpdateManyWithoutResultParentInput
+      duration: Int
+      steps: StepResultUpdateManyWithoutResultInput
+      status: KeyTestResultStatusUpdateOneRequiredInput
    }
 
    input TestResultUpdateWithoutStepsDataInput {
       parent: TestUpdateOneRequiredWithoutResultsInput
       start: DateTime
       end: DateTime
-      time: TimeResultUpdateOneInput
-      status: KeyResultStatusUpdateOneRequiredWithoutResultsInput
+      duration: Int
+      status: KeyTestResultStatusUpdateOneRequiredInput
    }
 
    input TestResultUpdateWithWhereUniqueWithoutParentInput {
       where: TestResultWhereUniqueInput!
       data: TestResultUpdateWithoutParentDataInput!
-   }
-
-   input TestResultUpdateWithWhereUniqueWithoutStatusInput {
-      where: TestResultWhereUniqueInput!
-      data: TestResultUpdateWithoutStatusDataInput!
    }
 
    input TestResultUpsertWithoutStepsInput {
@@ -2658,12 +2910,6 @@ export const typeDefs = /* GraphQL */ `
       where: TestResultWhereUniqueInput!
       update: TestResultUpdateWithoutParentDataInput!
       create: TestResultCreateWithoutParentInput!
-   }
-
-   input TestResultUpsertWithWhereUniqueWithoutStatusInput {
-      where: TestResultWhereUniqueInput!
-      update: TestResultUpdateWithoutStatusDataInput!
-      create: TestResultCreateWithoutStatusInput!
    }
 
    input TestResultWhereInput {
@@ -2698,9 +2944,16 @@ export const typeDefs = /* GraphQL */ `
       end_lte: DateTime
       end_gt: DateTime
       end_gte: DateTime
-      time: TimeResultWhereInput
+      duration: Int
+      duration_not: Int
+      duration_in: [Int!]
+      duration_not_in: [Int!]
+      duration_lt: Int
+      duration_lte: Int
+      duration_gt: Int
+      duration_gte: Int
       steps_some: StepResultWhereInput
-      status: KeyResultStatusWhereInput
+      status: KeyTestResultStatusWhereInput
       AND: [TestResultWhereInput!]
    }
 
@@ -2723,20 +2976,6 @@ export const typeDefs = /* GraphQL */ `
       id_not_starts_with: ID
       id_ends_with: ID
       id_not_ends_with: ID
-      title: String
-      title_not: String
-      title_in: [String!]
-      title_not_in: [String!]
-      title_lt: String
-      title_lte: String
-      title_gt: String
-      title_gte: String
-      title_contains: String
-      title_not_contains: String
-      title_starts_with: String
-      title_not_starts_with: String
-      title_ends_with: String
-      title_not_ends_with: String
       AND: [TestScalarWhereInput!]
       OR: [TestScalarWhereInput!]
       NOT: [TestScalarWhereInput!]
@@ -2758,43 +2997,27 @@ export const typeDefs = /* GraphQL */ `
       AND: [TestSubscriptionWhereInput!]
    }
 
-   input TestUpdateDataInput {
-      title: String
-      steps: StepUpdateManyWithoutParentInput
-      menus: MenuUpdateManyInput
-      results: TestResultUpdateManyWithoutParentInput
-   }
-
    input TestUpdateInput {
-      title: String
-      steps: StepUpdateManyWithoutParentInput
+      publics: KeyUserTypeUpdateManyInput
+      languages: KeyLanguageUpdateManyInput
+      instruction: MessageUpdateOneRequiredInput
+      company: CompanyUpdateOneRequiredWithoutTestsInput
+      title: MultiLanguageContentUpdateOneRequiredInput
+      steps: StepUpdateManyInput
       menus: MenuUpdateManyInput
       results: TestResultUpdateManyWithoutParentInput
+      keys: KeyUpdateOneRequiredInput
    }
 
-   input TestUpdateManyDataInput {
-      title: String
-   }
-
-   input TestUpdateManyInput {
-      create: [TestCreateInput!]
-      update: [TestUpdateWithWhereUniqueNestedInput!]
-      upsert: [TestUpsertWithWhereUniqueNestedInput!]
+   input TestUpdateManyWithoutCompanyInput {
+      create: [TestCreateWithoutCompanyInput!]
       delete: [TestWhereUniqueInput!]
       connect: [TestWhereUniqueInput!]
       set: [TestWhereUniqueInput!]
       disconnect: [TestWhereUniqueInput!]
+      update: [TestUpdateWithWhereUniqueWithoutCompanyInput!]
+      upsert: [TestUpsertWithWhereUniqueWithoutCompanyInput!]
       deleteMany: [TestScalarWhereInput!]
-      updateMany: [TestUpdateManyWithWhereNestedInput!]
-   }
-
-   input TestUpdateManyMutationInput {
-      title: String
-   }
-
-   input TestUpdateManyWithWhereNestedInput {
-      where: TestScalarWhereInput!
-      data: TestUpdateManyDataInput!
    }
 
    input TestUpdateOneRequiredWithoutResultsInput {
@@ -2804,30 +3027,31 @@ export const typeDefs = /* GraphQL */ `
       connect: TestWhereUniqueInput
    }
 
-   input TestUpdateOneWithoutStepsInput {
-      create: TestCreateWithoutStepsInput
-      update: TestUpdateWithoutStepsDataInput
-      upsert: TestUpsertWithoutStepsInput
-      delete: Boolean
-      disconnect: Boolean
-      connect: TestWhereUniqueInput
+   input TestUpdateWithoutCompanyDataInput {
+      publics: KeyUserTypeUpdateManyInput
+      languages: KeyLanguageUpdateManyInput
+      instruction: MessageUpdateOneRequiredInput
+      title: MultiLanguageContentUpdateOneRequiredInput
+      steps: StepUpdateManyInput
+      menus: MenuUpdateManyInput
+      results: TestResultUpdateManyWithoutParentInput
+      keys: KeyUpdateOneRequiredInput
    }
 
    input TestUpdateWithoutResultsDataInput {
-      title: String
-      steps: StepUpdateManyWithoutParentInput
+      publics: KeyUserTypeUpdateManyInput
+      languages: KeyLanguageUpdateManyInput
+      instruction: MessageUpdateOneRequiredInput
+      company: CompanyUpdateOneRequiredWithoutTestsInput
+      title: MultiLanguageContentUpdateOneRequiredInput
+      steps: StepUpdateManyInput
       menus: MenuUpdateManyInput
+      keys: KeyUpdateOneRequiredInput
    }
 
-   input TestUpdateWithoutStepsDataInput {
-      title: String
-      menus: MenuUpdateManyInput
-      results: TestResultUpdateManyWithoutParentInput
-   }
-
-   input TestUpdateWithWhereUniqueNestedInput {
+   input TestUpdateWithWhereUniqueWithoutCompanyInput {
       where: TestWhereUniqueInput!
-      data: TestUpdateDataInput!
+      data: TestUpdateWithoutCompanyDataInput!
    }
 
    input TestUpsertWithoutResultsInput {
@@ -2835,15 +3059,10 @@ export const typeDefs = /* GraphQL */ `
       create: TestCreateWithoutResultsInput!
    }
 
-   input TestUpsertWithoutStepsInput {
-      update: TestUpdateWithoutStepsDataInput!
-      create: TestCreateWithoutStepsInput!
-   }
-
-   input TestUpsertWithWhereUniqueNestedInput {
+   input TestUpsertWithWhereUniqueWithoutCompanyInput {
       where: TestWhereUniqueInput!
-      update: TestUpdateDataInput!
-      create: TestCreateInput!
+      update: TestUpdateWithoutCompanyDataInput!
+      create: TestCreateWithoutCompanyInput!
    }
 
    input TestWhereInput {
@@ -2861,408 +3080,19 @@ export const typeDefs = /* GraphQL */ `
       id_not_starts_with: ID
       id_ends_with: ID
       id_not_ends_with: ID
-      title: String
-      title_not: String
-      title_in: [String!]
-      title_not_in: [String!]
-      title_lt: String
-      title_lte: String
-      title_gt: String
-      title_gte: String
-      title_contains: String
-      title_not_contains: String
-      title_starts_with: String
-      title_not_starts_with: String
-      title_ends_with: String
-      title_not_ends_with: String
+      publics_some: KeyUserTypeWhereInput
+      languages_some: KeyLanguageWhereInput
+      instruction: MessageWhereInput
+      company: CompanyWhereInput
+      title: MultiLanguageContentWhereInput
       steps_some: StepWhereInput
       menus_some: MenuWhereInput
       results_some: TestResultWhereInput
+      keys: KeyWhereInput
       AND: [TestWhereInput!]
    }
 
    input TestWhereUniqueInput {
-      id: ID
-   }
-
-   type TimeResult {
-      id: ID!
-      int: Int!
-      text: String!
-   }
-
-   type TimeResultConnection {
-      pageInfo: PageInfo!
-      edges: [TimeResultEdge]!
-      aggregate: AggregateTimeResult!
-   }
-
-   input TimeResultCreateInput {
-      id: ID
-      int: Int!
-      text: String!
-   }
-
-   input TimeResultCreateOneInput {
-      create: TimeResultCreateInput
-      connect: TimeResultWhereUniqueInput
-   }
-
-   type TimeResultEdge {
-      node: TimeResult!
-      cursor: String!
-   }
-
-   enum TimeResultOrderByInput {
-      id_ASC
-      id_DESC
-      int_ASC
-      int_DESC
-      text_ASC
-      text_DESC
-   }
-
-   type TimeResultPreviousValues {
-      id: ID!
-      int: Int!
-      text: String!
-   }
-
-   type TimeResultSubscriptionPayload {
-      mutation: MutationType!
-      node: TimeResult
-      updatedFields: [String!]
-      previousValues: TimeResultPreviousValues
-   }
-
-   input TimeResultSubscriptionWhereInput {
-      mutation_in: [MutationType!]
-      updatedFields_contains: String
-      updatedFields_contains_every: [String!]
-      updatedFields_contains_some: [String!]
-      node: TimeResultWhereInput
-      AND: [TimeResultSubscriptionWhereInput!]
-   }
-
-   input TimeResultUpdateDataInput {
-      int: Int
-      text: String
-   }
-
-   input TimeResultUpdateInput {
-      int: Int
-      text: String
-   }
-
-   input TimeResultUpdateManyMutationInput {
-      int: Int
-      text: String
-   }
-
-   input TimeResultUpdateOneInput {
-      create: TimeResultCreateInput
-      update: TimeResultUpdateDataInput
-      upsert: TimeResultUpsertNestedInput
-      delete: Boolean
-      disconnect: Boolean
-      connect: TimeResultWhereUniqueInput
-   }
-
-   input TimeResultUpsertNestedInput {
-      update: TimeResultUpdateDataInput!
-      create: TimeResultCreateInput!
-   }
-
-   input TimeResultWhereInput {
-      id: ID
-      id_not: ID
-      id_in: [ID!]
-      id_not_in: [ID!]
-      id_lt: ID
-      id_lte: ID
-      id_gt: ID
-      id_gte: ID
-      id_contains: ID
-      id_not_contains: ID
-      id_starts_with: ID
-      id_not_starts_with: ID
-      id_ends_with: ID
-      id_not_ends_with: ID
-      int: Int
-      int_not: Int
-      int_in: [Int!]
-      int_not_in: [Int!]
-      int_lt: Int
-      int_lte: Int
-      int_gt: Int
-      int_gte: Int
-      text: String
-      text_not: String
-      text_in: [String!]
-      text_not_in: [String!]
-      text_lt: String
-      text_lte: String
-      text_gt: String
-      text_gte: String
-      text_contains: String
-      text_not_contains: String
-      text_starts_with: String
-      text_not_starts_with: String
-      text_ends_with: String
-      text_not_ends_with: String
-      AND: [TimeResultWhereInput!]
-   }
-
-   input TimeResultWhereUniqueInput {
-      id: ID
-   }
-
-   type View {
-      id: ID!
-      welcome: Welcome!
-      company: Company!
-      menus(
-         where: MenuWhereInput
-         orderBy: MenuOrderByInput
-         skip: Int
-         after: String
-         before: String
-         first: Int
-         last: Int
-      ): [Menu!]
-      tests(
-         where: TestWhereInput
-         orderBy: TestOrderByInput
-         skip: Int
-         after: String
-         before: String
-         first: Int
-         last: Int
-      ): [Test!]
-      steps(
-         where: StepWhereInput
-         orderBy: StepOrderByInput
-         skip: Int
-         after: String
-         before: String
-         first: Int
-         last: Int
-      ): [Step!]
-   }
-
-   type ViewConnection {
-      pageInfo: PageInfo!
-      edges: [ViewEdge]!
-      aggregate: AggregateView!
-   }
-
-   input ViewCreateInput {
-      id: ID
-      welcome: WelcomeCreateOneInput!
-      company: CompanyCreateOneInput!
-      menus: MenuCreateManyInput
-      tests: TestCreateManyInput
-      steps: StepCreateManyInput
-   }
-
-   type ViewEdge {
-      node: View!
-      cursor: String!
-   }
-
-   enum ViewOrderByInput {
-      id_ASC
-      id_DESC
-   }
-
-   type ViewPreviousValues {
-      id: ID!
-   }
-
-   type ViewSubscriptionPayload {
-      mutation: MutationType!
-      node: View
-      updatedFields: [String!]
-      previousValues: ViewPreviousValues
-   }
-
-   input ViewSubscriptionWhereInput {
-      mutation_in: [MutationType!]
-      updatedFields_contains: String
-      updatedFields_contains_every: [String!]
-      updatedFields_contains_some: [String!]
-      node: ViewWhereInput
-      AND: [ViewSubscriptionWhereInput!]
-   }
-
-   input ViewUpdateInput {
-      welcome: WelcomeUpdateOneRequiredInput
-      company: CompanyUpdateOneRequiredInput
-      menus: MenuUpdateManyInput
-      tests: TestUpdateManyInput
-      steps: StepUpdateManyInput
-   }
-
-   input ViewWhereInput {
-      id: ID
-      id_not: ID
-      id_in: [ID!]
-      id_not_in: [ID!]
-      id_lt: ID
-      id_lte: ID
-      id_gt: ID
-      id_gte: ID
-      id_contains: ID
-      id_not_contains: ID
-      id_starts_with: ID
-      id_not_starts_with: ID
-      id_ends_with: ID
-      id_not_ends_with: ID
-      welcome: WelcomeWhereInput
-      company: CompanyWhereInput
-      menus_some: MenuWhereInput
-      tests_some: TestWhereInput
-      steps_some: StepWhereInput
-      AND: [ViewWhereInput!]
-   }
-
-   input ViewWhereUniqueInput {
-      id: ID
-   }
-
-   type Welcome {
-      id: ID!
-      title: String!
-      message: String!
-   }
-
-   type WelcomeConnection {
-      pageInfo: PageInfo!
-      edges: [WelcomeEdge]!
-      aggregate: AggregateWelcome!
-   }
-
-   input WelcomeCreateInput {
-      id: ID
-      title: String!
-      message: String!
-   }
-
-   input WelcomeCreateOneInput {
-      create: WelcomeCreateInput
-      connect: WelcomeWhereUniqueInput
-   }
-
-   type WelcomeEdge {
-      node: Welcome!
-      cursor: String!
-   }
-
-   enum WelcomeOrderByInput {
-      id_ASC
-      id_DESC
-      title_ASC
-      title_DESC
-      message_ASC
-      message_DESC
-   }
-
-   type WelcomePreviousValues {
-      id: ID!
-      title: String!
-      message: String!
-   }
-
-   type WelcomeSubscriptionPayload {
-      mutation: MutationType!
-      node: Welcome
-      updatedFields: [String!]
-      previousValues: WelcomePreviousValues
-   }
-
-   input WelcomeSubscriptionWhereInput {
-      mutation_in: [MutationType!]
-      updatedFields_contains: String
-      updatedFields_contains_every: [String!]
-      updatedFields_contains_some: [String!]
-      node: WelcomeWhereInput
-      AND: [WelcomeSubscriptionWhereInput!]
-   }
-
-   input WelcomeUpdateDataInput {
-      title: String
-      message: String
-   }
-
-   input WelcomeUpdateInput {
-      title: String
-      message: String
-   }
-
-   input WelcomeUpdateManyMutationInput {
-      title: String
-      message: String
-   }
-
-   input WelcomeUpdateOneRequiredInput {
-      create: WelcomeCreateInput
-      update: WelcomeUpdateDataInput
-      upsert: WelcomeUpsertNestedInput
-      connect: WelcomeWhereUniqueInput
-   }
-
-   input WelcomeUpsertNestedInput {
-      update: WelcomeUpdateDataInput!
-      create: WelcomeCreateInput!
-   }
-
-   input WelcomeWhereInput {
-      id: ID
-      id_not: ID
-      id_in: [ID!]
-      id_not_in: [ID!]
-      id_lt: ID
-      id_lte: ID
-      id_gt: ID
-      id_gte: ID
-      id_contains: ID
-      id_not_contains: ID
-      id_starts_with: ID
-      id_not_starts_with: ID
-      id_ends_with: ID
-      id_not_ends_with: ID
-      title: String
-      title_not: String
-      title_in: [String!]
-      title_not_in: [String!]
-      title_lt: String
-      title_lte: String
-      title_gt: String
-      title_gte: String
-      title_contains: String
-      title_not_contains: String
-      title_starts_with: String
-      title_not_starts_with: String
-      title_ends_with: String
-      title_not_ends_with: String
-      message: String
-      message_not: String
-      message_in: [String!]
-      message_not_in: [String!]
-      message_lt: String
-      message_lte: String
-      message_gt: String
-      message_gte: String
-      message_contains: String
-      message_not_contains: String
-      message_starts_with: String
-      message_not_starts_with: String
-      message_ends_with: String
-      message_not_ends_with: String
-      AND: [WelcomeWhereInput!]
-   }
-
-   input WelcomeWhereUniqueInput {
       id: ID
    }
 `

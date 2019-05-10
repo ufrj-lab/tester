@@ -17,18 +17,24 @@ export type Maybe<T> = T | undefined | null
 
 export interface Exists {
    company: (where?: CompanyWhereInput) => Promise<boolean>
-   keyResultStatus: (where?: KeyResultStatusWhereInput) => Promise<boolean>
+   key: (where?: KeyWhereInput) => Promise<boolean>
+   keyLanguage: (where?: KeyLanguageWhereInput) => Promise<boolean>
+   keyStepResultStatus: (
+      where?: KeyStepResultStatusWhereInput,
+   ) => Promise<boolean>
+   keyTestResultStatus: (
+      where?: KeyTestResultStatusWhereInput,
+   ) => Promise<boolean>
    keyUserType: (where?: KeyUserTypeWhereInput) => Promise<boolean>
-   keys: (where?: KeysWhereInput) => Promise<boolean>
    menu: (where?: MenuWhereInput) => Promise<boolean>
-   path: (where?: PathWhereInput) => Promise<boolean>
+   message: (where?: MessageWhereInput) => Promise<boolean>
+   multiLanguageContent: (
+      where?: MultiLanguageContentWhereInput,
+   ) => Promise<boolean>
    step: (where?: StepWhereInput) => Promise<boolean>
    stepResult: (where?: StepResultWhereInput) => Promise<boolean>
    test: (where?: TestWhereInput) => Promise<boolean>
    testResult: (where?: TestResultWhereInput) => Promise<boolean>
-   timeResult: (where?: TimeResultWhereInput) => Promise<boolean>
-   view: (where?: ViewWhereInput) => Promise<boolean>
-   welcome: (where?: WelcomeWhereInput) => Promise<boolean>
 }
 
 export interface Node {}
@@ -69,27 +75,88 @@ export interface Prisma {
       first?: Int
       last?: Int
    }) => CompanyConnectionPromise
-   keyResultStatus: (
-      where: KeyResultStatusWhereUniqueInput,
-   ) => KeyResultStatusNullablePromise
-   keyResultStatuses: (args?: {
-      where?: KeyResultStatusWhereInput
-      orderBy?: KeyResultStatusOrderByInput
+   key: (where: KeyWhereUniqueInput) => KeyNullablePromise
+   keys: (args?: {
+      where?: KeyWhereInput
+      orderBy?: KeyOrderByInput
       skip?: Int
       after?: String
       before?: String
       first?: Int
       last?: Int
-   }) => FragmentableArray<KeyResultStatus>
-   keyResultStatusesConnection: (args?: {
-      where?: KeyResultStatusWhereInput
-      orderBy?: KeyResultStatusOrderByInput
+   }) => FragmentableArray<Key>
+   keysConnection: (args?: {
+      where?: KeyWhereInput
+      orderBy?: KeyOrderByInput
       skip?: Int
       after?: String
       before?: String
       first?: Int
       last?: Int
-   }) => KeyResultStatusConnectionPromise
+   }) => KeyConnectionPromise
+   keyLanguage: (
+      where: KeyLanguageWhereUniqueInput,
+   ) => KeyLanguageNullablePromise
+   keyLanguages: (args?: {
+      where?: KeyLanguageWhereInput
+      orderBy?: KeyLanguageOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => FragmentableArray<KeyLanguage>
+   keyLanguagesConnection: (args?: {
+      where?: KeyLanguageWhereInput
+      orderBy?: KeyLanguageOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => KeyLanguageConnectionPromise
+   keyStepResultStatus: (
+      where: KeyStepResultStatusWhereUniqueInput,
+   ) => KeyStepResultStatusNullablePromise
+   keyStepResultStatuses: (args?: {
+      where?: KeyStepResultStatusWhereInput
+      orderBy?: KeyStepResultStatusOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => FragmentableArray<KeyStepResultStatus>
+   keyStepResultStatusesConnection: (args?: {
+      where?: KeyStepResultStatusWhereInput
+      orderBy?: KeyStepResultStatusOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => KeyStepResultStatusConnectionPromise
+   keyTestResultStatus: (
+      where: KeyTestResultStatusWhereUniqueInput,
+   ) => KeyTestResultStatusNullablePromise
+   keyTestResultStatuses: (args?: {
+      where?: KeyTestResultStatusWhereInput
+      orderBy?: KeyTestResultStatusOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => FragmentableArray<KeyTestResultStatus>
+   keyTestResultStatusesConnection: (args?: {
+      where?: KeyTestResultStatusWhereInput
+      orderBy?: KeyTestResultStatusOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => KeyTestResultStatusConnectionPromise
    keyUserType: (
       where: KeyUserTypeWhereUniqueInput,
    ) => KeyUserTypeNullablePromise
@@ -111,25 +178,6 @@ export interface Prisma {
       first?: Int
       last?: Int
    }) => KeyUserTypeConnectionPromise
-   keys: (where: KeysWhereUniqueInput) => KeysNullablePromise
-   keyses: (args?: {
-      where?: KeysWhereInput
-      orderBy?: KeysOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => FragmentableArray<Keys>
-   keysesConnection: (args?: {
-      where?: KeysWhereInput
-      orderBy?: KeysOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => KeysConnectionPromise
    menu: (where: MenuWhereUniqueInput) => MenuNullablePromise
    menus: (args?: {
       where?: MenuWhereInput
@@ -149,25 +197,46 @@ export interface Prisma {
       first?: Int
       last?: Int
    }) => MenuConnectionPromise
-   path: (where: PathWhereUniqueInput) => PathNullablePromise
-   paths: (args?: {
-      where?: PathWhereInput
-      orderBy?: PathOrderByInput
+   message: (where: MessageWhereUniqueInput) => MessageNullablePromise
+   messages: (args?: {
+      where?: MessageWhereInput
+      orderBy?: MessageOrderByInput
       skip?: Int
       after?: String
       before?: String
       first?: Int
       last?: Int
-   }) => FragmentableArray<Path>
-   pathsConnection: (args?: {
-      where?: PathWhereInput
-      orderBy?: PathOrderByInput
+   }) => FragmentableArray<Message>
+   messagesConnection: (args?: {
+      where?: MessageWhereInput
+      orderBy?: MessageOrderByInput
       skip?: Int
       after?: String
       before?: String
       first?: Int
       last?: Int
-   }) => PathConnectionPromise
+   }) => MessageConnectionPromise
+   multiLanguageContent: (
+      where: MultiLanguageContentWhereUniqueInput,
+   ) => MultiLanguageContentNullablePromise
+   multiLanguageContents: (args?: {
+      where?: MultiLanguageContentWhereInput
+      orderBy?: MultiLanguageContentOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => FragmentableArray<MultiLanguageContent>
+   multiLanguageContentsConnection: (args?: {
+      where?: MultiLanguageContentWhereInput
+      orderBy?: MultiLanguageContentOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => MultiLanguageContentConnectionPromise
    step: (where: StepWhereUniqueInput) => StepNullablePromise
    steps: (args?: {
       where?: StepWhereInput
@@ -244,63 +313,6 @@ export interface Prisma {
       first?: Int
       last?: Int
    }) => TestResultConnectionPromise
-   timeResult: (where: TimeResultWhereUniqueInput) => TimeResultNullablePromise
-   timeResults: (args?: {
-      where?: TimeResultWhereInput
-      orderBy?: TimeResultOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => FragmentableArray<TimeResult>
-   timeResultsConnection: (args?: {
-      where?: TimeResultWhereInput
-      orderBy?: TimeResultOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => TimeResultConnectionPromise
-   view: (where: ViewWhereUniqueInput) => ViewNullablePromise
-   views: (args?: {
-      where?: ViewWhereInput
-      orderBy?: ViewOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => FragmentableArray<View>
-   viewsConnection: (args?: {
-      where?: ViewWhereInput
-      orderBy?: ViewOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => ViewConnectionPromise
-   welcome: (where: WelcomeWhereUniqueInput) => WelcomeNullablePromise
-   welcomes: (args?: {
-      where?: WelcomeWhereInput
-      orderBy?: WelcomeOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => FragmentableArray<Welcome>
-   welcomesConnection: (args?: {
-      where?: WelcomeWhereInput
-      orderBy?: WelcomeOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => WelcomeConnectionPromise
    node: (args: { id: ID_Output }) => Node
 
    /**
@@ -323,27 +335,79 @@ export interface Prisma {
    }) => CompanyPromise
    deleteCompany: (where: CompanyWhereUniqueInput) => CompanyPromise
    deleteManyCompanies: (where?: CompanyWhereInput) => BatchPayloadPromise
-   createKeyResultStatus: (
-      data: KeyResultStatusCreateInput,
-   ) => KeyResultStatusPromise
-   updateKeyResultStatus: (args: {
-      data: KeyResultStatusUpdateInput
-      where: KeyResultStatusWhereUniqueInput
-   }) => KeyResultStatusPromise
-   updateManyKeyResultStatuses: (args: {
-      data: KeyResultStatusUpdateManyMutationInput
-      where?: KeyResultStatusWhereInput
+   createKey: (data: KeyCreateInput) => KeyPromise
+   updateKey: (args: {
+      data: KeyUpdateInput
+      where: KeyWhereUniqueInput
+   }) => KeyPromise
+   upsertKey: (args: {
+      where: KeyWhereUniqueInput
+      create: KeyCreateInput
+      update: KeyUpdateInput
+   }) => KeyPromise
+   deleteKey: (where: KeyWhereUniqueInput) => KeyPromise
+   deleteManyKeys: (where?: KeyWhereInput) => BatchPayloadPromise
+   createKeyLanguage: (data: KeyLanguageCreateInput) => KeyLanguagePromise
+   updateKeyLanguage: (args: {
+      data: KeyLanguageUpdateInput
+      where: KeyLanguageWhereUniqueInput
+   }) => KeyLanguagePromise
+   updateManyKeyLanguages: (args: {
+      data: KeyLanguageUpdateManyMutationInput
+      where?: KeyLanguageWhereInput
    }) => BatchPayloadPromise
-   upsertKeyResultStatus: (args: {
-      where: KeyResultStatusWhereUniqueInput
-      create: KeyResultStatusCreateInput
-      update: KeyResultStatusUpdateInput
-   }) => KeyResultStatusPromise
-   deleteKeyResultStatus: (
-      where: KeyResultStatusWhereUniqueInput,
-   ) => KeyResultStatusPromise
-   deleteManyKeyResultStatuses: (
-      where?: KeyResultStatusWhereInput,
+   upsertKeyLanguage: (args: {
+      where: KeyLanguageWhereUniqueInput
+      create: KeyLanguageCreateInput
+      update: KeyLanguageUpdateInput
+   }) => KeyLanguagePromise
+   deleteKeyLanguage: (where: KeyLanguageWhereUniqueInput) => KeyLanguagePromise
+   deleteManyKeyLanguages: (
+      where?: KeyLanguageWhereInput,
+   ) => BatchPayloadPromise
+   createKeyStepResultStatus: (
+      data: KeyStepResultStatusCreateInput,
+   ) => KeyStepResultStatusPromise
+   updateKeyStepResultStatus: (args: {
+      data: KeyStepResultStatusUpdateInput
+      where: KeyStepResultStatusWhereUniqueInput
+   }) => KeyStepResultStatusPromise
+   updateManyKeyStepResultStatuses: (args: {
+      data: KeyStepResultStatusUpdateManyMutationInput
+      where?: KeyStepResultStatusWhereInput
+   }) => BatchPayloadPromise
+   upsertKeyStepResultStatus: (args: {
+      where: KeyStepResultStatusWhereUniqueInput
+      create: KeyStepResultStatusCreateInput
+      update: KeyStepResultStatusUpdateInput
+   }) => KeyStepResultStatusPromise
+   deleteKeyStepResultStatus: (
+      where: KeyStepResultStatusWhereUniqueInput,
+   ) => KeyStepResultStatusPromise
+   deleteManyKeyStepResultStatuses: (
+      where?: KeyStepResultStatusWhereInput,
+   ) => BatchPayloadPromise
+   createKeyTestResultStatus: (
+      data: KeyTestResultStatusCreateInput,
+   ) => KeyTestResultStatusPromise
+   updateKeyTestResultStatus: (args: {
+      data: KeyTestResultStatusUpdateInput
+      where: KeyTestResultStatusWhereUniqueInput
+   }) => KeyTestResultStatusPromise
+   updateManyKeyTestResultStatuses: (args: {
+      data: KeyTestResultStatusUpdateManyMutationInput
+      where?: KeyTestResultStatusWhereInput
+   }) => BatchPayloadPromise
+   upsertKeyTestResultStatus: (args: {
+      where: KeyTestResultStatusWhereUniqueInput
+      create: KeyTestResultStatusCreateInput
+      update: KeyTestResultStatusUpdateInput
+   }) => KeyTestResultStatusPromise
+   deleteKeyTestResultStatus: (
+      where: KeyTestResultStatusWhereUniqueInput,
+   ) => KeyTestResultStatusPromise
+   deleteManyKeyTestResultStatuses: (
+      where?: KeyTestResultStatusWhereInput,
    ) => BatchPayloadPromise
    createKeyUserType: (data: KeyUserTypeCreateInput) => KeyUserTypePromise
    updateKeyUserType: (args: {
@@ -363,18 +427,6 @@ export interface Prisma {
    deleteManyKeyUserTypes: (
       where?: KeyUserTypeWhereInput,
    ) => BatchPayloadPromise
-   createKeys: (data: KeysCreateInput) => KeysPromise
-   updateKeys: (args: {
-      data: KeysUpdateInput
-      where: KeysWhereUniqueInput
-   }) => KeysPromise
-   upsertKeys: (args: {
-      where: KeysWhereUniqueInput
-      create: KeysCreateInput
-      update: KeysUpdateInput
-   }) => KeysPromise
-   deleteKeys: (where: KeysWhereUniqueInput) => KeysPromise
-   deleteManyKeyses: (where?: KeysWhereInput) => BatchPayloadPromise
    createMenu: (data: MenuCreateInput) => MenuPromise
    updateMenu: (args: {
       data: MenuUpdateInput
@@ -391,27 +443,45 @@ export interface Prisma {
    }) => MenuPromise
    deleteMenu: (where: MenuWhereUniqueInput) => MenuPromise
    deleteManyMenus: (where?: MenuWhereInput) => BatchPayloadPromise
-   createPath: (data: PathCreateInput) => PathPromise
-   updatePath: (args: {
-      data: PathUpdateInput
-      where: PathWhereUniqueInput
-   }) => PathPromise
-   upsertPath: (args: {
-      where: PathWhereUniqueInput
-      create: PathCreateInput
-      update: PathUpdateInput
-   }) => PathPromise
-   deletePath: (where: PathWhereUniqueInput) => PathPromise
-   deleteManyPaths: (where?: PathWhereInput) => BatchPayloadPromise
+   createMessage: (data: MessageCreateInput) => MessagePromise
+   updateMessage: (args: {
+      data: MessageUpdateInput
+      where: MessageWhereUniqueInput
+   }) => MessagePromise
+   upsertMessage: (args: {
+      where: MessageWhereUniqueInput
+      create: MessageCreateInput
+      update: MessageUpdateInput
+   }) => MessagePromise
+   deleteMessage: (where: MessageWhereUniqueInput) => MessagePromise
+   deleteManyMessages: (where?: MessageWhereInput) => BatchPayloadPromise
+   createMultiLanguageContent: (
+      data: MultiLanguageContentCreateInput,
+   ) => MultiLanguageContentPromise
+   updateMultiLanguageContent: (args: {
+      data: MultiLanguageContentUpdateInput
+      where: MultiLanguageContentWhereUniqueInput
+   }) => MultiLanguageContentPromise
+   updateManyMultiLanguageContents: (args: {
+      data: MultiLanguageContentUpdateManyMutationInput
+      where?: MultiLanguageContentWhereInput
+   }) => BatchPayloadPromise
+   upsertMultiLanguageContent: (args: {
+      where: MultiLanguageContentWhereUniqueInput
+      create: MultiLanguageContentCreateInput
+      update: MultiLanguageContentUpdateInput
+   }) => MultiLanguageContentPromise
+   deleteMultiLanguageContent: (
+      where: MultiLanguageContentWhereUniqueInput,
+   ) => MultiLanguageContentPromise
+   deleteManyMultiLanguageContents: (
+      where?: MultiLanguageContentWhereInput,
+   ) => BatchPayloadPromise
    createStep: (data: StepCreateInput) => StepPromise
    updateStep: (args: {
       data: StepUpdateInput
       where: StepWhereUniqueInput
    }) => StepPromise
-   updateManySteps: (args: {
-      data: StepUpdateManyMutationInput
-      where?: StepWhereInput
-   }) => BatchPayloadPromise
    upsertStep: (args: {
       where: StepWhereUniqueInput
       create: StepCreateInput
@@ -440,10 +510,6 @@ export interface Prisma {
       data: TestUpdateInput
       where: TestWhereUniqueInput
    }) => TestPromise
-   updateManyTests: (args: {
-      data: TestUpdateManyMutationInput
-      where?: TestWhereInput
-   }) => BatchPayloadPromise
    upsertTest: (args: {
       where: TestWhereUniqueInput
       create: TestCreateInput
@@ -467,50 +533,6 @@ export interface Prisma {
    }) => TestResultPromise
    deleteTestResult: (where: TestResultWhereUniqueInput) => TestResultPromise
    deleteManyTestResults: (where?: TestResultWhereInput) => BatchPayloadPromise
-   createTimeResult: (data: TimeResultCreateInput) => TimeResultPromise
-   updateTimeResult: (args: {
-      data: TimeResultUpdateInput
-      where: TimeResultWhereUniqueInput
-   }) => TimeResultPromise
-   updateManyTimeResults: (args: {
-      data: TimeResultUpdateManyMutationInput
-      where?: TimeResultWhereInput
-   }) => BatchPayloadPromise
-   upsertTimeResult: (args: {
-      where: TimeResultWhereUniqueInput
-      create: TimeResultCreateInput
-      update: TimeResultUpdateInput
-   }) => TimeResultPromise
-   deleteTimeResult: (where: TimeResultWhereUniqueInput) => TimeResultPromise
-   deleteManyTimeResults: (where?: TimeResultWhereInput) => BatchPayloadPromise
-   createView: (data: ViewCreateInput) => ViewPromise
-   updateView: (args: {
-      data: ViewUpdateInput
-      where: ViewWhereUniqueInput
-   }) => ViewPromise
-   upsertView: (args: {
-      where: ViewWhereUniqueInput
-      create: ViewCreateInput
-      update: ViewUpdateInput
-   }) => ViewPromise
-   deleteView: (where: ViewWhereUniqueInput) => ViewPromise
-   deleteManyViews: (where?: ViewWhereInput) => BatchPayloadPromise
-   createWelcome: (data: WelcomeCreateInput) => WelcomePromise
-   updateWelcome: (args: {
-      data: WelcomeUpdateInput
-      where: WelcomeWhereUniqueInput
-   }) => WelcomePromise
-   updateManyWelcomes: (args: {
-      data: WelcomeUpdateManyMutationInput
-      where?: WelcomeWhereInput
-   }) => BatchPayloadPromise
-   upsertWelcome: (args: {
-      where: WelcomeWhereUniqueInput
-      create: WelcomeCreateInput
-      update: WelcomeUpdateInput
-   }) => WelcomePromise
-   deleteWelcome: (where: WelcomeWhereUniqueInput) => WelcomePromise
-   deleteManyWelcomes: (where?: WelcomeWhereInput) => BatchPayloadPromise
 
    /**
     * Subscriptions
@@ -523,21 +545,30 @@ export interface Subscription {
    company: (
       where?: CompanySubscriptionWhereInput,
    ) => CompanySubscriptionPayloadSubscription
-   keyResultStatus: (
-      where?: KeyResultStatusSubscriptionWhereInput,
-   ) => KeyResultStatusSubscriptionPayloadSubscription
+   key: (
+      where?: KeySubscriptionWhereInput,
+   ) => KeySubscriptionPayloadSubscription
+   keyLanguage: (
+      where?: KeyLanguageSubscriptionWhereInput,
+   ) => KeyLanguageSubscriptionPayloadSubscription
+   keyStepResultStatus: (
+      where?: KeyStepResultStatusSubscriptionWhereInput,
+   ) => KeyStepResultStatusSubscriptionPayloadSubscription
+   keyTestResultStatus: (
+      where?: KeyTestResultStatusSubscriptionWhereInput,
+   ) => KeyTestResultStatusSubscriptionPayloadSubscription
    keyUserType: (
       where?: KeyUserTypeSubscriptionWhereInput,
    ) => KeyUserTypeSubscriptionPayloadSubscription
-   keys: (
-      where?: KeysSubscriptionWhereInput,
-   ) => KeysSubscriptionPayloadSubscription
    menu: (
       where?: MenuSubscriptionWhereInput,
    ) => MenuSubscriptionPayloadSubscription
-   path: (
-      where?: PathSubscriptionWhereInput,
-   ) => PathSubscriptionPayloadSubscription
+   message: (
+      where?: MessageSubscriptionWhereInput,
+   ) => MessageSubscriptionPayloadSubscription
+   multiLanguageContent: (
+      where?: MultiLanguageContentSubscriptionWhereInput,
+   ) => MultiLanguageContentSubscriptionPayloadSubscription
    step: (
       where?: StepSubscriptionWhereInput,
    ) => StepSubscriptionPayloadSubscription
@@ -550,15 +581,6 @@ export interface Subscription {
    testResult: (
       where?: TestResultSubscriptionWhereInput,
    ) => TestResultSubscriptionPayloadSubscription
-   timeResult: (
-      where?: TimeResultSubscriptionWhereInput,
-   ) => TimeResultSubscriptionPayloadSubscription
-   view: (
-      where?: ViewSubscriptionWhereInput,
-   ) => ViewSubscriptionPayloadSubscription
-   welcome: (
-      where?: WelcomeSubscriptionWhereInput,
-   ) => WelcomeSubscriptionPayloadSubscription
 }
 
 export interface ClientConstructor<T> {
@@ -569,29 +591,7 @@ export interface ClientConstructor<T> {
  * Types
  */
 
-export type CompanyOrderByInput =
-   | 'id_ASC'
-   | 'id_DESC'
-   | 'name_ASC'
-   | 'name_DESC'
-   | 'abbr_ASC'
-   | 'abbr_DESC'
-   | 'logo_ASC'
-   | 'logo_DESC'
-
-export type TestResultOrderByInput =
-   | 'id_ASC'
-   | 'id_DESC'
-   | 'start_ASC'
-   | 'start_DESC'
-   | 'end_ASC'
-   | 'end_DESC'
-
-export type StepOrderByInput =
-   | 'id_ASC'
-   | 'id_DESC'
-   | 'question_ASC'
-   | 'question_DESC'
+export type TestOrderByInput = 'id_ASC' | 'id_DESC'
 
 export type KeyUserTypeOrderByInput =
    | 'id_ASC'
@@ -599,15 +599,15 @@ export type KeyUserTypeOrderByInput =
    | 'key_ASC'
    | 'key_DESC'
 
-export type MenuOrderByInput =
+export type KeyLanguageOrderByInput =
    | 'id_ASC'
    | 'id_DESC'
-   | 'root_ASC'
-   | 'root_DESC'
-   | 'name_ASC'
-   | 'name_DESC'
+   | 'key_ASC'
+   | 'key_DESC'
 
-export type PathOrderByInput = 'id_ASC' | 'id_DESC'
+export type StepOrderByInput = 'id_ASC' | 'id_DESC'
+
+export type MenuOrderByInput = 'id_ASC' | 'id_DESC' | 'root_ASC' | 'root_DESC'
 
 export type StepResultOrderByInput =
    | 'id_ASC'
@@ -616,40 +616,216 @@ export type StepResultOrderByInput =
    | 'start_DESC'
    | 'end_ASC'
    | 'end_DESC'
+   | 'time_ASC'
+   | 'time_DESC'
 
-export type KeyResultStatusOrderByInput =
+export type TestResultOrderByInput =
+   | 'id_ASC'
+   | 'id_DESC'
+   | 'start_ASC'
+   | 'start_DESC'
+   | 'end_ASC'
+   | 'end_DESC'
+   | 'duration_ASC'
+   | 'duration_DESC'
+
+export type KeyTestResultStatusOrderByInput =
    | 'id_ASC'
    | 'id_DESC'
    | 'key_ASC'
    | 'key_DESC'
 
-export type KeysOrderByInput = 'id_ASC' | 'id_DESC'
-
-export type TestOrderByInput = 'id_ASC' | 'id_DESC' | 'title_ASC' | 'title_DESC'
-
-export type TimeResultOrderByInput =
+export type KeyStepResultStatusOrderByInput =
    | 'id_ASC'
    | 'id_DESC'
-   | 'int_ASC'
-   | 'int_DESC'
-   | 'text_ASC'
-   | 'text_DESC'
+   | 'key_ASC'
+   | 'key_DESC'
 
-export type ViewOrderByInput = 'id_ASC' | 'id_DESC'
-
-export type WelcomeOrderByInput =
+export type CompanyOrderByInput =
    | 'id_ASC'
    | 'id_DESC'
-   | 'title_ASC'
-   | 'title_DESC'
-   | 'message_ASC'
-   | 'message_DESC'
+   | 'name_ASC'
+   | 'name_DESC'
+   | 'abbr_ASC'
+   | 'abbr_DESC'
+
+export type KeyOrderByInput = 'id_ASC' | 'id_DESC'
+
+export type MessageOrderByInput = 'id_ASC' | 'id_DESC'
+
+export type MultiLanguageContentOrderByInput =
+   | 'id_ASC'
+   | 'id_DESC'
+   | 'pt_ASC'
+   | 'pt_DESC'
+   | 'en_ASC'
+   | 'en_DESC'
 
 export type MutationType = 'CREATED' | 'UPDATED' | 'DELETED'
 
 export type CompanyWhereUniqueInput = AtLeastOne<{
    id: Maybe<ID_Input>
+   name?: Maybe<String>
 }>
+
+export interface TestWhereInput {
+   id?: Maybe<ID_Input>
+   id_not?: Maybe<ID_Input>
+   id_in?: Maybe<ID_Input[] | ID_Input>
+   id_not_in?: Maybe<ID_Input[] | ID_Input>
+   id_lt?: Maybe<ID_Input>
+   id_lte?: Maybe<ID_Input>
+   id_gt?: Maybe<ID_Input>
+   id_gte?: Maybe<ID_Input>
+   id_contains?: Maybe<ID_Input>
+   id_not_contains?: Maybe<ID_Input>
+   id_starts_with?: Maybe<ID_Input>
+   id_not_starts_with?: Maybe<ID_Input>
+   id_ends_with?: Maybe<ID_Input>
+   id_not_ends_with?: Maybe<ID_Input>
+   publics_some?: Maybe<KeyUserTypeWhereInput>
+   languages_some?: Maybe<KeyLanguageWhereInput>
+   instruction?: Maybe<MessageWhereInput>
+   company?: Maybe<CompanyWhereInput>
+   title?: Maybe<MultiLanguageContentWhereInput>
+   steps_some?: Maybe<StepWhereInput>
+   menus_some?: Maybe<MenuWhereInput>
+   results_some?: Maybe<TestResultWhereInput>
+   keys?: Maybe<KeyWhereInput>
+   AND?: Maybe<TestWhereInput[] | TestWhereInput>
+}
+
+export interface KeyUserTypeWhereInput {
+   id?: Maybe<ID_Input>
+   id_not?: Maybe<ID_Input>
+   id_in?: Maybe<ID_Input[] | ID_Input>
+   id_not_in?: Maybe<ID_Input[] | ID_Input>
+   id_lt?: Maybe<ID_Input>
+   id_lte?: Maybe<ID_Input>
+   id_gt?: Maybe<ID_Input>
+   id_gte?: Maybe<ID_Input>
+   id_contains?: Maybe<ID_Input>
+   id_not_contains?: Maybe<ID_Input>
+   id_starts_with?: Maybe<ID_Input>
+   id_not_starts_with?: Maybe<ID_Input>
+   id_ends_with?: Maybe<ID_Input>
+   id_not_ends_with?: Maybe<ID_Input>
+   key?: Maybe<String>
+   key_not?: Maybe<String>
+   key_in?: Maybe<String[] | String>
+   key_not_in?: Maybe<String[] | String>
+   key_lt?: Maybe<String>
+   key_lte?: Maybe<String>
+   key_gt?: Maybe<String>
+   key_gte?: Maybe<String>
+   key_contains?: Maybe<String>
+   key_not_contains?: Maybe<String>
+   key_starts_with?: Maybe<String>
+   key_not_starts_with?: Maybe<String>
+   key_ends_with?: Maybe<String>
+   key_not_ends_with?: Maybe<String>
+   AND?: Maybe<KeyUserTypeWhereInput[] | KeyUserTypeWhereInput>
+}
+
+export interface KeyLanguageWhereInput {
+   id?: Maybe<ID_Input>
+   id_not?: Maybe<ID_Input>
+   id_in?: Maybe<ID_Input[] | ID_Input>
+   id_not_in?: Maybe<ID_Input[] | ID_Input>
+   id_lt?: Maybe<ID_Input>
+   id_lte?: Maybe<ID_Input>
+   id_gt?: Maybe<ID_Input>
+   id_gte?: Maybe<ID_Input>
+   id_contains?: Maybe<ID_Input>
+   id_not_contains?: Maybe<ID_Input>
+   id_starts_with?: Maybe<ID_Input>
+   id_not_starts_with?: Maybe<ID_Input>
+   id_ends_with?: Maybe<ID_Input>
+   id_not_ends_with?: Maybe<ID_Input>
+   key?: Maybe<String>
+   key_not?: Maybe<String>
+   key_in?: Maybe<String[] | String>
+   key_not_in?: Maybe<String[] | String>
+   key_lt?: Maybe<String>
+   key_lte?: Maybe<String>
+   key_gt?: Maybe<String>
+   key_gte?: Maybe<String>
+   key_contains?: Maybe<String>
+   key_not_contains?: Maybe<String>
+   key_starts_with?: Maybe<String>
+   key_not_starts_with?: Maybe<String>
+   key_ends_with?: Maybe<String>
+   key_not_ends_with?: Maybe<String>
+   AND?: Maybe<KeyLanguageWhereInput[] | KeyLanguageWhereInput>
+}
+
+export interface MessageWhereInput {
+   id?: Maybe<ID_Input>
+   id_not?: Maybe<ID_Input>
+   id_in?: Maybe<ID_Input[] | ID_Input>
+   id_not_in?: Maybe<ID_Input[] | ID_Input>
+   id_lt?: Maybe<ID_Input>
+   id_lte?: Maybe<ID_Input>
+   id_gt?: Maybe<ID_Input>
+   id_gte?: Maybe<ID_Input>
+   id_contains?: Maybe<ID_Input>
+   id_not_contains?: Maybe<ID_Input>
+   id_starts_with?: Maybe<ID_Input>
+   id_not_starts_with?: Maybe<ID_Input>
+   id_ends_with?: Maybe<ID_Input>
+   id_not_ends_with?: Maybe<ID_Input>
+   title?: Maybe<MultiLanguageContentWhereInput>
+   message?: Maybe<MultiLanguageContentWhereInput>
+   AND?: Maybe<MessageWhereInput[] | MessageWhereInput>
+}
+
+export interface MultiLanguageContentWhereInput {
+   id?: Maybe<ID_Input>
+   id_not?: Maybe<ID_Input>
+   id_in?: Maybe<ID_Input[] | ID_Input>
+   id_not_in?: Maybe<ID_Input[] | ID_Input>
+   id_lt?: Maybe<ID_Input>
+   id_lte?: Maybe<ID_Input>
+   id_gt?: Maybe<ID_Input>
+   id_gte?: Maybe<ID_Input>
+   id_contains?: Maybe<ID_Input>
+   id_not_contains?: Maybe<ID_Input>
+   id_starts_with?: Maybe<ID_Input>
+   id_not_starts_with?: Maybe<ID_Input>
+   id_ends_with?: Maybe<ID_Input>
+   id_not_ends_with?: Maybe<ID_Input>
+   pt?: Maybe<String>
+   pt_not?: Maybe<String>
+   pt_in?: Maybe<String[] | String>
+   pt_not_in?: Maybe<String[] | String>
+   pt_lt?: Maybe<String>
+   pt_lte?: Maybe<String>
+   pt_gt?: Maybe<String>
+   pt_gte?: Maybe<String>
+   pt_contains?: Maybe<String>
+   pt_not_contains?: Maybe<String>
+   pt_starts_with?: Maybe<String>
+   pt_not_starts_with?: Maybe<String>
+   pt_ends_with?: Maybe<String>
+   pt_not_ends_with?: Maybe<String>
+   en?: Maybe<String>
+   en_not?: Maybe<String>
+   en_in?: Maybe<String[] | String>
+   en_not_in?: Maybe<String[] | String>
+   en_lt?: Maybe<String>
+   en_lte?: Maybe<String>
+   en_gt?: Maybe<String>
+   en_gte?: Maybe<String>
+   en_contains?: Maybe<String>
+   en_not_contains?: Maybe<String>
+   en_starts_with?: Maybe<String>
+   en_not_starts_with?: Maybe<String>
+   en_ends_with?: Maybe<String>
+   en_not_ends_with?: Maybe<String>
+   AND?: Maybe<
+      MultiLanguageContentWhereInput[] | MultiLanguageContentWhereInput
+   >
+}
 
 export interface CompanyWhereInput {
    id?: Maybe<ID_Input>
@@ -694,27 +870,102 @@ export interface CompanyWhereInput {
    abbr_not_starts_with?: Maybe<String>
    abbr_ends_with?: Maybe<String>
    abbr_not_ends_with?: Maybe<String>
-   logo?: Maybe<String>
-   logo_not?: Maybe<String>
-   logo_in?: Maybe<String[] | String>
-   logo_not_in?: Maybe<String[] | String>
-   logo_lt?: Maybe<String>
-   logo_lte?: Maybe<String>
-   logo_gt?: Maybe<String>
-   logo_gte?: Maybe<String>
-   logo_contains?: Maybe<String>
-   logo_not_contains?: Maybe<String>
-   logo_starts_with?: Maybe<String>
-   logo_not_starts_with?: Maybe<String>
-   logo_ends_with?: Maybe<String>
-   logo_not_ends_with?: Maybe<String>
+   welcome?: Maybe<MessageWhereInput>
+   tests_some?: Maybe<TestWhereInput>
    AND?: Maybe<CompanyWhereInput[] | CompanyWhereInput>
 }
 
-export type KeyResultStatusWhereUniqueInput = AtLeastOne<{
-   id: Maybe<ID_Input>
-   key?: Maybe<String>
-}>
+export interface StepWhereInput {
+   id?: Maybe<ID_Input>
+   id_not?: Maybe<ID_Input>
+   id_in?: Maybe<ID_Input[] | ID_Input>
+   id_not_in?: Maybe<ID_Input[] | ID_Input>
+   id_lt?: Maybe<ID_Input>
+   id_lte?: Maybe<ID_Input>
+   id_gt?: Maybe<ID_Input>
+   id_gte?: Maybe<ID_Input>
+   id_contains?: Maybe<ID_Input>
+   id_not_contains?: Maybe<ID_Input>
+   id_starts_with?: Maybe<ID_Input>
+   id_not_starts_with?: Maybe<ID_Input>
+   id_ends_with?: Maybe<ID_Input>
+   id_not_ends_with?: Maybe<ID_Input>
+   type_some?: Maybe<KeyUserTypeWhereInput>
+   question?: Maybe<MultiLanguageContentWhereInput>
+   targets_some?: Maybe<MenuWhereInput>
+   paths_some?: Maybe<MenuWhereInput>
+   results_some?: Maybe<StepResultWhereInput>
+   AND?: Maybe<StepWhereInput[] | StepWhereInput>
+}
+
+export interface MenuWhereInput {
+   id?: Maybe<ID_Input>
+   id_not?: Maybe<ID_Input>
+   id_in?: Maybe<ID_Input[] | ID_Input>
+   id_not_in?: Maybe<ID_Input[] | ID_Input>
+   id_lt?: Maybe<ID_Input>
+   id_lte?: Maybe<ID_Input>
+   id_gt?: Maybe<ID_Input>
+   id_gte?: Maybe<ID_Input>
+   id_contains?: Maybe<ID_Input>
+   id_not_contains?: Maybe<ID_Input>
+   id_starts_with?: Maybe<ID_Input>
+   id_not_starts_with?: Maybe<ID_Input>
+   id_ends_with?: Maybe<ID_Input>
+   id_not_ends_with?: Maybe<ID_Input>
+   root?: Maybe<Boolean>
+   root_not?: Maybe<Boolean>
+   menus_some?: Maybe<MenuWhereInput>
+   name?: Maybe<MultiLanguageContentWhereInput>
+   items_some?: Maybe<MenuWhereInput>
+   AND?: Maybe<MenuWhereInput[] | MenuWhereInput>
+}
+
+export interface StepResultWhereInput {
+   id?: Maybe<ID_Input>
+   id_not?: Maybe<ID_Input>
+   id_in?: Maybe<ID_Input[] | ID_Input>
+   id_not_in?: Maybe<ID_Input[] | ID_Input>
+   id_lt?: Maybe<ID_Input>
+   id_lte?: Maybe<ID_Input>
+   id_gt?: Maybe<ID_Input>
+   id_gte?: Maybe<ID_Input>
+   id_contains?: Maybe<ID_Input>
+   id_not_contains?: Maybe<ID_Input>
+   id_starts_with?: Maybe<ID_Input>
+   id_not_starts_with?: Maybe<ID_Input>
+   id_ends_with?: Maybe<ID_Input>
+   id_not_ends_with?: Maybe<ID_Input>
+   parent?: Maybe<StepWhereInput>
+   result?: Maybe<TestResultWhereInput>
+   start?: Maybe<DateTimeInput>
+   start_not?: Maybe<DateTimeInput>
+   start_in?: Maybe<DateTimeInput[] | DateTimeInput>
+   start_not_in?: Maybe<DateTimeInput[] | DateTimeInput>
+   start_lt?: Maybe<DateTimeInput>
+   start_lte?: Maybe<DateTimeInput>
+   start_gt?: Maybe<DateTimeInput>
+   start_gte?: Maybe<DateTimeInput>
+   end?: Maybe<DateTimeInput>
+   end_not?: Maybe<DateTimeInput>
+   end_in?: Maybe<DateTimeInput[] | DateTimeInput>
+   end_not_in?: Maybe<DateTimeInput[] | DateTimeInput>
+   end_lt?: Maybe<DateTimeInput>
+   end_lte?: Maybe<DateTimeInput>
+   end_gt?: Maybe<DateTimeInput>
+   end_gte?: Maybe<DateTimeInput>
+   time?: Maybe<Int>
+   time_not?: Maybe<Int>
+   time_in?: Maybe<Int[] | Int>
+   time_not_in?: Maybe<Int[] | Int>
+   time_lt?: Maybe<Int>
+   time_lte?: Maybe<Int>
+   time_gt?: Maybe<Int>
+   time_gte?: Maybe<Int>
+   path_some?: Maybe<MenuWhereInput>
+   status?: Maybe<KeyStepResultStatusWhereInput>
+   AND?: Maybe<StepResultWhereInput[] | StepResultWhereInput>
+}
 
 export interface TestResultWhereInput {
    id?: Maybe<ID_Input>
@@ -748,85 +999,20 @@ export interface TestResultWhereInput {
    end_lte?: Maybe<DateTimeInput>
    end_gt?: Maybe<DateTimeInput>
    end_gte?: Maybe<DateTimeInput>
-   time?: Maybe<TimeResultWhereInput>
+   duration?: Maybe<Int>
+   duration_not?: Maybe<Int>
+   duration_in?: Maybe<Int[] | Int>
+   duration_not_in?: Maybe<Int[] | Int>
+   duration_lt?: Maybe<Int>
+   duration_lte?: Maybe<Int>
+   duration_gt?: Maybe<Int>
+   duration_gte?: Maybe<Int>
    steps_some?: Maybe<StepResultWhereInput>
-   status?: Maybe<KeyResultStatusWhereInput>
+   status?: Maybe<KeyTestResultStatusWhereInput>
    AND?: Maybe<TestResultWhereInput[] | TestResultWhereInput>
 }
 
-export interface TestWhereInput {
-   id?: Maybe<ID_Input>
-   id_not?: Maybe<ID_Input>
-   id_in?: Maybe<ID_Input[] | ID_Input>
-   id_not_in?: Maybe<ID_Input[] | ID_Input>
-   id_lt?: Maybe<ID_Input>
-   id_lte?: Maybe<ID_Input>
-   id_gt?: Maybe<ID_Input>
-   id_gte?: Maybe<ID_Input>
-   id_contains?: Maybe<ID_Input>
-   id_not_contains?: Maybe<ID_Input>
-   id_starts_with?: Maybe<ID_Input>
-   id_not_starts_with?: Maybe<ID_Input>
-   id_ends_with?: Maybe<ID_Input>
-   id_not_ends_with?: Maybe<ID_Input>
-   title?: Maybe<String>
-   title_not?: Maybe<String>
-   title_in?: Maybe<String[] | String>
-   title_not_in?: Maybe<String[] | String>
-   title_lt?: Maybe<String>
-   title_lte?: Maybe<String>
-   title_gt?: Maybe<String>
-   title_gte?: Maybe<String>
-   title_contains?: Maybe<String>
-   title_not_contains?: Maybe<String>
-   title_starts_with?: Maybe<String>
-   title_not_starts_with?: Maybe<String>
-   title_ends_with?: Maybe<String>
-   title_not_ends_with?: Maybe<String>
-   steps_some?: Maybe<StepWhereInput>
-   menus_some?: Maybe<MenuWhereInput>
-   results_some?: Maybe<TestResultWhereInput>
-   AND?: Maybe<TestWhereInput[] | TestWhereInput>
-}
-
-export interface StepWhereInput {
-   id?: Maybe<ID_Input>
-   id_not?: Maybe<ID_Input>
-   id_in?: Maybe<ID_Input[] | ID_Input>
-   id_not_in?: Maybe<ID_Input[] | ID_Input>
-   id_lt?: Maybe<ID_Input>
-   id_lte?: Maybe<ID_Input>
-   id_gt?: Maybe<ID_Input>
-   id_gte?: Maybe<ID_Input>
-   id_contains?: Maybe<ID_Input>
-   id_not_contains?: Maybe<ID_Input>
-   id_starts_with?: Maybe<ID_Input>
-   id_not_starts_with?: Maybe<ID_Input>
-   id_ends_with?: Maybe<ID_Input>
-   id_not_ends_with?: Maybe<ID_Input>
-   parent?: Maybe<TestWhereInput>
-   type_some?: Maybe<KeyUserTypeWhereInput>
-   question?: Maybe<String>
-   question_not?: Maybe<String>
-   question_in?: Maybe<String[] | String>
-   question_not_in?: Maybe<String[] | String>
-   question_lt?: Maybe<String>
-   question_lte?: Maybe<String>
-   question_gt?: Maybe<String>
-   question_gte?: Maybe<String>
-   question_contains?: Maybe<String>
-   question_not_contains?: Maybe<String>
-   question_starts_with?: Maybe<String>
-   question_not_starts_with?: Maybe<String>
-   question_ends_with?: Maybe<String>
-   question_not_ends_with?: Maybe<String>
-   targets_some?: Maybe<MenuWhereInput>
-   paths_some?: Maybe<PathWhereInput>
-   results_some?: Maybe<StepResultWhereInput>
-   AND?: Maybe<StepWhereInput[] | StepWhereInput>
-}
-
-export interface KeyUserTypeWhereInput {
+export interface KeyTestResultStatusWhereInput {
    id?: Maybe<ID_Input>
    id_not?: Maybe<ID_Input>
    id_in?: Maybe<ID_Input[] | ID_Input>
@@ -855,146 +1041,10 @@ export interface KeyUserTypeWhereInput {
    key_not_starts_with?: Maybe<String>
    key_ends_with?: Maybe<String>
    key_not_ends_with?: Maybe<String>
-   steps_some?: Maybe<StepWhereInput>
-   AND?: Maybe<KeyUserTypeWhereInput[] | KeyUserTypeWhereInput>
+   AND?: Maybe<KeyTestResultStatusWhereInput[] | KeyTestResultStatusWhereInput>
 }
 
-export interface MenuWhereInput {
-   id?: Maybe<ID_Input>
-   id_not?: Maybe<ID_Input>
-   id_in?: Maybe<ID_Input[] | ID_Input>
-   id_not_in?: Maybe<ID_Input[] | ID_Input>
-   id_lt?: Maybe<ID_Input>
-   id_lte?: Maybe<ID_Input>
-   id_gt?: Maybe<ID_Input>
-   id_gte?: Maybe<ID_Input>
-   id_contains?: Maybe<ID_Input>
-   id_not_contains?: Maybe<ID_Input>
-   id_starts_with?: Maybe<ID_Input>
-   id_not_starts_with?: Maybe<ID_Input>
-   id_ends_with?: Maybe<ID_Input>
-   id_not_ends_with?: Maybe<ID_Input>
-   root?: Maybe<Boolean>
-   root_not?: Maybe<Boolean>
-   menus_some?: Maybe<MenuWhereInput>
-   name?: Maybe<String>
-   name_not?: Maybe<String>
-   name_in?: Maybe<String[] | String>
-   name_not_in?: Maybe<String[] | String>
-   name_lt?: Maybe<String>
-   name_lte?: Maybe<String>
-   name_gt?: Maybe<String>
-   name_gte?: Maybe<String>
-   name_contains?: Maybe<String>
-   name_not_contains?: Maybe<String>
-   name_starts_with?: Maybe<String>
-   name_not_starts_with?: Maybe<String>
-   name_ends_with?: Maybe<String>
-   name_not_ends_with?: Maybe<String>
-   items_some?: Maybe<MenuWhereInput>
-   AND?: Maybe<MenuWhereInput[] | MenuWhereInput>
-}
-
-export interface PathWhereInput {
-   id?: Maybe<ID_Input>
-   id_not?: Maybe<ID_Input>
-   id_in?: Maybe<ID_Input[] | ID_Input>
-   id_not_in?: Maybe<ID_Input[] | ID_Input>
-   id_lt?: Maybe<ID_Input>
-   id_lte?: Maybe<ID_Input>
-   id_gt?: Maybe<ID_Input>
-   id_gte?: Maybe<ID_Input>
-   id_contains?: Maybe<ID_Input>
-   id_not_contains?: Maybe<ID_Input>
-   id_starts_with?: Maybe<ID_Input>
-   id_not_starts_with?: Maybe<ID_Input>
-   id_ends_with?: Maybe<ID_Input>
-   id_not_ends_with?: Maybe<ID_Input>
-   parent?: Maybe<StepWhereInput>
-   paths_some?: Maybe<MenuWhereInput>
-   AND?: Maybe<PathWhereInput[] | PathWhereInput>
-}
-
-export interface StepResultWhereInput {
-   id?: Maybe<ID_Input>
-   id_not?: Maybe<ID_Input>
-   id_in?: Maybe<ID_Input[] | ID_Input>
-   id_not_in?: Maybe<ID_Input[] | ID_Input>
-   id_lt?: Maybe<ID_Input>
-   id_lte?: Maybe<ID_Input>
-   id_gt?: Maybe<ID_Input>
-   id_gte?: Maybe<ID_Input>
-   id_contains?: Maybe<ID_Input>
-   id_not_contains?: Maybe<ID_Input>
-   id_starts_with?: Maybe<ID_Input>
-   id_not_starts_with?: Maybe<ID_Input>
-   id_ends_with?: Maybe<ID_Input>
-   id_not_ends_with?: Maybe<ID_Input>
-   parent?: Maybe<StepWhereInput>
-   resultParent?: Maybe<TestResultWhereInput>
-   start?: Maybe<DateTimeInput>
-   start_not?: Maybe<DateTimeInput>
-   start_in?: Maybe<DateTimeInput[] | DateTimeInput>
-   start_not_in?: Maybe<DateTimeInput[] | DateTimeInput>
-   start_lt?: Maybe<DateTimeInput>
-   start_lte?: Maybe<DateTimeInput>
-   start_gt?: Maybe<DateTimeInput>
-   start_gte?: Maybe<DateTimeInput>
-   end?: Maybe<DateTimeInput>
-   end_not?: Maybe<DateTimeInput>
-   end_in?: Maybe<DateTimeInput[] | DateTimeInput>
-   end_not_in?: Maybe<DateTimeInput[] | DateTimeInput>
-   end_lt?: Maybe<DateTimeInput>
-   end_lte?: Maybe<DateTimeInput>
-   end_gt?: Maybe<DateTimeInput>
-   end_gte?: Maybe<DateTimeInput>
-   time?: Maybe<TimeResultWhereInput>
-   path_some?: Maybe<MenuWhereInput>
-   status?: Maybe<KeyResultStatusWhereInput>
-   AND?: Maybe<StepResultWhereInput[] | StepResultWhereInput>
-}
-
-export interface TimeResultWhereInput {
-   id?: Maybe<ID_Input>
-   id_not?: Maybe<ID_Input>
-   id_in?: Maybe<ID_Input[] | ID_Input>
-   id_not_in?: Maybe<ID_Input[] | ID_Input>
-   id_lt?: Maybe<ID_Input>
-   id_lte?: Maybe<ID_Input>
-   id_gt?: Maybe<ID_Input>
-   id_gte?: Maybe<ID_Input>
-   id_contains?: Maybe<ID_Input>
-   id_not_contains?: Maybe<ID_Input>
-   id_starts_with?: Maybe<ID_Input>
-   id_not_starts_with?: Maybe<ID_Input>
-   id_ends_with?: Maybe<ID_Input>
-   id_not_ends_with?: Maybe<ID_Input>
-   int?: Maybe<Int>
-   int_not?: Maybe<Int>
-   int_in?: Maybe<Int[] | Int>
-   int_not_in?: Maybe<Int[] | Int>
-   int_lt?: Maybe<Int>
-   int_lte?: Maybe<Int>
-   int_gt?: Maybe<Int>
-   int_gte?: Maybe<Int>
-   text?: Maybe<String>
-   text_not?: Maybe<String>
-   text_in?: Maybe<String[] | String>
-   text_not_in?: Maybe<String[] | String>
-   text_lt?: Maybe<String>
-   text_lte?: Maybe<String>
-   text_gt?: Maybe<String>
-   text_gte?: Maybe<String>
-   text_contains?: Maybe<String>
-   text_not_contains?: Maybe<String>
-   text_starts_with?: Maybe<String>
-   text_not_starts_with?: Maybe<String>
-   text_ends_with?: Maybe<String>
-   text_not_ends_with?: Maybe<String>
-   AND?: Maybe<TimeResultWhereInput[] | TimeResultWhereInput>
-}
-
-export interface KeyResultStatusWhereInput {
+export interface KeyStepResultStatusWhereInput {
    id?: Maybe<ID_Input>
    id_not?: Maybe<ID_Input>
    id_in?: Maybe<ID_Input[] | ID_Input>
@@ -1023,44 +1073,64 @@ export interface KeyResultStatusWhereInput {
    key_not_starts_with?: Maybe<String>
    key_ends_with?: Maybe<String>
    key_not_ends_with?: Maybe<String>
-   results_some?: Maybe<TestResultWhereInput>
-   AND?: Maybe<KeyResultStatusWhereInput[] | KeyResultStatusWhereInput>
+   AND?: Maybe<KeyStepResultStatusWhereInput[] | KeyStepResultStatusWhereInput>
 }
+
+export interface KeyWhereInput {
+   id?: Maybe<ID_Input>
+   id_not?: Maybe<ID_Input>
+   id_in?: Maybe<ID_Input[] | ID_Input>
+   id_not_in?: Maybe<ID_Input[] | ID_Input>
+   id_lt?: Maybe<ID_Input>
+   id_lte?: Maybe<ID_Input>
+   id_gt?: Maybe<ID_Input>
+   id_gte?: Maybe<ID_Input>
+   id_contains?: Maybe<ID_Input>
+   id_not_contains?: Maybe<ID_Input>
+   id_starts_with?: Maybe<ID_Input>
+   id_not_starts_with?: Maybe<ID_Input>
+   id_ends_with?: Maybe<ID_Input>
+   id_not_ends_with?: Maybe<ID_Input>
+   userTypes_some?: Maybe<KeyUserTypeWhereInput>
+   testResultStatus_some?: Maybe<KeyTestResultStatusWhereInput>
+   stepResultStatus_some?: Maybe<KeyStepResultStatusWhereInput>
+   languages_some?: Maybe<KeyLanguageWhereInput>
+   AND?: Maybe<KeyWhereInput[] | KeyWhereInput>
+}
+
+export type KeyWhereUniqueInput = AtLeastOne<{
+   id: Maybe<ID_Input>
+}>
+
+export type KeyLanguageWhereUniqueInput = AtLeastOne<{
+   id: Maybe<ID_Input>
+   key?: Maybe<String>
+}>
+
+export type KeyStepResultStatusWhereUniqueInput = AtLeastOne<{
+   id: Maybe<ID_Input>
+   key?: Maybe<String>
+}>
+
+export type KeyTestResultStatusWhereUniqueInput = AtLeastOne<{
+   id: Maybe<ID_Input>
+   key?: Maybe<String>
+}>
 
 export type KeyUserTypeWhereUniqueInput = AtLeastOne<{
    id: Maybe<ID_Input>
    key?: Maybe<String>
 }>
 
-export type KeysWhereUniqueInput = AtLeastOne<{
-   id: Maybe<ID_Input>
-}>
-
-export interface KeysWhereInput {
-   id?: Maybe<ID_Input>
-   id_not?: Maybe<ID_Input>
-   id_in?: Maybe<ID_Input[] | ID_Input>
-   id_not_in?: Maybe<ID_Input[] | ID_Input>
-   id_lt?: Maybe<ID_Input>
-   id_lte?: Maybe<ID_Input>
-   id_gt?: Maybe<ID_Input>
-   id_gte?: Maybe<ID_Input>
-   id_contains?: Maybe<ID_Input>
-   id_not_contains?: Maybe<ID_Input>
-   id_starts_with?: Maybe<ID_Input>
-   id_not_starts_with?: Maybe<ID_Input>
-   id_ends_with?: Maybe<ID_Input>
-   id_not_ends_with?: Maybe<ID_Input>
-   userType_some?: Maybe<KeyUserTypeWhereInput>
-   resultStatus_some?: Maybe<KeyResultStatusWhereInput>
-   AND?: Maybe<KeysWhereInput[] | KeysWhereInput>
-}
-
 export type MenuWhereUniqueInput = AtLeastOne<{
    id: Maybe<ID_Input>
 }>
 
-export type PathWhereUniqueInput = AtLeastOne<{
+export type MessageWhereUniqueInput = AtLeastOne<{
+   id: Maybe<ID_Input>
+}>
+
+export type MultiLanguageContentWhereUniqueInput = AtLeastOne<{
    id: Maybe<ID_Input>
 }>
 
@@ -1080,164 +1150,87 @@ export type TestResultWhereUniqueInput = AtLeastOne<{
    id: Maybe<ID_Input>
 }>
 
-export type TimeResultWhereUniqueInput = AtLeastOne<{
-   id: Maybe<ID_Input>
-}>
-
-export type ViewWhereUniqueInput = AtLeastOne<{
-   id: Maybe<ID_Input>
-}>
-
-export interface ViewWhereInput {
-   id?: Maybe<ID_Input>
-   id_not?: Maybe<ID_Input>
-   id_in?: Maybe<ID_Input[] | ID_Input>
-   id_not_in?: Maybe<ID_Input[] | ID_Input>
-   id_lt?: Maybe<ID_Input>
-   id_lte?: Maybe<ID_Input>
-   id_gt?: Maybe<ID_Input>
-   id_gte?: Maybe<ID_Input>
-   id_contains?: Maybe<ID_Input>
-   id_not_contains?: Maybe<ID_Input>
-   id_starts_with?: Maybe<ID_Input>
-   id_not_starts_with?: Maybe<ID_Input>
-   id_ends_with?: Maybe<ID_Input>
-   id_not_ends_with?: Maybe<ID_Input>
-   welcome?: Maybe<WelcomeWhereInput>
-   company?: Maybe<CompanyWhereInput>
-   menus_some?: Maybe<MenuWhereInput>
-   tests_some?: Maybe<TestWhereInput>
-   steps_some?: Maybe<StepWhereInput>
-   AND?: Maybe<ViewWhereInput[] | ViewWhereInput>
-}
-
-export interface WelcomeWhereInput {
-   id?: Maybe<ID_Input>
-   id_not?: Maybe<ID_Input>
-   id_in?: Maybe<ID_Input[] | ID_Input>
-   id_not_in?: Maybe<ID_Input[] | ID_Input>
-   id_lt?: Maybe<ID_Input>
-   id_lte?: Maybe<ID_Input>
-   id_gt?: Maybe<ID_Input>
-   id_gte?: Maybe<ID_Input>
-   id_contains?: Maybe<ID_Input>
-   id_not_contains?: Maybe<ID_Input>
-   id_starts_with?: Maybe<ID_Input>
-   id_not_starts_with?: Maybe<ID_Input>
-   id_ends_with?: Maybe<ID_Input>
-   id_not_ends_with?: Maybe<ID_Input>
-   title?: Maybe<String>
-   title_not?: Maybe<String>
-   title_in?: Maybe<String[] | String>
-   title_not_in?: Maybe<String[] | String>
-   title_lt?: Maybe<String>
-   title_lte?: Maybe<String>
-   title_gt?: Maybe<String>
-   title_gte?: Maybe<String>
-   title_contains?: Maybe<String>
-   title_not_contains?: Maybe<String>
-   title_starts_with?: Maybe<String>
-   title_not_starts_with?: Maybe<String>
-   title_ends_with?: Maybe<String>
-   title_not_ends_with?: Maybe<String>
-   message?: Maybe<String>
-   message_not?: Maybe<String>
-   message_in?: Maybe<String[] | String>
-   message_not_in?: Maybe<String[] | String>
-   message_lt?: Maybe<String>
-   message_lte?: Maybe<String>
-   message_gt?: Maybe<String>
-   message_gte?: Maybe<String>
-   message_contains?: Maybe<String>
-   message_not_contains?: Maybe<String>
-   message_starts_with?: Maybe<String>
-   message_not_starts_with?: Maybe<String>
-   message_ends_with?: Maybe<String>
-   message_not_ends_with?: Maybe<String>
-   AND?: Maybe<WelcomeWhereInput[] | WelcomeWhereInput>
-}
-
-export type WelcomeWhereUniqueInput = AtLeastOne<{
-   id: Maybe<ID_Input>
-}>
-
 export interface CompanyCreateInput {
    id?: Maybe<ID_Input>
    name: String
    abbr?: Maybe<String>
-   logo?: Maybe<String>
+   welcome: MessageCreateOneInput
+   tests?: Maybe<TestCreateManyWithoutCompanyInput>
 }
 
-export interface CompanyUpdateInput {
-   name?: Maybe<String>
-   abbr?: Maybe<String>
-   logo?: Maybe<String>
+export interface MessageCreateOneInput {
+   create?: Maybe<MessageCreateInput>
+   connect?: Maybe<MessageWhereUniqueInput>
 }
 
-export interface CompanyUpdateManyMutationInput {
-   name?: Maybe<String>
-   abbr?: Maybe<String>
-   logo?: Maybe<String>
-}
-
-export interface KeyResultStatusCreateInput {
+export interface MessageCreateInput {
    id?: Maybe<ID_Input>
-   key: String
-   results?: Maybe<TestResultCreateManyWithoutStatusInput>
+   title: MultiLanguageContentCreateOneInput
+   message: MultiLanguageContentCreateOneInput
 }
 
-export interface TestResultCreateManyWithoutStatusInput {
+export interface MultiLanguageContentCreateOneInput {
+   create?: Maybe<MultiLanguageContentCreateInput>
+   connect?: Maybe<MultiLanguageContentWhereUniqueInput>
+}
+
+export interface MultiLanguageContentCreateInput {
+   id?: Maybe<ID_Input>
+   pt: String
+   en?: Maybe<String>
+}
+
+export interface TestCreateManyWithoutCompanyInput {
    create?: Maybe<
-      TestResultCreateWithoutStatusInput[] | TestResultCreateWithoutStatusInput
+      TestCreateWithoutCompanyInput[] | TestCreateWithoutCompanyInput
    >
-   connect?: Maybe<TestResultWhereUniqueInput[] | TestResultWhereUniqueInput>
+   connect?: Maybe<TestWhereUniqueInput[] | TestWhereUniqueInput>
 }
 
-export interface TestResultCreateWithoutStatusInput {
+export interface TestCreateWithoutCompanyInput {
    id?: Maybe<ID_Input>
-   parent: TestCreateOneWithoutResultsInput
-   start: DateTimeInput
-   end?: Maybe<DateTimeInput>
-   time?: Maybe<TimeResultCreateOneInput>
-   steps?: Maybe<StepResultCreateManyWithoutResultParentInput>
-}
-
-export interface TestCreateOneWithoutResultsInput {
-   create?: Maybe<TestCreateWithoutResultsInput>
-   connect?: Maybe<TestWhereUniqueInput>
-}
-
-export interface TestCreateWithoutResultsInput {
-   id?: Maybe<ID_Input>
-   title: String
-   steps?: Maybe<StepCreateManyWithoutParentInput>
+   publics?: Maybe<KeyUserTypeCreateManyInput>
+   languages?: Maybe<KeyLanguageCreateManyInput>
+   instruction: MessageCreateOneInput
+   title: MultiLanguageContentCreateOneInput
+   steps?: Maybe<StepCreateManyInput>
    menus?: Maybe<MenuCreateManyInput>
+   results?: Maybe<TestResultCreateManyWithoutParentInput>
+   keys: KeyCreateOneInput
 }
 
-export interface StepCreateManyWithoutParentInput {
-   create?: Maybe<StepCreateWithoutParentInput[] | StepCreateWithoutParentInput>
-   connect?: Maybe<StepWhereUniqueInput[] | StepWhereUniqueInput>
-}
-
-export interface StepCreateWithoutParentInput {
-   id?: Maybe<ID_Input>
-   type?: Maybe<KeyUserTypeCreateManyWithoutStepsInput>
-   question: String
-   targets?: Maybe<MenuCreateManyInput>
-   paths?: Maybe<PathCreateManyWithoutParentInput>
-   results?: Maybe<StepResultCreateManyWithoutParentInput>
-}
-
-export interface KeyUserTypeCreateManyWithoutStepsInput {
-   create?: Maybe<
-      KeyUserTypeCreateWithoutStepsInput[] | KeyUserTypeCreateWithoutStepsInput
-   >
+export interface KeyUserTypeCreateManyInput {
+   create?: Maybe<KeyUserTypeCreateInput[] | KeyUserTypeCreateInput>
    connect?: Maybe<KeyUserTypeWhereUniqueInput[] | KeyUserTypeWhereUniqueInput>
 }
 
-export interface KeyUserTypeCreateWithoutStepsInput {
+export interface KeyUserTypeCreateInput {
    id?: Maybe<ID_Input>
    key: String
+}
+
+export interface KeyLanguageCreateManyInput {
+   create?: Maybe<KeyLanguageCreateInput[] | KeyLanguageCreateInput>
+   connect?: Maybe<KeyLanguageWhereUniqueInput[] | KeyLanguageWhereUniqueInput>
+}
+
+export interface KeyLanguageCreateInput {
+   id?: Maybe<ID_Input>
+   key: String
+}
+
+export interface StepCreateManyInput {
+   create?: Maybe<StepCreateInput[] | StepCreateInput>
+   connect?: Maybe<StepWhereUniqueInput[] | StepWhereUniqueInput>
+}
+
+export interface StepCreateInput {
+   id?: Maybe<ID_Input>
+   type?: Maybe<KeyUserTypeCreateManyInput>
+   question: MultiLanguageContentCreateOneInput
+   targets?: Maybe<MenuCreateManyInput>
+   paths?: Maybe<MenuCreateManyInput>
+   results?: Maybe<StepResultCreateManyWithoutParentInput>
 }
 
 export interface MenuCreateManyInput {
@@ -1249,7 +1242,7 @@ export interface MenuCreateInput {
    id?: Maybe<ID_Input>
    root?: Maybe<Boolean>
    menus?: Maybe<MenuCreateManyWithoutItemsInput>
-   name: String
+   name: MultiLanguageContentCreateOneInput
    items?: Maybe<MenuCreateManyWithoutMenusInput>
 }
 
@@ -1262,7 +1255,7 @@ export interface MenuCreateWithoutItemsInput {
    id?: Maybe<ID_Input>
    root?: Maybe<Boolean>
    menus?: Maybe<MenuCreateManyWithoutItemsInput>
-   name: String
+   name: MultiLanguageContentCreateOneInput
 }
 
 export interface MenuCreateManyWithoutMenusInput {
@@ -1273,18 +1266,8 @@ export interface MenuCreateManyWithoutMenusInput {
 export interface MenuCreateWithoutMenusInput {
    id?: Maybe<ID_Input>
    root?: Maybe<Boolean>
-   name: String
+   name: MultiLanguageContentCreateOneInput
    items?: Maybe<MenuCreateManyWithoutMenusInput>
-}
-
-export interface PathCreateManyWithoutParentInput {
-   create?: Maybe<PathCreateWithoutParentInput[] | PathCreateWithoutParentInput>
-   connect?: Maybe<PathWhereUniqueInput[] | PathWhereUniqueInput>
-}
-
-export interface PathCreateWithoutParentInput {
-   id?: Maybe<ID_Input>
-   paths?: Maybe<MenuCreateManyInput>
 }
 
 export interface StepResultCreateManyWithoutParentInput {
@@ -1296,12 +1279,12 @@ export interface StepResultCreateManyWithoutParentInput {
 
 export interface StepResultCreateWithoutParentInput {
    id?: Maybe<ID_Input>
-   resultParent: TestResultCreateOneWithoutStepsInput
+   result: TestResultCreateOneWithoutStepsInput
    start: DateTimeInput
    end?: Maybe<DateTimeInput>
-   time?: Maybe<TimeResultCreateOneInput>
+   time: Int
    path?: Maybe<MenuCreateManyInput>
-   status: KeyResultStatusCreateOneInput
+   status: KeyStepResultStatusCreateOneInput
 }
 
 export interface TestResultCreateOneWithoutStepsInput {
@@ -1314,78 +1297,90 @@ export interface TestResultCreateWithoutStepsInput {
    parent: TestCreateOneWithoutResultsInput
    start: DateTimeInput
    end?: Maybe<DateTimeInput>
-   time?: Maybe<TimeResultCreateOneInput>
-   status: KeyResultStatusCreateOneWithoutResultsInput
+   duration: Int
+   status: KeyTestResultStatusCreateOneInput
 }
 
-export interface TimeResultCreateOneInput {
-   create?: Maybe<TimeResultCreateInput>
-   connect?: Maybe<TimeResultWhereUniqueInput>
+export interface TestCreateOneWithoutResultsInput {
+   create?: Maybe<TestCreateWithoutResultsInput>
+   connect?: Maybe<TestWhereUniqueInput>
 }
 
-export interface TimeResultCreateInput {
+export interface TestCreateWithoutResultsInput {
    id?: Maybe<ID_Input>
-   int: Int
-   text: String
+   publics?: Maybe<KeyUserTypeCreateManyInput>
+   languages?: Maybe<KeyLanguageCreateManyInput>
+   instruction: MessageCreateOneInput
+   company: CompanyCreateOneWithoutTestsInput
+   title: MultiLanguageContentCreateOneInput
+   steps?: Maybe<StepCreateManyInput>
+   menus?: Maybe<MenuCreateManyInput>
+   keys: KeyCreateOneInput
 }
 
-export interface KeyResultStatusCreateOneWithoutResultsInput {
-   create?: Maybe<KeyResultStatusCreateWithoutResultsInput>
-   connect?: Maybe<KeyResultStatusWhereUniqueInput>
+export interface CompanyCreateOneWithoutTestsInput {
+   create?: Maybe<CompanyCreateWithoutTestsInput>
+   connect?: Maybe<CompanyWhereUniqueInput>
 }
 
-export interface KeyResultStatusCreateWithoutResultsInput {
+export interface CompanyCreateWithoutTestsInput {
+   id?: Maybe<ID_Input>
+   name: String
+   abbr?: Maybe<String>
+   welcome: MessageCreateOneInput
+}
+
+export interface KeyCreateOneInput {
+   create?: Maybe<KeyCreateInput>
+   connect?: Maybe<KeyWhereUniqueInput>
+}
+
+export interface KeyCreateInput {
+   id?: Maybe<ID_Input>
+   userTypes?: Maybe<KeyUserTypeCreateManyInput>
+   testResultStatus?: Maybe<KeyTestResultStatusCreateManyInput>
+   stepResultStatus?: Maybe<KeyStepResultStatusCreateManyInput>
+   languages?: Maybe<KeyLanguageCreateManyInput>
+}
+
+export interface KeyTestResultStatusCreateManyInput {
+   create?: Maybe<
+      KeyTestResultStatusCreateInput[] | KeyTestResultStatusCreateInput
+   >
+   connect?: Maybe<
+      | KeyTestResultStatusWhereUniqueInput[]
+      | KeyTestResultStatusWhereUniqueInput
+   >
+}
+
+export interface KeyTestResultStatusCreateInput {
    id?: Maybe<ID_Input>
    key: String
 }
 
-export interface KeyResultStatusCreateOneInput {
-   create?: Maybe<KeyResultStatusCreateInput>
-   connect?: Maybe<KeyResultStatusWhereUniqueInput>
-}
-
-export interface StepResultCreateManyWithoutResultParentInput {
+export interface KeyStepResultStatusCreateManyInput {
    create?: Maybe<
-      | StepResultCreateWithoutResultParentInput[]
-      | StepResultCreateWithoutResultParentInput
+      KeyStepResultStatusCreateInput[] | KeyStepResultStatusCreateInput
    >
-   connect?: Maybe<StepResultWhereUniqueInput[] | StepResultWhereUniqueInput>
+   connect?: Maybe<
+      | KeyStepResultStatusWhereUniqueInput[]
+      | KeyStepResultStatusWhereUniqueInput
+   >
 }
 
-export interface StepResultCreateWithoutResultParentInput {
+export interface KeyStepResultStatusCreateInput {
    id?: Maybe<ID_Input>
-   parent: StepCreateOneWithoutResultsInput
-   start: DateTimeInput
-   end?: Maybe<DateTimeInput>
-   time?: Maybe<TimeResultCreateOneInput>
-   path?: Maybe<MenuCreateManyInput>
-   status: KeyResultStatusCreateOneInput
+   key: String
 }
 
-export interface StepCreateOneWithoutResultsInput {
-   create?: Maybe<StepCreateWithoutResultsInput>
-   connect?: Maybe<StepWhereUniqueInput>
+export interface KeyTestResultStatusCreateOneInput {
+   create?: Maybe<KeyTestResultStatusCreateInput>
+   connect?: Maybe<KeyTestResultStatusWhereUniqueInput>
 }
 
-export interface StepCreateWithoutResultsInput {
-   id?: Maybe<ID_Input>
-   parent?: Maybe<TestCreateOneWithoutStepsInput>
-   type?: Maybe<KeyUserTypeCreateManyWithoutStepsInput>
-   question: String
-   targets?: Maybe<MenuCreateManyInput>
-   paths?: Maybe<PathCreateManyWithoutParentInput>
-}
-
-export interface TestCreateOneWithoutStepsInput {
-   create?: Maybe<TestCreateWithoutStepsInput>
-   connect?: Maybe<TestWhereUniqueInput>
-}
-
-export interface TestCreateWithoutStepsInput {
-   id?: Maybe<ID_Input>
-   title: String
-   menus?: Maybe<MenuCreateManyInput>
-   results?: Maybe<TestResultCreateManyWithoutParentInput>
+export interface KeyStepResultStatusCreateOneInput {
+   create?: Maybe<KeyStepResultStatusCreateInput>
+   connect?: Maybe<KeyStepResultStatusWhereUniqueInput>
 }
 
 export interface TestResultCreateManyWithoutParentInput {
@@ -1399,115 +1394,132 @@ export interface TestResultCreateWithoutParentInput {
    id?: Maybe<ID_Input>
    start: DateTimeInput
    end?: Maybe<DateTimeInput>
-   time?: Maybe<TimeResultCreateOneInput>
-   steps?: Maybe<StepResultCreateManyWithoutResultParentInput>
-   status: KeyResultStatusCreateOneWithoutResultsInput
+   duration: Int
+   steps?: Maybe<StepResultCreateManyWithoutResultInput>
+   status: KeyTestResultStatusCreateOneInput
 }
 
-export interface KeyResultStatusUpdateInput {
-   key?: Maybe<String>
-   results?: Maybe<TestResultUpdateManyWithoutStatusInput>
-}
-
-export interface TestResultUpdateManyWithoutStatusInput {
+export interface StepResultCreateManyWithoutResultInput {
    create?: Maybe<
-      TestResultCreateWithoutStatusInput[] | TestResultCreateWithoutStatusInput
+      StepResultCreateWithoutResultInput[] | StepResultCreateWithoutResultInput
    >
-   delete?: Maybe<TestResultWhereUniqueInput[] | TestResultWhereUniqueInput>
-   connect?: Maybe<TestResultWhereUniqueInput[] | TestResultWhereUniqueInput>
-   set?: Maybe<TestResultWhereUniqueInput[] | TestResultWhereUniqueInput>
-   disconnect?: Maybe<TestResultWhereUniqueInput[] | TestResultWhereUniqueInput>
-   update?: Maybe<
-      | TestResultUpdateWithWhereUniqueWithoutStatusInput[]
-      | TestResultUpdateWithWhereUniqueWithoutStatusInput
-   >
-   upsert?: Maybe<
-      | TestResultUpsertWithWhereUniqueWithoutStatusInput[]
-      | TestResultUpsertWithWhereUniqueWithoutStatusInput
-   >
-   deleteMany?: Maybe<TestResultScalarWhereInput[] | TestResultScalarWhereInput>
-   updateMany?: Maybe<
-      | TestResultUpdateManyWithWhereNestedInput[]
-      | TestResultUpdateManyWithWhereNestedInput
-   >
+   connect?: Maybe<StepResultWhereUniqueInput[] | StepResultWhereUniqueInput>
 }
 
-export interface TestResultUpdateWithWhereUniqueWithoutStatusInput {
-   where: TestResultWhereUniqueInput
-   data: TestResultUpdateWithoutStatusDataInput
-}
-
-export interface TestResultUpdateWithoutStatusDataInput {
-   parent?: Maybe<TestUpdateOneRequiredWithoutResultsInput>
-   start?: Maybe<DateTimeInput>
+export interface StepResultCreateWithoutResultInput {
+   id?: Maybe<ID_Input>
+   parent: StepCreateOneWithoutResultsInput
+   start: DateTimeInput
    end?: Maybe<DateTimeInput>
-   time?: Maybe<TimeResultUpdateOneInput>
-   steps?: Maybe<StepResultUpdateManyWithoutResultParentInput>
+   time: Int
+   path?: Maybe<MenuCreateManyInput>
+   status: KeyStepResultStatusCreateOneInput
 }
 
-export interface TestUpdateOneRequiredWithoutResultsInput {
-   create?: Maybe<TestCreateWithoutResultsInput>
-   update?: Maybe<TestUpdateWithoutResultsDataInput>
-   upsert?: Maybe<TestUpsertWithoutResultsInput>
-   connect?: Maybe<TestWhereUniqueInput>
+export interface StepCreateOneWithoutResultsInput {
+   create?: Maybe<StepCreateWithoutResultsInput>
+   connect?: Maybe<StepWhereUniqueInput>
 }
 
-export interface TestUpdateWithoutResultsDataInput {
-   title?: Maybe<String>
-   steps?: Maybe<StepUpdateManyWithoutParentInput>
-   menus?: Maybe<MenuUpdateManyInput>
+export interface StepCreateWithoutResultsInput {
+   id?: Maybe<ID_Input>
+   type?: Maybe<KeyUserTypeCreateManyInput>
+   question: MultiLanguageContentCreateOneInput
+   targets?: Maybe<MenuCreateManyInput>
+   paths?: Maybe<MenuCreateManyInput>
 }
 
-export interface StepUpdateManyWithoutParentInput {
-   create?: Maybe<StepCreateWithoutParentInput[] | StepCreateWithoutParentInput>
-   delete?: Maybe<StepWhereUniqueInput[] | StepWhereUniqueInput>
-   connect?: Maybe<StepWhereUniqueInput[] | StepWhereUniqueInput>
-   set?: Maybe<StepWhereUniqueInput[] | StepWhereUniqueInput>
-   disconnect?: Maybe<StepWhereUniqueInput[] | StepWhereUniqueInput>
+export interface CompanyUpdateInput {
+   name?: Maybe<String>
+   abbr?: Maybe<String>
+   welcome?: Maybe<MessageUpdateOneRequiredInput>
+   tests?: Maybe<TestUpdateManyWithoutCompanyInput>
+}
+
+export interface MessageUpdateOneRequiredInput {
+   create?: Maybe<MessageCreateInput>
+   update?: Maybe<MessageUpdateDataInput>
+   upsert?: Maybe<MessageUpsertNestedInput>
+   connect?: Maybe<MessageWhereUniqueInput>
+}
+
+export interface MessageUpdateDataInput {
+   title?: Maybe<MultiLanguageContentUpdateOneRequiredInput>
+   message?: Maybe<MultiLanguageContentUpdateOneRequiredInput>
+}
+
+export interface MultiLanguageContentUpdateOneRequiredInput {
+   create?: Maybe<MultiLanguageContentCreateInput>
+   update?: Maybe<MultiLanguageContentUpdateDataInput>
+   upsert?: Maybe<MultiLanguageContentUpsertNestedInput>
+   connect?: Maybe<MultiLanguageContentWhereUniqueInput>
+}
+
+export interface MultiLanguageContentUpdateDataInput {
+   pt?: Maybe<String>
+   en?: Maybe<String>
+}
+
+export interface MultiLanguageContentUpsertNestedInput {
+   update: MultiLanguageContentUpdateDataInput
+   create: MultiLanguageContentCreateInput
+}
+
+export interface MessageUpsertNestedInput {
+   update: MessageUpdateDataInput
+   create: MessageCreateInput
+}
+
+export interface TestUpdateManyWithoutCompanyInput {
+   create?: Maybe<
+      TestCreateWithoutCompanyInput[] | TestCreateWithoutCompanyInput
+   >
+   delete?: Maybe<TestWhereUniqueInput[] | TestWhereUniqueInput>
+   connect?: Maybe<TestWhereUniqueInput[] | TestWhereUniqueInput>
+   set?: Maybe<TestWhereUniqueInput[] | TestWhereUniqueInput>
+   disconnect?: Maybe<TestWhereUniqueInput[] | TestWhereUniqueInput>
    update?: Maybe<
-      | StepUpdateWithWhereUniqueWithoutParentInput[]
-      | StepUpdateWithWhereUniqueWithoutParentInput
+      | TestUpdateWithWhereUniqueWithoutCompanyInput[]
+      | TestUpdateWithWhereUniqueWithoutCompanyInput
    >
    upsert?: Maybe<
-      | StepUpsertWithWhereUniqueWithoutParentInput[]
-      | StepUpsertWithWhereUniqueWithoutParentInput
+      | TestUpsertWithWhereUniqueWithoutCompanyInput[]
+      | TestUpsertWithWhereUniqueWithoutCompanyInput
    >
-   deleteMany?: Maybe<StepScalarWhereInput[] | StepScalarWhereInput>
-   updateMany?: Maybe<
-      StepUpdateManyWithWhereNestedInput[] | StepUpdateManyWithWhereNestedInput
+   deleteMany?: Maybe<TestScalarWhereInput[] | TestScalarWhereInput>
+}
+
+export interface TestUpdateWithWhereUniqueWithoutCompanyInput {
+   where: TestWhereUniqueInput
+   data: TestUpdateWithoutCompanyDataInput
+}
+
+export interface TestUpdateWithoutCompanyDataInput {
+   publics?: Maybe<KeyUserTypeUpdateManyInput>
+   languages?: Maybe<KeyLanguageUpdateManyInput>
+   instruction?: Maybe<MessageUpdateOneRequiredInput>
+   title?: Maybe<MultiLanguageContentUpdateOneRequiredInput>
+   steps?: Maybe<StepUpdateManyInput>
+   menus?: Maybe<MenuUpdateManyInput>
+   results?: Maybe<TestResultUpdateManyWithoutParentInput>
+   keys?: Maybe<KeyUpdateOneRequiredInput>
+}
+
+export interface KeyUserTypeUpdateManyInput {
+   create?: Maybe<KeyUserTypeCreateInput[] | KeyUserTypeCreateInput>
+   update?: Maybe<
+      | KeyUserTypeUpdateWithWhereUniqueNestedInput[]
+      | KeyUserTypeUpdateWithWhereUniqueNestedInput
    >
-}
-
-export interface StepUpdateWithWhereUniqueWithoutParentInput {
-   where: StepWhereUniqueInput
-   data: StepUpdateWithoutParentDataInput
-}
-
-export interface StepUpdateWithoutParentDataInput {
-   type?: Maybe<KeyUserTypeUpdateManyWithoutStepsInput>
-   question?: Maybe<String>
-   targets?: Maybe<MenuUpdateManyInput>
-   paths?: Maybe<PathUpdateManyWithoutParentInput>
-   results?: Maybe<StepResultUpdateManyWithoutParentInput>
-}
-
-export interface KeyUserTypeUpdateManyWithoutStepsInput {
-   create?: Maybe<
-      KeyUserTypeCreateWithoutStepsInput[] | KeyUserTypeCreateWithoutStepsInput
+   upsert?: Maybe<
+      | KeyUserTypeUpsertWithWhereUniqueNestedInput[]
+      | KeyUserTypeUpsertWithWhereUniqueNestedInput
    >
    delete?: Maybe<KeyUserTypeWhereUniqueInput[] | KeyUserTypeWhereUniqueInput>
    connect?: Maybe<KeyUserTypeWhereUniqueInput[] | KeyUserTypeWhereUniqueInput>
    set?: Maybe<KeyUserTypeWhereUniqueInput[] | KeyUserTypeWhereUniqueInput>
    disconnect?: Maybe<
       KeyUserTypeWhereUniqueInput[] | KeyUserTypeWhereUniqueInput
-   >
-   update?: Maybe<
-      | KeyUserTypeUpdateWithWhereUniqueWithoutStepsInput[]
-      | KeyUserTypeUpdateWithWhereUniqueWithoutStepsInput
-   >
-   upsert?: Maybe<
-      | KeyUserTypeUpsertWithWhereUniqueWithoutStepsInput[]
-      | KeyUserTypeUpsertWithWhereUniqueWithoutStepsInput
    >
    deleteMany?: Maybe<
       KeyUserTypeScalarWhereInput[] | KeyUserTypeScalarWhereInput
@@ -1518,19 +1530,19 @@ export interface KeyUserTypeUpdateManyWithoutStepsInput {
    >
 }
 
-export interface KeyUserTypeUpdateWithWhereUniqueWithoutStepsInput {
+export interface KeyUserTypeUpdateWithWhereUniqueNestedInput {
    where: KeyUserTypeWhereUniqueInput
-   data: KeyUserTypeUpdateWithoutStepsDataInput
+   data: KeyUserTypeUpdateDataInput
 }
 
-export interface KeyUserTypeUpdateWithoutStepsDataInput {
+export interface KeyUserTypeUpdateDataInput {
    key?: Maybe<String>
 }
 
-export interface KeyUserTypeUpsertWithWhereUniqueWithoutStepsInput {
+export interface KeyUserTypeUpsertWithWhereUniqueNestedInput {
    where: KeyUserTypeWhereUniqueInput
-   update: KeyUserTypeUpdateWithoutStepsDataInput
-   create: KeyUserTypeCreateWithoutStepsInput
+   update: KeyUserTypeUpdateDataInput
+   create: KeyUserTypeCreateInput
 }
 
 export interface KeyUserTypeScalarWhereInput {
@@ -1576,6 +1588,119 @@ export interface KeyUserTypeUpdateManyDataInput {
    key?: Maybe<String>
 }
 
+export interface KeyLanguageUpdateManyInput {
+   create?: Maybe<KeyLanguageCreateInput[] | KeyLanguageCreateInput>
+   update?: Maybe<
+      | KeyLanguageUpdateWithWhereUniqueNestedInput[]
+      | KeyLanguageUpdateWithWhereUniqueNestedInput
+   >
+   upsert?: Maybe<
+      | KeyLanguageUpsertWithWhereUniqueNestedInput[]
+      | KeyLanguageUpsertWithWhereUniqueNestedInput
+   >
+   delete?: Maybe<KeyLanguageWhereUniqueInput[] | KeyLanguageWhereUniqueInput>
+   connect?: Maybe<KeyLanguageWhereUniqueInput[] | KeyLanguageWhereUniqueInput>
+   set?: Maybe<KeyLanguageWhereUniqueInput[] | KeyLanguageWhereUniqueInput>
+   disconnect?: Maybe<
+      KeyLanguageWhereUniqueInput[] | KeyLanguageWhereUniqueInput
+   >
+   deleteMany?: Maybe<
+      KeyLanguageScalarWhereInput[] | KeyLanguageScalarWhereInput
+   >
+   updateMany?: Maybe<
+      | KeyLanguageUpdateManyWithWhereNestedInput[]
+      | KeyLanguageUpdateManyWithWhereNestedInput
+   >
+}
+
+export interface KeyLanguageUpdateWithWhereUniqueNestedInput {
+   where: KeyLanguageWhereUniqueInput
+   data: KeyLanguageUpdateDataInput
+}
+
+export interface KeyLanguageUpdateDataInput {
+   key?: Maybe<String>
+}
+
+export interface KeyLanguageUpsertWithWhereUniqueNestedInput {
+   where: KeyLanguageWhereUniqueInput
+   update: KeyLanguageUpdateDataInput
+   create: KeyLanguageCreateInput
+}
+
+export interface KeyLanguageScalarWhereInput {
+   id?: Maybe<ID_Input>
+   id_not?: Maybe<ID_Input>
+   id_in?: Maybe<ID_Input[] | ID_Input>
+   id_not_in?: Maybe<ID_Input[] | ID_Input>
+   id_lt?: Maybe<ID_Input>
+   id_lte?: Maybe<ID_Input>
+   id_gt?: Maybe<ID_Input>
+   id_gte?: Maybe<ID_Input>
+   id_contains?: Maybe<ID_Input>
+   id_not_contains?: Maybe<ID_Input>
+   id_starts_with?: Maybe<ID_Input>
+   id_not_starts_with?: Maybe<ID_Input>
+   id_ends_with?: Maybe<ID_Input>
+   id_not_ends_with?: Maybe<ID_Input>
+   key?: Maybe<String>
+   key_not?: Maybe<String>
+   key_in?: Maybe<String[] | String>
+   key_not_in?: Maybe<String[] | String>
+   key_lt?: Maybe<String>
+   key_lte?: Maybe<String>
+   key_gt?: Maybe<String>
+   key_gte?: Maybe<String>
+   key_contains?: Maybe<String>
+   key_not_contains?: Maybe<String>
+   key_starts_with?: Maybe<String>
+   key_not_starts_with?: Maybe<String>
+   key_ends_with?: Maybe<String>
+   key_not_ends_with?: Maybe<String>
+   AND?: Maybe<KeyLanguageScalarWhereInput[] | KeyLanguageScalarWhereInput>
+   OR?: Maybe<KeyLanguageScalarWhereInput[] | KeyLanguageScalarWhereInput>
+   NOT?: Maybe<KeyLanguageScalarWhereInput[] | KeyLanguageScalarWhereInput>
+}
+
+export interface KeyLanguageUpdateManyWithWhereNestedInput {
+   where: KeyLanguageScalarWhereInput
+   data: KeyLanguageUpdateManyDataInput
+}
+
+export interface KeyLanguageUpdateManyDataInput {
+   key?: Maybe<String>
+}
+
+export interface StepUpdateManyInput {
+   create?: Maybe<StepCreateInput[] | StepCreateInput>
+   update?: Maybe<
+      | StepUpdateWithWhereUniqueNestedInput[]
+      | StepUpdateWithWhereUniqueNestedInput
+   >
+   upsert?: Maybe<
+      | StepUpsertWithWhereUniqueNestedInput[]
+      | StepUpsertWithWhereUniqueNestedInput
+   >
+   delete?: Maybe<StepWhereUniqueInput[] | StepWhereUniqueInput>
+   connect?: Maybe<StepWhereUniqueInput[] | StepWhereUniqueInput>
+   set?: Maybe<StepWhereUniqueInput[] | StepWhereUniqueInput>
+   disconnect?: Maybe<StepWhereUniqueInput[] | StepWhereUniqueInput>
+   deleteMany?: Maybe<StepScalarWhereInput[] | StepScalarWhereInput>
+}
+
+export interface StepUpdateWithWhereUniqueNestedInput {
+   where: StepWhereUniqueInput
+   data: StepUpdateDataInput
+}
+
+export interface StepUpdateDataInput {
+   type?: Maybe<KeyUserTypeUpdateManyInput>
+   question?: Maybe<MultiLanguageContentUpdateOneRequiredInput>
+   targets?: Maybe<MenuUpdateManyInput>
+   paths?: Maybe<MenuUpdateManyInput>
+   results?: Maybe<StepResultUpdateManyWithoutParentInput>
+}
+
 export interface MenuUpdateManyInput {
    create?: Maybe<MenuCreateInput[] | MenuCreateInput>
    update?: Maybe<
@@ -1604,7 +1729,7 @@ export interface MenuUpdateWithWhereUniqueNestedInput {
 export interface MenuUpdateDataInput {
    root?: Maybe<Boolean>
    menus?: Maybe<MenuUpdateManyWithoutItemsInput>
-   name?: Maybe<String>
+   name?: Maybe<MultiLanguageContentUpdateOneRequiredInput>
    items?: Maybe<MenuUpdateManyWithoutMenusInput>
 }
 
@@ -1636,7 +1761,7 @@ export interface MenuUpdateWithWhereUniqueWithoutItemsInput {
 export interface MenuUpdateWithoutItemsDataInput {
    root?: Maybe<Boolean>
    menus?: Maybe<MenuUpdateManyWithoutItemsInput>
-   name?: Maybe<String>
+   name?: Maybe<MultiLanguageContentUpdateOneRequiredInput>
 }
 
 export interface MenuUpsertWithWhereUniqueWithoutItemsInput {
@@ -1662,20 +1787,6 @@ export interface MenuScalarWhereInput {
    id_not_ends_with?: Maybe<ID_Input>
    root?: Maybe<Boolean>
    root_not?: Maybe<Boolean>
-   name?: Maybe<String>
-   name_not?: Maybe<String>
-   name_in?: Maybe<String[] | String>
-   name_not_in?: Maybe<String[] | String>
-   name_lt?: Maybe<String>
-   name_lte?: Maybe<String>
-   name_gt?: Maybe<String>
-   name_gte?: Maybe<String>
-   name_contains?: Maybe<String>
-   name_not_contains?: Maybe<String>
-   name_starts_with?: Maybe<String>
-   name_not_starts_with?: Maybe<String>
-   name_ends_with?: Maybe<String>
-   name_not_ends_with?: Maybe<String>
    AND?: Maybe<MenuScalarWhereInput[] | MenuScalarWhereInput>
    OR?: Maybe<MenuScalarWhereInput[] | MenuScalarWhereInput>
    NOT?: Maybe<MenuScalarWhereInput[] | MenuScalarWhereInput>
@@ -1688,7 +1799,6 @@ export interface MenuUpdateManyWithWhereNestedInput {
 
 export interface MenuUpdateManyDataInput {
    root?: Maybe<Boolean>
-   name?: Maybe<String>
 }
 
 export interface MenuUpdateManyWithoutMenusInput {
@@ -1718,7 +1828,7 @@ export interface MenuUpdateWithWhereUniqueWithoutMenusInput {
 
 export interface MenuUpdateWithoutMenusDataInput {
    root?: Maybe<Boolean>
-   name?: Maybe<String>
+   name?: Maybe<MultiLanguageContentUpdateOneRequiredInput>
    items?: Maybe<MenuUpdateManyWithoutMenusInput>
 }
 
@@ -1732,58 +1842,6 @@ export interface MenuUpsertWithWhereUniqueNestedInput {
    where: MenuWhereUniqueInput
    update: MenuUpdateDataInput
    create: MenuCreateInput
-}
-
-export interface PathUpdateManyWithoutParentInput {
-   create?: Maybe<PathCreateWithoutParentInput[] | PathCreateWithoutParentInput>
-   delete?: Maybe<PathWhereUniqueInput[] | PathWhereUniqueInput>
-   connect?: Maybe<PathWhereUniqueInput[] | PathWhereUniqueInput>
-   set?: Maybe<PathWhereUniqueInput[] | PathWhereUniqueInput>
-   disconnect?: Maybe<PathWhereUniqueInput[] | PathWhereUniqueInput>
-   update?: Maybe<
-      | PathUpdateWithWhereUniqueWithoutParentInput[]
-      | PathUpdateWithWhereUniqueWithoutParentInput
-   >
-   upsert?: Maybe<
-      | PathUpsertWithWhereUniqueWithoutParentInput[]
-      | PathUpsertWithWhereUniqueWithoutParentInput
-   >
-   deleteMany?: Maybe<PathScalarWhereInput[] | PathScalarWhereInput>
-}
-
-export interface PathUpdateWithWhereUniqueWithoutParentInput {
-   where: PathWhereUniqueInput
-   data: PathUpdateWithoutParentDataInput
-}
-
-export interface PathUpdateWithoutParentDataInput {
-   paths?: Maybe<MenuUpdateManyInput>
-}
-
-export interface PathUpsertWithWhereUniqueWithoutParentInput {
-   where: PathWhereUniqueInput
-   update: PathUpdateWithoutParentDataInput
-   create: PathCreateWithoutParentInput
-}
-
-export interface PathScalarWhereInput {
-   id?: Maybe<ID_Input>
-   id_not?: Maybe<ID_Input>
-   id_in?: Maybe<ID_Input[] | ID_Input>
-   id_not_in?: Maybe<ID_Input[] | ID_Input>
-   id_lt?: Maybe<ID_Input>
-   id_lte?: Maybe<ID_Input>
-   id_gt?: Maybe<ID_Input>
-   id_gte?: Maybe<ID_Input>
-   id_contains?: Maybe<ID_Input>
-   id_not_contains?: Maybe<ID_Input>
-   id_starts_with?: Maybe<ID_Input>
-   id_not_starts_with?: Maybe<ID_Input>
-   id_ends_with?: Maybe<ID_Input>
-   id_not_ends_with?: Maybe<ID_Input>
-   AND?: Maybe<PathScalarWhereInput[] | PathScalarWhereInput>
-   OR?: Maybe<PathScalarWhereInput[] | PathScalarWhereInput>
-   NOT?: Maybe<PathScalarWhereInput[] | PathScalarWhereInput>
 }
 
 export interface StepResultUpdateManyWithoutParentInput {
@@ -1815,12 +1873,12 @@ export interface StepResultUpdateWithWhereUniqueWithoutParentInput {
 }
 
 export interface StepResultUpdateWithoutParentDataInput {
-   resultParent?: Maybe<TestResultUpdateOneRequiredWithoutStepsInput>
+   result?: Maybe<TestResultUpdateOneRequiredWithoutStepsInput>
    start?: Maybe<DateTimeInput>
    end?: Maybe<DateTimeInput>
-   time?: Maybe<TimeResultUpdateOneInput>
+   time?: Maybe<Int>
    path?: Maybe<MenuUpdateManyInput>
-   status?: Maybe<KeyResultStatusUpdateOneRequiredInput>
+   status?: Maybe<KeyStepResultStatusUpdateOneRequiredInput>
 }
 
 export interface TestResultUpdateOneRequiredWithoutStepsInput {
@@ -1834,43 +1892,290 @@ export interface TestResultUpdateWithoutStepsDataInput {
    parent?: Maybe<TestUpdateOneRequiredWithoutResultsInput>
    start?: Maybe<DateTimeInput>
    end?: Maybe<DateTimeInput>
-   time?: Maybe<TimeResultUpdateOneInput>
-   status?: Maybe<KeyResultStatusUpdateOneRequiredWithoutResultsInput>
+   duration?: Maybe<Int>
+   status?: Maybe<KeyTestResultStatusUpdateOneRequiredInput>
 }
 
-export interface TimeResultUpdateOneInput {
-   create?: Maybe<TimeResultCreateInput>
-   update?: Maybe<TimeResultUpdateDataInput>
-   upsert?: Maybe<TimeResultUpsertNestedInput>
-   delete?: Maybe<Boolean>
-   disconnect?: Maybe<Boolean>
-   connect?: Maybe<TimeResultWhereUniqueInput>
+export interface TestUpdateOneRequiredWithoutResultsInput {
+   create?: Maybe<TestCreateWithoutResultsInput>
+   update?: Maybe<TestUpdateWithoutResultsDataInput>
+   upsert?: Maybe<TestUpsertWithoutResultsInput>
+   connect?: Maybe<TestWhereUniqueInput>
 }
 
-export interface TimeResultUpdateDataInput {
-   int?: Maybe<Int>
-   text?: Maybe<String>
+export interface TestUpdateWithoutResultsDataInput {
+   publics?: Maybe<KeyUserTypeUpdateManyInput>
+   languages?: Maybe<KeyLanguageUpdateManyInput>
+   instruction?: Maybe<MessageUpdateOneRequiredInput>
+   company?: Maybe<CompanyUpdateOneRequiredWithoutTestsInput>
+   title?: Maybe<MultiLanguageContentUpdateOneRequiredInput>
+   steps?: Maybe<StepUpdateManyInput>
+   menus?: Maybe<MenuUpdateManyInput>
+   keys?: Maybe<KeyUpdateOneRequiredInput>
 }
 
-export interface TimeResultUpsertNestedInput {
-   update: TimeResultUpdateDataInput
-   create: TimeResultCreateInput
+export interface CompanyUpdateOneRequiredWithoutTestsInput {
+   create?: Maybe<CompanyCreateWithoutTestsInput>
+   update?: Maybe<CompanyUpdateWithoutTestsDataInput>
+   upsert?: Maybe<CompanyUpsertWithoutTestsInput>
+   connect?: Maybe<CompanyWhereUniqueInput>
 }
 
-export interface KeyResultStatusUpdateOneRequiredWithoutResultsInput {
-   create?: Maybe<KeyResultStatusCreateWithoutResultsInput>
-   update?: Maybe<KeyResultStatusUpdateWithoutResultsDataInput>
-   upsert?: Maybe<KeyResultStatusUpsertWithoutResultsInput>
-   connect?: Maybe<KeyResultStatusWhereUniqueInput>
+export interface CompanyUpdateWithoutTestsDataInput {
+   name?: Maybe<String>
+   abbr?: Maybe<String>
+   welcome?: Maybe<MessageUpdateOneRequiredInput>
 }
 
-export interface KeyResultStatusUpdateWithoutResultsDataInput {
+export interface CompanyUpsertWithoutTestsInput {
+   update: CompanyUpdateWithoutTestsDataInput
+   create: CompanyCreateWithoutTestsInput
+}
+
+export interface KeyUpdateOneRequiredInput {
+   create?: Maybe<KeyCreateInput>
+   update?: Maybe<KeyUpdateDataInput>
+   upsert?: Maybe<KeyUpsertNestedInput>
+   connect?: Maybe<KeyWhereUniqueInput>
+}
+
+export interface KeyUpdateDataInput {
+   userTypes?: Maybe<KeyUserTypeUpdateManyInput>
+   testResultStatus?: Maybe<KeyTestResultStatusUpdateManyInput>
+   stepResultStatus?: Maybe<KeyStepResultStatusUpdateManyInput>
+   languages?: Maybe<KeyLanguageUpdateManyInput>
+}
+
+export interface KeyTestResultStatusUpdateManyInput {
+   create?: Maybe<
+      KeyTestResultStatusCreateInput[] | KeyTestResultStatusCreateInput
+   >
+   update?: Maybe<
+      | KeyTestResultStatusUpdateWithWhereUniqueNestedInput[]
+      | KeyTestResultStatusUpdateWithWhereUniqueNestedInput
+   >
+   upsert?: Maybe<
+      | KeyTestResultStatusUpsertWithWhereUniqueNestedInput[]
+      | KeyTestResultStatusUpsertWithWhereUniqueNestedInput
+   >
+   delete?: Maybe<
+      | KeyTestResultStatusWhereUniqueInput[]
+      | KeyTestResultStatusWhereUniqueInput
+   >
+   connect?: Maybe<
+      | KeyTestResultStatusWhereUniqueInput[]
+      | KeyTestResultStatusWhereUniqueInput
+   >
+   set?: Maybe<
+      | KeyTestResultStatusWhereUniqueInput[]
+      | KeyTestResultStatusWhereUniqueInput
+   >
+   disconnect?: Maybe<
+      | KeyTestResultStatusWhereUniqueInput[]
+      | KeyTestResultStatusWhereUniqueInput
+   >
+   deleteMany?: Maybe<
+      | KeyTestResultStatusScalarWhereInput[]
+      | KeyTestResultStatusScalarWhereInput
+   >
+   updateMany?: Maybe<
+      | KeyTestResultStatusUpdateManyWithWhereNestedInput[]
+      | KeyTestResultStatusUpdateManyWithWhereNestedInput
+   >
+}
+
+export interface KeyTestResultStatusUpdateWithWhereUniqueNestedInput {
+   where: KeyTestResultStatusWhereUniqueInput
+   data: KeyTestResultStatusUpdateDataInput
+}
+
+export interface KeyTestResultStatusUpdateDataInput {
    key?: Maybe<String>
 }
 
-export interface KeyResultStatusUpsertWithoutResultsInput {
-   update: KeyResultStatusUpdateWithoutResultsDataInput
-   create: KeyResultStatusCreateWithoutResultsInput
+export interface KeyTestResultStatusUpsertWithWhereUniqueNestedInput {
+   where: KeyTestResultStatusWhereUniqueInput
+   update: KeyTestResultStatusUpdateDataInput
+   create: KeyTestResultStatusCreateInput
+}
+
+export interface KeyTestResultStatusScalarWhereInput {
+   id?: Maybe<ID_Input>
+   id_not?: Maybe<ID_Input>
+   id_in?: Maybe<ID_Input[] | ID_Input>
+   id_not_in?: Maybe<ID_Input[] | ID_Input>
+   id_lt?: Maybe<ID_Input>
+   id_lte?: Maybe<ID_Input>
+   id_gt?: Maybe<ID_Input>
+   id_gte?: Maybe<ID_Input>
+   id_contains?: Maybe<ID_Input>
+   id_not_contains?: Maybe<ID_Input>
+   id_starts_with?: Maybe<ID_Input>
+   id_not_starts_with?: Maybe<ID_Input>
+   id_ends_with?: Maybe<ID_Input>
+   id_not_ends_with?: Maybe<ID_Input>
+   key?: Maybe<String>
+   key_not?: Maybe<String>
+   key_in?: Maybe<String[] | String>
+   key_not_in?: Maybe<String[] | String>
+   key_lt?: Maybe<String>
+   key_lte?: Maybe<String>
+   key_gt?: Maybe<String>
+   key_gte?: Maybe<String>
+   key_contains?: Maybe<String>
+   key_not_contains?: Maybe<String>
+   key_starts_with?: Maybe<String>
+   key_not_starts_with?: Maybe<String>
+   key_ends_with?: Maybe<String>
+   key_not_ends_with?: Maybe<String>
+   AND?: Maybe<
+      | KeyTestResultStatusScalarWhereInput[]
+      | KeyTestResultStatusScalarWhereInput
+   >
+   OR?: Maybe<
+      | KeyTestResultStatusScalarWhereInput[]
+      | KeyTestResultStatusScalarWhereInput
+   >
+   NOT?: Maybe<
+      | KeyTestResultStatusScalarWhereInput[]
+      | KeyTestResultStatusScalarWhereInput
+   >
+}
+
+export interface KeyTestResultStatusUpdateManyWithWhereNestedInput {
+   where: KeyTestResultStatusScalarWhereInput
+   data: KeyTestResultStatusUpdateManyDataInput
+}
+
+export interface KeyTestResultStatusUpdateManyDataInput {
+   key?: Maybe<String>
+}
+
+export interface KeyStepResultStatusUpdateManyInput {
+   create?: Maybe<
+      KeyStepResultStatusCreateInput[] | KeyStepResultStatusCreateInput
+   >
+   update?: Maybe<
+      | KeyStepResultStatusUpdateWithWhereUniqueNestedInput[]
+      | KeyStepResultStatusUpdateWithWhereUniqueNestedInput
+   >
+   upsert?: Maybe<
+      | KeyStepResultStatusUpsertWithWhereUniqueNestedInput[]
+      | KeyStepResultStatusUpsertWithWhereUniqueNestedInput
+   >
+   delete?: Maybe<
+      | KeyStepResultStatusWhereUniqueInput[]
+      | KeyStepResultStatusWhereUniqueInput
+   >
+   connect?: Maybe<
+      | KeyStepResultStatusWhereUniqueInput[]
+      | KeyStepResultStatusWhereUniqueInput
+   >
+   set?: Maybe<
+      | KeyStepResultStatusWhereUniqueInput[]
+      | KeyStepResultStatusWhereUniqueInput
+   >
+   disconnect?: Maybe<
+      | KeyStepResultStatusWhereUniqueInput[]
+      | KeyStepResultStatusWhereUniqueInput
+   >
+   deleteMany?: Maybe<
+      | KeyStepResultStatusScalarWhereInput[]
+      | KeyStepResultStatusScalarWhereInput
+   >
+   updateMany?: Maybe<
+      | KeyStepResultStatusUpdateManyWithWhereNestedInput[]
+      | KeyStepResultStatusUpdateManyWithWhereNestedInput
+   >
+}
+
+export interface KeyStepResultStatusUpdateWithWhereUniqueNestedInput {
+   where: KeyStepResultStatusWhereUniqueInput
+   data: KeyStepResultStatusUpdateDataInput
+}
+
+export interface KeyStepResultStatusUpdateDataInput {
+   key?: Maybe<String>
+}
+
+export interface KeyStepResultStatusUpsertWithWhereUniqueNestedInput {
+   where: KeyStepResultStatusWhereUniqueInput
+   update: KeyStepResultStatusUpdateDataInput
+   create: KeyStepResultStatusCreateInput
+}
+
+export interface KeyStepResultStatusScalarWhereInput {
+   id?: Maybe<ID_Input>
+   id_not?: Maybe<ID_Input>
+   id_in?: Maybe<ID_Input[] | ID_Input>
+   id_not_in?: Maybe<ID_Input[] | ID_Input>
+   id_lt?: Maybe<ID_Input>
+   id_lte?: Maybe<ID_Input>
+   id_gt?: Maybe<ID_Input>
+   id_gte?: Maybe<ID_Input>
+   id_contains?: Maybe<ID_Input>
+   id_not_contains?: Maybe<ID_Input>
+   id_starts_with?: Maybe<ID_Input>
+   id_not_starts_with?: Maybe<ID_Input>
+   id_ends_with?: Maybe<ID_Input>
+   id_not_ends_with?: Maybe<ID_Input>
+   key?: Maybe<String>
+   key_not?: Maybe<String>
+   key_in?: Maybe<String[] | String>
+   key_not_in?: Maybe<String[] | String>
+   key_lt?: Maybe<String>
+   key_lte?: Maybe<String>
+   key_gt?: Maybe<String>
+   key_gte?: Maybe<String>
+   key_contains?: Maybe<String>
+   key_not_contains?: Maybe<String>
+   key_starts_with?: Maybe<String>
+   key_not_starts_with?: Maybe<String>
+   key_ends_with?: Maybe<String>
+   key_not_ends_with?: Maybe<String>
+   AND?: Maybe<
+      | KeyStepResultStatusScalarWhereInput[]
+      | KeyStepResultStatusScalarWhereInput
+   >
+   OR?: Maybe<
+      | KeyStepResultStatusScalarWhereInput[]
+      | KeyStepResultStatusScalarWhereInput
+   >
+   NOT?: Maybe<
+      | KeyStepResultStatusScalarWhereInput[]
+      | KeyStepResultStatusScalarWhereInput
+   >
+}
+
+export interface KeyStepResultStatusUpdateManyWithWhereNestedInput {
+   where: KeyStepResultStatusScalarWhereInput
+   data: KeyStepResultStatusUpdateManyDataInput
+}
+
+export interface KeyStepResultStatusUpdateManyDataInput {
+   key?: Maybe<String>
+}
+
+export interface KeyUpsertNestedInput {
+   update: KeyUpdateDataInput
+   create: KeyCreateInput
+}
+
+export interface TestUpsertWithoutResultsInput {
+   update: TestUpdateWithoutResultsDataInput
+   create: TestCreateWithoutResultsInput
+}
+
+export interface KeyTestResultStatusUpdateOneRequiredInput {
+   create?: Maybe<KeyTestResultStatusCreateInput>
+   update?: Maybe<KeyTestResultStatusUpdateDataInput>
+   upsert?: Maybe<KeyTestResultStatusUpsertNestedInput>
+   connect?: Maybe<KeyTestResultStatusWhereUniqueInput>
+}
+
+export interface KeyTestResultStatusUpsertNestedInput {
+   update: KeyTestResultStatusUpdateDataInput
+   create: KeyTestResultStatusCreateInput
 }
 
 export interface TestResultUpsertWithoutStepsInput {
@@ -1878,21 +2183,16 @@ export interface TestResultUpsertWithoutStepsInput {
    create: TestResultCreateWithoutStepsInput
 }
 
-export interface KeyResultStatusUpdateOneRequiredInput {
-   create?: Maybe<KeyResultStatusCreateInput>
-   update?: Maybe<KeyResultStatusUpdateDataInput>
-   upsert?: Maybe<KeyResultStatusUpsertNestedInput>
-   connect?: Maybe<KeyResultStatusWhereUniqueInput>
+export interface KeyStepResultStatusUpdateOneRequiredInput {
+   create?: Maybe<KeyStepResultStatusCreateInput>
+   update?: Maybe<KeyStepResultStatusUpdateDataInput>
+   upsert?: Maybe<KeyStepResultStatusUpsertNestedInput>
+   connect?: Maybe<KeyStepResultStatusWhereUniqueInput>
 }
 
-export interface KeyResultStatusUpdateDataInput {
-   key?: Maybe<String>
-   results?: Maybe<TestResultUpdateManyWithoutStatusInput>
-}
-
-export interface KeyResultStatusUpsertNestedInput {
-   update: KeyResultStatusUpdateDataInput
-   create: KeyResultStatusCreateInput
+export interface KeyStepResultStatusUpsertNestedInput {
+   update: KeyStepResultStatusUpdateDataInput
+   create: KeyStepResultStatusCreateInput
 }
 
 export interface StepResultUpsertWithWhereUniqueWithoutParentInput {
@@ -1932,6 +2232,14 @@ export interface StepResultScalarWhereInput {
    end_lte?: Maybe<DateTimeInput>
    end_gt?: Maybe<DateTimeInput>
    end_gte?: Maybe<DateTimeInput>
+   time?: Maybe<Int>
+   time_not?: Maybe<Int>
+   time_in?: Maybe<Int[] | Int>
+   time_not_in?: Maybe<Int[] | Int>
+   time_lt?: Maybe<Int>
+   time_lte?: Maybe<Int>
+   time_gt?: Maybe<Int>
+   time_gte?: Maybe<Int>
    AND?: Maybe<StepResultScalarWhereInput[] | StepResultScalarWhereInput>
    OR?: Maybe<StepResultScalarWhereInput[] | StepResultScalarWhereInput>
    NOT?: Maybe<StepResultScalarWhereInput[] | StepResultScalarWhereInput>
@@ -1945,12 +2253,13 @@ export interface StepResultUpdateManyWithWhereNestedInput {
 export interface StepResultUpdateManyDataInput {
    start?: Maybe<DateTimeInput>
    end?: Maybe<DateTimeInput>
+   time?: Maybe<Int>
 }
 
-export interface StepUpsertWithWhereUniqueWithoutParentInput {
+export interface StepUpsertWithWhereUniqueNestedInput {
    where: StepWhereUniqueInput
-   update: StepUpdateWithoutParentDataInput
-   create: StepCreateWithoutParentInput
+   update: StepUpdateDataInput
+   create: StepCreateInput
 }
 
 export interface StepScalarWhereInput {
@@ -1968,105 +2277,9 @@ export interface StepScalarWhereInput {
    id_not_starts_with?: Maybe<ID_Input>
    id_ends_with?: Maybe<ID_Input>
    id_not_ends_with?: Maybe<ID_Input>
-   question?: Maybe<String>
-   question_not?: Maybe<String>
-   question_in?: Maybe<String[] | String>
-   question_not_in?: Maybe<String[] | String>
-   question_lt?: Maybe<String>
-   question_lte?: Maybe<String>
-   question_gt?: Maybe<String>
-   question_gte?: Maybe<String>
-   question_contains?: Maybe<String>
-   question_not_contains?: Maybe<String>
-   question_starts_with?: Maybe<String>
-   question_not_starts_with?: Maybe<String>
-   question_ends_with?: Maybe<String>
-   question_not_ends_with?: Maybe<String>
    AND?: Maybe<StepScalarWhereInput[] | StepScalarWhereInput>
    OR?: Maybe<StepScalarWhereInput[] | StepScalarWhereInput>
    NOT?: Maybe<StepScalarWhereInput[] | StepScalarWhereInput>
-}
-
-export interface StepUpdateManyWithWhereNestedInput {
-   where: StepScalarWhereInput
-   data: StepUpdateManyDataInput
-}
-
-export interface StepUpdateManyDataInput {
-   question?: Maybe<String>
-}
-
-export interface TestUpsertWithoutResultsInput {
-   update: TestUpdateWithoutResultsDataInput
-   create: TestCreateWithoutResultsInput
-}
-
-export interface StepResultUpdateManyWithoutResultParentInput {
-   create?: Maybe<
-      | StepResultCreateWithoutResultParentInput[]
-      | StepResultCreateWithoutResultParentInput
-   >
-   delete?: Maybe<StepResultWhereUniqueInput[] | StepResultWhereUniqueInput>
-   connect?: Maybe<StepResultWhereUniqueInput[] | StepResultWhereUniqueInput>
-   set?: Maybe<StepResultWhereUniqueInput[] | StepResultWhereUniqueInput>
-   disconnect?: Maybe<StepResultWhereUniqueInput[] | StepResultWhereUniqueInput>
-   update?: Maybe<
-      | StepResultUpdateWithWhereUniqueWithoutResultParentInput[]
-      | StepResultUpdateWithWhereUniqueWithoutResultParentInput
-   >
-   upsert?: Maybe<
-      | StepResultUpsertWithWhereUniqueWithoutResultParentInput[]
-      | StepResultUpsertWithWhereUniqueWithoutResultParentInput
-   >
-   deleteMany?: Maybe<StepResultScalarWhereInput[] | StepResultScalarWhereInput>
-   updateMany?: Maybe<
-      | StepResultUpdateManyWithWhereNestedInput[]
-      | StepResultUpdateManyWithWhereNestedInput
-   >
-}
-
-export interface StepResultUpdateWithWhereUniqueWithoutResultParentInput {
-   where: StepResultWhereUniqueInput
-   data: StepResultUpdateWithoutResultParentDataInput
-}
-
-export interface StepResultUpdateWithoutResultParentDataInput {
-   parent?: Maybe<StepUpdateOneRequiredWithoutResultsInput>
-   start?: Maybe<DateTimeInput>
-   end?: Maybe<DateTimeInput>
-   time?: Maybe<TimeResultUpdateOneInput>
-   path?: Maybe<MenuUpdateManyInput>
-   status?: Maybe<KeyResultStatusUpdateOneRequiredInput>
-}
-
-export interface StepUpdateOneRequiredWithoutResultsInput {
-   create?: Maybe<StepCreateWithoutResultsInput>
-   update?: Maybe<StepUpdateWithoutResultsDataInput>
-   upsert?: Maybe<StepUpsertWithoutResultsInput>
-   connect?: Maybe<StepWhereUniqueInput>
-}
-
-export interface StepUpdateWithoutResultsDataInput {
-   parent?: Maybe<TestUpdateOneWithoutStepsInput>
-   type?: Maybe<KeyUserTypeUpdateManyWithoutStepsInput>
-   question?: Maybe<String>
-   targets?: Maybe<MenuUpdateManyInput>
-   paths?: Maybe<PathUpdateManyWithoutParentInput>
-}
-
-export interface TestUpdateOneWithoutStepsInput {
-   create?: Maybe<TestCreateWithoutStepsInput>
-   update?: Maybe<TestUpdateWithoutStepsDataInput>
-   upsert?: Maybe<TestUpsertWithoutStepsInput>
-   delete?: Maybe<Boolean>
-   disconnect?: Maybe<Boolean>
-   connect?: Maybe<TestWhereUniqueInput>
-}
-
-export interface TestUpdateWithoutStepsDataInput {
-   title?: Maybe<String>
-   menus?: Maybe<MenuUpdateManyInput>
-   results?: Maybe<TestResultUpdateManyWithoutParentInput>
 }
 
 export interface TestResultUpdateManyWithoutParentInput {
@@ -2100,9 +2313,71 @@ export interface TestResultUpdateWithWhereUniqueWithoutParentInput {
 export interface TestResultUpdateWithoutParentDataInput {
    start?: Maybe<DateTimeInput>
    end?: Maybe<DateTimeInput>
-   time?: Maybe<TimeResultUpdateOneInput>
-   steps?: Maybe<StepResultUpdateManyWithoutResultParentInput>
-   status?: Maybe<KeyResultStatusUpdateOneRequiredWithoutResultsInput>
+   duration?: Maybe<Int>
+   steps?: Maybe<StepResultUpdateManyWithoutResultInput>
+   status?: Maybe<KeyTestResultStatusUpdateOneRequiredInput>
+}
+
+export interface StepResultUpdateManyWithoutResultInput {
+   create?: Maybe<
+      StepResultCreateWithoutResultInput[] | StepResultCreateWithoutResultInput
+   >
+   delete?: Maybe<StepResultWhereUniqueInput[] | StepResultWhereUniqueInput>
+   connect?: Maybe<StepResultWhereUniqueInput[] | StepResultWhereUniqueInput>
+   set?: Maybe<StepResultWhereUniqueInput[] | StepResultWhereUniqueInput>
+   disconnect?: Maybe<StepResultWhereUniqueInput[] | StepResultWhereUniqueInput>
+   update?: Maybe<
+      | StepResultUpdateWithWhereUniqueWithoutResultInput[]
+      | StepResultUpdateWithWhereUniqueWithoutResultInput
+   >
+   upsert?: Maybe<
+      | StepResultUpsertWithWhereUniqueWithoutResultInput[]
+      | StepResultUpsertWithWhereUniqueWithoutResultInput
+   >
+   deleteMany?: Maybe<StepResultScalarWhereInput[] | StepResultScalarWhereInput>
+   updateMany?: Maybe<
+      | StepResultUpdateManyWithWhereNestedInput[]
+      | StepResultUpdateManyWithWhereNestedInput
+   >
+}
+
+export interface StepResultUpdateWithWhereUniqueWithoutResultInput {
+   where: StepResultWhereUniqueInput
+   data: StepResultUpdateWithoutResultDataInput
+}
+
+export interface StepResultUpdateWithoutResultDataInput {
+   parent?: Maybe<StepUpdateOneRequiredWithoutResultsInput>
+   start?: Maybe<DateTimeInput>
+   end?: Maybe<DateTimeInput>
+   time?: Maybe<Int>
+   path?: Maybe<MenuUpdateManyInput>
+   status?: Maybe<KeyStepResultStatusUpdateOneRequiredInput>
+}
+
+export interface StepUpdateOneRequiredWithoutResultsInput {
+   create?: Maybe<StepCreateWithoutResultsInput>
+   update?: Maybe<StepUpdateWithoutResultsDataInput>
+   upsert?: Maybe<StepUpsertWithoutResultsInput>
+   connect?: Maybe<StepWhereUniqueInput>
+}
+
+export interface StepUpdateWithoutResultsDataInput {
+   type?: Maybe<KeyUserTypeUpdateManyInput>
+   question?: Maybe<MultiLanguageContentUpdateOneRequiredInput>
+   targets?: Maybe<MenuUpdateManyInput>
+   paths?: Maybe<MenuUpdateManyInput>
+}
+
+export interface StepUpsertWithoutResultsInput {
+   update: StepUpdateWithoutResultsDataInput
+   create: StepCreateWithoutResultsInput
+}
+
+export interface StepResultUpsertWithWhereUniqueWithoutResultInput {
+   where: StepResultWhereUniqueInput
+   update: StepResultUpdateWithoutResultDataInput
+   create: StepResultCreateWithoutResultInput
 }
 
 export interface TestResultUpsertWithWhereUniqueWithoutParentInput {
@@ -2142,6 +2417,14 @@ export interface TestResultScalarWhereInput {
    end_lte?: Maybe<DateTimeInput>
    end_gt?: Maybe<DateTimeInput>
    end_gte?: Maybe<DateTimeInput>
+   duration?: Maybe<Int>
+   duration_not?: Maybe<Int>
+   duration_in?: Maybe<Int[] | Int>
+   duration_not_in?: Maybe<Int[] | Int>
+   duration_lt?: Maybe<Int>
+   duration_lte?: Maybe<Int>
+   duration_gt?: Maybe<Int>
+   duration_gte?: Maybe<Int>
    AND?: Maybe<TestResultScalarWhereInput[] | TestResultScalarWhereInput>
    OR?: Maybe<TestResultScalarWhereInput[] | TestResultScalarWhereInput>
    NOT?: Maybe<TestResultScalarWhereInput[] | TestResultScalarWhereInput>
@@ -2155,530 +2438,13 @@ export interface TestResultUpdateManyWithWhereNestedInput {
 export interface TestResultUpdateManyDataInput {
    start?: Maybe<DateTimeInput>
    end?: Maybe<DateTimeInput>
+   duration?: Maybe<Int>
 }
 
-export interface TestUpsertWithoutStepsInput {
-   update: TestUpdateWithoutStepsDataInput
-   create: TestCreateWithoutStepsInput
-}
-
-export interface StepUpsertWithoutResultsInput {
-   update: StepUpdateWithoutResultsDataInput
-   create: StepCreateWithoutResultsInput
-}
-
-export interface StepResultUpsertWithWhereUniqueWithoutResultParentInput {
-   where: StepResultWhereUniqueInput
-   update: StepResultUpdateWithoutResultParentDataInput
-   create: StepResultCreateWithoutResultParentInput
-}
-
-export interface TestResultUpsertWithWhereUniqueWithoutStatusInput {
-   where: TestResultWhereUniqueInput
-   update: TestResultUpdateWithoutStatusDataInput
-   create: TestResultCreateWithoutStatusInput
-}
-
-export interface KeyResultStatusUpdateManyMutationInput {
-   key?: Maybe<String>
-}
-
-export interface KeyUserTypeCreateInput {
-   id?: Maybe<ID_Input>
-   key: String
-   steps?: Maybe<StepCreateManyWithoutTypeInput>
-}
-
-export interface StepCreateManyWithoutTypeInput {
-   create?: Maybe<StepCreateWithoutTypeInput[] | StepCreateWithoutTypeInput>
-   connect?: Maybe<StepWhereUniqueInput[] | StepWhereUniqueInput>
-}
-
-export interface StepCreateWithoutTypeInput {
-   id?: Maybe<ID_Input>
-   parent?: Maybe<TestCreateOneWithoutStepsInput>
-   question: String
-   targets?: Maybe<MenuCreateManyInput>
-   paths?: Maybe<PathCreateManyWithoutParentInput>
-   results?: Maybe<StepResultCreateManyWithoutParentInput>
-}
-
-export interface KeyUserTypeUpdateInput {
-   key?: Maybe<String>
-   steps?: Maybe<StepUpdateManyWithoutTypeInput>
-}
-
-export interface StepUpdateManyWithoutTypeInput {
-   create?: Maybe<StepCreateWithoutTypeInput[] | StepCreateWithoutTypeInput>
-   delete?: Maybe<StepWhereUniqueInput[] | StepWhereUniqueInput>
-   connect?: Maybe<StepWhereUniqueInput[] | StepWhereUniqueInput>
-   set?: Maybe<StepWhereUniqueInput[] | StepWhereUniqueInput>
-   disconnect?: Maybe<StepWhereUniqueInput[] | StepWhereUniqueInput>
-   update?: Maybe<
-      | StepUpdateWithWhereUniqueWithoutTypeInput[]
-      | StepUpdateWithWhereUniqueWithoutTypeInput
-   >
-   upsert?: Maybe<
-      | StepUpsertWithWhereUniqueWithoutTypeInput[]
-      | StepUpsertWithWhereUniqueWithoutTypeInput
-   >
-   deleteMany?: Maybe<StepScalarWhereInput[] | StepScalarWhereInput>
-   updateMany?: Maybe<
-      StepUpdateManyWithWhereNestedInput[] | StepUpdateManyWithWhereNestedInput
-   >
-}
-
-export interface StepUpdateWithWhereUniqueWithoutTypeInput {
-   where: StepWhereUniqueInput
-   data: StepUpdateWithoutTypeDataInput
-}
-
-export interface StepUpdateWithoutTypeDataInput {
-   parent?: Maybe<TestUpdateOneWithoutStepsInput>
-   question?: Maybe<String>
-   targets?: Maybe<MenuUpdateManyInput>
-   paths?: Maybe<PathUpdateManyWithoutParentInput>
-   results?: Maybe<StepResultUpdateManyWithoutParentInput>
-}
-
-export interface StepUpsertWithWhereUniqueWithoutTypeInput {
-   where: StepWhereUniqueInput
-   update: StepUpdateWithoutTypeDataInput
-   create: StepCreateWithoutTypeInput
-}
-
-export interface KeyUserTypeUpdateManyMutationInput {
-   key?: Maybe<String>
-}
-
-export interface KeysCreateInput {
-   id?: Maybe<ID_Input>
-   userType?: Maybe<KeyUserTypeCreateManyInput>
-   resultStatus?: Maybe<KeyResultStatusCreateManyInput>
-}
-
-export interface KeyUserTypeCreateManyInput {
-   create?: Maybe<KeyUserTypeCreateInput[] | KeyUserTypeCreateInput>
-   connect?: Maybe<KeyUserTypeWhereUniqueInput[] | KeyUserTypeWhereUniqueInput>
-}
-
-export interface KeyResultStatusCreateManyInput {
-   create?: Maybe<KeyResultStatusCreateInput[] | KeyResultStatusCreateInput>
-   connect?: Maybe<
-      KeyResultStatusWhereUniqueInput[] | KeyResultStatusWhereUniqueInput
-   >
-}
-
-export interface KeysUpdateInput {
-   userType?: Maybe<KeyUserTypeUpdateManyInput>
-   resultStatus?: Maybe<KeyResultStatusUpdateManyInput>
-}
-
-export interface KeyUserTypeUpdateManyInput {
-   create?: Maybe<KeyUserTypeCreateInput[] | KeyUserTypeCreateInput>
-   update?: Maybe<
-      | KeyUserTypeUpdateWithWhereUniqueNestedInput[]
-      | KeyUserTypeUpdateWithWhereUniqueNestedInput
-   >
-   upsert?: Maybe<
-      | KeyUserTypeUpsertWithWhereUniqueNestedInput[]
-      | KeyUserTypeUpsertWithWhereUniqueNestedInput
-   >
-   delete?: Maybe<KeyUserTypeWhereUniqueInput[] | KeyUserTypeWhereUniqueInput>
-   connect?: Maybe<KeyUserTypeWhereUniqueInput[] | KeyUserTypeWhereUniqueInput>
-   set?: Maybe<KeyUserTypeWhereUniqueInput[] | KeyUserTypeWhereUniqueInput>
-   disconnect?: Maybe<
-      KeyUserTypeWhereUniqueInput[] | KeyUserTypeWhereUniqueInput
-   >
-   deleteMany?: Maybe<
-      KeyUserTypeScalarWhereInput[] | KeyUserTypeScalarWhereInput
-   >
-   updateMany?: Maybe<
-      | KeyUserTypeUpdateManyWithWhereNestedInput[]
-      | KeyUserTypeUpdateManyWithWhereNestedInput
-   >
-}
-
-export interface KeyUserTypeUpdateWithWhereUniqueNestedInput {
-   where: KeyUserTypeWhereUniqueInput
-   data: KeyUserTypeUpdateDataInput
-}
-
-export interface KeyUserTypeUpdateDataInput {
-   key?: Maybe<String>
-   steps?: Maybe<StepUpdateManyWithoutTypeInput>
-}
-
-export interface KeyUserTypeUpsertWithWhereUniqueNestedInput {
-   where: KeyUserTypeWhereUniqueInput
-   update: KeyUserTypeUpdateDataInput
-   create: KeyUserTypeCreateInput
-}
-
-export interface KeyResultStatusUpdateManyInput {
-   create?: Maybe<KeyResultStatusCreateInput[] | KeyResultStatusCreateInput>
-   update?: Maybe<
-      | KeyResultStatusUpdateWithWhereUniqueNestedInput[]
-      | KeyResultStatusUpdateWithWhereUniqueNestedInput
-   >
-   upsert?: Maybe<
-      | KeyResultStatusUpsertWithWhereUniqueNestedInput[]
-      | KeyResultStatusUpsertWithWhereUniqueNestedInput
-   >
-   delete?: Maybe<
-      KeyResultStatusWhereUniqueInput[] | KeyResultStatusWhereUniqueInput
-   >
-   connect?: Maybe<
-      KeyResultStatusWhereUniqueInput[] | KeyResultStatusWhereUniqueInput
-   >
-   set?: Maybe<
-      KeyResultStatusWhereUniqueInput[] | KeyResultStatusWhereUniqueInput
-   >
-   disconnect?: Maybe<
-      KeyResultStatusWhereUniqueInput[] | KeyResultStatusWhereUniqueInput
-   >
-   deleteMany?: Maybe<
-      KeyResultStatusScalarWhereInput[] | KeyResultStatusScalarWhereInput
-   >
-   updateMany?: Maybe<
-      | KeyResultStatusUpdateManyWithWhereNestedInput[]
-      | KeyResultStatusUpdateManyWithWhereNestedInput
-   >
-}
-
-export interface KeyResultStatusUpdateWithWhereUniqueNestedInput {
-   where: KeyResultStatusWhereUniqueInput
-   data: KeyResultStatusUpdateDataInput
-}
-
-export interface KeyResultStatusUpsertWithWhereUniqueNestedInput {
-   where: KeyResultStatusWhereUniqueInput
-   update: KeyResultStatusUpdateDataInput
-   create: KeyResultStatusCreateInput
-}
-
-export interface KeyResultStatusScalarWhereInput {
-   id?: Maybe<ID_Input>
-   id_not?: Maybe<ID_Input>
-   id_in?: Maybe<ID_Input[] | ID_Input>
-   id_not_in?: Maybe<ID_Input[] | ID_Input>
-   id_lt?: Maybe<ID_Input>
-   id_lte?: Maybe<ID_Input>
-   id_gt?: Maybe<ID_Input>
-   id_gte?: Maybe<ID_Input>
-   id_contains?: Maybe<ID_Input>
-   id_not_contains?: Maybe<ID_Input>
-   id_starts_with?: Maybe<ID_Input>
-   id_not_starts_with?: Maybe<ID_Input>
-   id_ends_with?: Maybe<ID_Input>
-   id_not_ends_with?: Maybe<ID_Input>
-   key?: Maybe<String>
-   key_not?: Maybe<String>
-   key_in?: Maybe<String[] | String>
-   key_not_in?: Maybe<String[] | String>
-   key_lt?: Maybe<String>
-   key_lte?: Maybe<String>
-   key_gt?: Maybe<String>
-   key_gte?: Maybe<String>
-   key_contains?: Maybe<String>
-   key_not_contains?: Maybe<String>
-   key_starts_with?: Maybe<String>
-   key_not_starts_with?: Maybe<String>
-   key_ends_with?: Maybe<String>
-   key_not_ends_with?: Maybe<String>
-   AND?: Maybe<
-      KeyResultStatusScalarWhereInput[] | KeyResultStatusScalarWhereInput
-   >
-   OR?: Maybe<
-      KeyResultStatusScalarWhereInput[] | KeyResultStatusScalarWhereInput
-   >
-   NOT?: Maybe<
-      KeyResultStatusScalarWhereInput[] | KeyResultStatusScalarWhereInput
-   >
-}
-
-export interface KeyResultStatusUpdateManyWithWhereNestedInput {
-   where: KeyResultStatusScalarWhereInput
-   data: KeyResultStatusUpdateManyDataInput
-}
-
-export interface KeyResultStatusUpdateManyDataInput {
-   key?: Maybe<String>
-}
-
-export interface MenuUpdateInput {
-   root?: Maybe<Boolean>
-   menus?: Maybe<MenuUpdateManyWithoutItemsInput>
-   name?: Maybe<String>
-   items?: Maybe<MenuUpdateManyWithoutMenusInput>
-}
-
-export interface MenuUpdateManyMutationInput {
-   root?: Maybe<Boolean>
-   name?: Maybe<String>
-}
-
-export interface PathCreateInput {
-   id?: Maybe<ID_Input>
-   parent: StepCreateOneWithoutPathsInput
-   paths?: Maybe<MenuCreateManyInput>
-}
-
-export interface StepCreateOneWithoutPathsInput {
-   create?: Maybe<StepCreateWithoutPathsInput>
-   connect?: Maybe<StepWhereUniqueInput>
-}
-
-export interface StepCreateWithoutPathsInput {
-   id?: Maybe<ID_Input>
-   parent?: Maybe<TestCreateOneWithoutStepsInput>
-   type?: Maybe<KeyUserTypeCreateManyWithoutStepsInput>
-   question: String
-   targets?: Maybe<MenuCreateManyInput>
-   results?: Maybe<StepResultCreateManyWithoutParentInput>
-}
-
-export interface PathUpdateInput {
-   parent?: Maybe<StepUpdateOneRequiredWithoutPathsInput>
-   paths?: Maybe<MenuUpdateManyInput>
-}
-
-export interface StepUpdateOneRequiredWithoutPathsInput {
-   create?: Maybe<StepCreateWithoutPathsInput>
-   update?: Maybe<StepUpdateWithoutPathsDataInput>
-   upsert?: Maybe<StepUpsertWithoutPathsInput>
-   connect?: Maybe<StepWhereUniqueInput>
-}
-
-export interface StepUpdateWithoutPathsDataInput {
-   parent?: Maybe<TestUpdateOneWithoutStepsInput>
-   type?: Maybe<KeyUserTypeUpdateManyWithoutStepsInput>
-   question?: Maybe<String>
-   targets?: Maybe<MenuUpdateManyInput>
-   results?: Maybe<StepResultUpdateManyWithoutParentInput>
-}
-
-export interface StepUpsertWithoutPathsInput {
-   update: StepUpdateWithoutPathsDataInput
-   create: StepCreateWithoutPathsInput
-}
-
-export interface StepCreateInput {
-   id?: Maybe<ID_Input>
-   parent?: Maybe<TestCreateOneWithoutStepsInput>
-   type?: Maybe<KeyUserTypeCreateManyWithoutStepsInput>
-   question: String
-   targets?: Maybe<MenuCreateManyInput>
-   paths?: Maybe<PathCreateManyWithoutParentInput>
-   results?: Maybe<StepResultCreateManyWithoutParentInput>
-}
-
-export interface StepUpdateInput {
-   parent?: Maybe<TestUpdateOneWithoutStepsInput>
-   type?: Maybe<KeyUserTypeUpdateManyWithoutStepsInput>
-   question?: Maybe<String>
-   targets?: Maybe<MenuUpdateManyInput>
-   paths?: Maybe<PathUpdateManyWithoutParentInput>
-   results?: Maybe<StepResultUpdateManyWithoutParentInput>
-}
-
-export interface StepUpdateManyMutationInput {
-   question?: Maybe<String>
-}
-
-export interface StepResultCreateInput {
-   id?: Maybe<ID_Input>
-   parent: StepCreateOneWithoutResultsInput
-   resultParent: TestResultCreateOneWithoutStepsInput
-   start: DateTimeInput
-   end?: Maybe<DateTimeInput>
-   time?: Maybe<TimeResultCreateOneInput>
-   path?: Maybe<MenuCreateManyInput>
-   status: KeyResultStatusCreateOneInput
-}
-
-export interface StepResultUpdateInput {
-   parent?: Maybe<StepUpdateOneRequiredWithoutResultsInput>
-   resultParent?: Maybe<TestResultUpdateOneRequiredWithoutStepsInput>
-   start?: Maybe<DateTimeInput>
-   end?: Maybe<DateTimeInput>
-   time?: Maybe<TimeResultUpdateOneInput>
-   path?: Maybe<MenuUpdateManyInput>
-   status?: Maybe<KeyResultStatusUpdateOneRequiredInput>
-}
-
-export interface StepResultUpdateManyMutationInput {
-   start?: Maybe<DateTimeInput>
-   end?: Maybe<DateTimeInput>
-}
-
-export interface TestCreateInput {
-   id?: Maybe<ID_Input>
-   title: String
-   steps?: Maybe<StepCreateManyWithoutParentInput>
-   menus?: Maybe<MenuCreateManyInput>
-   results?: Maybe<TestResultCreateManyWithoutParentInput>
-}
-
-export interface TestUpdateInput {
-   title?: Maybe<String>
-   steps?: Maybe<StepUpdateManyWithoutParentInput>
-   menus?: Maybe<MenuUpdateManyInput>
-   results?: Maybe<TestResultUpdateManyWithoutParentInput>
-}
-
-export interface TestUpdateManyMutationInput {
-   title?: Maybe<String>
-}
-
-export interface TestResultCreateInput {
-   id?: Maybe<ID_Input>
-   parent: TestCreateOneWithoutResultsInput
-   start: DateTimeInput
-   end?: Maybe<DateTimeInput>
-   time?: Maybe<TimeResultCreateOneInput>
-   steps?: Maybe<StepResultCreateManyWithoutResultParentInput>
-   status: KeyResultStatusCreateOneWithoutResultsInput
-}
-
-export interface TestResultUpdateInput {
-   parent?: Maybe<TestUpdateOneRequiredWithoutResultsInput>
-   start?: Maybe<DateTimeInput>
-   end?: Maybe<DateTimeInput>
-   time?: Maybe<TimeResultUpdateOneInput>
-   steps?: Maybe<StepResultUpdateManyWithoutResultParentInput>
-   status?: Maybe<KeyResultStatusUpdateOneRequiredWithoutResultsInput>
-}
-
-export interface TestResultUpdateManyMutationInput {
-   start?: Maybe<DateTimeInput>
-   end?: Maybe<DateTimeInput>
-}
-
-export interface TimeResultUpdateInput {
-   int?: Maybe<Int>
-   text?: Maybe<String>
-}
-
-export interface TimeResultUpdateManyMutationInput {
-   int?: Maybe<Int>
-   text?: Maybe<String>
-}
-
-export interface ViewCreateInput {
-   id?: Maybe<ID_Input>
-   welcome: WelcomeCreateOneInput
-   company: CompanyCreateOneInput
-   menus?: Maybe<MenuCreateManyInput>
-   tests?: Maybe<TestCreateManyInput>
-   steps?: Maybe<StepCreateManyInput>
-}
-
-export interface WelcomeCreateOneInput {
-   create?: Maybe<WelcomeCreateInput>
-   connect?: Maybe<WelcomeWhereUniqueInput>
-}
-
-export interface WelcomeCreateInput {
-   id?: Maybe<ID_Input>
-   title: String
-   message: String
-}
-
-export interface CompanyCreateOneInput {
-   create?: Maybe<CompanyCreateInput>
-   connect?: Maybe<CompanyWhereUniqueInput>
-}
-
-export interface TestCreateManyInput {
-   create?: Maybe<TestCreateInput[] | TestCreateInput>
-   connect?: Maybe<TestWhereUniqueInput[] | TestWhereUniqueInput>
-}
-
-export interface StepCreateManyInput {
-   create?: Maybe<StepCreateInput[] | StepCreateInput>
-   connect?: Maybe<StepWhereUniqueInput[] | StepWhereUniqueInput>
-}
-
-export interface ViewUpdateInput {
-   welcome?: Maybe<WelcomeUpdateOneRequiredInput>
-   company?: Maybe<CompanyUpdateOneRequiredInput>
-   menus?: Maybe<MenuUpdateManyInput>
-   tests?: Maybe<TestUpdateManyInput>
-   steps?: Maybe<StepUpdateManyInput>
-}
-
-export interface WelcomeUpdateOneRequiredInput {
-   create?: Maybe<WelcomeCreateInput>
-   update?: Maybe<WelcomeUpdateDataInput>
-   upsert?: Maybe<WelcomeUpsertNestedInput>
-   connect?: Maybe<WelcomeWhereUniqueInput>
-}
-
-export interface WelcomeUpdateDataInput {
-   title?: Maybe<String>
-   message?: Maybe<String>
-}
-
-export interface WelcomeUpsertNestedInput {
-   update: WelcomeUpdateDataInput
-   create: WelcomeCreateInput
-}
-
-export interface CompanyUpdateOneRequiredInput {
-   create?: Maybe<CompanyCreateInput>
-   update?: Maybe<CompanyUpdateDataInput>
-   upsert?: Maybe<CompanyUpsertNestedInput>
-   connect?: Maybe<CompanyWhereUniqueInput>
-}
-
-export interface CompanyUpdateDataInput {
-   name?: Maybe<String>
-   abbr?: Maybe<String>
-   logo?: Maybe<String>
-}
-
-export interface CompanyUpsertNestedInput {
-   update: CompanyUpdateDataInput
-   create: CompanyCreateInput
-}
-
-export interface TestUpdateManyInput {
-   create?: Maybe<TestCreateInput[] | TestCreateInput>
-   update?: Maybe<
-      | TestUpdateWithWhereUniqueNestedInput[]
-      | TestUpdateWithWhereUniqueNestedInput
-   >
-   upsert?: Maybe<
-      | TestUpsertWithWhereUniqueNestedInput[]
-      | TestUpsertWithWhereUniqueNestedInput
-   >
-   delete?: Maybe<TestWhereUniqueInput[] | TestWhereUniqueInput>
-   connect?: Maybe<TestWhereUniqueInput[] | TestWhereUniqueInput>
-   set?: Maybe<TestWhereUniqueInput[] | TestWhereUniqueInput>
-   disconnect?: Maybe<TestWhereUniqueInput[] | TestWhereUniqueInput>
-   deleteMany?: Maybe<TestScalarWhereInput[] | TestScalarWhereInput>
-   updateMany?: Maybe<
-      TestUpdateManyWithWhereNestedInput[] | TestUpdateManyWithWhereNestedInput
-   >
-}
-
-export interface TestUpdateWithWhereUniqueNestedInput {
+export interface TestUpsertWithWhereUniqueWithoutCompanyInput {
    where: TestWhereUniqueInput
-   data: TestUpdateDataInput
-}
-
-export interface TestUpdateDataInput {
-   title?: Maybe<String>
-   steps?: Maybe<StepUpdateManyWithoutParentInput>
-   menus?: Maybe<MenuUpdateManyInput>
-   results?: Maybe<TestResultUpdateManyWithoutParentInput>
-}
-
-export interface TestUpsertWithWhereUniqueNestedInput {
-   where: TestWhereUniqueInput
-   update: TestUpdateDataInput
-   create: TestCreateInput
+   update: TestUpdateWithoutCompanyDataInput
+   create: TestCreateWithoutCompanyInput
 }
 
 export interface TestScalarWhereInput {
@@ -2696,82 +2462,164 @@ export interface TestScalarWhereInput {
    id_not_starts_with?: Maybe<ID_Input>
    id_ends_with?: Maybe<ID_Input>
    id_not_ends_with?: Maybe<ID_Input>
-   title?: Maybe<String>
-   title_not?: Maybe<String>
-   title_in?: Maybe<String[] | String>
-   title_not_in?: Maybe<String[] | String>
-   title_lt?: Maybe<String>
-   title_lte?: Maybe<String>
-   title_gt?: Maybe<String>
-   title_gte?: Maybe<String>
-   title_contains?: Maybe<String>
-   title_not_contains?: Maybe<String>
-   title_starts_with?: Maybe<String>
-   title_not_starts_with?: Maybe<String>
-   title_ends_with?: Maybe<String>
-   title_not_ends_with?: Maybe<String>
    AND?: Maybe<TestScalarWhereInput[] | TestScalarWhereInput>
    OR?: Maybe<TestScalarWhereInput[] | TestScalarWhereInput>
    NOT?: Maybe<TestScalarWhereInput[] | TestScalarWhereInput>
 }
 
-export interface TestUpdateManyWithWhereNestedInput {
-   where: TestScalarWhereInput
-   data: TestUpdateManyDataInput
+export interface CompanyUpdateManyMutationInput {
+   name?: Maybe<String>
+   abbr?: Maybe<String>
 }
 
-export interface TestUpdateManyDataInput {
-   title?: Maybe<String>
+export interface KeyUpdateInput {
+   userTypes?: Maybe<KeyUserTypeUpdateManyInput>
+   testResultStatus?: Maybe<KeyTestResultStatusUpdateManyInput>
+   stepResultStatus?: Maybe<KeyStepResultStatusUpdateManyInput>
+   languages?: Maybe<KeyLanguageUpdateManyInput>
 }
 
-export interface StepUpdateManyInput {
-   create?: Maybe<StepCreateInput[] | StepCreateInput>
-   update?: Maybe<
-      | StepUpdateWithWhereUniqueNestedInput[]
-      | StepUpdateWithWhereUniqueNestedInput
-   >
-   upsert?: Maybe<
-      | StepUpsertWithWhereUniqueNestedInput[]
-      | StepUpsertWithWhereUniqueNestedInput
-   >
-   delete?: Maybe<StepWhereUniqueInput[] | StepWhereUniqueInput>
-   connect?: Maybe<StepWhereUniqueInput[] | StepWhereUniqueInput>
-   set?: Maybe<StepWhereUniqueInput[] | StepWhereUniqueInput>
-   disconnect?: Maybe<StepWhereUniqueInput[] | StepWhereUniqueInput>
-   deleteMany?: Maybe<StepScalarWhereInput[] | StepScalarWhereInput>
-   updateMany?: Maybe<
-      StepUpdateManyWithWhereNestedInput[] | StepUpdateManyWithWhereNestedInput
-   >
+export interface KeyLanguageUpdateInput {
+   key?: Maybe<String>
 }
 
-export interface StepUpdateWithWhereUniqueNestedInput {
-   where: StepWhereUniqueInput
-   data: StepUpdateDataInput
+export interface KeyLanguageUpdateManyMutationInput {
+   key?: Maybe<String>
 }
 
-export interface StepUpdateDataInput {
-   parent?: Maybe<TestUpdateOneWithoutStepsInput>
-   type?: Maybe<KeyUserTypeUpdateManyWithoutStepsInput>
-   question?: Maybe<String>
+export interface KeyStepResultStatusUpdateInput {
+   key?: Maybe<String>
+}
+
+export interface KeyStepResultStatusUpdateManyMutationInput {
+   key?: Maybe<String>
+}
+
+export interface KeyTestResultStatusUpdateInput {
+   key?: Maybe<String>
+}
+
+export interface KeyTestResultStatusUpdateManyMutationInput {
+   key?: Maybe<String>
+}
+
+export interface KeyUserTypeUpdateInput {
+   key?: Maybe<String>
+}
+
+export interface KeyUserTypeUpdateManyMutationInput {
+   key?: Maybe<String>
+}
+
+export interface MenuUpdateInput {
+   root?: Maybe<Boolean>
+   menus?: Maybe<MenuUpdateManyWithoutItemsInput>
+   name?: Maybe<MultiLanguageContentUpdateOneRequiredInput>
+   items?: Maybe<MenuUpdateManyWithoutMenusInput>
+}
+
+export interface MenuUpdateManyMutationInput {
+   root?: Maybe<Boolean>
+}
+
+export interface MessageUpdateInput {
+   title?: Maybe<MultiLanguageContentUpdateOneRequiredInput>
+   message?: Maybe<MultiLanguageContentUpdateOneRequiredInput>
+}
+
+export interface MultiLanguageContentUpdateInput {
+   pt?: Maybe<String>
+   en?: Maybe<String>
+}
+
+export interface MultiLanguageContentUpdateManyMutationInput {
+   pt?: Maybe<String>
+   en?: Maybe<String>
+}
+
+export interface StepUpdateInput {
+   type?: Maybe<KeyUserTypeUpdateManyInput>
+   question?: Maybe<MultiLanguageContentUpdateOneRequiredInput>
    targets?: Maybe<MenuUpdateManyInput>
-   paths?: Maybe<PathUpdateManyWithoutParentInput>
+   paths?: Maybe<MenuUpdateManyInput>
    results?: Maybe<StepResultUpdateManyWithoutParentInput>
 }
 
-export interface StepUpsertWithWhereUniqueNestedInput {
-   where: StepWhereUniqueInput
-   update: StepUpdateDataInput
-   create: StepCreateInput
+export interface StepResultCreateInput {
+   id?: Maybe<ID_Input>
+   parent: StepCreateOneWithoutResultsInput
+   result: TestResultCreateOneWithoutStepsInput
+   start: DateTimeInput
+   end?: Maybe<DateTimeInput>
+   time: Int
+   path?: Maybe<MenuCreateManyInput>
+   status: KeyStepResultStatusCreateOneInput
 }
 
-export interface WelcomeUpdateInput {
-   title?: Maybe<String>
-   message?: Maybe<String>
+export interface StepResultUpdateInput {
+   parent?: Maybe<StepUpdateOneRequiredWithoutResultsInput>
+   result?: Maybe<TestResultUpdateOneRequiredWithoutStepsInput>
+   start?: Maybe<DateTimeInput>
+   end?: Maybe<DateTimeInput>
+   time?: Maybe<Int>
+   path?: Maybe<MenuUpdateManyInput>
+   status?: Maybe<KeyStepResultStatusUpdateOneRequiredInput>
 }
 
-export interface WelcomeUpdateManyMutationInput {
-   title?: Maybe<String>
-   message?: Maybe<String>
+export interface StepResultUpdateManyMutationInput {
+   start?: Maybe<DateTimeInput>
+   end?: Maybe<DateTimeInput>
+   time?: Maybe<Int>
+}
+
+export interface TestCreateInput {
+   id?: Maybe<ID_Input>
+   publics?: Maybe<KeyUserTypeCreateManyInput>
+   languages?: Maybe<KeyLanguageCreateManyInput>
+   instruction: MessageCreateOneInput
+   company: CompanyCreateOneWithoutTestsInput
+   title: MultiLanguageContentCreateOneInput
+   steps?: Maybe<StepCreateManyInput>
+   menus?: Maybe<MenuCreateManyInput>
+   results?: Maybe<TestResultCreateManyWithoutParentInput>
+   keys: KeyCreateOneInput
+}
+
+export interface TestUpdateInput {
+   publics?: Maybe<KeyUserTypeUpdateManyInput>
+   languages?: Maybe<KeyLanguageUpdateManyInput>
+   instruction?: Maybe<MessageUpdateOneRequiredInput>
+   company?: Maybe<CompanyUpdateOneRequiredWithoutTestsInput>
+   title?: Maybe<MultiLanguageContentUpdateOneRequiredInput>
+   steps?: Maybe<StepUpdateManyInput>
+   menus?: Maybe<MenuUpdateManyInput>
+   results?: Maybe<TestResultUpdateManyWithoutParentInput>
+   keys?: Maybe<KeyUpdateOneRequiredInput>
+}
+
+export interface TestResultCreateInput {
+   id?: Maybe<ID_Input>
+   parent: TestCreateOneWithoutResultsInput
+   start: DateTimeInput
+   end?: Maybe<DateTimeInput>
+   duration: Int
+   steps?: Maybe<StepResultCreateManyWithoutResultInput>
+   status: KeyTestResultStatusCreateOneInput
+}
+
+export interface TestResultUpdateInput {
+   parent?: Maybe<TestUpdateOneRequiredWithoutResultsInput>
+   start?: Maybe<DateTimeInput>
+   end?: Maybe<DateTimeInput>
+   duration?: Maybe<Int>
+   steps?: Maybe<StepResultUpdateManyWithoutResultInput>
+   status?: Maybe<KeyTestResultStatusUpdateOneRequiredInput>
+}
+
+export interface TestResultUpdateManyMutationInput {
+   start?: Maybe<DateTimeInput>
+   end?: Maybe<DateTimeInput>
+   duration?: Maybe<Int>
 }
 
 export interface CompanySubscriptionWhereInput {
@@ -2783,15 +2631,47 @@ export interface CompanySubscriptionWhereInput {
    AND?: Maybe<CompanySubscriptionWhereInput[] | CompanySubscriptionWhereInput>
 }
 
-export interface KeyResultStatusSubscriptionWhereInput {
+export interface KeySubscriptionWhereInput {
    mutation_in?: Maybe<MutationType[] | MutationType>
    updatedFields_contains?: Maybe<String>
    updatedFields_contains_every?: Maybe<String[] | String>
    updatedFields_contains_some?: Maybe<String[] | String>
-   node?: Maybe<KeyResultStatusWhereInput>
+   node?: Maybe<KeyWhereInput>
+   AND?: Maybe<KeySubscriptionWhereInput[] | KeySubscriptionWhereInput>
+}
+
+export interface KeyLanguageSubscriptionWhereInput {
+   mutation_in?: Maybe<MutationType[] | MutationType>
+   updatedFields_contains?: Maybe<String>
+   updatedFields_contains_every?: Maybe<String[] | String>
+   updatedFields_contains_some?: Maybe<String[] | String>
+   node?: Maybe<KeyLanguageWhereInput>
    AND?: Maybe<
-      | KeyResultStatusSubscriptionWhereInput[]
-      | KeyResultStatusSubscriptionWhereInput
+      KeyLanguageSubscriptionWhereInput[] | KeyLanguageSubscriptionWhereInput
+   >
+}
+
+export interface KeyStepResultStatusSubscriptionWhereInput {
+   mutation_in?: Maybe<MutationType[] | MutationType>
+   updatedFields_contains?: Maybe<String>
+   updatedFields_contains_every?: Maybe<String[] | String>
+   updatedFields_contains_some?: Maybe<String[] | String>
+   node?: Maybe<KeyStepResultStatusWhereInput>
+   AND?: Maybe<
+      | KeyStepResultStatusSubscriptionWhereInput[]
+      | KeyStepResultStatusSubscriptionWhereInput
+   >
+}
+
+export interface KeyTestResultStatusSubscriptionWhereInput {
+   mutation_in?: Maybe<MutationType[] | MutationType>
+   updatedFields_contains?: Maybe<String>
+   updatedFields_contains_every?: Maybe<String[] | String>
+   updatedFields_contains_some?: Maybe<String[] | String>
+   node?: Maybe<KeyTestResultStatusWhereInput>
+   AND?: Maybe<
+      | KeyTestResultStatusSubscriptionWhereInput[]
+      | KeyTestResultStatusSubscriptionWhereInput
    >
 }
 
@@ -2806,15 +2686,6 @@ export interface KeyUserTypeSubscriptionWhereInput {
    >
 }
 
-export interface KeysSubscriptionWhereInput {
-   mutation_in?: Maybe<MutationType[] | MutationType>
-   updatedFields_contains?: Maybe<String>
-   updatedFields_contains_every?: Maybe<String[] | String>
-   updatedFields_contains_some?: Maybe<String[] | String>
-   node?: Maybe<KeysWhereInput>
-   AND?: Maybe<KeysSubscriptionWhereInput[] | KeysSubscriptionWhereInput>
-}
-
 export interface MenuSubscriptionWhereInput {
    mutation_in?: Maybe<MutationType[] | MutationType>
    updatedFields_contains?: Maybe<String>
@@ -2824,13 +2695,25 @@ export interface MenuSubscriptionWhereInput {
    AND?: Maybe<MenuSubscriptionWhereInput[] | MenuSubscriptionWhereInput>
 }
 
-export interface PathSubscriptionWhereInput {
+export interface MessageSubscriptionWhereInput {
    mutation_in?: Maybe<MutationType[] | MutationType>
    updatedFields_contains?: Maybe<String>
    updatedFields_contains_every?: Maybe<String[] | String>
    updatedFields_contains_some?: Maybe<String[] | String>
-   node?: Maybe<PathWhereInput>
-   AND?: Maybe<PathSubscriptionWhereInput[] | PathSubscriptionWhereInput>
+   node?: Maybe<MessageWhereInput>
+   AND?: Maybe<MessageSubscriptionWhereInput[] | MessageSubscriptionWhereInput>
+}
+
+export interface MultiLanguageContentSubscriptionWhereInput {
+   mutation_in?: Maybe<MutationType[] | MutationType>
+   updatedFields_contains?: Maybe<String>
+   updatedFields_contains_every?: Maybe<String[] | String>
+   updatedFields_contains_some?: Maybe<String[] | String>
+   node?: Maybe<MultiLanguageContentWhereInput>
+   AND?: Maybe<
+      | MultiLanguageContentSubscriptionWhereInput[]
+      | MultiLanguageContentSubscriptionWhereInput
+   >
 }
 
 export interface StepSubscriptionWhereInput {
@@ -2873,35 +2756,6 @@ export interface TestResultSubscriptionWhereInput {
    >
 }
 
-export interface TimeResultSubscriptionWhereInput {
-   mutation_in?: Maybe<MutationType[] | MutationType>
-   updatedFields_contains?: Maybe<String>
-   updatedFields_contains_every?: Maybe<String[] | String>
-   updatedFields_contains_some?: Maybe<String[] | String>
-   node?: Maybe<TimeResultWhereInput>
-   AND?: Maybe<
-      TimeResultSubscriptionWhereInput[] | TimeResultSubscriptionWhereInput
-   >
-}
-
-export interface ViewSubscriptionWhereInput {
-   mutation_in?: Maybe<MutationType[] | MutationType>
-   updatedFields_contains?: Maybe<String>
-   updatedFields_contains_every?: Maybe<String[] | String>
-   updatedFields_contains_some?: Maybe<String[] | String>
-   node?: Maybe<ViewWhereInput>
-   AND?: Maybe<ViewSubscriptionWhereInput[] | ViewSubscriptionWhereInput>
-}
-
-export interface WelcomeSubscriptionWhereInput {
-   mutation_in?: Maybe<MutationType[] | MutationType>
-   updatedFields_contains?: Maybe<String>
-   updatedFields_contains_every?: Maybe<String[] | String>
-   updatedFields_contains_some?: Maybe<String[] | String>
-   node?: Maybe<WelcomeWhereInput>
-   AND?: Maybe<WelcomeSubscriptionWhereInput[] | WelcomeSubscriptionWhereInput>
-}
-
 export interface NodeNode {
    id: ID_Output
 }
@@ -2910,14 +2764,22 @@ export interface Company {
    id: ID_Output
    name: String
    abbr?: String
-   logo?: String
 }
 
 export interface CompanyPromise extends Promise<Company>, Fragmentable {
    id: () => Promise<ID_Output>
    name: () => Promise<String>
    abbr: () => Promise<String>
-   logo: () => Promise<String>
+   welcome: <T = MessagePromise>() => T
+   tests: <T = FragmentableArray<Test>>(args?: {
+      where?: TestWhereInput
+      orderBy?: TestOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
 }
 
 export interface CompanySubscription
@@ -2926,7 +2788,16 @@ export interface CompanySubscription
    id: () => Promise<AsyncIterator<ID_Output>>
    name: () => Promise<AsyncIterator<String>>
    abbr: () => Promise<AsyncIterator<String>>
-   logo: () => Promise<AsyncIterator<String>>
+   welcome: <T = MessageSubscription>() => T
+   tests: <T = Promise<AsyncIterator<TestSubscription>>>(args?: {
+      where?: TestWhereInput
+      orderBy?: TestOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
 }
 
 export interface CompanyNullablePromise
@@ -2935,7 +2806,814 @@ export interface CompanyNullablePromise
    id: () => Promise<ID_Output>
    name: () => Promise<String>
    abbr: () => Promise<String>
-   logo: () => Promise<String>
+   welcome: <T = MessagePromise>() => T
+   tests: <T = FragmentableArray<Test>>(args?: {
+      where?: TestWhereInput
+      orderBy?: TestOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+}
+
+export interface Message {
+   id: ID_Output
+}
+
+export interface MessagePromise extends Promise<Message>, Fragmentable {
+   id: () => Promise<ID_Output>
+   title: <T = MultiLanguageContentPromise>() => T
+   message: <T = MultiLanguageContentPromise>() => T
+}
+
+export interface MessageSubscription
+   extends Promise<AsyncIterator<Message>>,
+      Fragmentable {
+   id: () => Promise<AsyncIterator<ID_Output>>
+   title: <T = MultiLanguageContentSubscription>() => T
+   message: <T = MultiLanguageContentSubscription>() => T
+}
+
+export interface MessageNullablePromise
+   extends Promise<Message | null>,
+      Fragmentable {
+   id: () => Promise<ID_Output>
+   title: <T = MultiLanguageContentPromise>() => T
+   message: <T = MultiLanguageContentPromise>() => T
+}
+
+export interface MultiLanguageContent {
+   id: ID_Output
+   pt: String
+   en?: String
+}
+
+export interface MultiLanguageContentPromise
+   extends Promise<MultiLanguageContent>,
+      Fragmentable {
+   id: () => Promise<ID_Output>
+   pt: () => Promise<String>
+   en: () => Promise<String>
+}
+
+export interface MultiLanguageContentSubscription
+   extends Promise<AsyncIterator<MultiLanguageContent>>,
+      Fragmentable {
+   id: () => Promise<AsyncIterator<ID_Output>>
+   pt: () => Promise<AsyncIterator<String>>
+   en: () => Promise<AsyncIterator<String>>
+}
+
+export interface MultiLanguageContentNullablePromise
+   extends Promise<MultiLanguageContent | null>,
+      Fragmentable {
+   id: () => Promise<ID_Output>
+   pt: () => Promise<String>
+   en: () => Promise<String>
+}
+
+export interface Test {
+   id: ID_Output
+}
+
+export interface TestPromise extends Promise<Test>, Fragmentable {
+   id: () => Promise<ID_Output>
+   publics: <T = FragmentableArray<KeyUserType>>(args?: {
+      where?: KeyUserTypeWhereInput
+      orderBy?: KeyUserTypeOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   languages: <T = FragmentableArray<KeyLanguage>>(args?: {
+      where?: KeyLanguageWhereInput
+      orderBy?: KeyLanguageOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   instruction: <T = MessagePromise>() => T
+   company: <T = CompanyPromise>() => T
+   title: <T = MultiLanguageContentPromise>() => T
+   steps: <T = FragmentableArray<Step>>(args?: {
+      where?: StepWhereInput
+      orderBy?: StepOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   menus: <T = FragmentableArray<Menu>>(args?: {
+      where?: MenuWhereInput
+      orderBy?: MenuOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   results: <T = FragmentableArray<TestResult>>(args?: {
+      where?: TestResultWhereInput
+      orderBy?: TestResultOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   keys: <T = KeyPromise>() => T
+}
+
+export interface TestSubscription
+   extends Promise<AsyncIterator<Test>>,
+      Fragmentable {
+   id: () => Promise<AsyncIterator<ID_Output>>
+   publics: <T = Promise<AsyncIterator<KeyUserTypeSubscription>>>(args?: {
+      where?: KeyUserTypeWhereInput
+      orderBy?: KeyUserTypeOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   languages: <T = Promise<AsyncIterator<KeyLanguageSubscription>>>(args?: {
+      where?: KeyLanguageWhereInput
+      orderBy?: KeyLanguageOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   instruction: <T = MessageSubscription>() => T
+   company: <T = CompanySubscription>() => T
+   title: <T = MultiLanguageContentSubscription>() => T
+   steps: <T = Promise<AsyncIterator<StepSubscription>>>(args?: {
+      where?: StepWhereInput
+      orderBy?: StepOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   menus: <T = Promise<AsyncIterator<MenuSubscription>>>(args?: {
+      where?: MenuWhereInput
+      orderBy?: MenuOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   results: <T = Promise<AsyncIterator<TestResultSubscription>>>(args?: {
+      where?: TestResultWhereInput
+      orderBy?: TestResultOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   keys: <T = KeySubscription>() => T
+}
+
+export interface TestNullablePromise
+   extends Promise<Test | null>,
+      Fragmentable {
+   id: () => Promise<ID_Output>
+   publics: <T = FragmentableArray<KeyUserType>>(args?: {
+      where?: KeyUserTypeWhereInput
+      orderBy?: KeyUserTypeOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   languages: <T = FragmentableArray<KeyLanguage>>(args?: {
+      where?: KeyLanguageWhereInput
+      orderBy?: KeyLanguageOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   instruction: <T = MessagePromise>() => T
+   company: <T = CompanyPromise>() => T
+   title: <T = MultiLanguageContentPromise>() => T
+   steps: <T = FragmentableArray<Step>>(args?: {
+      where?: StepWhereInput
+      orderBy?: StepOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   menus: <T = FragmentableArray<Menu>>(args?: {
+      where?: MenuWhereInput
+      orderBy?: MenuOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   results: <T = FragmentableArray<TestResult>>(args?: {
+      where?: TestResultWhereInput
+      orderBy?: TestResultOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   keys: <T = KeyPromise>() => T
+}
+
+export interface KeyUserType {
+   id: ID_Output
+   key: String
+}
+
+export interface KeyUserTypePromise extends Promise<KeyUserType>, Fragmentable {
+   id: () => Promise<ID_Output>
+   key: () => Promise<String>
+}
+
+export interface KeyUserTypeSubscription
+   extends Promise<AsyncIterator<KeyUserType>>,
+      Fragmentable {
+   id: () => Promise<AsyncIterator<ID_Output>>
+   key: () => Promise<AsyncIterator<String>>
+}
+
+export interface KeyUserTypeNullablePromise
+   extends Promise<KeyUserType | null>,
+      Fragmentable {
+   id: () => Promise<ID_Output>
+   key: () => Promise<String>
+}
+
+export interface KeyLanguage {
+   id: ID_Output
+   key: String
+}
+
+export interface KeyLanguagePromise extends Promise<KeyLanguage>, Fragmentable {
+   id: () => Promise<ID_Output>
+   key: () => Promise<String>
+}
+
+export interface KeyLanguageSubscription
+   extends Promise<AsyncIterator<KeyLanguage>>,
+      Fragmentable {
+   id: () => Promise<AsyncIterator<ID_Output>>
+   key: () => Promise<AsyncIterator<String>>
+}
+
+export interface KeyLanguageNullablePromise
+   extends Promise<KeyLanguage | null>,
+      Fragmentable {
+   id: () => Promise<ID_Output>
+   key: () => Promise<String>
+}
+
+export interface Step {
+   id: ID_Output
+}
+
+export interface StepPromise extends Promise<Step>, Fragmentable {
+   id: () => Promise<ID_Output>
+   type: <T = FragmentableArray<KeyUserType>>(args?: {
+      where?: KeyUserTypeWhereInput
+      orderBy?: KeyUserTypeOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   question: <T = MultiLanguageContentPromise>() => T
+   targets: <T = FragmentableArray<Menu>>(args?: {
+      where?: MenuWhereInput
+      orderBy?: MenuOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   paths: <T = FragmentableArray<Menu>>(args?: {
+      where?: MenuWhereInput
+      orderBy?: MenuOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   results: <T = FragmentableArray<StepResult>>(args?: {
+      where?: StepResultWhereInput
+      orderBy?: StepResultOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+}
+
+export interface StepSubscription
+   extends Promise<AsyncIterator<Step>>,
+      Fragmentable {
+   id: () => Promise<AsyncIterator<ID_Output>>
+   type: <T = Promise<AsyncIterator<KeyUserTypeSubscription>>>(args?: {
+      where?: KeyUserTypeWhereInput
+      orderBy?: KeyUserTypeOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   question: <T = MultiLanguageContentSubscription>() => T
+   targets: <T = Promise<AsyncIterator<MenuSubscription>>>(args?: {
+      where?: MenuWhereInput
+      orderBy?: MenuOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   paths: <T = Promise<AsyncIterator<MenuSubscription>>>(args?: {
+      where?: MenuWhereInput
+      orderBy?: MenuOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   results: <T = Promise<AsyncIterator<StepResultSubscription>>>(args?: {
+      where?: StepResultWhereInput
+      orderBy?: StepResultOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+}
+
+export interface StepNullablePromise
+   extends Promise<Step | null>,
+      Fragmentable {
+   id: () => Promise<ID_Output>
+   type: <T = FragmentableArray<KeyUserType>>(args?: {
+      where?: KeyUserTypeWhereInput
+      orderBy?: KeyUserTypeOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   question: <T = MultiLanguageContentPromise>() => T
+   targets: <T = FragmentableArray<Menu>>(args?: {
+      where?: MenuWhereInput
+      orderBy?: MenuOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   paths: <T = FragmentableArray<Menu>>(args?: {
+      where?: MenuWhereInput
+      orderBy?: MenuOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   results: <T = FragmentableArray<StepResult>>(args?: {
+      where?: StepResultWhereInput
+      orderBy?: StepResultOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+}
+
+export interface Menu {
+   id: ID_Output
+   root: Boolean
+}
+
+export interface MenuPromise extends Promise<Menu>, Fragmentable {
+   id: () => Promise<ID_Output>
+   root: () => Promise<Boolean>
+   menus: <T = FragmentableArray<Menu>>(args?: {
+      where?: MenuWhereInput
+      orderBy?: MenuOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   name: <T = MultiLanguageContentPromise>() => T
+   items: <T = FragmentableArray<Menu>>(args?: {
+      where?: MenuWhereInput
+      orderBy?: MenuOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+}
+
+export interface MenuSubscription
+   extends Promise<AsyncIterator<Menu>>,
+      Fragmentable {
+   id: () => Promise<AsyncIterator<ID_Output>>
+   root: () => Promise<AsyncIterator<Boolean>>
+   menus: <T = Promise<AsyncIterator<MenuSubscription>>>(args?: {
+      where?: MenuWhereInput
+      orderBy?: MenuOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   name: <T = MultiLanguageContentSubscription>() => T
+   items: <T = Promise<AsyncIterator<MenuSubscription>>>(args?: {
+      where?: MenuWhereInput
+      orderBy?: MenuOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+}
+
+export interface MenuNullablePromise
+   extends Promise<Menu | null>,
+      Fragmentable {
+   id: () => Promise<ID_Output>
+   root: () => Promise<Boolean>
+   menus: <T = FragmentableArray<Menu>>(args?: {
+      where?: MenuWhereInput
+      orderBy?: MenuOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   name: <T = MultiLanguageContentPromise>() => T
+   items: <T = FragmentableArray<Menu>>(args?: {
+      where?: MenuWhereInput
+      orderBy?: MenuOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+}
+
+export interface StepResult {
+   id: ID_Output
+   start: DateTimeOutput
+   end?: DateTimeOutput
+   time: Int
+}
+
+export interface StepResultPromise extends Promise<StepResult>, Fragmentable {
+   id: () => Promise<ID_Output>
+   parent: <T = StepPromise>() => T
+   result: <T = TestResultPromise>() => T
+   start: () => Promise<DateTimeOutput>
+   end: () => Promise<DateTimeOutput>
+   time: () => Promise<Int>
+   path: <T = FragmentableArray<Menu>>(args?: {
+      where?: MenuWhereInput
+      orderBy?: MenuOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   status: <T = KeyStepResultStatusPromise>() => T
+}
+
+export interface StepResultSubscription
+   extends Promise<AsyncIterator<StepResult>>,
+      Fragmentable {
+   id: () => Promise<AsyncIterator<ID_Output>>
+   parent: <T = StepSubscription>() => T
+   result: <T = TestResultSubscription>() => T
+   start: () => Promise<AsyncIterator<DateTimeOutput>>
+   end: () => Promise<AsyncIterator<DateTimeOutput>>
+   time: () => Promise<AsyncIterator<Int>>
+   path: <T = Promise<AsyncIterator<MenuSubscription>>>(args?: {
+      where?: MenuWhereInput
+      orderBy?: MenuOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   status: <T = KeyStepResultStatusSubscription>() => T
+}
+
+export interface StepResultNullablePromise
+   extends Promise<StepResult | null>,
+      Fragmentable {
+   id: () => Promise<ID_Output>
+   parent: <T = StepPromise>() => T
+   result: <T = TestResultPromise>() => T
+   start: () => Promise<DateTimeOutput>
+   end: () => Promise<DateTimeOutput>
+   time: () => Promise<Int>
+   path: <T = FragmentableArray<Menu>>(args?: {
+      where?: MenuWhereInput
+      orderBy?: MenuOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   status: <T = KeyStepResultStatusPromise>() => T
+}
+
+export interface TestResult {
+   id: ID_Output
+   start: DateTimeOutput
+   end?: DateTimeOutput
+   duration: Int
+}
+
+export interface TestResultPromise extends Promise<TestResult>, Fragmentable {
+   id: () => Promise<ID_Output>
+   parent: <T = TestPromise>() => T
+   start: () => Promise<DateTimeOutput>
+   end: () => Promise<DateTimeOutput>
+   duration: () => Promise<Int>
+   steps: <T = FragmentableArray<StepResult>>(args?: {
+      where?: StepResultWhereInput
+      orderBy?: StepResultOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   status: <T = KeyTestResultStatusPromise>() => T
+}
+
+export interface TestResultSubscription
+   extends Promise<AsyncIterator<TestResult>>,
+      Fragmentable {
+   id: () => Promise<AsyncIterator<ID_Output>>
+   parent: <T = TestSubscription>() => T
+   start: () => Promise<AsyncIterator<DateTimeOutput>>
+   end: () => Promise<AsyncIterator<DateTimeOutput>>
+   duration: () => Promise<AsyncIterator<Int>>
+   steps: <T = Promise<AsyncIterator<StepResultSubscription>>>(args?: {
+      where?: StepResultWhereInput
+      orderBy?: StepResultOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   status: <T = KeyTestResultStatusSubscription>() => T
+}
+
+export interface TestResultNullablePromise
+   extends Promise<TestResult | null>,
+      Fragmentable {
+   id: () => Promise<ID_Output>
+   parent: <T = TestPromise>() => T
+   start: () => Promise<DateTimeOutput>
+   end: () => Promise<DateTimeOutput>
+   duration: () => Promise<Int>
+   steps: <T = FragmentableArray<StepResult>>(args?: {
+      where?: StepResultWhereInput
+      orderBy?: StepResultOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   status: <T = KeyTestResultStatusPromise>() => T
+}
+
+export interface KeyTestResultStatus {
+   id: ID_Output
+   key: String
+}
+
+export interface KeyTestResultStatusPromise
+   extends Promise<KeyTestResultStatus>,
+      Fragmentable {
+   id: () => Promise<ID_Output>
+   key: () => Promise<String>
+}
+
+export interface KeyTestResultStatusSubscription
+   extends Promise<AsyncIterator<KeyTestResultStatus>>,
+      Fragmentable {
+   id: () => Promise<AsyncIterator<ID_Output>>
+   key: () => Promise<AsyncIterator<String>>
+}
+
+export interface KeyTestResultStatusNullablePromise
+   extends Promise<KeyTestResultStatus | null>,
+      Fragmentable {
+   id: () => Promise<ID_Output>
+   key: () => Promise<String>
+}
+
+export interface KeyStepResultStatus {
+   id: ID_Output
+   key: String
+}
+
+export interface KeyStepResultStatusPromise
+   extends Promise<KeyStepResultStatus>,
+      Fragmentable {
+   id: () => Promise<ID_Output>
+   key: () => Promise<String>
+}
+
+export interface KeyStepResultStatusSubscription
+   extends Promise<AsyncIterator<KeyStepResultStatus>>,
+      Fragmentable {
+   id: () => Promise<AsyncIterator<ID_Output>>
+   key: () => Promise<AsyncIterator<String>>
+}
+
+export interface KeyStepResultStatusNullablePromise
+   extends Promise<KeyStepResultStatus | null>,
+      Fragmentable {
+   id: () => Promise<ID_Output>
+   key: () => Promise<String>
+}
+
+export interface Key {
+   id: ID_Output
+}
+
+export interface KeyPromise extends Promise<Key>, Fragmentable {
+   id: () => Promise<ID_Output>
+   userTypes: <T = FragmentableArray<KeyUserType>>(args?: {
+      where?: KeyUserTypeWhereInput
+      orderBy?: KeyUserTypeOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   testResultStatus: <T = FragmentableArray<KeyTestResultStatus>>(args?: {
+      where?: KeyTestResultStatusWhereInput
+      orderBy?: KeyTestResultStatusOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   stepResultStatus: <T = FragmentableArray<KeyStepResultStatus>>(args?: {
+      where?: KeyStepResultStatusWhereInput
+      orderBy?: KeyStepResultStatusOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   languages: <T = FragmentableArray<KeyLanguage>>(args?: {
+      where?: KeyLanguageWhereInput
+      orderBy?: KeyLanguageOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+}
+
+export interface KeySubscription
+   extends Promise<AsyncIterator<Key>>,
+      Fragmentable {
+   id: () => Promise<AsyncIterator<ID_Output>>
+   userTypes: <T = Promise<AsyncIterator<KeyUserTypeSubscription>>>(args?: {
+      where?: KeyUserTypeWhereInput
+      orderBy?: KeyUserTypeOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   testResultStatus: <
+      T = Promise<AsyncIterator<KeyTestResultStatusSubscription>>
+   >(args?: {
+      where?: KeyTestResultStatusWhereInput
+      orderBy?: KeyTestResultStatusOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   stepResultStatus: <
+      T = Promise<AsyncIterator<KeyStepResultStatusSubscription>>
+   >(args?: {
+      where?: KeyStepResultStatusWhereInput
+      orderBy?: KeyStepResultStatusOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   languages: <T = Promise<AsyncIterator<KeyLanguageSubscription>>>(args?: {
+      where?: KeyLanguageWhereInput
+      orderBy?: KeyLanguageOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+}
+
+export interface KeyNullablePromise extends Promise<Key | null>, Fragmentable {
+   id: () => Promise<ID_Output>
+   userTypes: <T = FragmentableArray<KeyUserType>>(args?: {
+      where?: KeyUserTypeWhereInput
+      orderBy?: KeyUserTypeOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   testResultStatus: <T = FragmentableArray<KeyTestResultStatus>>(args?: {
+      where?: KeyTestResultStatusWhereInput
+      orderBy?: KeyTestResultStatusOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   stepResultStatus: <T = FragmentableArray<KeyStepResultStatus>>(args?: {
+      where?: KeyStepResultStatusWhereInput
+      orderBy?: KeyStepResultStatusOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
+   languages: <T = FragmentableArray<KeyLanguage>>(args?: {
+      where?: KeyLanguageWhereInput
+      orderBy?: KeyLanguageOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+   }) => T
 }
 
 export interface CompanyConnection {
@@ -3015,693 +3693,228 @@ export interface AggregateCompanySubscription
    count: () => Promise<AsyncIterator<Int>>
 }
 
-export interface KeyResultStatus {
-   id: ID_Output
-   key: String
-}
-
-export interface KeyResultStatusPromise
-   extends Promise<KeyResultStatus>,
-      Fragmentable {
-   id: () => Promise<ID_Output>
-   key: () => Promise<String>
-   results: <T = FragmentableArray<TestResult>>(args?: {
-      where?: TestResultWhereInput
-      orderBy?: TestResultOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface KeyResultStatusSubscription
-   extends Promise<AsyncIterator<KeyResultStatus>>,
-      Fragmentable {
-   id: () => Promise<AsyncIterator<ID_Output>>
-   key: () => Promise<AsyncIterator<String>>
-   results: <T = Promise<AsyncIterator<TestResultSubscription>>>(args?: {
-      where?: TestResultWhereInput
-      orderBy?: TestResultOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface KeyResultStatusNullablePromise
-   extends Promise<KeyResultStatus | null>,
-      Fragmentable {
-   id: () => Promise<ID_Output>
-   key: () => Promise<String>
-   results: <T = FragmentableArray<TestResult>>(args?: {
-      where?: TestResultWhereInput
-      orderBy?: TestResultOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface TestResult {
-   id: ID_Output
-   start: DateTimeOutput
-   end?: DateTimeOutput
-}
-
-export interface TestResultPromise extends Promise<TestResult>, Fragmentable {
-   id: () => Promise<ID_Output>
-   parent: <T = TestPromise>() => T
-   start: () => Promise<DateTimeOutput>
-   end: () => Promise<DateTimeOutput>
-   time: <T = TimeResultPromise>() => T
-   steps: <T = FragmentableArray<StepResult>>(args?: {
-      where?: StepResultWhereInput
-      orderBy?: StepResultOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   status: <T = KeyResultStatusPromise>() => T
-}
-
-export interface TestResultSubscription
-   extends Promise<AsyncIterator<TestResult>>,
-      Fragmentable {
-   id: () => Promise<AsyncIterator<ID_Output>>
-   parent: <T = TestSubscription>() => T
-   start: () => Promise<AsyncIterator<DateTimeOutput>>
-   end: () => Promise<AsyncIterator<DateTimeOutput>>
-   time: <T = TimeResultSubscription>() => T
-   steps: <T = Promise<AsyncIterator<StepResultSubscription>>>(args?: {
-      where?: StepResultWhereInput
-      orderBy?: StepResultOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   status: <T = KeyResultStatusSubscription>() => T
-}
-
-export interface TestResultNullablePromise
-   extends Promise<TestResult | null>,
-      Fragmentable {
-   id: () => Promise<ID_Output>
-   parent: <T = TestPromise>() => T
-   start: () => Promise<DateTimeOutput>
-   end: () => Promise<DateTimeOutput>
-   time: <T = TimeResultPromise>() => T
-   steps: <T = FragmentableArray<StepResult>>(args?: {
-      where?: StepResultWhereInput
-      orderBy?: StepResultOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   status: <T = KeyResultStatusPromise>() => T
-}
-
-export interface Test {
-   id: ID_Output
-   title: String
-}
-
-export interface TestPromise extends Promise<Test>, Fragmentable {
-   id: () => Promise<ID_Output>
-   title: () => Promise<String>
-   steps: <T = FragmentableArray<Step>>(args?: {
-      where?: StepWhereInput
-      orderBy?: StepOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   menus: <T = FragmentableArray<Menu>>(args?: {
-      where?: MenuWhereInput
-      orderBy?: MenuOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   results: <T = FragmentableArray<TestResult>>(args?: {
-      where?: TestResultWhereInput
-      orderBy?: TestResultOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface TestSubscription
-   extends Promise<AsyncIterator<Test>>,
-      Fragmentable {
-   id: () => Promise<AsyncIterator<ID_Output>>
-   title: () => Promise<AsyncIterator<String>>
-   steps: <T = Promise<AsyncIterator<StepSubscription>>>(args?: {
-      where?: StepWhereInput
-      orderBy?: StepOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   menus: <T = Promise<AsyncIterator<MenuSubscription>>>(args?: {
-      where?: MenuWhereInput
-      orderBy?: MenuOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   results: <T = Promise<AsyncIterator<TestResultSubscription>>>(args?: {
-      where?: TestResultWhereInput
-      orderBy?: TestResultOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface TestNullablePromise
-   extends Promise<Test | null>,
-      Fragmentable {
-   id: () => Promise<ID_Output>
-   title: () => Promise<String>
-   steps: <T = FragmentableArray<Step>>(args?: {
-      where?: StepWhereInput
-      orderBy?: StepOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   menus: <T = FragmentableArray<Menu>>(args?: {
-      where?: MenuWhereInput
-      orderBy?: MenuOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   results: <T = FragmentableArray<TestResult>>(args?: {
-      where?: TestResultWhereInput
-      orderBy?: TestResultOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface Step {
-   id: ID_Output
-   question: String
-}
-
-export interface StepPromise extends Promise<Step>, Fragmentable {
-   id: () => Promise<ID_Output>
-   parent: <T = TestPromise>() => T
-   type: <T = FragmentableArray<KeyUserType>>(args?: {
-      where?: KeyUserTypeWhereInput
-      orderBy?: KeyUserTypeOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   question: () => Promise<String>
-   targets: <T = FragmentableArray<Menu>>(args?: {
-      where?: MenuWhereInput
-      orderBy?: MenuOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   paths: <T = FragmentableArray<Path>>(args?: {
-      where?: PathWhereInput
-      orderBy?: PathOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   results: <T = FragmentableArray<StepResult>>(args?: {
-      where?: StepResultWhereInput
-      orderBy?: StepResultOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface StepSubscription
-   extends Promise<AsyncIterator<Step>>,
-      Fragmentable {
-   id: () => Promise<AsyncIterator<ID_Output>>
-   parent: <T = TestSubscription>() => T
-   type: <T = Promise<AsyncIterator<KeyUserTypeSubscription>>>(args?: {
-      where?: KeyUserTypeWhereInput
-      orderBy?: KeyUserTypeOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   question: () => Promise<AsyncIterator<String>>
-   targets: <T = Promise<AsyncIterator<MenuSubscription>>>(args?: {
-      where?: MenuWhereInput
-      orderBy?: MenuOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   paths: <T = Promise<AsyncIterator<PathSubscription>>>(args?: {
-      where?: PathWhereInput
-      orderBy?: PathOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   results: <T = Promise<AsyncIterator<StepResultSubscription>>>(args?: {
-      where?: StepResultWhereInput
-      orderBy?: StepResultOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface StepNullablePromise
-   extends Promise<Step | null>,
-      Fragmentable {
-   id: () => Promise<ID_Output>
-   parent: <T = TestPromise>() => T
-   type: <T = FragmentableArray<KeyUserType>>(args?: {
-      where?: KeyUserTypeWhereInput
-      orderBy?: KeyUserTypeOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   question: () => Promise<String>
-   targets: <T = FragmentableArray<Menu>>(args?: {
-      where?: MenuWhereInput
-      orderBy?: MenuOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   paths: <T = FragmentableArray<Path>>(args?: {
-      where?: PathWhereInput
-      orderBy?: PathOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   results: <T = FragmentableArray<StepResult>>(args?: {
-      where?: StepResultWhereInput
-      orderBy?: StepResultOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface KeyUserType {
-   id: ID_Output
-   key: String
-}
-
-export interface KeyUserTypePromise extends Promise<KeyUserType>, Fragmentable {
-   id: () => Promise<ID_Output>
-   key: () => Promise<String>
-   steps: <T = FragmentableArray<Step>>(args?: {
-      where?: StepWhereInput
-      orderBy?: StepOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface KeyUserTypeSubscription
-   extends Promise<AsyncIterator<KeyUserType>>,
-      Fragmentable {
-   id: () => Promise<AsyncIterator<ID_Output>>
-   key: () => Promise<AsyncIterator<String>>
-   steps: <T = Promise<AsyncIterator<StepSubscription>>>(args?: {
-      where?: StepWhereInput
-      orderBy?: StepOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface KeyUserTypeNullablePromise
-   extends Promise<KeyUserType | null>,
-      Fragmentable {
-   id: () => Promise<ID_Output>
-   key: () => Promise<String>
-   steps: <T = FragmentableArray<Step>>(args?: {
-      where?: StepWhereInput
-      orderBy?: StepOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface Menu {
-   id: ID_Output
-   root: Boolean
-   name: String
-}
-
-export interface MenuPromise extends Promise<Menu>, Fragmentable {
-   id: () => Promise<ID_Output>
-   root: () => Promise<Boolean>
-   menus: <T = FragmentableArray<Menu>>(args?: {
-      where?: MenuWhereInput
-      orderBy?: MenuOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   name: () => Promise<String>
-   items: <T = FragmentableArray<Menu>>(args?: {
-      where?: MenuWhereInput
-      orderBy?: MenuOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface MenuSubscription
-   extends Promise<AsyncIterator<Menu>>,
-      Fragmentable {
-   id: () => Promise<AsyncIterator<ID_Output>>
-   root: () => Promise<AsyncIterator<Boolean>>
-   menus: <T = Promise<AsyncIterator<MenuSubscription>>>(args?: {
-      where?: MenuWhereInput
-      orderBy?: MenuOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   name: () => Promise<AsyncIterator<String>>
-   items: <T = Promise<AsyncIterator<MenuSubscription>>>(args?: {
-      where?: MenuWhereInput
-      orderBy?: MenuOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface MenuNullablePromise
-   extends Promise<Menu | null>,
-      Fragmentable {
-   id: () => Promise<ID_Output>
-   root: () => Promise<Boolean>
-   menus: <T = FragmentableArray<Menu>>(args?: {
-      where?: MenuWhereInput
-      orderBy?: MenuOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   name: () => Promise<String>
-   items: <T = FragmentableArray<Menu>>(args?: {
-      where?: MenuWhereInput
-      orderBy?: MenuOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface Path {
-   id: ID_Output
-}
-
-export interface PathPromise extends Promise<Path>, Fragmentable {
-   id: () => Promise<ID_Output>
-   parent: <T = StepPromise>() => T
-   paths: <T = FragmentableArray<Menu>>(args?: {
-      where?: MenuWhereInput
-      orderBy?: MenuOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface PathSubscription
-   extends Promise<AsyncIterator<Path>>,
-      Fragmentable {
-   id: () => Promise<AsyncIterator<ID_Output>>
-   parent: <T = StepSubscription>() => T
-   paths: <T = Promise<AsyncIterator<MenuSubscription>>>(args?: {
-      where?: MenuWhereInput
-      orderBy?: MenuOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface PathNullablePromise
-   extends Promise<Path | null>,
-      Fragmentable {
-   id: () => Promise<ID_Output>
-   parent: <T = StepPromise>() => T
-   paths: <T = FragmentableArray<Menu>>(args?: {
-      where?: MenuWhereInput
-      orderBy?: MenuOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface StepResult {
-   id: ID_Output
-   start: DateTimeOutput
-   end?: DateTimeOutput
-}
-
-export interface StepResultPromise extends Promise<StepResult>, Fragmentable {
-   id: () => Promise<ID_Output>
-   parent: <T = StepPromise>() => T
-   resultParent: <T = TestResultPromise>() => T
-   start: () => Promise<DateTimeOutput>
-   end: () => Promise<DateTimeOutput>
-   time: <T = TimeResultPromise>() => T
-   path: <T = FragmentableArray<Menu>>(args?: {
-      where?: MenuWhereInput
-      orderBy?: MenuOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   status: <T = KeyResultStatusPromise>() => T
-}
-
-export interface StepResultSubscription
-   extends Promise<AsyncIterator<StepResult>>,
-      Fragmentable {
-   id: () => Promise<AsyncIterator<ID_Output>>
-   parent: <T = StepSubscription>() => T
-   resultParent: <T = TestResultSubscription>() => T
-   start: () => Promise<AsyncIterator<DateTimeOutput>>
-   end: () => Promise<AsyncIterator<DateTimeOutput>>
-   time: <T = TimeResultSubscription>() => T
-   path: <T = Promise<AsyncIterator<MenuSubscription>>>(args?: {
-      where?: MenuWhereInput
-      orderBy?: MenuOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   status: <T = KeyResultStatusSubscription>() => T
-}
-
-export interface StepResultNullablePromise
-   extends Promise<StepResult | null>,
-      Fragmentable {
-   id: () => Promise<ID_Output>
-   parent: <T = StepPromise>() => T
-   resultParent: <T = TestResultPromise>() => T
-   start: () => Promise<DateTimeOutput>
-   end: () => Promise<DateTimeOutput>
-   time: <T = TimeResultPromise>() => T
-   path: <T = FragmentableArray<Menu>>(args?: {
-      where?: MenuWhereInput
-      orderBy?: MenuOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   status: <T = KeyResultStatusPromise>() => T
-}
-
-export interface TimeResult {
-   id: ID_Output
-   int: Int
-   text: String
-}
-
-export interface TimeResultPromise extends Promise<TimeResult>, Fragmentable {
-   id: () => Promise<ID_Output>
-   int: () => Promise<Int>
-   text: () => Promise<String>
-}
-
-export interface TimeResultSubscription
-   extends Promise<AsyncIterator<TimeResult>>,
-      Fragmentable {
-   id: () => Promise<AsyncIterator<ID_Output>>
-   int: () => Promise<AsyncIterator<Int>>
-   text: () => Promise<AsyncIterator<String>>
-}
-
-export interface TimeResultNullablePromise
-   extends Promise<TimeResult | null>,
-      Fragmentable {
-   id: () => Promise<ID_Output>
-   int: () => Promise<Int>
-   text: () => Promise<String>
-}
-
-export interface KeyResultStatusConnection {
+export interface KeyConnection {
    pageInfo: PageInfo
-   edges: KeyResultStatusEdge[]
+   edges: KeyEdge[]
 }
 
-export interface KeyResultStatusConnectionPromise
-   extends Promise<KeyResultStatusConnection>,
+export interface KeyConnectionPromise
+   extends Promise<KeyConnection>,
       Fragmentable {
    pageInfo: <T = PageInfoPromise>() => T
-   edges: <T = FragmentableArray<KeyResultStatusEdge>>() => T
-   aggregate: <T = AggregateKeyResultStatusPromise>() => T
+   edges: <T = FragmentableArray<KeyEdge>>() => T
+   aggregate: <T = AggregateKeyPromise>() => T
 }
 
-export interface KeyResultStatusConnectionSubscription
-   extends Promise<AsyncIterator<KeyResultStatusConnection>>,
+export interface KeyConnectionSubscription
+   extends Promise<AsyncIterator<KeyConnection>>,
       Fragmentable {
    pageInfo: <T = PageInfoSubscription>() => T
-   edges: <T = Promise<AsyncIterator<KeyResultStatusEdgeSubscription>>>() => T
-   aggregate: <T = AggregateKeyResultStatusSubscription>() => T
+   edges: <T = Promise<AsyncIterator<KeyEdgeSubscription>>>() => T
+   aggregate: <T = AggregateKeySubscription>() => T
 }
 
-export interface KeyResultStatusEdge {
-   node: KeyResultStatus
+export interface KeyEdge {
+   node: Key
    cursor: String
 }
 
-export interface KeyResultStatusEdgePromise
-   extends Promise<KeyResultStatusEdge>,
-      Fragmentable {
-   node: <T = KeyResultStatusPromise>() => T
+export interface KeyEdgePromise extends Promise<KeyEdge>, Fragmentable {
+   node: <T = KeyPromise>() => T
    cursor: () => Promise<String>
 }
 
-export interface KeyResultStatusEdgeSubscription
-   extends Promise<AsyncIterator<KeyResultStatusEdge>>,
+export interface KeyEdgeSubscription
+   extends Promise<AsyncIterator<KeyEdge>>,
       Fragmentable {
-   node: <T = KeyResultStatusSubscription>() => T
+   node: <T = KeySubscription>() => T
    cursor: () => Promise<AsyncIterator<String>>
 }
 
-export interface AggregateKeyResultStatus {
+export interface AggregateKey {
    count: Int
 }
 
-export interface AggregateKeyResultStatusPromise
-   extends Promise<AggregateKeyResultStatus>,
+export interface AggregateKeyPromise
+   extends Promise<AggregateKey>,
       Fragmentable {
    count: () => Promise<Int>
 }
 
-export interface AggregateKeyResultStatusSubscription
-   extends Promise<AsyncIterator<AggregateKeyResultStatus>>,
+export interface AggregateKeySubscription
+   extends Promise<AsyncIterator<AggregateKey>>,
+      Fragmentable {
+   count: () => Promise<AsyncIterator<Int>>
+}
+
+export interface KeyLanguageConnection {
+   pageInfo: PageInfo
+   edges: KeyLanguageEdge[]
+}
+
+export interface KeyLanguageConnectionPromise
+   extends Promise<KeyLanguageConnection>,
+      Fragmentable {
+   pageInfo: <T = PageInfoPromise>() => T
+   edges: <T = FragmentableArray<KeyLanguageEdge>>() => T
+   aggregate: <T = AggregateKeyLanguagePromise>() => T
+}
+
+export interface KeyLanguageConnectionSubscription
+   extends Promise<AsyncIterator<KeyLanguageConnection>>,
+      Fragmentable {
+   pageInfo: <T = PageInfoSubscription>() => T
+   edges: <T = Promise<AsyncIterator<KeyLanguageEdgeSubscription>>>() => T
+   aggregate: <T = AggregateKeyLanguageSubscription>() => T
+}
+
+export interface KeyLanguageEdge {
+   node: KeyLanguage
+   cursor: String
+}
+
+export interface KeyLanguageEdgePromise
+   extends Promise<KeyLanguageEdge>,
+      Fragmentable {
+   node: <T = KeyLanguagePromise>() => T
+   cursor: () => Promise<String>
+}
+
+export interface KeyLanguageEdgeSubscription
+   extends Promise<AsyncIterator<KeyLanguageEdge>>,
+      Fragmentable {
+   node: <T = KeyLanguageSubscription>() => T
+   cursor: () => Promise<AsyncIterator<String>>
+}
+
+export interface AggregateKeyLanguage {
+   count: Int
+}
+
+export interface AggregateKeyLanguagePromise
+   extends Promise<AggregateKeyLanguage>,
+      Fragmentable {
+   count: () => Promise<Int>
+}
+
+export interface AggregateKeyLanguageSubscription
+   extends Promise<AsyncIterator<AggregateKeyLanguage>>,
+      Fragmentable {
+   count: () => Promise<AsyncIterator<Int>>
+}
+
+export interface KeyStepResultStatusConnection {
+   pageInfo: PageInfo
+   edges: KeyStepResultStatusEdge[]
+}
+
+export interface KeyStepResultStatusConnectionPromise
+   extends Promise<KeyStepResultStatusConnection>,
+      Fragmentable {
+   pageInfo: <T = PageInfoPromise>() => T
+   edges: <T = FragmentableArray<KeyStepResultStatusEdge>>() => T
+   aggregate: <T = AggregateKeyStepResultStatusPromise>() => T
+}
+
+export interface KeyStepResultStatusConnectionSubscription
+   extends Promise<AsyncIterator<KeyStepResultStatusConnection>>,
+      Fragmentable {
+   pageInfo: <T = PageInfoSubscription>() => T
+   edges: <
+      T = Promise<AsyncIterator<KeyStepResultStatusEdgeSubscription>>
+   >() => T
+   aggregate: <T = AggregateKeyStepResultStatusSubscription>() => T
+}
+
+export interface KeyStepResultStatusEdge {
+   node: KeyStepResultStatus
+   cursor: String
+}
+
+export interface KeyStepResultStatusEdgePromise
+   extends Promise<KeyStepResultStatusEdge>,
+      Fragmentable {
+   node: <T = KeyStepResultStatusPromise>() => T
+   cursor: () => Promise<String>
+}
+
+export interface KeyStepResultStatusEdgeSubscription
+   extends Promise<AsyncIterator<KeyStepResultStatusEdge>>,
+      Fragmentable {
+   node: <T = KeyStepResultStatusSubscription>() => T
+   cursor: () => Promise<AsyncIterator<String>>
+}
+
+export interface AggregateKeyStepResultStatus {
+   count: Int
+}
+
+export interface AggregateKeyStepResultStatusPromise
+   extends Promise<AggregateKeyStepResultStatus>,
+      Fragmentable {
+   count: () => Promise<Int>
+}
+
+export interface AggregateKeyStepResultStatusSubscription
+   extends Promise<AsyncIterator<AggregateKeyStepResultStatus>>,
+      Fragmentable {
+   count: () => Promise<AsyncIterator<Int>>
+}
+
+export interface KeyTestResultStatusConnection {
+   pageInfo: PageInfo
+   edges: KeyTestResultStatusEdge[]
+}
+
+export interface KeyTestResultStatusConnectionPromise
+   extends Promise<KeyTestResultStatusConnection>,
+      Fragmentable {
+   pageInfo: <T = PageInfoPromise>() => T
+   edges: <T = FragmentableArray<KeyTestResultStatusEdge>>() => T
+   aggregate: <T = AggregateKeyTestResultStatusPromise>() => T
+}
+
+export interface KeyTestResultStatusConnectionSubscription
+   extends Promise<AsyncIterator<KeyTestResultStatusConnection>>,
+      Fragmentable {
+   pageInfo: <T = PageInfoSubscription>() => T
+   edges: <
+      T = Promise<AsyncIterator<KeyTestResultStatusEdgeSubscription>>
+   >() => T
+   aggregate: <T = AggregateKeyTestResultStatusSubscription>() => T
+}
+
+export interface KeyTestResultStatusEdge {
+   node: KeyTestResultStatus
+   cursor: String
+}
+
+export interface KeyTestResultStatusEdgePromise
+   extends Promise<KeyTestResultStatusEdge>,
+      Fragmentable {
+   node: <T = KeyTestResultStatusPromise>() => T
+   cursor: () => Promise<String>
+}
+
+export interface KeyTestResultStatusEdgeSubscription
+   extends Promise<AsyncIterator<KeyTestResultStatusEdge>>,
+      Fragmentable {
+   node: <T = KeyTestResultStatusSubscription>() => T
+   cursor: () => Promise<AsyncIterator<String>>
+}
+
+export interface AggregateKeyTestResultStatus {
+   count: Int
+}
+
+export interface AggregateKeyTestResultStatusPromise
+   extends Promise<AggregateKeyTestResultStatus>,
+      Fragmentable {
+   count: () => Promise<Int>
+}
+
+export interface AggregateKeyTestResultStatusSubscription
+   extends Promise<AsyncIterator<AggregateKeyTestResultStatus>>,
       Fragmentable {
    count: () => Promise<AsyncIterator<Int>>
 }
@@ -3762,136 +3975,6 @@ export interface AggregateKeyUserTypeSubscription
    count: () => Promise<AsyncIterator<Int>>
 }
 
-export interface Keys {
-   id: ID_Output
-}
-
-export interface KeysPromise extends Promise<Keys>, Fragmentable {
-   id: () => Promise<ID_Output>
-   userType: <T = FragmentableArray<KeyUserType>>(args?: {
-      where?: KeyUserTypeWhereInput
-      orderBy?: KeyUserTypeOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   resultStatus: <T = FragmentableArray<KeyResultStatus>>(args?: {
-      where?: KeyResultStatusWhereInput
-      orderBy?: KeyResultStatusOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface KeysSubscription
-   extends Promise<AsyncIterator<Keys>>,
-      Fragmentable {
-   id: () => Promise<AsyncIterator<ID_Output>>
-   userType: <T = Promise<AsyncIterator<KeyUserTypeSubscription>>>(args?: {
-      where?: KeyUserTypeWhereInput
-      orderBy?: KeyUserTypeOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   resultStatus: <
-      T = Promise<AsyncIterator<KeyResultStatusSubscription>>
-   >(args?: {
-      where?: KeyResultStatusWhereInput
-      orderBy?: KeyResultStatusOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface KeysNullablePromise
-   extends Promise<Keys | null>,
-      Fragmentable {
-   id: () => Promise<ID_Output>
-   userType: <T = FragmentableArray<KeyUserType>>(args?: {
-      where?: KeyUserTypeWhereInput
-      orderBy?: KeyUserTypeOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   resultStatus: <T = FragmentableArray<KeyResultStatus>>(args?: {
-      where?: KeyResultStatusWhereInput
-      orderBy?: KeyResultStatusOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface KeysConnection {
-   pageInfo: PageInfo
-   edges: KeysEdge[]
-}
-
-export interface KeysConnectionPromise
-   extends Promise<KeysConnection>,
-      Fragmentable {
-   pageInfo: <T = PageInfoPromise>() => T
-   edges: <T = FragmentableArray<KeysEdge>>() => T
-   aggregate: <T = AggregateKeysPromise>() => T
-}
-
-export interface KeysConnectionSubscription
-   extends Promise<AsyncIterator<KeysConnection>>,
-      Fragmentable {
-   pageInfo: <T = PageInfoSubscription>() => T
-   edges: <T = Promise<AsyncIterator<KeysEdgeSubscription>>>() => T
-   aggregate: <T = AggregateKeysSubscription>() => T
-}
-
-export interface KeysEdge {
-   node: Keys
-   cursor: String
-}
-
-export interface KeysEdgePromise extends Promise<KeysEdge>, Fragmentable {
-   node: <T = KeysPromise>() => T
-   cursor: () => Promise<String>
-}
-
-export interface KeysEdgeSubscription
-   extends Promise<AsyncIterator<KeysEdge>>,
-      Fragmentable {
-   node: <T = KeysSubscription>() => T
-   cursor: () => Promise<AsyncIterator<String>>
-}
-
-export interface AggregateKeys {
-   count: Int
-}
-
-export interface AggregateKeysPromise
-   extends Promise<AggregateKeys>,
-      Fragmentable {
-   count: () => Promise<Int>
-}
-
-export interface AggregateKeysSubscription
-   extends Promise<AsyncIterator<AggregateKeys>>,
-      Fragmentable {
-   count: () => Promise<AsyncIterator<Int>>
-}
-
 export interface MenuConnection {
    pageInfo: PageInfo
    edges: MenuEdge[]
@@ -3946,56 +4029,114 @@ export interface AggregateMenuSubscription
    count: () => Promise<AsyncIterator<Int>>
 }
 
-export interface PathConnection {
+export interface MessageConnection {
    pageInfo: PageInfo
-   edges: PathEdge[]
+   edges: MessageEdge[]
 }
 
-export interface PathConnectionPromise
-   extends Promise<PathConnection>,
+export interface MessageConnectionPromise
+   extends Promise<MessageConnection>,
       Fragmentable {
    pageInfo: <T = PageInfoPromise>() => T
-   edges: <T = FragmentableArray<PathEdge>>() => T
-   aggregate: <T = AggregatePathPromise>() => T
+   edges: <T = FragmentableArray<MessageEdge>>() => T
+   aggregate: <T = AggregateMessagePromise>() => T
 }
 
-export interface PathConnectionSubscription
-   extends Promise<AsyncIterator<PathConnection>>,
+export interface MessageConnectionSubscription
+   extends Promise<AsyncIterator<MessageConnection>>,
       Fragmentable {
    pageInfo: <T = PageInfoSubscription>() => T
-   edges: <T = Promise<AsyncIterator<PathEdgeSubscription>>>() => T
-   aggregate: <T = AggregatePathSubscription>() => T
+   edges: <T = Promise<AsyncIterator<MessageEdgeSubscription>>>() => T
+   aggregate: <T = AggregateMessageSubscription>() => T
 }
 
-export interface PathEdge {
-   node: Path
+export interface MessageEdge {
+   node: Message
    cursor: String
 }
 
-export interface PathEdgePromise extends Promise<PathEdge>, Fragmentable {
-   node: <T = PathPromise>() => T
+export interface MessageEdgePromise extends Promise<MessageEdge>, Fragmentable {
+   node: <T = MessagePromise>() => T
    cursor: () => Promise<String>
 }
 
-export interface PathEdgeSubscription
-   extends Promise<AsyncIterator<PathEdge>>,
+export interface MessageEdgeSubscription
+   extends Promise<AsyncIterator<MessageEdge>>,
       Fragmentable {
-   node: <T = PathSubscription>() => T
+   node: <T = MessageSubscription>() => T
    cursor: () => Promise<AsyncIterator<String>>
 }
 
-export interface AggregatePath {
+export interface AggregateMessage {
    count: Int
 }
 
-export interface AggregatePathPromise
-   extends Promise<AggregatePath>,
+export interface AggregateMessagePromise
+   extends Promise<AggregateMessage>,
       Fragmentable {
    count: () => Promise<Int>
 }
 
-export interface AggregatePathSubscription
-   extends Promise<AsyncIterator<AggregatePath>>,
+export interface AggregateMessageSubscription
+   extends Promise<AsyncIterator<AggregateMessage>>,
+      Fragmentable {
+   count: () => Promise<AsyncIterator<Int>>
+}
+
+export interface MultiLanguageContentConnection {
+   pageInfo: PageInfo
+   edges: MultiLanguageContentEdge[]
+}
+
+export interface MultiLanguageContentConnectionPromise
+   extends Promise<MultiLanguageContentConnection>,
+      Fragmentable {
+   pageInfo: <T = PageInfoPromise>() => T
+   edges: <T = FragmentableArray<MultiLanguageContentEdge>>() => T
+   aggregate: <T = AggregateMultiLanguageContentPromise>() => T
+}
+
+export interface MultiLanguageContentConnectionSubscription
+   extends Promise<AsyncIterator<MultiLanguageContentConnection>>,
+      Fragmentable {
+   pageInfo: <T = PageInfoSubscription>() => T
+   edges: <
+      T = Promise<AsyncIterator<MultiLanguageContentEdgeSubscription>>
+   >() => T
+   aggregate: <T = AggregateMultiLanguageContentSubscription>() => T
+}
+
+export interface MultiLanguageContentEdge {
+   node: MultiLanguageContent
+   cursor: String
+}
+
+export interface MultiLanguageContentEdgePromise
+   extends Promise<MultiLanguageContentEdge>,
+      Fragmentable {
+   node: <T = MultiLanguageContentPromise>() => T
+   cursor: () => Promise<String>
+}
+
+export interface MultiLanguageContentEdgeSubscription
+   extends Promise<AsyncIterator<MultiLanguageContentEdge>>,
+      Fragmentable {
+   node: <T = MultiLanguageContentSubscription>() => T
+   cursor: () => Promise<AsyncIterator<String>>
+}
+
+export interface AggregateMultiLanguageContent {
+   count: Int
+}
+
+export interface AggregateMultiLanguageContentPromise
+   extends Promise<AggregateMultiLanguageContent>,
+      Fragmentable {
+   count: () => Promise<Int>
+}
+
+export interface AggregateMultiLanguageContentSubscription
+   extends Promise<AsyncIterator<AggregateMultiLanguageContent>>,
       Fragmentable {
    count: () => Promise<AsyncIterator<Int>>
 }
@@ -4220,305 +4361,6 @@ export interface AggregateTestResultSubscription
    count: () => Promise<AsyncIterator<Int>>
 }
 
-export interface TimeResultConnection {
-   pageInfo: PageInfo
-   edges: TimeResultEdge[]
-}
-
-export interface TimeResultConnectionPromise
-   extends Promise<TimeResultConnection>,
-      Fragmentable {
-   pageInfo: <T = PageInfoPromise>() => T
-   edges: <T = FragmentableArray<TimeResultEdge>>() => T
-   aggregate: <T = AggregateTimeResultPromise>() => T
-}
-
-export interface TimeResultConnectionSubscription
-   extends Promise<AsyncIterator<TimeResultConnection>>,
-      Fragmentable {
-   pageInfo: <T = PageInfoSubscription>() => T
-   edges: <T = Promise<AsyncIterator<TimeResultEdgeSubscription>>>() => T
-   aggregate: <T = AggregateTimeResultSubscription>() => T
-}
-
-export interface TimeResultEdge {
-   node: TimeResult
-   cursor: String
-}
-
-export interface TimeResultEdgePromise
-   extends Promise<TimeResultEdge>,
-      Fragmentable {
-   node: <T = TimeResultPromise>() => T
-   cursor: () => Promise<String>
-}
-
-export interface TimeResultEdgeSubscription
-   extends Promise<AsyncIterator<TimeResultEdge>>,
-      Fragmentable {
-   node: <T = TimeResultSubscription>() => T
-   cursor: () => Promise<AsyncIterator<String>>
-}
-
-export interface AggregateTimeResult {
-   count: Int
-}
-
-export interface AggregateTimeResultPromise
-   extends Promise<AggregateTimeResult>,
-      Fragmentable {
-   count: () => Promise<Int>
-}
-
-export interface AggregateTimeResultSubscription
-   extends Promise<AsyncIterator<AggregateTimeResult>>,
-      Fragmentable {
-   count: () => Promise<AsyncIterator<Int>>
-}
-
-export interface View {
-   id: ID_Output
-}
-
-export interface ViewPromise extends Promise<View>, Fragmentable {
-   id: () => Promise<ID_Output>
-   welcome: <T = WelcomePromise>() => T
-   company: <T = CompanyPromise>() => T
-   menus: <T = FragmentableArray<Menu>>(args?: {
-      where?: MenuWhereInput
-      orderBy?: MenuOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   tests: <T = FragmentableArray<Test>>(args?: {
-      where?: TestWhereInput
-      orderBy?: TestOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   steps: <T = FragmentableArray<Step>>(args?: {
-      where?: StepWhereInput
-      orderBy?: StepOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface ViewSubscription
-   extends Promise<AsyncIterator<View>>,
-      Fragmentable {
-   id: () => Promise<AsyncIterator<ID_Output>>
-   welcome: <T = WelcomeSubscription>() => T
-   company: <T = CompanySubscription>() => T
-   menus: <T = Promise<AsyncIterator<MenuSubscription>>>(args?: {
-      where?: MenuWhereInput
-      orderBy?: MenuOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   tests: <T = Promise<AsyncIterator<TestSubscription>>>(args?: {
-      where?: TestWhereInput
-      orderBy?: TestOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   steps: <T = Promise<AsyncIterator<StepSubscription>>>(args?: {
-      where?: StepWhereInput
-      orderBy?: StepOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface ViewNullablePromise
-   extends Promise<View | null>,
-      Fragmentable {
-   id: () => Promise<ID_Output>
-   welcome: <T = WelcomePromise>() => T
-   company: <T = CompanyPromise>() => T
-   menus: <T = FragmentableArray<Menu>>(args?: {
-      where?: MenuWhereInput
-      orderBy?: MenuOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   tests: <T = FragmentableArray<Test>>(args?: {
-      where?: TestWhereInput
-      orderBy?: TestOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-   steps: <T = FragmentableArray<Step>>(args?: {
-      where?: StepWhereInput
-      orderBy?: StepOrderByInput
-      skip?: Int
-      after?: String
-      before?: String
-      first?: Int
-      last?: Int
-   }) => T
-}
-
-export interface Welcome {
-   id: ID_Output
-   title: String
-   message: String
-}
-
-export interface WelcomePromise extends Promise<Welcome>, Fragmentable {
-   id: () => Promise<ID_Output>
-   title: () => Promise<String>
-   message: () => Promise<String>
-}
-
-export interface WelcomeSubscription
-   extends Promise<AsyncIterator<Welcome>>,
-      Fragmentable {
-   id: () => Promise<AsyncIterator<ID_Output>>
-   title: () => Promise<AsyncIterator<String>>
-   message: () => Promise<AsyncIterator<String>>
-}
-
-export interface WelcomeNullablePromise
-   extends Promise<Welcome | null>,
-      Fragmentable {
-   id: () => Promise<ID_Output>
-   title: () => Promise<String>
-   message: () => Promise<String>
-}
-
-export interface ViewConnection {
-   pageInfo: PageInfo
-   edges: ViewEdge[]
-}
-
-export interface ViewConnectionPromise
-   extends Promise<ViewConnection>,
-      Fragmentable {
-   pageInfo: <T = PageInfoPromise>() => T
-   edges: <T = FragmentableArray<ViewEdge>>() => T
-   aggregate: <T = AggregateViewPromise>() => T
-}
-
-export interface ViewConnectionSubscription
-   extends Promise<AsyncIterator<ViewConnection>>,
-      Fragmentable {
-   pageInfo: <T = PageInfoSubscription>() => T
-   edges: <T = Promise<AsyncIterator<ViewEdgeSubscription>>>() => T
-   aggregate: <T = AggregateViewSubscription>() => T
-}
-
-export interface ViewEdge {
-   node: View
-   cursor: String
-}
-
-export interface ViewEdgePromise extends Promise<ViewEdge>, Fragmentable {
-   node: <T = ViewPromise>() => T
-   cursor: () => Promise<String>
-}
-
-export interface ViewEdgeSubscription
-   extends Promise<AsyncIterator<ViewEdge>>,
-      Fragmentable {
-   node: <T = ViewSubscription>() => T
-   cursor: () => Promise<AsyncIterator<String>>
-}
-
-export interface AggregateView {
-   count: Int
-}
-
-export interface AggregateViewPromise
-   extends Promise<AggregateView>,
-      Fragmentable {
-   count: () => Promise<Int>
-}
-
-export interface AggregateViewSubscription
-   extends Promise<AsyncIterator<AggregateView>>,
-      Fragmentable {
-   count: () => Promise<AsyncIterator<Int>>
-}
-
-export interface WelcomeConnection {
-   pageInfo: PageInfo
-   edges: WelcomeEdge[]
-}
-
-export interface WelcomeConnectionPromise
-   extends Promise<WelcomeConnection>,
-      Fragmentable {
-   pageInfo: <T = PageInfoPromise>() => T
-   edges: <T = FragmentableArray<WelcomeEdge>>() => T
-   aggregate: <T = AggregateWelcomePromise>() => T
-}
-
-export interface WelcomeConnectionSubscription
-   extends Promise<AsyncIterator<WelcomeConnection>>,
-      Fragmentable {
-   pageInfo: <T = PageInfoSubscription>() => T
-   edges: <T = Promise<AsyncIterator<WelcomeEdgeSubscription>>>() => T
-   aggregate: <T = AggregateWelcomeSubscription>() => T
-}
-
-export interface WelcomeEdge {
-   node: Welcome
-   cursor: String
-}
-
-export interface WelcomeEdgePromise extends Promise<WelcomeEdge>, Fragmentable {
-   node: <T = WelcomePromise>() => T
-   cursor: () => Promise<String>
-}
-
-export interface WelcomeEdgeSubscription
-   extends Promise<AsyncIterator<WelcomeEdge>>,
-      Fragmentable {
-   node: <T = WelcomeSubscription>() => T
-   cursor: () => Promise<AsyncIterator<String>>
-}
-
-export interface AggregateWelcome {
-   count: Int
-}
-
-export interface AggregateWelcomePromise
-   extends Promise<AggregateWelcome>,
-      Fragmentable {
-   count: () => Promise<Int>
-}
-
-export interface AggregateWelcomeSubscription
-   extends Promise<AsyncIterator<AggregateWelcome>>,
-      Fragmentable {
-   count: () => Promise<AsyncIterator<Int>>
-}
-
 export interface BatchPayload {
    count: Long
 }
@@ -4564,7 +4406,6 @@ export interface CompanyPreviousValues {
    id: ID_Output
    name: String
    abbr?: String
-   logo?: String
 }
 
 export interface CompanyPreviousValuesPromise
@@ -4573,7 +4414,6 @@ export interface CompanyPreviousValuesPromise
    id: () => Promise<ID_Output>
    name: () => Promise<String>
    abbr: () => Promise<String>
-   logo: () => Promise<String>
 }
 
 export interface CompanyPreviousValuesSubscription
@@ -4582,48 +4422,176 @@ export interface CompanyPreviousValuesSubscription
    id: () => Promise<AsyncIterator<ID_Output>>
    name: () => Promise<AsyncIterator<String>>
    abbr: () => Promise<AsyncIterator<String>>
-   logo: () => Promise<AsyncIterator<String>>
 }
 
-export interface KeyResultStatusSubscriptionPayload {
+export interface KeySubscriptionPayload {
    mutation: MutationType
-   node: KeyResultStatus
+   node: Key
    updatedFields: String[]
-   previousValues: KeyResultStatusPreviousValues
+   previousValues: KeyPreviousValues
 }
 
-export interface KeyResultStatusSubscriptionPayloadPromise
-   extends Promise<KeyResultStatusSubscriptionPayload>,
+export interface KeySubscriptionPayloadPromise
+   extends Promise<KeySubscriptionPayload>,
       Fragmentable {
    mutation: () => Promise<MutationType>
-   node: <T = KeyResultStatusPromise>() => T
+   node: <T = KeyPromise>() => T
    updatedFields: () => Promise<String[]>
-   previousValues: <T = KeyResultStatusPreviousValuesPromise>() => T
+   previousValues: <T = KeyPreviousValuesPromise>() => T
 }
 
-export interface KeyResultStatusSubscriptionPayloadSubscription
-   extends Promise<AsyncIterator<KeyResultStatusSubscriptionPayload>>,
+export interface KeySubscriptionPayloadSubscription
+   extends Promise<AsyncIterator<KeySubscriptionPayload>>,
       Fragmentable {
    mutation: () => Promise<AsyncIterator<MutationType>>
-   node: <T = KeyResultStatusSubscription>() => T
+   node: <T = KeySubscription>() => T
    updatedFields: () => Promise<AsyncIterator<String[]>>
-   previousValues: <T = KeyResultStatusPreviousValuesSubscription>() => T
+   previousValues: <T = KeyPreviousValuesSubscription>() => T
 }
 
-export interface KeyResultStatusPreviousValues {
+export interface KeyPreviousValues {
+   id: ID_Output
+}
+
+export interface KeyPreviousValuesPromise
+   extends Promise<KeyPreviousValues>,
+      Fragmentable {
+   id: () => Promise<ID_Output>
+}
+
+export interface KeyPreviousValuesSubscription
+   extends Promise<AsyncIterator<KeyPreviousValues>>,
+      Fragmentable {
+   id: () => Promise<AsyncIterator<ID_Output>>
+}
+
+export interface KeyLanguageSubscriptionPayload {
+   mutation: MutationType
+   node: KeyLanguage
+   updatedFields: String[]
+   previousValues: KeyLanguagePreviousValues
+}
+
+export interface KeyLanguageSubscriptionPayloadPromise
+   extends Promise<KeyLanguageSubscriptionPayload>,
+      Fragmentable {
+   mutation: () => Promise<MutationType>
+   node: <T = KeyLanguagePromise>() => T
+   updatedFields: () => Promise<String[]>
+   previousValues: <T = KeyLanguagePreviousValuesPromise>() => T
+}
+
+export interface KeyLanguageSubscriptionPayloadSubscription
+   extends Promise<AsyncIterator<KeyLanguageSubscriptionPayload>>,
+      Fragmentable {
+   mutation: () => Promise<AsyncIterator<MutationType>>
+   node: <T = KeyLanguageSubscription>() => T
+   updatedFields: () => Promise<AsyncIterator<String[]>>
+   previousValues: <T = KeyLanguagePreviousValuesSubscription>() => T
+}
+
+export interface KeyLanguagePreviousValues {
    id: ID_Output
    key: String
 }
 
-export interface KeyResultStatusPreviousValuesPromise
-   extends Promise<KeyResultStatusPreviousValues>,
+export interface KeyLanguagePreviousValuesPromise
+   extends Promise<KeyLanguagePreviousValues>,
       Fragmentable {
    id: () => Promise<ID_Output>
    key: () => Promise<String>
 }
 
-export interface KeyResultStatusPreviousValuesSubscription
-   extends Promise<AsyncIterator<KeyResultStatusPreviousValues>>,
+export interface KeyLanguagePreviousValuesSubscription
+   extends Promise<AsyncIterator<KeyLanguagePreviousValues>>,
+      Fragmentable {
+   id: () => Promise<AsyncIterator<ID_Output>>
+   key: () => Promise<AsyncIterator<String>>
+}
+
+export interface KeyStepResultStatusSubscriptionPayload {
+   mutation: MutationType
+   node: KeyStepResultStatus
+   updatedFields: String[]
+   previousValues: KeyStepResultStatusPreviousValues
+}
+
+export interface KeyStepResultStatusSubscriptionPayloadPromise
+   extends Promise<KeyStepResultStatusSubscriptionPayload>,
+      Fragmentable {
+   mutation: () => Promise<MutationType>
+   node: <T = KeyStepResultStatusPromise>() => T
+   updatedFields: () => Promise<String[]>
+   previousValues: <T = KeyStepResultStatusPreviousValuesPromise>() => T
+}
+
+export interface KeyStepResultStatusSubscriptionPayloadSubscription
+   extends Promise<AsyncIterator<KeyStepResultStatusSubscriptionPayload>>,
+      Fragmentable {
+   mutation: () => Promise<AsyncIterator<MutationType>>
+   node: <T = KeyStepResultStatusSubscription>() => T
+   updatedFields: () => Promise<AsyncIterator<String[]>>
+   previousValues: <T = KeyStepResultStatusPreviousValuesSubscription>() => T
+}
+
+export interface KeyStepResultStatusPreviousValues {
+   id: ID_Output
+   key: String
+}
+
+export interface KeyStepResultStatusPreviousValuesPromise
+   extends Promise<KeyStepResultStatusPreviousValues>,
+      Fragmentable {
+   id: () => Promise<ID_Output>
+   key: () => Promise<String>
+}
+
+export interface KeyStepResultStatusPreviousValuesSubscription
+   extends Promise<AsyncIterator<KeyStepResultStatusPreviousValues>>,
+      Fragmentable {
+   id: () => Promise<AsyncIterator<ID_Output>>
+   key: () => Promise<AsyncIterator<String>>
+}
+
+export interface KeyTestResultStatusSubscriptionPayload {
+   mutation: MutationType
+   node: KeyTestResultStatus
+   updatedFields: String[]
+   previousValues: KeyTestResultStatusPreviousValues
+}
+
+export interface KeyTestResultStatusSubscriptionPayloadPromise
+   extends Promise<KeyTestResultStatusSubscriptionPayload>,
+      Fragmentable {
+   mutation: () => Promise<MutationType>
+   node: <T = KeyTestResultStatusPromise>() => T
+   updatedFields: () => Promise<String[]>
+   previousValues: <T = KeyTestResultStatusPreviousValuesPromise>() => T
+}
+
+export interface KeyTestResultStatusSubscriptionPayloadSubscription
+   extends Promise<AsyncIterator<KeyTestResultStatusSubscriptionPayload>>,
+      Fragmentable {
+   mutation: () => Promise<AsyncIterator<MutationType>>
+   node: <T = KeyTestResultStatusSubscription>() => T
+   updatedFields: () => Promise<AsyncIterator<String[]>>
+   previousValues: <T = KeyTestResultStatusPreviousValuesSubscription>() => T
+}
+
+export interface KeyTestResultStatusPreviousValues {
+   id: ID_Output
+   key: String
+}
+
+export interface KeyTestResultStatusPreviousValuesPromise
+   extends Promise<KeyTestResultStatusPreviousValues>,
+      Fragmentable {
+   id: () => Promise<ID_Output>
+   key: () => Promise<String>
+}
+
+export interface KeyTestResultStatusPreviousValuesSubscription
+   extends Promise<AsyncIterator<KeyTestResultStatusPreviousValues>>,
       Fragmentable {
    id: () => Promise<AsyncIterator<ID_Output>>
    key: () => Promise<AsyncIterator<String>>
@@ -4673,47 +4641,6 @@ export interface KeyUserTypePreviousValuesSubscription
    key: () => Promise<AsyncIterator<String>>
 }
 
-export interface KeysSubscriptionPayload {
-   mutation: MutationType
-   node: Keys
-   updatedFields: String[]
-   previousValues: KeysPreviousValues
-}
-
-export interface KeysSubscriptionPayloadPromise
-   extends Promise<KeysSubscriptionPayload>,
-      Fragmentable {
-   mutation: () => Promise<MutationType>
-   node: <T = KeysPromise>() => T
-   updatedFields: () => Promise<String[]>
-   previousValues: <T = KeysPreviousValuesPromise>() => T
-}
-
-export interface KeysSubscriptionPayloadSubscription
-   extends Promise<AsyncIterator<KeysSubscriptionPayload>>,
-      Fragmentable {
-   mutation: () => Promise<AsyncIterator<MutationType>>
-   node: <T = KeysSubscription>() => T
-   updatedFields: () => Promise<AsyncIterator<String[]>>
-   previousValues: <T = KeysPreviousValuesSubscription>() => T
-}
-
-export interface KeysPreviousValues {
-   id: ID_Output
-}
-
-export interface KeysPreviousValuesPromise
-   extends Promise<KeysPreviousValues>,
-      Fragmentable {
-   id: () => Promise<ID_Output>
-}
-
-export interface KeysPreviousValuesSubscription
-   extends Promise<AsyncIterator<KeysPreviousValues>>,
-      Fragmentable {
-   id: () => Promise<AsyncIterator<ID_Output>>
-}
-
 export interface MenuSubscriptionPayload {
    mutation: MutationType
    node: Menu
@@ -4742,7 +4669,6 @@ export interface MenuSubscriptionPayloadSubscription
 export interface MenuPreviousValues {
    id: ID_Output
    root: Boolean
-   name: String
 }
 
 export interface MenuPreviousValuesPromise
@@ -4750,7 +4676,6 @@ export interface MenuPreviousValuesPromise
       Fragmentable {
    id: () => Promise<ID_Output>
    root: () => Promise<Boolean>
-   name: () => Promise<String>
 }
 
 export interface MenuPreviousValuesSubscription
@@ -4758,48 +4683,94 @@ export interface MenuPreviousValuesSubscription
       Fragmentable {
    id: () => Promise<AsyncIterator<ID_Output>>
    root: () => Promise<AsyncIterator<Boolean>>
-   name: () => Promise<AsyncIterator<String>>
 }
 
-export interface PathSubscriptionPayload {
+export interface MessageSubscriptionPayload {
    mutation: MutationType
-   node: Path
+   node: Message
    updatedFields: String[]
-   previousValues: PathPreviousValues
+   previousValues: MessagePreviousValues
 }
 
-export interface PathSubscriptionPayloadPromise
-   extends Promise<PathSubscriptionPayload>,
+export interface MessageSubscriptionPayloadPromise
+   extends Promise<MessageSubscriptionPayload>,
       Fragmentable {
    mutation: () => Promise<MutationType>
-   node: <T = PathPromise>() => T
+   node: <T = MessagePromise>() => T
    updatedFields: () => Promise<String[]>
-   previousValues: <T = PathPreviousValuesPromise>() => T
+   previousValues: <T = MessagePreviousValuesPromise>() => T
 }
 
-export interface PathSubscriptionPayloadSubscription
-   extends Promise<AsyncIterator<PathSubscriptionPayload>>,
+export interface MessageSubscriptionPayloadSubscription
+   extends Promise<AsyncIterator<MessageSubscriptionPayload>>,
       Fragmentable {
    mutation: () => Promise<AsyncIterator<MutationType>>
-   node: <T = PathSubscription>() => T
+   node: <T = MessageSubscription>() => T
    updatedFields: () => Promise<AsyncIterator<String[]>>
-   previousValues: <T = PathPreviousValuesSubscription>() => T
+   previousValues: <T = MessagePreviousValuesSubscription>() => T
 }
 
-export interface PathPreviousValues {
+export interface MessagePreviousValues {
    id: ID_Output
 }
 
-export interface PathPreviousValuesPromise
-   extends Promise<PathPreviousValues>,
+export interface MessagePreviousValuesPromise
+   extends Promise<MessagePreviousValues>,
       Fragmentable {
    id: () => Promise<ID_Output>
 }
 
-export interface PathPreviousValuesSubscription
-   extends Promise<AsyncIterator<PathPreviousValues>>,
+export interface MessagePreviousValuesSubscription
+   extends Promise<AsyncIterator<MessagePreviousValues>>,
       Fragmentable {
    id: () => Promise<AsyncIterator<ID_Output>>
+}
+
+export interface MultiLanguageContentSubscriptionPayload {
+   mutation: MutationType
+   node: MultiLanguageContent
+   updatedFields: String[]
+   previousValues: MultiLanguageContentPreviousValues
+}
+
+export interface MultiLanguageContentSubscriptionPayloadPromise
+   extends Promise<MultiLanguageContentSubscriptionPayload>,
+      Fragmentable {
+   mutation: () => Promise<MutationType>
+   node: <T = MultiLanguageContentPromise>() => T
+   updatedFields: () => Promise<String[]>
+   previousValues: <T = MultiLanguageContentPreviousValuesPromise>() => T
+}
+
+export interface MultiLanguageContentSubscriptionPayloadSubscription
+   extends Promise<AsyncIterator<MultiLanguageContentSubscriptionPayload>>,
+      Fragmentable {
+   mutation: () => Promise<AsyncIterator<MutationType>>
+   node: <T = MultiLanguageContentSubscription>() => T
+   updatedFields: () => Promise<AsyncIterator<String[]>>
+   previousValues: <T = MultiLanguageContentPreviousValuesSubscription>() => T
+}
+
+export interface MultiLanguageContentPreviousValues {
+   id: ID_Output
+   pt: String
+   en?: String
+}
+
+export interface MultiLanguageContentPreviousValuesPromise
+   extends Promise<MultiLanguageContentPreviousValues>,
+      Fragmentable {
+   id: () => Promise<ID_Output>
+   pt: () => Promise<String>
+   en: () => Promise<String>
+}
+
+export interface MultiLanguageContentPreviousValuesSubscription
+   extends Promise<AsyncIterator<MultiLanguageContentPreviousValues>>,
+      Fragmentable {
+   id: () => Promise<AsyncIterator<ID_Output>>
+   pt: () => Promise<AsyncIterator<String>>
+   en: () => Promise<AsyncIterator<String>>
 }
 
 export interface StepSubscriptionPayload {
@@ -4829,21 +4800,18 @@ export interface StepSubscriptionPayloadSubscription
 
 export interface StepPreviousValues {
    id: ID_Output
-   question: String
 }
 
 export interface StepPreviousValuesPromise
    extends Promise<StepPreviousValues>,
       Fragmentable {
    id: () => Promise<ID_Output>
-   question: () => Promise<String>
 }
 
 export interface StepPreviousValuesSubscription
    extends Promise<AsyncIterator<StepPreviousValues>>,
       Fragmentable {
    id: () => Promise<AsyncIterator<ID_Output>>
-   question: () => Promise<AsyncIterator<String>>
 }
 
 export interface StepResultSubscriptionPayload {
@@ -4875,6 +4843,7 @@ export interface StepResultPreviousValues {
    id: ID_Output
    start: DateTimeOutput
    end?: DateTimeOutput
+   time: Int
 }
 
 export interface StepResultPreviousValuesPromise
@@ -4883,6 +4852,7 @@ export interface StepResultPreviousValuesPromise
    id: () => Promise<ID_Output>
    start: () => Promise<DateTimeOutput>
    end: () => Promise<DateTimeOutput>
+   time: () => Promise<Int>
 }
 
 export interface StepResultPreviousValuesSubscription
@@ -4891,6 +4861,7 @@ export interface StepResultPreviousValuesSubscription
    id: () => Promise<AsyncIterator<ID_Output>>
    start: () => Promise<AsyncIterator<DateTimeOutput>>
    end: () => Promise<AsyncIterator<DateTimeOutput>>
+   time: () => Promise<AsyncIterator<Int>>
 }
 
 export interface TestSubscriptionPayload {
@@ -4920,21 +4891,18 @@ export interface TestSubscriptionPayloadSubscription
 
 export interface TestPreviousValues {
    id: ID_Output
-   title: String
 }
 
 export interface TestPreviousValuesPromise
    extends Promise<TestPreviousValues>,
       Fragmentable {
    id: () => Promise<ID_Output>
-   title: () => Promise<String>
 }
 
 export interface TestPreviousValuesSubscription
    extends Promise<AsyncIterator<TestPreviousValues>>,
       Fragmentable {
    id: () => Promise<AsyncIterator<ID_Output>>
-   title: () => Promise<AsyncIterator<String>>
 }
 
 export interface TestResultSubscriptionPayload {
@@ -4966,6 +4934,7 @@ export interface TestResultPreviousValues {
    id: ID_Output
    start: DateTimeOutput
    end?: DateTimeOutput
+   duration: Int
 }
 
 export interface TestResultPreviousValuesPromise
@@ -4974,6 +4943,7 @@ export interface TestResultPreviousValuesPromise
    id: () => Promise<ID_Output>
    start: () => Promise<DateTimeOutput>
    end: () => Promise<DateTimeOutput>
+   duration: () => Promise<Int>
 }
 
 export interface TestResultPreviousValuesSubscription
@@ -4982,141 +4952,7 @@ export interface TestResultPreviousValuesSubscription
    id: () => Promise<AsyncIterator<ID_Output>>
    start: () => Promise<AsyncIterator<DateTimeOutput>>
    end: () => Promise<AsyncIterator<DateTimeOutput>>
-}
-
-export interface TimeResultSubscriptionPayload {
-   mutation: MutationType
-   node: TimeResult
-   updatedFields: String[]
-   previousValues: TimeResultPreviousValues
-}
-
-export interface TimeResultSubscriptionPayloadPromise
-   extends Promise<TimeResultSubscriptionPayload>,
-      Fragmentable {
-   mutation: () => Promise<MutationType>
-   node: <T = TimeResultPromise>() => T
-   updatedFields: () => Promise<String[]>
-   previousValues: <T = TimeResultPreviousValuesPromise>() => T
-}
-
-export interface TimeResultSubscriptionPayloadSubscription
-   extends Promise<AsyncIterator<TimeResultSubscriptionPayload>>,
-      Fragmentable {
-   mutation: () => Promise<AsyncIterator<MutationType>>
-   node: <T = TimeResultSubscription>() => T
-   updatedFields: () => Promise<AsyncIterator<String[]>>
-   previousValues: <T = TimeResultPreviousValuesSubscription>() => T
-}
-
-export interface TimeResultPreviousValues {
-   id: ID_Output
-   int: Int
-   text: String
-}
-
-export interface TimeResultPreviousValuesPromise
-   extends Promise<TimeResultPreviousValues>,
-      Fragmentable {
-   id: () => Promise<ID_Output>
-   int: () => Promise<Int>
-   text: () => Promise<String>
-}
-
-export interface TimeResultPreviousValuesSubscription
-   extends Promise<AsyncIterator<TimeResultPreviousValues>>,
-      Fragmentable {
-   id: () => Promise<AsyncIterator<ID_Output>>
-   int: () => Promise<AsyncIterator<Int>>
-   text: () => Promise<AsyncIterator<String>>
-}
-
-export interface ViewSubscriptionPayload {
-   mutation: MutationType
-   node: View
-   updatedFields: String[]
-   previousValues: ViewPreviousValues
-}
-
-export interface ViewSubscriptionPayloadPromise
-   extends Promise<ViewSubscriptionPayload>,
-      Fragmentable {
-   mutation: () => Promise<MutationType>
-   node: <T = ViewPromise>() => T
-   updatedFields: () => Promise<String[]>
-   previousValues: <T = ViewPreviousValuesPromise>() => T
-}
-
-export interface ViewSubscriptionPayloadSubscription
-   extends Promise<AsyncIterator<ViewSubscriptionPayload>>,
-      Fragmentable {
-   mutation: () => Promise<AsyncIterator<MutationType>>
-   node: <T = ViewSubscription>() => T
-   updatedFields: () => Promise<AsyncIterator<String[]>>
-   previousValues: <T = ViewPreviousValuesSubscription>() => T
-}
-
-export interface ViewPreviousValues {
-   id: ID_Output
-}
-
-export interface ViewPreviousValuesPromise
-   extends Promise<ViewPreviousValues>,
-      Fragmentable {
-   id: () => Promise<ID_Output>
-}
-
-export interface ViewPreviousValuesSubscription
-   extends Promise<AsyncIterator<ViewPreviousValues>>,
-      Fragmentable {
-   id: () => Promise<AsyncIterator<ID_Output>>
-}
-
-export interface WelcomeSubscriptionPayload {
-   mutation: MutationType
-   node: Welcome
-   updatedFields: String[]
-   previousValues: WelcomePreviousValues
-}
-
-export interface WelcomeSubscriptionPayloadPromise
-   extends Promise<WelcomeSubscriptionPayload>,
-      Fragmentable {
-   mutation: () => Promise<MutationType>
-   node: <T = WelcomePromise>() => T
-   updatedFields: () => Promise<String[]>
-   previousValues: <T = WelcomePreviousValuesPromise>() => T
-}
-
-export interface WelcomeSubscriptionPayloadSubscription
-   extends Promise<AsyncIterator<WelcomeSubscriptionPayload>>,
-      Fragmentable {
-   mutation: () => Promise<AsyncIterator<MutationType>>
-   node: <T = WelcomeSubscription>() => T
-   updatedFields: () => Promise<AsyncIterator<String[]>>
-   previousValues: <T = WelcomePreviousValuesSubscription>() => T
-}
-
-export interface WelcomePreviousValues {
-   id: ID_Output
-   title: String
-   message: String
-}
-
-export interface WelcomePreviousValuesPromise
-   extends Promise<WelcomePreviousValues>,
-      Fragmentable {
-   id: () => Promise<ID_Output>
-   title: () => Promise<String>
-   message: () => Promise<String>
-}
-
-export interface WelcomePreviousValuesSubscription
-   extends Promise<AsyncIterator<WelcomePreviousValues>>,
-      Fragmentable {
-   id: () => Promise<AsyncIterator<ID_Output>>
-   title: () => Promise<AsyncIterator<String>>
-   message: () => Promise<AsyncIterator<String>>
+   duration: () => Promise<AsyncIterator<Int>>
 }
 
 /*
@@ -5129,11 +4965,6 @@ export type ID_Output = string
 The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
 */
 export type String = string
-
-/*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
-*/
-export type Int = number
 
 /*
 The `Boolean` scalar type represents `true` or `false`.
@@ -5150,6 +4981,11 @@ DateTime scalar output type, which is always a string
 */
 export type DateTimeOutput = string
 
+/*
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
+*/
+export type Int = number
+
 export type Long = string
 
 /**
@@ -5158,11 +4994,31 @@ export type Long = string
 
 export const models: Model[] = [
    {
-      name: 'View',
+      name: 'Key',
       embedded: false,
    },
    {
-      name: 'Welcome',
+      name: 'KeyUserType',
+      embedded: false,
+   },
+   {
+      name: 'KeyLanguage',
+      embedded: false,
+   },
+   {
+      name: 'KeyTestResultStatus',
+      embedded: false,
+   },
+   {
+      name: 'KeyStepResultStatus',
+      embedded: false,
+   },
+   {
+      name: 'MultiLanguageContent',
+      embedded: false,
+   },
+   {
+      name: 'Message',
       embedded: false,
    },
    {
@@ -5178,31 +5034,11 @@ export const models: Model[] = [
       embedded: false,
    },
    {
-      name: 'Path',
-      embedded: false,
-   },
-   {
-      name: 'Keys',
-      embedded: false,
-   },
-   {
-      name: 'KeyUserType',
-      embedded: false,
-   },
-   {
-      name: 'KeyResultStatus',
-      embedded: false,
-   },
-   {
       name: 'Step',
       embedded: false,
    },
    {
       name: 'TestResult',
-      embedded: false,
-   },
-   {
-      name: 'TimeResult',
       embedded: false,
    },
    {
