@@ -1,75 +1,99 @@
-type View {
+type MultiLanguageContent {
    id: ID! @id
-
-   welcome: Welcome! @relation(link: INLINE)
-   company: Company! @relation(link: INLINE)
-
-   menus: [Menu!]! @relation(link: INLINE)
-
-   tests: [Test!]! @relation(link: INLINE)
-   steps: [Step!]! @relation(link: INLINE)
+   pt: String
+   en: String
 }
 
 type Welcome {
    id: ID! @id
 
-   title: String!
-   message: String!
+   test: Test!
+
+   title: MultiLanguageContent! @relation(link: INLINE, onDelete: CASCADE)
+   message: MultiLanguageContent! @relation(link: INLINE, onDelete: CASCADE)
 }
 
 type Company {
    id: ID! @id
 
-   name: String!
+   name: String! @unique
    abbr: String
 
-   logo: String
+   welcome: Welcome! @relation(link: INLINE, onDelete: CASCADE)
+
+   tests: [Test!]! @relation(link: INLINE, onDelete: CASCADE)
 }
 
 type Test {
    id: ID! @id
 
-   title: String!
+   welcome: Welcome! @relation(link: INLINE, onDelete: CASCADE)
+   company: Company!
 
-   steps: [Step!]! @relation(link: INLINE)
-   menus: [Menu!]! @relation(link: INLINE)
+   title: MultiLanguageContent! @relation(link: INLINE, onDelete: CASCADE)
 
-   results: [TestResult!]!
+   steps: [Step!]! @relation(link: INLINE, onDelete: CASCADE)
+   menus: [Menu!]! @relation(link: INLINE, onDelete: CASCADE)
+
+   results: [TestResult!]! @relation(link: INLINE, onDelete: CASCADE)
 }
 
 type Menu {
    id: ID! @id
 
-   menu: Menu @relation(name: "SubMenu")
+   root: Boolean! @default(value: false)
+
+   menus: [Menu!]! @relation(name: "SubMenu")
 
    name: String!
 
-   items: [Menu!]! @relation(link: INLINE, name: "SubMenu")
+   items: [Menu!]! @relation(name: "SubMenu", link: INLINE, onDelete: CASCADE)
+}
+
+type Path {
+   id: ID! @id
+   parent: Step!
+   paths: [Menu!]! @relation(link: INLINE)
+}
+
+type Keys {
+   id: ID! @id
+   userType: [KeyUserType!]! @relation(link: INLINE)
+   resultStatus: [KeyResultStatus!]! @relation(link: INLINE)
+}
+
+type KeyUserType {
+   id: ID! @id
+   key: String! @unique
+   steps: [Step!]!
+}
+
+type KeyResultStatus {
+   id: ID! @id
+   key: String! @unique
+   results: [TestResult!]!
 }
 
 type Step {
    id: ID! @id
 
+   parent: Test
+
+   type: [KeyUserType!]! @relation(link: INLINE)
+
    question: String!
 
-   target: Menu! @relation(link: INLINE, name: "StepTarget")
+   targets: [Menu!]! @relation(link: INLINE, name: "StepTarget")
 
-   path: [Menu!]! @relation(link: INLINE, name: "CorrectPath")
+   paths: [Path!]! @relation(link: INLINE)
 
    results: [StepResult!]!
-}
-
-enum ResultStatus {
-   SUCESSES
-   PARTIAL
-   FAIL
-   ABORTED
 }
 
 type TestResult {
    id: ID! @id
 
-   parent: Test! @relation(link: INLINE)
+   parent: Test!
 
    start: DateTime!
    end: DateTime
@@ -78,7 +102,7 @@ type TestResult {
 
    steps: [StepResult!]! @relation(link: INLINE)
 
-   status: ResultStatus! @default(value: ABORTED)
+   status: KeyResultStatus! @relation(link: INLINE)
 }
 
 type TimeResult {
@@ -102,5 +126,5 @@ type StepResult {
 
    path: [Menu!]! @relation(link: INLINE)
 
-   status: ResultStatus! @default(value: ABORTED)
+   status: KeyResultStatus! @relation(link: INLINE)
 }

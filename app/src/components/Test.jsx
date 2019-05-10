@@ -3,20 +3,66 @@ import React, { Fragment, useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
+import styled from 'styled-components'
+
 import { Query, Mutation } from 'react-apollo'
 
 import { GET_TEST } from '../graphql/Query'
-import { CREATE_STEP_RESULT, UPDATE_STATE } from '../graphql/Mutation'
+import {
+  CREATE_STEP_RESULT,
+  UPDATE_STATE,
+  UPDATE_TEST_RESULT,
+} from '../graphql/Mutation'
 
 import Menus from './Menus'
 
-import { btnSetStyle } from './_styles'
+import { btnSetStyle, switchColor, variables } from './_styles'
 
 import { getTimeSemantic } from '../utils'
 
-const Btn = ({ mutations, ids, status, hooks, className }) => (
+const arraysEqualIds = (a, b) => {
+  if (a === b) return true
+  if (a === null || b === null) return false
+  if (a.length !== b.length) return false
+
+  for (var i = 0; i < a.length; ++i) {
+    if (a[i].id !== b[i].id) return false
+  }
+  return true
+}
+
+const testPath = (userPath, idealPath) => {
+  const { paths, targets } = idealPath
+
+  const userTarget = userPath.slice(-1).pop()
+
+  let finalCorrect = false
+
+  for (let i = 0; i < targets.length; i++) {
+    const target = targets[i]
+    if (target.id === userTarget.id) {
+      finalCorrect = true
+      break
+    }
+  }
+
+  if (finalCorrect) {
+    for (let i = 0; i < paths.length; i++) {
+      const { paths: correctPath } = paths[i]
+      const isEqual = arraysEqualIds(correctPath, userPath)
+      if (isEqual) {
+        return 'SUCCESS'
+      }
+    }
+    return 'PARTIAL'
+  }
+
+  return 'FAIL'
+}
+
+const Btn = ({ mutations, ids, status, hooks, className, tests }) => (
   <Link
-    className={className}
+    className={className && `${className} --big`}
     to="/teste"
     onClick={async event => {
       const { running, timer, next, active, path } = hooks
@@ -29,6 +75,8 @@ const Btn = ({ mutations, ids, status, hooks, className }) => (
 
       const time = end - timer.data
 
+      const statusPath = testPath(path.data, tests)
+
       const result = {
         variables: {
           start: timer.data,
@@ -38,29 +86,124 @@ const Btn = ({ mutations, ids, status, hooks, className }) => (
           path: path.data,
           result: ids.result,
           parent: ids.parent,
+          status: statusPath,
         },
       }
-      console.log('RESULT', result)
+
       await mutations.create(result)
+
+      const finish = status.nextCount >= status.length
+
+      if (finish) {
+        await mutations.updateTestResult({
+          end: new Date(),
+        })
+      }
 
       await mutations.updateState({
         variables: {
-          finish: status.nextCount >= status.length,
+          finish,
           current: status.nextCount,
         },
       })
 
       timer.set(new Date())
-      running.set(false)
       next.set(false)
+      path.set([])
       active.set(active.init)
+      running.set(false)
     }}
   >
-    Proximo
+    É este!
   </Link>
 )
 
 const BtnStyled = btnSetStyle(Btn)
+
+const Main = ({ menus, hooks, btnProps, className }) => (
+  <main className={className}>
+    <Menus {...{ menus, hooks }} />
+    <BtnStyled center={true} bgColor="success" {...{ ...btnProps }} />
+  </main>
+)
+
+const MainStyled = styled(Main)`
+  width: 100%;
+  padding: 0 5vw 0;
+  margin-top: calc(2rem + 5vh);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: flex-start;
+  &:after {
+    content: '';
+    background-color: ${switchColor('gray')};
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 0;
+    opacity: 0;
+    display: block;
+    pointer-events: none;
+    transition: 0.3s;
+    ${({ disabled }) =>
+      disabled
+        ? ''
+        : `
+      opacity: .9;
+      pointer-events: all;
+    `}
+  }
+`
+
+const Header = ({ current, length, step, className }) => (
+  <header className={className}>
+    <h1>
+      <span>
+        Passo{' '}
+        <span className="number">
+          {current + 1} de {length}
+        </span>
+        :
+      </span>
+      {step.question}{' '}
+    </h1>
+  </header>
+)
+
+const HeaderStyled = styled(Header)`
+  display: flex;
+  width: 100%;
+  background-color: ${switchColor('white')};
+  box-shadow: ${variables.shadows.base};
+  & > h1 {
+    flex: 1;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    & > span {
+      display: flex;
+      min-height: 100%;
+      box-sizing: border-box;
+      font-size: 0;
+      color: transparent;
+      background-color: ${switchColor('primary')};
+      padding: 0.5rem 1rem;
+      justify-content: center;
+      align-items: center;
+      white-space: nowrap;
+      margin-right: 2rem;
+      & > .number {
+        font-size: 2rem;
+        color: ${switchColor('white')};
+      }
+    }
+  }
+  z-index: 9999;
+`
 
 export default ({ prefixTitle, state }) => {
   const [runningData, setRunning] = useState(false)
@@ -103,13 +246,24 @@ export default ({ prefixTitle, state }) => {
     },
   }
 
-  const { test: testID, current, result: resultID, finish } = state
+  const {
+    test: testID,
+    current,
+    result: resultID,
+    finish,
+    pub,
+    start: startTest,
+  } = state
 
-  if (!testID) return <Redirect to="/" />
+  if (!testID) return <Redirect to={`/home/${pub}`} />
 
   if (finish) return <Redirect to="/obrigado" />
 
   const nextCount = current + 1
+
+  const haveSpecific = pub !== 'all'
+
+  const query = GET_TEST(haveSpecific)
 
   return (
     <Mutation mutation={CREATE_STEP_RESULT}>
@@ -118,54 +272,83 @@ export default ({ prefixTitle, state }) => {
           <Mutation mutation={UPDATE_STATE}>
             {updateState => {
               return (
-                <Query query={GET_TEST} variables={{ id: testID }}>
-                  {({ loading, error, data: { test } }) => {
-                    if (loading) return null
-                    if (error) return null
-
-                    const { menus, title, steps } = test
-
-                    const length = steps.length
-
-                    const step = steps[current]
-
-                    const btnProps = {
-                      ids: {
-                        parent: step.id,
-                        result: resultID,
-                      },
-                      hooks,
-                      mutations: {
-                        create,
-                        updateState,
-                      },
-                      status: {
-                        nextCount,
-                        length,
-                      },
-                      disabled: !nextData,
-                    }
-
+                <Mutation mutation={UPDATE_TEST_RESULT}>
+                  {updateTestResult => {
                     return (
-                      <Fragment>
-                        <Helmet>
-                          <title>{prefixTitle(title)}</title>
-                        </Helmet>
-                        <header>
-                          <h1>
-                            Passo {current + 1} de {length}: {step.question}
-                          </h1>
-                        </header>
-                        <main>
-                          <nav>
-                            <Menus {...{ menus, hooks }} />
-                          </nav>
-                          <BtnStyled {...{ ...btnProps }} />
-                        </main>
-                      </Fragment>
+                      <Query
+                        query={query}
+                        variables={{ id: testID, key: pub.toUpperCase() }}
+                      >
+                        {({
+                          loading,
+                          error,
+                          data: { test, keys: arrKeys },
+                        }) => {
+                          if (loading) return null
+                          if (error) return null
+
+                          const [keys] = arrKeys
+
+                          const { specific, all } = keys
+
+                          const { menus, title } = test
+
+                          const steps = haveSpecific
+                            ? [...specific[0].steps, ...all[0].steps]
+                            : [...all[0].steps]
+
+                          const length = steps.length
+
+                          const step = steps[current]
+
+                          const disabled = !nextData
+
+                          const btnProps = {
+                            ids: {
+                              parent: step.id,
+                              result: resultID,
+                            },
+                            tests: {
+                              paths: step.paths,
+                              targets: step.targets,
+                            },
+                            hooks,
+                            mutations: {
+                              create,
+                              updateState,
+                              updateTestResult,
+                            },
+                            status: {
+                              startTest,
+                              nextCount,
+                              length,
+                            },
+                            disabled,
+                          }
+
+                          return (
+                            <Fragment>
+                              <Helmet>
+                                <title>{prefixTitle(title)}</title>
+                              </Helmet>
+                              <HeaderStyled
+                                current={current}
+                                step={step}
+                                length={length}
+                              />
+                              <MainStyled
+                                menus={menus}
+                                hooks={hooks}
+                                btnProps={btnProps}
+                                disabled={disabled}
+                              />
+                            </Fragment>
+                          )
+                        }}
+                      </Query>
                     )
                   }}
-                </Query>
+                </Mutation>
               )
             }}
           </Mutation>

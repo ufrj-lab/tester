@@ -1,101 +1,368 @@
 import { prisma } from '../src/generated/prisma-client'
 
 async function main() {
-   const setMenu = async (
-      name: string,
-      parent: Promise<string> | undefined = undefined,
-   ): Promise<string> =>
-      prisma
-         .createMenu({
-            menu: parent
-               ? {
-                    connect: {
-                       id: await parent,
-                    },
-                 }
-               : undefined,
-            name,
-         })
-         .id()
-
    const setConnectArray = async (arr: Array<Promise<string>>) => ({
       connect: (await Promise.all(arr)).map(id => ({ id })),
    })
 
-   const setStep = async (
-      question: string,
-      target: Promise<string>,
-      path: Array<Promise<string>>,
-   ) =>
+   const setMenu = async (
+      name: string,
+      parents: Array<Promise<string>> | undefined = undefined,
+      root: boolean = false,
+   ): Promise<string> =>
       prisma
-         .createStep({
-            path: await setConnectArray(path),
-            question,
-            target: {
-               connect: {
-                  id: await target,
-               },
-            },
+         .createMenu({
+            menus: parents && (await setConnectArray(parents)),
+            name,
+            root,
          })
          .id()
 
-   const levelOne = [
-      setMenu('Persona'),
-      setMenu('Principal'),
-      setMenu('Secundário'),
-   ]
-   const [persona, principal, secundario] = levelOne
+   const setListMenu = (
+      array: string[],
+      parent: Array<Promise<string>> | undefined = undefined,
+      root: boolean = false,
+   ) => array.map(name => setMenu(name, parent, root))
 
-   const levelTwo = [
-      setMenu('Alunos', persona),
-      setMenu('Professores', persona),
-      setMenu('A universidade', principal),
-      setMenu('Ensino', principal),
-      setMenu('Eventos', secundario),
-      setMenu('Noticias', secundario),
-   ]
+   interface IInputPath {
+      parent: Promise<string>
+      paths: Array<Array<Promise<string>>>
+   }
+
+   const setPath = async (
+      step: IInputPath,
+   ): Promise<Array<Promise<string>>> => {
+      const { parent, paths: pathsAll } = step
+
+      return pathsAll.map(async path =>
+         prisma
+            .createPath({
+               parent: { connect: { id: await parent } },
+               paths: await setConnectArray(path),
+            })
+            .id(),
+      )
+   }
+
+   const setStep = async (
+      question: string,
+      targets: Array<Promise<string>> | undefined = undefined,
+      pathsT: Array<Array<Promise<string>>> | undefined = undefined,
+      type: Array<Promise<string>>,
+   ) => ({
+      parent: prisma
+         .createStep({
+            question,
+            targets: targets && (await setConnectArray(targets)),
+            type: await setConnectArray(type),
+         })
+         .id(),
+      paths: pathsT,
+   })
+
+   const levelZero = setListMenu(
+      ['Persona', 'Principal', 'Secundário'],
+      undefined,
+      true,
+   )
+   const [persona, principal, secundario] = levelZero
+
+   const personas = setListMenu(
+      ['Alunos', 'Professor', 'Servidor', 'Sociedade', 'Imprensa'],
+      [persona],
+   )
    const [
       personaAluno,
-      personaProfessores,
+      personaProfessor,
+      personaServidor,
+      personaSocieadade,
+      personaImprensa,
+   ] = personas
+
+   const principais = setListMenu(
+      ['A Universidade', 'Ensino', 'Pesquisa', 'Ingresso', 'Nos Campi'],
+      [principal],
+   )
+   const [
       principalAUniversidade,
       principalEnsino,
-      secundarioEventos,
+      principalPesquisa,
+      principalIngresso,
+      principalNosCampi,
+   ] = principais
+
+   const secundarios = setListMenu(
+      [
+         'Notícias',
+         'Eventos',
+         'Sistemas',
+         'Relações Internacionais',
+         'Acessibilidade',
+      ],
+      [secundario],
+   )
+   const [
       secundarioNoticias,
+      secundarioEventos,
+      secundarioSistemas,
+      secundarioRelacoesInternacionais,
+      secundarioAcessibilidade,
+   ] = secundarios
+
+   const levelOne = [...personas, ...principais, ...secundarios]
+
+   const levelTwo = [
+      setMenu('Carreira e Qualificação', [personaServidor, personaProfessor]),
+      setMenu('Serviços', [personaSocieadade]),
+      setMenu('Ingresso', [personaSocieadade]),
+      setMenu('Formação', [personaAluno, principalEnsino]),
+      setMenu('Ferramentas Acadêmicas', [personaAluno, personaProfessor]),
+      setMenu('Produção Acadêmica', [principalPesquisa]),
+      setMenu('Ferramentas Administrativas', [
+         personaProfessor,
+         personaServidor,
+      ]),
+      setMenu('Saúde e Bem-estar', [personaProfessor, personaServidor]),
+      setMenu('A Reitoria', [principalAUniversidade]),
+      setMenu('Transparência', [secundario, principalAUniversidade]),
+   ]
+
+   const [
+      carreiraQualificacao,
+      servicos,
+      ingresso,
+      formacao,
+      ferramentasAcademicas,
+      producaoAcademica,
+      ferramentasAdministrativas,
+      saudeBemEstar,
+      reitoria,
+      transparencia,
    ] = levelTwo
 
-   const menus = [...levelOne, ...levelTwo]
+   const levelTree = [
+      setMenu('Capacitação', [principalEnsino, carreiraQualificacao]),
+      setMenu('Educação Básica', [principalEnsino, servicos]),
+      setMenu('Pessoal', [principalIngresso, ingresso]),
+      setMenu('Residência Profissional', [
+         principalEnsino,
+         principalIngresso,
+         formacao,
+         ingresso,
+      ]),
+      setMenu('Comunicação', [principalAUniversidade]),
+      setMenu('Iniciativas', [principalPesquisa]),
+      setMenu('Formação Docente', [principalEnsino, formacao]),
+      setMenu('Bolsas', [principalPesquisa]),
+      setMenu('Calendário Acadêmico', [ferramentasAcademicas]),
+      setMenu('SIGA', [ferramentasAcademicas, secundarioSistemas]),
+      setMenu('Iniciações', [formacao]),
+      setMenu('Periódicos', [ferramentasAcademicas]),
+      setMenu('Planos de Carreira', [carreiraQualificacao]),
+      setMenu('SIGEPE', [ferramentasAdministrativas, secundarioSistemas]),
+      setMenu('Perícias', [saudeBemEstar]),
+   ]
+   const [
+      capacitacao,
+      educacaoBasica,
+      pessoal,
+      residenciaProfissional,
+      comunicacao,
+      iniciativas,
+      formacaoDocente,
+      bolsas,
+      calendarioAcademico,
+      siga,
+      iniciacoes,
+      periodicos,
+      planosCarreira,
+      sigepe,
+      pericias,
+   ] = levelTree
+
+   const menus = [...levelZero, ...levelOne, ...levelTwo, ...levelTree]
    const menusConnect = setConnectArray(menus)
 
+   const keyUserType = ['PROFESSOR', 'STUDENT', 'STAFF', 'ALL'].map(key =>
+      prisma.createKeyUserType({ key }).id(),
+   )
+
+   const [targetProfessor, targetStudent, targetStaff, targetAll] = keyUserType
+
    const steps = [
-      setStep('Encontre serviços e informações para alunos', personaAluno, [
-         personaAluno,
-      ]),
       setStep(
-         'Encontre serviços e informações para professores',
-         personaProfessores,
-         [personaProfessores],
+         'Encontre as datas relevantes para o ano letivo.',
+         [calendarioAcademico],
+         [[personaAluno, ferramentasAcademicas, calendarioAcademico]],
+         [targetStudent],
       ),
       setStep(
-         'Encontre informações sobre a universidade',
-         principalAUniversidade,
-         [principalAUniversidade],
+         'Encontre a ferramenta utilizada para se matricular em uma disciplina.',
+         [siga],
+         [
+            [secundarioSistemas, siga],
+            [personaAluno, ferramentasAcademicas, siga],
+         ],
+         [targetStudent],
       ),
-      setStep('Encontre informações sobre ensino', principalEnsino, [
-         principalEnsino,
-      ]),
-      setStep('Encontre eventos na ufrj', secundarioEventos, [
-         secundarioEventos,
-      ]),
-      setStep('Encontre noticias sobre a ufrj', secundarioNoticias, [
-         secundarioNoticias,
-      ]),
+      setStep(
+         'Encontre bolsas de monitoria disponíveis.',
+         [iniciacoes],
+         [[personaAluno, formacao, iniciacoes]],
+         [targetStudent],
+      ),
+      setStep(
+         'Encontre a periódicos e artigos produzidos na UFRJ.',
+         [producaoAcademica, periodicos],
+         [
+            [principalPesquisa, producaoAcademica],
+            [personaProfessor, ferramentasAcademicas, periodicos],
+         ],
+         [targetProfessor],
+      ),
+      setStep(
+         'Encontre a ferramenta utilizada para lançar notas de alunos.',
+         [siga],
+         [
+            [secundarioSistemas, siga],
+            [personaProfessor, ferramentasAcademicas, siga],
+         ],
+         [targetProfessor],
+      ),
+      setStep(
+         'Encontre mais informações sobre seu plano de carreira.',
+         [planosCarreira],
+         [[personaProfessor, carreiraQualificacao, planosCarreira]],
+         [targetProfessor],
+      ),
+      setStep(
+         'Encontre a ferramenta utilizada para marcar suas férias.',
+         [sigepe],
+         [
+            [secundarioSistemas, sigepe],
+            [personaServidor, ferramentasAdministrativas, sigepe],
+         ],
+         [targetStaff],
+      ),
+      setStep(
+         'Encontre como agendar perícia médica para pedido de afastamento.',
+         [pericias],
+         [[personaServidor, saudeBemEstar, pericias]],
+         [targetStaff],
+      ),
+      setStep(
+         'Encontre cursos de capacitação voltados para sua área de atuação.',
+         [capacitacao],
+         [
+            [principalEnsino, capacitacao],
+            [personaServidor, carreiraQualificacao, capacitacao],
+         ],
+         [targetStaff],
+      ),
+      setStep(
+         'Encontre informações sobre a prefeitura da cidade universitária.',
+         [reitoria],
+         [[principalAUniversidade, reitoria]],
+         [targetAll],
+      ),
+      setStep(
+         'Encontre informações sobre a escola de educação infantil da UFRJ.',
+         [educacaoBasica],
+         [
+            [principalEnsino, educacaoBasica],
+            [personaSocieadade, servicos, educacaoBasica],
+         ],
+         [targetAll],
+      ),
+      setStep(
+         'Encontre os concursos disponíveis para servidores e professores.',
+         [pessoal],
+         [[principalIngresso, pessoal], [personaSocieadade, ingresso, pessoal]],
+         [targetAll],
+      ),
+      setStep(
+         'Encontre as vagas disponíveis para a residência médica em pediatria.',
+         [residenciaProfissional],
+         [
+            [principalEnsino, residenciaProfissional],
+            [principalIngresso, residenciaProfissional],
+            [personaAluno, formacao, residenciaProfissional],
+            [personaSocieadade, ingresso, residenciaProfissional],
+         ],
+         [targetAll],
+      ),
+      setStep(
+         'Encontre o contato da assessoria de imprensa do gabinete do reitor.',
+         [comunicacao],
+         [[principalAUniversidade, comunicacao]],
+         [targetAll],
+      ),
+      setStep(
+         'Encontre informações sobre seminários de discussão e apresentação de trabalhos científicos.',
+         [secundarioEventos, iniciativas],
+         [[secundarioEventos], [principalAUniversidade, iniciativas]],
+         [targetAll],
+      ),
+      setStep(
+         'Encontre dados sobre as finanças da UFRJ em 2018.',
+         [transparencia],
+         [[transparencia], [principalAUniversidade, transparencia]],
+         [targetAll],
+      ),
+      setStep(
+         'Encontre informações sobre políticas de incentivo à formação de professores.',
+         [formacaoDocente],
+         [
+            [principalEnsino, formacaoDocente],
+            [personaAluno, formacao, formacaoDocente],
+         ],
+         [targetAll],
+      ),
+      setStep(
+         'Encontre informações sobre bolsas de pós-doutorado.',
+         [bolsas],
+         [[principalPesquisa, bolsas]],
+         [targetAll],
+      ),
    ]
-   const stepsConnect = setConnectArray(steps)
+
+   const paths: Array<Array<Promise<string>>> = []
+
+   const stepsConnect = setConnectArray(
+      steps.map(async step => {
+         const { parent, paths: PromsiePaths } = await step
+
+         if (PromsiePaths) {
+            PromsiePaths.push(await setPath({ parent, paths: PromsiePaths }))
+         }
+
+         return parent
+      }),
+   )
+
+   const keyResultStatus = [
+      'SUCCESS',
+      'PARTIAL',
+      'FAIL',
+      'ABORTED',
+      'FINISH',
+   ].map(key => prisma.createKeyResultStatus({ key }).id())
+
+   const userType = await setConnectArray(keyUserType)
+   const resultStatus = await setConnectArray(keyResultStatus)
 
    const commons = {
       menus: await menusConnect,
       steps: await stepsConnect,
    }
+
+   const keys = {
+      resultStatus,
+      userType,
+   }
+
+   await Promise.all(paths)
+   await prisma.createKeys(keys).id()
 
    await prisma
       .createView({

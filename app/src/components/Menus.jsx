@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { linkMenuSetStyle } from './_styles'
-
+import styled from 'styled-components'
+import { linkMenuSetStyle, switchColor } from './_styles'
 const LinkMenu = ({ id, hooks, name, className, selected, index }) => {
   const { next, active, path } = hooks
 
@@ -43,31 +43,94 @@ const LinkMenu = ({ id, hooks, name, className, selected, index }) => {
 }
 
 const LinkMenuStyled = linkMenuSetStyle(LinkMenu)
-const Items = ({ items, hooks }) =>
-  items.map(({ id, name, items: menus }) => {
-    const { actives } = hooks.active.data
-    const index = actives.indexOf(id)
 
-    const linkProps = {
-      hooks,
-      id,
-      name,
-      index,
-      selected: index !== -1,
+const SubMenusStyled = styled(SubMenus)`
+  ${({ selected, root }) => `
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    ${
+      root
+        ? `
+            position: relative;
+            margin-bottom: 1rem !important;
+          `
+        : `
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+        `
     }
 
-    return (
-      <li key={id}>
-        <LinkMenuStyled {...{ ...linkProps }} />
-        {menus.length > 0 && <Menus {...{ hooks, menus }} />}
-      </li>
-    )
-  })
+    ${
+      selected
+        ? `
+          opacity: 1;
+          pointer-events: all;
+          z-index: 9999;
+            
+          `
+        : ''
+    }
+  `}
+`
 
-export default function Menus({ menus, hooks }) {
-  return menus.map(({ id, name, items }) => (
-    <ul className="menu" key={id}>
-      <Items {...{ hooks, id, name, items }} />
-    </ul>
-  ))
+function SubMenus({ items, hooks, className }) {
+  const { actives } = hooks.active.data
+  return (
+    (items && (
+      <ul className={className}>
+        {items.map(({ name, id, items }) => {
+          const index = actives.indexOf(id)
+          const selected = index !== -1
+          return (
+            <li key={id}>
+              <LinkMenuStyled
+                hooks={hooks}
+                id={id}
+                name={name}
+                selected={selected}
+                index={index}
+              />
+              <SubMenusStyled
+                items={items}
+                hooks={hooks}
+                selected={selected}
+                root={false}
+              />
+            </li>
+          )
+        })}
+      </ul>
+    )) ||
+    null
+  )
 }
+
+const Menus = ({ menus, hooks, className }) => (
+  <nav className={className}>
+    {menus.map(({ id, name, items }) => {
+      return (
+        <div key={id}>
+          <h2>{name}</h2>
+          <SubMenusStyled items={items} hooks={hooks} root={true} />
+        </div>
+      )
+    })}
+  </nav>
+)
+
+const MenusStyled = styled(Menus)`
+  display: flex;
+  flex-direction: column-reverse;
+  & > div > h2 {
+    font-size: 0;
+    margin: 0;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+`
+export default MenusStyled

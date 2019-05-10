@@ -24,7 +24,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: prisma
       MONGO_INITDB_ROOT_PASSWORD: prisma
     volumes:
-      - database_mongo:/var/lib/mongo
+      - database_mongo:/data/db
     networks:
       database:
 

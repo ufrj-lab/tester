@@ -21,9 +21,12 @@ export interface NexusPrismaTypes {
          Menu: MenuObject
          Test: TestObject
          Step: StepObject
+         KeyUserType: KeyUserTypeObject
+         Path: PathObject
          StepResult: StepResultObject
          TestResult: TestResultObject
          TimeResult: TimeResultObject
+         KeyResultStatus: KeyResultStatusObject
          ViewConnection: ViewConnectionObject
          PageInfo: PageInfoObject
          ViewEdge: ViewEdgeObject
@@ -40,6 +43,19 @@ export interface NexusPrismaTypes {
          MenuConnection: MenuConnectionObject
          MenuEdge: MenuEdgeObject
          AggregateMenu: AggregateMenuObject
+         PathConnection: PathConnectionObject
+         PathEdge: PathEdgeObject
+         AggregatePath: AggregatePathObject
+         Keys: KeysObject
+         KeysConnection: KeysConnectionObject
+         KeysEdge: KeysEdgeObject
+         AggregateKeys: AggregateKeysObject
+         KeyUserTypeConnection: KeyUserTypeConnectionObject
+         KeyUserTypeEdge: KeyUserTypeEdgeObject
+         AggregateKeyUserType: AggregateKeyUserTypeObject
+         KeyResultStatusConnection: KeyResultStatusConnectionObject
+         KeyResultStatusEdge: KeyResultStatusEdgeObject
+         AggregateKeyResultStatus: AggregateKeyResultStatusObject
          StepConnection: StepConnectionObject
          StepEdge: StepEdgeObject
          AggregateStep: AggregateStepObject
@@ -65,6 +81,14 @@ export interface NexusPrismaTypes {
          TestPreviousValues: TestPreviousValuesObject
          MenuSubscriptionPayload: MenuSubscriptionPayloadObject
          MenuPreviousValues: MenuPreviousValuesObject
+         PathSubscriptionPayload: PathSubscriptionPayloadObject
+         PathPreviousValues: PathPreviousValuesObject
+         KeysSubscriptionPayload: KeysSubscriptionPayloadObject
+         KeysPreviousValues: KeysPreviousValuesObject
+         KeyUserTypeSubscriptionPayload: KeyUserTypeSubscriptionPayloadObject
+         KeyUserTypePreviousValues: KeyUserTypePreviousValuesObject
+         KeyResultStatusSubscriptionPayload: KeyResultStatusSubscriptionPayloadObject
+         KeyResultStatusPreviousValues: KeyResultStatusPreviousValuesObject
          StepSubscriptionPayload: StepSubscriptionPayloadObject
          StepPreviousValues: StepPreviousValuesObject
          TestResultSubscriptionPayload: TestResultSubscriptionPayloadObject
@@ -82,9 +106,12 @@ export interface NexusPrismaTypes {
          Menu: MenuFieldDetails
          Test: TestFieldDetails
          Step: StepFieldDetails
+         KeyUserType: KeyUserTypeFieldDetails
+         Path: PathFieldDetails
          StepResult: StepResultFieldDetails
          TestResult: TestResultFieldDetails
          TimeResult: TimeResultFieldDetails
+         KeyResultStatus: KeyResultStatusFieldDetails
          ViewConnection: ViewConnectionFieldDetails
          PageInfo: PageInfoFieldDetails
          ViewEdge: ViewEdgeFieldDetails
@@ -101,6 +128,19 @@ export interface NexusPrismaTypes {
          MenuConnection: MenuConnectionFieldDetails
          MenuEdge: MenuEdgeFieldDetails
          AggregateMenu: AggregateMenuFieldDetails
+         PathConnection: PathConnectionFieldDetails
+         PathEdge: PathEdgeFieldDetails
+         AggregatePath: AggregatePathFieldDetails
+         Keys: KeysFieldDetails
+         KeysConnection: KeysConnectionFieldDetails
+         KeysEdge: KeysEdgeFieldDetails
+         AggregateKeys: AggregateKeysFieldDetails
+         KeyUserTypeConnection: KeyUserTypeConnectionFieldDetails
+         KeyUserTypeEdge: KeyUserTypeEdgeFieldDetails
+         AggregateKeyUserType: AggregateKeyUserTypeFieldDetails
+         KeyResultStatusConnection: KeyResultStatusConnectionFieldDetails
+         KeyResultStatusEdge: KeyResultStatusEdgeFieldDetails
+         AggregateKeyResultStatus: AggregateKeyResultStatusFieldDetails
          StepConnection: StepConnectionFieldDetails
          StepEdge: StepEdgeFieldDetails
          AggregateStep: AggregateStepFieldDetails
@@ -126,6 +166,14 @@ export interface NexusPrismaTypes {
          TestPreviousValues: TestPreviousValuesFieldDetails
          MenuSubscriptionPayload: MenuSubscriptionPayloadFieldDetails
          MenuPreviousValues: MenuPreviousValuesFieldDetails
+         PathSubscriptionPayload: PathSubscriptionPayloadFieldDetails
+         PathPreviousValues: PathPreviousValuesFieldDetails
+         KeysSubscriptionPayload: KeysSubscriptionPayloadFieldDetails
+         KeysPreviousValues: KeysPreviousValuesFieldDetails
+         KeyUserTypeSubscriptionPayload: KeyUserTypeSubscriptionPayloadFieldDetails
+         KeyUserTypePreviousValues: KeyUserTypePreviousValuesFieldDetails
+         KeyResultStatusSubscriptionPayload: KeyResultStatusSubscriptionPayloadFieldDetails
+         KeyResultStatusPreviousValues: KeyResultStatusPreviousValuesFieldDetails
          StepSubscriptionPayload: StepSubscriptionPayloadFieldDetails
          StepPreviousValues: StepPreviousValuesFieldDetails
          TestResultSubscriptionPayload: TestResultSubscriptionPayloadFieldDetails
@@ -142,9 +190,12 @@ export interface NexusPrismaTypes {
          MenuWhereInput: MenuWhereInputInputObject
          TestWhereInput: TestWhereInputInputObject
          StepWhereInput: StepWhereInputInputObject
+         KeyUserTypeWhereInput: KeyUserTypeWhereInputInputObject
+         PathWhereInput: PathWhereInputInputObject
          StepResultWhereInput: StepResultWhereInputInputObject
          TestResultWhereInput: TestResultWhereInputInputObject
          TimeResultWhereInput: TimeResultWhereInputInputObject
+         KeyResultStatusWhereInput: KeyResultStatusWhereInputInputObject
          ViewWhereInput: ViewWhereInputInputObject
          WelcomeWhereInput: WelcomeWhereInputInputObject
          CompanyWhereInput: CompanyWhereInputInputObject
@@ -152,6 +203,11 @@ export interface NexusPrismaTypes {
          CompanyWhereUniqueInput: CompanyWhereUniqueInputInputObject
          TestWhereUniqueInput: TestWhereUniqueInputInputObject
          MenuWhereUniqueInput: MenuWhereUniqueInputInputObject
+         PathWhereUniqueInput: PathWhereUniqueInputInputObject
+         KeysWhereUniqueInput: KeysWhereUniqueInputInputObject
+         KeysWhereInput: KeysWhereInputInputObject
+         KeyUserTypeWhereUniqueInput: KeyUserTypeWhereUniqueInputInputObject
+         KeyResultStatusWhereUniqueInput: KeyResultStatusWhereUniqueInputInputObject
          StepWhereUniqueInput: StepWhereUniqueInputInputObject
          TestResultWhereUniqueInput: TestResultWhereUniqueInputInputObject
          TimeResultWhereUniqueInput: TimeResultWhereUniqueInputInputObject
@@ -163,15 +219,18 @@ export interface NexusPrismaTypes {
          CompanyCreateInput: CompanyCreateInputInputObject
          MenuCreateManyInput: MenuCreateManyInputInputObject
          MenuCreateInput: MenuCreateInputInputObject
-         MenuCreateOneWithoutItemsInput: MenuCreateOneWithoutItemsInputInputObject
+         MenuCreateManyWithoutItemsInput: MenuCreateManyWithoutItemsInputInputObject
          MenuCreateWithoutItemsInput: MenuCreateWithoutItemsInputInputObject
-         MenuCreateManyWithoutMenuInput: MenuCreateManyWithoutMenuInputInputObject
-         MenuCreateWithoutMenuInput: MenuCreateWithoutMenuInputInputObject
+         MenuCreateManyWithoutMenusInput: MenuCreateManyWithoutMenusInputInputObject
+         MenuCreateWithoutMenusInput: MenuCreateWithoutMenusInputInputObject
          TestCreateManyInput: TestCreateManyInputInputObject
          TestCreateInput: TestCreateInputInputObject
-         StepCreateManyInput: StepCreateManyInputInputObject
-         StepCreateInput: StepCreateInputInputObject
-         MenuCreateOneInput: MenuCreateOneInputInputObject
+         StepCreateManyWithoutParentInput: StepCreateManyWithoutParentInputInputObject
+         StepCreateWithoutParentInput: StepCreateWithoutParentInputInputObject
+         KeyUserTypeCreateManyWithoutStepsInput: KeyUserTypeCreateManyWithoutStepsInputInputObject
+         KeyUserTypeCreateWithoutStepsInput: KeyUserTypeCreateWithoutStepsInputInputObject
+         PathCreateManyWithoutParentInput: PathCreateManyWithoutParentInputInputObject
+         PathCreateWithoutParentInput: PathCreateWithoutParentInputInputObject
          StepResultCreateManyWithoutParentInput: StepResultCreateManyWithoutParentInputInputObject
          StepResultCreateWithoutParentInput: StepResultCreateWithoutParentInputInputObject
          TestResultCreateOneWithoutStepsInput: TestResultCreateOneWithoutStepsInputInputObject
@@ -180,12 +239,22 @@ export interface NexusPrismaTypes {
          TestCreateWithoutResultsInput: TestCreateWithoutResultsInputInputObject
          TimeResultCreateOneInput: TimeResultCreateOneInputInputObject
          TimeResultCreateInput: TimeResultCreateInputInputObject
-         TestResultCreateManyWithoutParentInput: TestResultCreateManyWithoutParentInputInputObject
-         TestResultCreateWithoutParentInput: TestResultCreateWithoutParentInputInputObject
+         KeyResultStatusCreateOneWithoutResultsInput: KeyResultStatusCreateOneWithoutResultsInputInputObject
+         KeyResultStatusCreateWithoutResultsInput: KeyResultStatusCreateWithoutResultsInputInputObject
+         KeyResultStatusCreateOneInput: KeyResultStatusCreateOneInputInputObject
+         KeyResultStatusCreateInput: KeyResultStatusCreateInputInputObject
+         TestResultCreateManyWithoutStatusInput: TestResultCreateManyWithoutStatusInputInputObject
+         TestResultCreateWithoutStatusInput: TestResultCreateWithoutStatusInputInputObject
          StepResultCreateManyWithoutResultParentInput: StepResultCreateManyWithoutResultParentInputInputObject
          StepResultCreateWithoutResultParentInput: StepResultCreateWithoutResultParentInputInputObject
          StepCreateOneWithoutResultsInput: StepCreateOneWithoutResultsInputInputObject
          StepCreateWithoutResultsInput: StepCreateWithoutResultsInputInputObject
+         TestCreateOneWithoutStepsInput: TestCreateOneWithoutStepsInputInputObject
+         TestCreateWithoutStepsInput: TestCreateWithoutStepsInputInputObject
+         TestResultCreateManyWithoutParentInput: TestResultCreateManyWithoutParentInputInputObject
+         TestResultCreateWithoutParentInput: TestResultCreateWithoutParentInputInputObject
+         StepCreateManyInput: StepCreateManyInputInputObject
+         StepCreateInput: StepCreateInputInputObject
          ViewUpdateInput: ViewUpdateInputInputObject
          WelcomeUpdateOneRequiredInput: WelcomeUpdateOneRequiredInputInputObject
          WelcomeUpdateDataInput: WelcomeUpdateDataInputInputObject
@@ -196,25 +265,36 @@ export interface NexusPrismaTypes {
          MenuUpdateManyInput: MenuUpdateManyInputInputObject
          MenuUpdateWithWhereUniqueNestedInput: MenuUpdateWithWhereUniqueNestedInputInputObject
          MenuUpdateDataInput: MenuUpdateDataInputInputObject
-         MenuUpdateOneWithoutItemsInput: MenuUpdateOneWithoutItemsInputInputObject
+         MenuUpdateManyWithoutItemsInput: MenuUpdateManyWithoutItemsInputInputObject
+         MenuUpdateWithWhereUniqueWithoutItemsInput: MenuUpdateWithWhereUniqueWithoutItemsInputInputObject
          MenuUpdateWithoutItemsDataInput: MenuUpdateWithoutItemsDataInputInputObject
-         MenuUpsertWithoutItemsInput: MenuUpsertWithoutItemsInputInputObject
-         MenuUpdateManyWithoutMenuInput: MenuUpdateManyWithoutMenuInputInputObject
-         MenuUpdateWithWhereUniqueWithoutMenuInput: MenuUpdateWithWhereUniqueWithoutMenuInputInputObject
-         MenuUpdateWithoutMenuDataInput: MenuUpdateWithoutMenuDataInputInputObject
-         MenuUpsertWithWhereUniqueWithoutMenuInput: MenuUpsertWithWhereUniqueWithoutMenuInputInputObject
+         MenuUpsertWithWhereUniqueWithoutItemsInput: MenuUpsertWithWhereUniqueWithoutItemsInputInputObject
          MenuScalarWhereInput: MenuScalarWhereInputInputObject
          MenuUpdateManyWithWhereNestedInput: MenuUpdateManyWithWhereNestedInputInputObject
          MenuUpdateManyDataInput: MenuUpdateManyDataInputInputObject
+         MenuUpdateManyWithoutMenusInput: MenuUpdateManyWithoutMenusInputInputObject
+         MenuUpdateWithWhereUniqueWithoutMenusInput: MenuUpdateWithWhereUniqueWithoutMenusInputInputObject
+         MenuUpdateWithoutMenusDataInput: MenuUpdateWithoutMenusDataInputInputObject
+         MenuUpsertWithWhereUniqueWithoutMenusInput: MenuUpsertWithWhereUniqueWithoutMenusInputInputObject
          MenuUpsertWithWhereUniqueNestedInput: MenuUpsertWithWhereUniqueNestedInputInputObject
          TestUpdateManyInput: TestUpdateManyInputInputObject
          TestUpdateWithWhereUniqueNestedInput: TestUpdateWithWhereUniqueNestedInputInputObject
          TestUpdateDataInput: TestUpdateDataInputInputObject
-         StepUpdateManyInput: StepUpdateManyInputInputObject
-         StepUpdateWithWhereUniqueNestedInput: StepUpdateWithWhereUniqueNestedInputInputObject
-         StepUpdateDataInput: StepUpdateDataInputInputObject
-         MenuUpdateOneRequiredInput: MenuUpdateOneRequiredInputInputObject
-         MenuUpsertNestedInput: MenuUpsertNestedInputInputObject
+         StepUpdateManyWithoutParentInput: StepUpdateManyWithoutParentInputInputObject
+         StepUpdateWithWhereUniqueWithoutParentInput: StepUpdateWithWhereUniqueWithoutParentInputInputObject
+         StepUpdateWithoutParentDataInput: StepUpdateWithoutParentDataInputInputObject
+         KeyUserTypeUpdateManyWithoutStepsInput: KeyUserTypeUpdateManyWithoutStepsInputInputObject
+         KeyUserTypeUpdateWithWhereUniqueWithoutStepsInput: KeyUserTypeUpdateWithWhereUniqueWithoutStepsInputInputObject
+         KeyUserTypeUpdateWithoutStepsDataInput: KeyUserTypeUpdateWithoutStepsDataInputInputObject
+         KeyUserTypeUpsertWithWhereUniqueWithoutStepsInput: KeyUserTypeUpsertWithWhereUniqueWithoutStepsInputInputObject
+         KeyUserTypeScalarWhereInput: KeyUserTypeScalarWhereInputInputObject
+         KeyUserTypeUpdateManyWithWhereNestedInput: KeyUserTypeUpdateManyWithWhereNestedInputInputObject
+         KeyUserTypeUpdateManyDataInput: KeyUserTypeUpdateManyDataInputInputObject
+         PathUpdateManyWithoutParentInput: PathUpdateManyWithoutParentInputInputObject
+         PathUpdateWithWhereUniqueWithoutParentInput: PathUpdateWithWhereUniqueWithoutParentInputInputObject
+         PathUpdateWithoutParentDataInput: PathUpdateWithoutParentDataInputInputObject
+         PathUpsertWithWhereUniqueWithoutParentInput: PathUpsertWithWhereUniqueWithoutParentInputInputObject
+         PathScalarWhereInput: PathScalarWhereInputInputObject
          StepResultUpdateManyWithoutParentInput: StepResultUpdateManyWithoutParentInputInputObject
          StepResultUpdateWithWhereUniqueWithoutParentInput: StepResultUpdateWithWhereUniqueWithoutParentInputInputObject
          StepResultUpdateWithoutParentDataInput: StepResultUpdateWithoutParentDataInputInputObject
@@ -226,33 +306,50 @@ export interface NexusPrismaTypes {
          TimeResultUpdateOneInput: TimeResultUpdateOneInputInputObject
          TimeResultUpdateDataInput: TimeResultUpdateDataInputInputObject
          TimeResultUpsertNestedInput: TimeResultUpsertNestedInputInputObject
+         KeyResultStatusUpdateOneRequiredWithoutResultsInput: KeyResultStatusUpdateOneRequiredWithoutResultsInputInputObject
+         KeyResultStatusUpdateWithoutResultsDataInput: KeyResultStatusUpdateWithoutResultsDataInputInputObject
+         KeyResultStatusUpsertWithoutResultsInput: KeyResultStatusUpsertWithoutResultsInputInputObject
          TestResultUpsertWithoutStepsInput: TestResultUpsertWithoutStepsInputInputObject
-         StepResultUpsertWithWhereUniqueWithoutParentInput: StepResultUpsertWithWhereUniqueWithoutParentInputInputObject
-         StepResultScalarWhereInput: StepResultScalarWhereInputInputObject
-         StepResultUpdateManyWithWhereNestedInput: StepResultUpdateManyWithWhereNestedInputInputObject
-         StepResultUpdateManyDataInput: StepResultUpdateManyDataInputInputObject
-         StepUpsertWithWhereUniqueNestedInput: StepUpsertWithWhereUniqueNestedInputInputObject
-         StepScalarWhereInput: StepScalarWhereInputInputObject
-         StepUpdateManyWithWhereNestedInput: StepUpdateManyWithWhereNestedInputInputObject
-         StepUpdateManyDataInput: StepUpdateManyDataInputInputObject
-         TestResultUpdateManyWithoutParentInput: TestResultUpdateManyWithoutParentInputInputObject
-         TestResultUpdateWithWhereUniqueWithoutParentInput: TestResultUpdateWithWhereUniqueWithoutParentInputInputObject
-         TestResultUpdateWithoutParentDataInput: TestResultUpdateWithoutParentDataInputInputObject
+         KeyResultStatusUpdateOneRequiredInput: KeyResultStatusUpdateOneRequiredInputInputObject
+         KeyResultStatusUpdateDataInput: KeyResultStatusUpdateDataInputInputObject
+         TestResultUpdateManyWithoutStatusInput: TestResultUpdateManyWithoutStatusInputInputObject
+         TestResultUpdateWithWhereUniqueWithoutStatusInput: TestResultUpdateWithWhereUniqueWithoutStatusInputInputObject
+         TestResultUpdateWithoutStatusDataInput: TestResultUpdateWithoutStatusDataInputInputObject
          StepResultUpdateManyWithoutResultParentInput: StepResultUpdateManyWithoutResultParentInputInputObject
          StepResultUpdateWithWhereUniqueWithoutResultParentInput: StepResultUpdateWithWhereUniqueWithoutResultParentInputInputObject
          StepResultUpdateWithoutResultParentDataInput: StepResultUpdateWithoutResultParentDataInputInputObject
          StepUpdateOneRequiredWithoutResultsInput: StepUpdateOneRequiredWithoutResultsInputInputObject
          StepUpdateWithoutResultsDataInput: StepUpdateWithoutResultsDataInputInputObject
-         StepUpsertWithoutResultsInput: StepUpsertWithoutResultsInputInputObject
-         StepResultUpsertWithWhereUniqueWithoutResultParentInput: StepResultUpsertWithWhereUniqueWithoutResultParentInputInputObject
+         TestUpdateOneWithoutStepsInput: TestUpdateOneWithoutStepsInputInputObject
+         TestUpdateWithoutStepsDataInput: TestUpdateWithoutStepsDataInputInputObject
+         TestResultUpdateManyWithoutParentInput: TestResultUpdateManyWithoutParentInputInputObject
+         TestResultUpdateWithWhereUniqueWithoutParentInput: TestResultUpdateWithWhereUniqueWithoutParentInputInputObject
+         TestResultUpdateWithoutParentDataInput: TestResultUpdateWithoutParentDataInputInputObject
          TestResultUpsertWithWhereUniqueWithoutParentInput: TestResultUpsertWithWhereUniqueWithoutParentInputInputObject
          TestResultScalarWhereInput: TestResultScalarWhereInputInputObject
          TestResultUpdateManyWithWhereNestedInput: TestResultUpdateManyWithWhereNestedInputInputObject
          TestResultUpdateManyDataInput: TestResultUpdateManyDataInputInputObject
+         TestUpsertWithoutStepsInput: TestUpsertWithoutStepsInputInputObject
+         StepUpsertWithoutResultsInput: StepUpsertWithoutResultsInputInputObject
+         StepResultUpsertWithWhereUniqueWithoutResultParentInput: StepResultUpsertWithWhereUniqueWithoutResultParentInputInputObject
+         StepResultScalarWhereInput: StepResultScalarWhereInputInputObject
+         StepResultUpdateManyWithWhereNestedInput: StepResultUpdateManyWithWhereNestedInputInputObject
+         StepResultUpdateManyDataInput: StepResultUpdateManyDataInputInputObject
+         TestResultUpsertWithWhereUniqueWithoutStatusInput: TestResultUpsertWithWhereUniqueWithoutStatusInputInputObject
+         KeyResultStatusUpsertNestedInput: KeyResultStatusUpsertNestedInputInputObject
+         StepResultUpsertWithWhereUniqueWithoutParentInput: StepResultUpsertWithWhereUniqueWithoutParentInputInputObject
+         StepUpsertWithWhereUniqueWithoutParentInput: StepUpsertWithWhereUniqueWithoutParentInputInputObject
+         StepScalarWhereInput: StepScalarWhereInputInputObject
+         StepUpdateManyWithWhereNestedInput: StepUpdateManyWithWhereNestedInputInputObject
+         StepUpdateManyDataInput: StepUpdateManyDataInputInputObject
          TestUpsertWithWhereUniqueNestedInput: TestUpsertWithWhereUniqueNestedInputInputObject
          TestScalarWhereInput: TestScalarWhereInputInputObject
          TestUpdateManyWithWhereNestedInput: TestUpdateManyWithWhereNestedInputInputObject
          TestUpdateManyDataInput: TestUpdateManyDataInputInputObject
+         StepUpdateManyInput: StepUpdateManyInputInputObject
+         StepUpdateWithWhereUniqueNestedInput: StepUpdateWithWhereUniqueNestedInputInputObject
+         StepUpdateDataInput: StepUpdateDataInputInputObject
+         StepUpsertWithWhereUniqueNestedInput: StepUpsertWithWhereUniqueNestedInputInputObject
          WelcomeUpdateInput: WelcomeUpdateInputInputObject
          WelcomeUpdateManyMutationInput: WelcomeUpdateManyMutationInputInputObject
          CompanyUpdateInput: CompanyUpdateInputInputObject
@@ -261,6 +358,38 @@ export interface NexusPrismaTypes {
          TestUpdateManyMutationInput: TestUpdateManyMutationInputInputObject
          MenuUpdateInput: MenuUpdateInputInputObject
          MenuUpdateManyMutationInput: MenuUpdateManyMutationInputInputObject
+         PathCreateInput: PathCreateInputInputObject
+         StepCreateOneWithoutPathsInput: StepCreateOneWithoutPathsInputInputObject
+         StepCreateWithoutPathsInput: StepCreateWithoutPathsInputInputObject
+         PathUpdateInput: PathUpdateInputInputObject
+         StepUpdateOneRequiredWithoutPathsInput: StepUpdateOneRequiredWithoutPathsInputInputObject
+         StepUpdateWithoutPathsDataInput: StepUpdateWithoutPathsDataInputInputObject
+         StepUpsertWithoutPathsInput: StepUpsertWithoutPathsInputInputObject
+         KeysCreateInput: KeysCreateInputInputObject
+         KeyUserTypeCreateManyInput: KeyUserTypeCreateManyInputInputObject
+         KeyUserTypeCreateInput: KeyUserTypeCreateInputInputObject
+         StepCreateManyWithoutTypeInput: StepCreateManyWithoutTypeInputInputObject
+         StepCreateWithoutTypeInput: StepCreateWithoutTypeInputInputObject
+         KeyResultStatusCreateManyInput: KeyResultStatusCreateManyInputInputObject
+         KeysUpdateInput: KeysUpdateInputInputObject
+         KeyUserTypeUpdateManyInput: KeyUserTypeUpdateManyInputInputObject
+         KeyUserTypeUpdateWithWhereUniqueNestedInput: KeyUserTypeUpdateWithWhereUniqueNestedInputInputObject
+         KeyUserTypeUpdateDataInput: KeyUserTypeUpdateDataInputInputObject
+         StepUpdateManyWithoutTypeInput: StepUpdateManyWithoutTypeInputInputObject
+         StepUpdateWithWhereUniqueWithoutTypeInput: StepUpdateWithWhereUniqueWithoutTypeInputInputObject
+         StepUpdateWithoutTypeDataInput: StepUpdateWithoutTypeDataInputInputObject
+         StepUpsertWithWhereUniqueWithoutTypeInput: StepUpsertWithWhereUniqueWithoutTypeInputInputObject
+         KeyUserTypeUpsertWithWhereUniqueNestedInput: KeyUserTypeUpsertWithWhereUniqueNestedInputInputObject
+         KeyResultStatusUpdateManyInput: KeyResultStatusUpdateManyInputInputObject
+         KeyResultStatusUpdateWithWhereUniqueNestedInput: KeyResultStatusUpdateWithWhereUniqueNestedInputInputObject
+         KeyResultStatusUpsertWithWhereUniqueNestedInput: KeyResultStatusUpsertWithWhereUniqueNestedInputInputObject
+         KeyResultStatusScalarWhereInput: KeyResultStatusScalarWhereInputInputObject
+         KeyResultStatusUpdateManyWithWhereNestedInput: KeyResultStatusUpdateManyWithWhereNestedInputInputObject
+         KeyResultStatusUpdateManyDataInput: KeyResultStatusUpdateManyDataInputInputObject
+         KeyUserTypeUpdateInput: KeyUserTypeUpdateInputInputObject
+         KeyUserTypeUpdateManyMutationInput: KeyUserTypeUpdateManyMutationInputInputObject
+         KeyResultStatusUpdateInput: KeyResultStatusUpdateInputInputObject
+         KeyResultStatusUpdateManyMutationInput: KeyResultStatusUpdateManyMutationInputInputObject
          StepUpdateInput: StepUpdateInputInputObject
          StepUpdateManyMutationInput: StepUpdateManyMutationInputInputObject
          TestResultCreateInput: TestResultCreateInputInputObject
@@ -276,6 +405,10 @@ export interface NexusPrismaTypes {
          CompanySubscriptionWhereInput: CompanySubscriptionWhereInputInputObject
          TestSubscriptionWhereInput: TestSubscriptionWhereInputInputObject
          MenuSubscriptionWhereInput: MenuSubscriptionWhereInputInputObject
+         PathSubscriptionWhereInput: PathSubscriptionWhereInputInputObject
+         KeysSubscriptionWhereInput: KeysSubscriptionWhereInputInputObject
+         KeyUserTypeSubscriptionWhereInput: KeyUserTypeSubscriptionWhereInputInputObject
+         KeyResultStatusSubscriptionWhereInput: KeyResultStatusSubscriptionWhereInputInputObject
          StepSubscriptionWhereInput: StepSubscriptionWhereInputInputObject
          TestResultSubscriptionWhereInput: TestResultSubscriptionWhereInputInputObject
          TimeResultSubscriptionWhereInput: TimeResultSubscriptionWhereInputInputObject
@@ -284,14 +417,17 @@ export interface NexusPrismaTypes {
    }
    enumTypes: {
       MenuOrderByInput: MenuOrderByInputValues
-      ResultStatus: ResultStatusValues
       TestOrderByInput: TestOrderByInputValues
       StepOrderByInput: StepOrderByInputValues
+      KeyUserTypeOrderByInput: KeyUserTypeOrderByInputValues
+      PathOrderByInput: PathOrderByInputValues
       StepResultOrderByInput: StepResultOrderByInputValues
       TestResultOrderByInput: TestResultOrderByInputValues
       ViewOrderByInput: ViewOrderByInputValues
       WelcomeOrderByInput: WelcomeOrderByInputValues
       CompanyOrderByInput: CompanyOrderByInputValues
+      KeyResultStatusOrderByInput: KeyResultStatusOrderByInputValues
+      KeysOrderByInput: KeysOrderByInputValues
       TimeResultOrderByInput: TimeResultOrderByInputValues
       MutationType: MutationTypeValues
    }
@@ -334,6 +470,50 @@ type QueryObject =
    | {
         name: 'menusConnection'
         args?: QueryMenusConnectionArgs[] | false
+        alias?: string
+     }
+   | { name: 'path'; args?: QueryPathArgs[] | false; alias?: string }
+   | { name: 'paths'; args?: QueryPathsArgs[] | false; alias?: string }
+   | {
+        name: 'pathsConnection'
+        args?: QueryPathsConnectionArgs[] | false
+        alias?: string
+     }
+   | { name: 'keys'; args?: QueryKeysArgs[] | false; alias?: string }
+   | { name: 'keyses'; args?: QueryKeysesArgs[] | false; alias?: string }
+   | {
+        name: 'keysesConnection'
+        args?: QueryKeysesConnectionArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'keyUserType'
+        args?: QueryKeyUserTypeArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'keyUserTypes'
+        args?: QueryKeyUserTypesArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'keyUserTypesConnection'
+        args?: QueryKeyUserTypesConnectionArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'keyResultStatus'
+        args?: QueryKeyResultStatusArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'keyResultStatuses'
+        args?: QueryKeyResultStatusesArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'keyResultStatusesConnection'
+        args?: QueryKeyResultStatusesConnectionArgs[] | false
         alias?: string
      }
    | { name: 'step'; args?: QueryStepArgs[] | false; alias?: string }
@@ -405,6 +585,18 @@ type QueryFields =
    | 'menu'
    | 'menus'
    | 'menusConnection'
+   | 'path'
+   | 'paths'
+   | 'pathsConnection'
+   | 'keys'
+   | 'keyses'
+   | 'keysesConnection'
+   | 'keyUserType'
+   | 'keyUserTypes'
+   | 'keyUserTypesConnection'
+   | 'keyResultStatus'
+   | 'keyResultStatuses'
+   | 'keyResultStatusesConnection'
    | 'step'
    | 'steps'
    | 'stepsConnection'
@@ -496,6 +688,74 @@ type QueryMenusArgs =
    | 'first'
    | 'last'
 type QueryMenusConnectionArgs =
+   | 'where'
+   | 'orderBy'
+   | 'skip'
+   | 'after'
+   | 'before'
+   | 'first'
+   | 'last'
+type QueryPathArgs = 'where'
+type QueryPathsArgs =
+   | 'where'
+   | 'orderBy'
+   | 'skip'
+   | 'after'
+   | 'before'
+   | 'first'
+   | 'last'
+type QueryPathsConnectionArgs =
+   | 'where'
+   | 'orderBy'
+   | 'skip'
+   | 'after'
+   | 'before'
+   | 'first'
+   | 'last'
+type QueryKeysArgs = 'where'
+type QueryKeysesArgs =
+   | 'where'
+   | 'orderBy'
+   | 'skip'
+   | 'after'
+   | 'before'
+   | 'first'
+   | 'last'
+type QueryKeysesConnectionArgs =
+   | 'where'
+   | 'orderBy'
+   | 'skip'
+   | 'after'
+   | 'before'
+   | 'first'
+   | 'last'
+type QueryKeyUserTypeArgs = 'where'
+type QueryKeyUserTypesArgs =
+   | 'where'
+   | 'orderBy'
+   | 'skip'
+   | 'after'
+   | 'before'
+   | 'first'
+   | 'last'
+type QueryKeyUserTypesConnectionArgs =
+   | 'where'
+   | 'orderBy'
+   | 'skip'
+   | 'after'
+   | 'before'
+   | 'first'
+   | 'last'
+type QueryKeyResultStatusArgs = 'where'
+type QueryKeyResultStatusesArgs =
+   | 'where'
+   | 'orderBy'
+   | 'skip'
+   | 'after'
+   | 'before'
+   | 'first'
+   | 'last'
+type QueryKeyResultStatusesConnectionArgs =
    | 'where'
    | 'orderBy'
    | 'skip'
@@ -847,6 +1107,234 @@ export interface QueryFieldDetails {
          context: core.GetGen<'context'>,
          info?: GraphQLResolveInfo,
       ) => Promise<prisma.MenuConnection> | prisma.MenuConnection
+   }
+   path: {
+      type: 'Path'
+      args: Record<QueryPathArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'Query'>,
+         args: { where: PathWhereUniqueInput },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.Path | null> | prisma.Path | null
+   }
+   paths: {
+      type: 'Path'
+      args: Record<QueryPathsArgs, core.NexusArgDef<string>>
+      description: string
+      list: true
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Query'>,
+         args: {
+            where?: PathWhereInput | null
+            orderBy?: prisma.PathOrderByInput | null
+            skip?: number | null
+            after?: string | null
+            before?: string | null
+            first?: number | null
+            last?: number | null
+         },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.Path[]> | prisma.Path[]
+   }
+   pathsConnection: {
+      type: 'PathConnection'
+      args: Record<QueryPathsConnectionArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Query'>,
+         args: {
+            where?: PathWhereInput | null
+            orderBy?: prisma.PathOrderByInput | null
+            skip?: number | null
+            after?: string | null
+            before?: string | null
+            first?: number | null
+            last?: number | null
+         },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.PathConnection> | prisma.PathConnection
+   }
+   keys: {
+      type: 'Keys'
+      args: Record<QueryKeysArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'Query'>,
+         args: { where: KeysWhereUniqueInput },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.Keys | null> | prisma.Keys | null
+   }
+   keyses: {
+      type: 'Keys'
+      args: Record<QueryKeysesArgs, core.NexusArgDef<string>>
+      description: string
+      list: true
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Query'>,
+         args: {
+            where?: KeysWhereInput | null
+            orderBy?: prisma.KeysOrderByInput | null
+            skip?: number | null
+            after?: string | null
+            before?: string | null
+            first?: number | null
+            last?: number | null
+         },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.Keys[]> | prisma.Keys[]
+   }
+   keysesConnection: {
+      type: 'KeysConnection'
+      args: Record<QueryKeysesConnectionArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Query'>,
+         args: {
+            where?: KeysWhereInput | null
+            orderBy?: prisma.KeysOrderByInput | null
+            skip?: number | null
+            after?: string | null
+            before?: string | null
+            first?: number | null
+            last?: number | null
+         },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.KeysConnection> | prisma.KeysConnection
+   }
+   keyUserType: {
+      type: 'KeyUserType'
+      args: Record<QueryKeyUserTypeArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'Query'>,
+         args: { where: KeyUserTypeWhereUniqueInput },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.KeyUserType | null> | prisma.KeyUserType | null
+   }
+   keyUserTypes: {
+      type: 'KeyUserType'
+      args: Record<QueryKeyUserTypesArgs, core.NexusArgDef<string>>
+      description: string
+      list: true
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Query'>,
+         args: {
+            where?: KeyUserTypeWhereInput | null
+            orderBy?: prisma.KeyUserTypeOrderByInput | null
+            skip?: number | null
+            after?: string | null
+            before?: string | null
+            first?: number | null
+            last?: number | null
+         },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.KeyUserType[]> | prisma.KeyUserType[]
+   }
+   keyUserTypesConnection: {
+      type: 'KeyUserTypeConnection'
+      args: Record<QueryKeyUserTypesConnectionArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Query'>,
+         args: {
+            where?: KeyUserTypeWhereInput | null
+            orderBy?: prisma.KeyUserTypeOrderByInput | null
+            skip?: number | null
+            after?: string | null
+            before?: string | null
+            first?: number | null
+            last?: number | null
+         },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.KeyUserTypeConnection> | prisma.KeyUserTypeConnection
+   }
+   keyResultStatus: {
+      type: 'KeyResultStatus'
+      args: Record<QueryKeyResultStatusArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'Query'>,
+         args: { where: KeyResultStatusWhereUniqueInput },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) =>
+         | Promise<prisma.KeyResultStatus | null>
+         | prisma.KeyResultStatus
+         | null
+   }
+   keyResultStatuses: {
+      type: 'KeyResultStatus'
+      args: Record<QueryKeyResultStatusesArgs, core.NexusArgDef<string>>
+      description: string
+      list: true
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Query'>,
+         args: {
+            where?: KeyResultStatusWhereInput | null
+            orderBy?: prisma.KeyResultStatusOrderByInput | null
+            skip?: number | null
+            after?: string | null
+            before?: string | null
+            first?: number | null
+            last?: number | null
+         },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.KeyResultStatus[]> | prisma.KeyResultStatus[]
+   }
+   keyResultStatusesConnection: {
+      type: 'KeyResultStatusConnection'
+      args: Record<
+         QueryKeyResultStatusesConnectionArgs,
+         core.NexusArgDef<string>
+      >
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Query'>,
+         args: {
+            where?: KeyResultStatusWhereInput | null
+            orderBy?: prisma.KeyResultStatusOrderByInput | null
+            skip?: number | null
+            after?: string | null
+            before?: string | null
+            first?: number | null
+            last?: number | null
+         },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) =>
+         | Promise<prisma.KeyResultStatusConnection>
+         | prisma.KeyResultStatusConnection
    }
    step: {
       type: 'Step'
@@ -1296,12 +1784,21 @@ export interface CompanyFieldDetails {
 type MenuObject =
    | MenuFields
    | { name: 'id'; args?: [] | false; alias?: string }
-   | { name: 'menu'; args?: [] | false; alias?: string }
+   | { name: 'root'; args?: [] | false; alias?: string }
+   | { name: 'menus'; args?: MenuMenusArgs[] | false; alias?: string }
    | { name: 'name'; args?: [] | false; alias?: string }
    | { name: 'items'; args?: MenuItemsArgs[] | false; alias?: string }
 
-type MenuFields = 'id' | 'menu' | 'name' | 'items'
+type MenuFields = 'id' | 'root' | 'menus' | 'name' | 'items'
 
+type MenuMenusArgs =
+   | 'where'
+   | 'orderBy'
+   | 'skip'
+   | 'after'
+   | 'before'
+   | 'first'
+   | 'last'
 type MenuItemsArgs =
    | 'where'
    | 'orderBy'
@@ -1320,18 +1817,34 @@ export interface MenuFieldDetails {
       nullable: false
       resolve: undefined
    }
-   menu: {
-      type: 'Menu'
+   root: {
+      type: 'Boolean'
       args: {}
       description: string
       list: undefined
-      nullable: true
+      nullable: false
+      resolve: undefined
+   }
+   menus: {
+      type: 'Menu'
+      args: Record<MenuMenusArgs, core.NexusArgDef<string>>
+      description: string
+      list: true
+      nullable: false
       resolve: (
          root: core.RootValue<'Menu'>,
-         args: {},
+         args: {
+            where?: MenuWhereInput | null
+            orderBy?: prisma.MenuOrderByInput | null
+            skip?: number | null
+            after?: string | null
+            before?: string | null
+            first?: number | null
+            last?: number | null
+         },
          context: core.GetGen<'context'>,
          info?: GraphQLResolveInfo,
-      ) => Promise<prisma.Menu | null> | prisma.Menu | null
+      ) => Promise<prisma.Menu[]> | prisma.Menu[]
    }
    name: {
       type: 'String'
@@ -1488,14 +2001,39 @@ export interface TestFieldDetails {
 type StepObject =
    | StepFields
    | { name: 'id'; args?: [] | false; alias?: string }
+   | { name: 'parent'; args?: [] | false; alias?: string }
+   | { name: 'type'; args?: StepTypeArgs[] | false; alias?: string }
    | { name: 'question'; args?: [] | false; alias?: string }
-   | { name: 'target'; args?: [] | false; alias?: string }
-   | { name: 'path'; args?: StepPathArgs[] | false; alias?: string }
+   | { name: 'targets'; args?: StepTargetsArgs[] | false; alias?: string }
+   | { name: 'paths'; args?: StepPathsArgs[] | false; alias?: string }
    | { name: 'results'; args?: StepResultsArgs[] | false; alias?: string }
 
-type StepFields = 'id' | 'question' | 'target' | 'path' | 'results'
+type StepFields =
+   | 'id'
+   | 'parent'
+   | 'type'
+   | 'question'
+   | 'targets'
+   | 'paths'
+   | 'results'
 
-type StepPathArgs =
+type StepTypeArgs =
+   | 'where'
+   | 'orderBy'
+   | 'skip'
+   | 'after'
+   | 'before'
+   | 'first'
+   | 'last'
+type StepTargetsArgs =
+   | 'where'
+   | 'orderBy'
+   | 'skip'
+   | 'after'
+   | 'before'
+   | 'first'
+   | 'last'
+type StepPathsArgs =
    | 'where'
    | 'orderBy'
    | 'skip'
@@ -1521,6 +2059,40 @@ export interface StepFieldDetails {
       nullable: false
       resolve: undefined
    }
+   parent: {
+      type: 'Test'
+      args: {}
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'Step'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.Test | null> | prisma.Test | null
+   }
+   type: {
+      type: 'KeyUserType'
+      args: Record<StepTypeArgs, core.NexusArgDef<string>>
+      description: string
+      list: true
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Step'>,
+         args: {
+            where?: KeyUserTypeWhereInput | null
+            orderBy?: prisma.KeyUserTypeOrderByInput | null
+            skip?: number | null
+            after?: string | null
+            before?: string | null
+            first?: number | null
+            last?: number | null
+         },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.KeyUserType[]> | prisma.KeyUserType[]
+   }
    question: {
       type: 'String'
       args: {}
@@ -1529,22 +2101,9 @@ export interface StepFieldDetails {
       nullable: false
       resolve: undefined
    }
-   target: {
+   targets: {
       type: 'Menu'
-      args: {}
-      description: string
-      list: undefined
-      nullable: false
-      resolve: (
-         root: core.RootValue<'Step'>,
-         args: {},
-         context: core.GetGen<'context'>,
-         info?: GraphQLResolveInfo,
-      ) => Promise<prisma.Menu> | prisma.Menu
-   }
-   path: {
-      type: 'Menu'
-      args: Record<StepPathArgs, core.NexusArgDef<string>>
+      args: Record<StepTargetsArgs, core.NexusArgDef<string>>
       description: string
       list: true
       nullable: false
@@ -1562,6 +2121,27 @@ export interface StepFieldDetails {
          context: core.GetGen<'context'>,
          info?: GraphQLResolveInfo,
       ) => Promise<prisma.Menu[]> | prisma.Menu[]
+   }
+   paths: {
+      type: 'Path'
+      args: Record<StepPathsArgs, core.NexusArgDef<string>>
+      description: string
+      list: true
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Step'>,
+         args: {
+            where?: PathWhereInput | null
+            orderBy?: prisma.PathOrderByInput | null
+            skip?: number | null
+            after?: string | null
+            before?: string | null
+            first?: number | null
+            last?: number | null
+         },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.Path[]> | prisma.Path[]
    }
    results: {
       type: 'StepResult'
@@ -1583,6 +2163,129 @@ export interface StepFieldDetails {
          context: core.GetGen<'context'>,
          info?: GraphQLResolveInfo,
       ) => Promise<prisma.StepResult[]> | prisma.StepResult[]
+   }
+}
+
+// Types for KeyUserType
+
+type KeyUserTypeObject =
+   | KeyUserTypeFields
+   | { name: 'id'; args?: [] | false; alias?: string }
+   | { name: 'key'; args?: [] | false; alias?: string }
+   | { name: 'steps'; args?: KeyUserTypeStepsArgs[] | false; alias?: string }
+
+type KeyUserTypeFields = 'id' | 'key' | 'steps'
+
+type KeyUserTypeStepsArgs =
+   | 'where'
+   | 'orderBy'
+   | 'skip'
+   | 'after'
+   | 'before'
+   | 'first'
+   | 'last'
+
+export interface KeyUserTypeFieldDetails {
+   id: {
+      type: 'ID'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: undefined
+   }
+   key: {
+      type: 'String'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: undefined
+   }
+   steps: {
+      type: 'Step'
+      args: Record<KeyUserTypeStepsArgs, core.NexusArgDef<string>>
+      description: string
+      list: true
+      nullable: false
+      resolve: (
+         root: core.RootValue<'KeyUserType'>,
+         args: {
+            where?: StepWhereInput | null
+            orderBy?: prisma.StepOrderByInput | null
+            skip?: number | null
+            after?: string | null
+            before?: string | null
+            first?: number | null
+            last?: number | null
+         },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.Step[]> | prisma.Step[]
+   }
+}
+
+// Types for Path
+
+type PathObject =
+   | PathFields
+   | { name: 'id'; args?: [] | false; alias?: string }
+   | { name: 'parent'; args?: [] | false; alias?: string }
+   | { name: 'paths'; args?: PathPathsArgs[] | false; alias?: string }
+
+type PathFields = 'id' | 'parent' | 'paths'
+
+type PathPathsArgs =
+   | 'where'
+   | 'orderBy'
+   | 'skip'
+   | 'after'
+   | 'before'
+   | 'first'
+   | 'last'
+
+export interface PathFieldDetails {
+   id: {
+      type: 'ID'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: undefined
+   }
+   parent: {
+      type: 'Step'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Path'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.Step> | prisma.Step
+   }
+   paths: {
+      type: 'Menu'
+      args: Record<PathPathsArgs, core.NexusArgDef<string>>
+      description: string
+      list: true
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Path'>,
+         args: {
+            where?: MenuWhereInput | null
+            orderBy?: prisma.MenuOrderByInput | null
+            skip?: number | null
+            after?: string | null
+            before?: string | null
+            first?: number | null
+            last?: number | null
+         },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.Menu[]> | prisma.Menu[]
    }
 }
 
@@ -1704,7 +2407,7 @@ export interface StepResultFieldDetails {
       ) => Promise<prisma.Menu[]> | prisma.Menu[]
    }
    status: {
-      type: 'ResultStatus'
+      type: 'KeyResultStatus'
       args: {}
       description: string
       list: undefined
@@ -1714,7 +2417,7 @@ export interface StepResultFieldDetails {
          args: {},
          context: core.GetGen<'context'>,
          info?: GraphQLResolveInfo,
-      ) => Promise<prisma.ResultStatus> | prisma.ResultStatus
+      ) => Promise<prisma.KeyResultStatus> | prisma.KeyResultStatus
    }
 }
 
@@ -1821,7 +2524,7 @@ export interface TestResultFieldDetails {
       ) => Promise<prisma.StepResult[]> | prisma.StepResult[]
    }
    status: {
-      type: 'ResultStatus'
+      type: 'KeyResultStatus'
       args: {}
       description: string
       list: undefined
@@ -1831,7 +2534,7 @@ export interface TestResultFieldDetails {
          args: {},
          context: core.GetGen<'context'>,
          info?: GraphQLResolveInfo,
-      ) => Promise<prisma.ResultStatus> | prisma.ResultStatus
+      ) => Promise<prisma.KeyResultStatus> | prisma.KeyResultStatus
    }
 }
 
@@ -1869,6 +2572,69 @@ export interface TimeResultFieldDetails {
       list: undefined
       nullable: false
       resolve: undefined
+   }
+}
+
+// Types for KeyResultStatus
+
+type KeyResultStatusObject =
+   | KeyResultStatusFields
+   | { name: 'id'; args?: [] | false; alias?: string }
+   | { name: 'key'; args?: [] | false; alias?: string }
+   | {
+        name: 'results'
+        args?: KeyResultStatusResultsArgs[] | false
+        alias?: string
+     }
+
+type KeyResultStatusFields = 'id' | 'key' | 'results'
+
+type KeyResultStatusResultsArgs =
+   | 'where'
+   | 'orderBy'
+   | 'skip'
+   | 'after'
+   | 'before'
+   | 'first'
+   | 'last'
+
+export interface KeyResultStatusFieldDetails {
+   id: {
+      type: 'ID'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: undefined
+   }
+   key: {
+      type: 'String'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: undefined
+   }
+   results: {
+      type: 'TestResult'
+      args: Record<KeyResultStatusResultsArgs, core.NexusArgDef<string>>
+      description: string
+      list: true
+      nullable: false
+      resolve: (
+         root: core.RootValue<'KeyResultStatus'>,
+         args: {
+            where?: TestResultWhereInput | null
+            orderBy?: prisma.TestResultOrderByInput | null
+            skip?: number | null
+            after?: string | null
+            before?: string | null
+            first?: number | null
+            last?: number | null
+         },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.TestResult[]> | prisma.TestResult[]
    }
 }
 
@@ -2432,6 +3198,508 @@ type AggregateMenuObject =
 type AggregateMenuFields = 'count'
 
 export interface AggregateMenuFieldDetails {
+   count: {
+      type: 'Int'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: undefined
+   }
+}
+
+// Types for PathConnection
+
+type PathConnectionObject =
+   | PathConnectionFields
+   | { name: 'pageInfo'; args?: [] | false; alias?: string }
+   | { name: 'edges'; args?: [] | false; alias?: string }
+   | { name: 'aggregate'; args?: [] | false; alias?: string }
+
+type PathConnectionFields = 'pageInfo' | 'edges' | 'aggregate'
+
+export interface PathConnectionFieldDetails {
+   pageInfo: {
+      type: 'PageInfo'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'PathConnection'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.PageInfo> | prisma.PageInfo
+   }
+   edges: {
+      type: 'PathEdge'
+      args: {}
+      description: string
+      list: true
+      nullable: false
+      resolve: (
+         root: core.RootValue<'PathConnection'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.PathEdge[]> | prisma.PathEdge[]
+   }
+   aggregate: {
+      type: 'AggregatePath'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'PathConnection'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.AggregatePath> | prisma.AggregatePath
+   }
+}
+
+// Types for PathEdge
+
+type PathEdgeObject =
+   | PathEdgeFields
+   | { name: 'node'; args?: [] | false; alias?: string }
+   | { name: 'cursor'; args?: [] | false; alias?: string }
+
+type PathEdgeFields = 'node' | 'cursor'
+
+export interface PathEdgeFieldDetails {
+   node: {
+      type: 'Path'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'PathEdge'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.Path> | prisma.Path
+   }
+   cursor: {
+      type: 'String'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: undefined
+   }
+}
+
+// Types for AggregatePath
+
+type AggregatePathObject =
+   | AggregatePathFields
+   | { name: 'count'; args?: [] | false; alias?: string }
+
+type AggregatePathFields = 'count'
+
+export interface AggregatePathFieldDetails {
+   count: {
+      type: 'Int'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: undefined
+   }
+}
+
+// Types for Keys
+
+type KeysObject =
+   | KeysFields
+   | { name: 'id'; args?: [] | false; alias?: string }
+   | { name: 'userType'; args?: KeysUserTypeArgs[] | false; alias?: string }
+   | {
+        name: 'resultStatus'
+        args?: KeysResultStatusArgs[] | false
+        alias?: string
+     }
+
+type KeysFields = 'id' | 'userType' | 'resultStatus'
+
+type KeysUserTypeArgs =
+   | 'where'
+   | 'orderBy'
+   | 'skip'
+   | 'after'
+   | 'before'
+   | 'first'
+   | 'last'
+type KeysResultStatusArgs =
+   | 'where'
+   | 'orderBy'
+   | 'skip'
+   | 'after'
+   | 'before'
+   | 'first'
+   | 'last'
+
+export interface KeysFieldDetails {
+   id: {
+      type: 'ID'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: undefined
+   }
+   userType: {
+      type: 'KeyUserType'
+      args: Record<KeysUserTypeArgs, core.NexusArgDef<string>>
+      description: string
+      list: true
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Keys'>,
+         args: {
+            where?: KeyUserTypeWhereInput | null
+            orderBy?: prisma.KeyUserTypeOrderByInput | null
+            skip?: number | null
+            after?: string | null
+            before?: string | null
+            first?: number | null
+            last?: number | null
+         },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.KeyUserType[]> | prisma.KeyUserType[]
+   }
+   resultStatus: {
+      type: 'KeyResultStatus'
+      args: Record<KeysResultStatusArgs, core.NexusArgDef<string>>
+      description: string
+      list: true
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Keys'>,
+         args: {
+            where?: KeyResultStatusWhereInput | null
+            orderBy?: prisma.KeyResultStatusOrderByInput | null
+            skip?: number | null
+            after?: string | null
+            before?: string | null
+            first?: number | null
+            last?: number | null
+         },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.KeyResultStatus[]> | prisma.KeyResultStatus[]
+   }
+}
+
+// Types for KeysConnection
+
+type KeysConnectionObject =
+   | KeysConnectionFields
+   | { name: 'pageInfo'; args?: [] | false; alias?: string }
+   | { name: 'edges'; args?: [] | false; alias?: string }
+   | { name: 'aggregate'; args?: [] | false; alias?: string }
+
+type KeysConnectionFields = 'pageInfo' | 'edges' | 'aggregate'
+
+export interface KeysConnectionFieldDetails {
+   pageInfo: {
+      type: 'PageInfo'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'KeysConnection'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.PageInfo> | prisma.PageInfo
+   }
+   edges: {
+      type: 'KeysEdge'
+      args: {}
+      description: string
+      list: true
+      nullable: false
+      resolve: (
+         root: core.RootValue<'KeysConnection'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.KeysEdge[]> | prisma.KeysEdge[]
+   }
+   aggregate: {
+      type: 'AggregateKeys'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'KeysConnection'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.AggregateKeys> | prisma.AggregateKeys
+   }
+}
+
+// Types for KeysEdge
+
+type KeysEdgeObject =
+   | KeysEdgeFields
+   | { name: 'node'; args?: [] | false; alias?: string }
+   | { name: 'cursor'; args?: [] | false; alias?: string }
+
+type KeysEdgeFields = 'node' | 'cursor'
+
+export interface KeysEdgeFieldDetails {
+   node: {
+      type: 'Keys'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'KeysEdge'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.Keys> | prisma.Keys
+   }
+   cursor: {
+      type: 'String'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: undefined
+   }
+}
+
+// Types for AggregateKeys
+
+type AggregateKeysObject =
+   | AggregateKeysFields
+   | { name: 'count'; args?: [] | false; alias?: string }
+
+type AggregateKeysFields = 'count'
+
+export interface AggregateKeysFieldDetails {
+   count: {
+      type: 'Int'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: undefined
+   }
+}
+
+// Types for KeyUserTypeConnection
+
+type KeyUserTypeConnectionObject =
+   | KeyUserTypeConnectionFields
+   | { name: 'pageInfo'; args?: [] | false; alias?: string }
+   | { name: 'edges'; args?: [] | false; alias?: string }
+   | { name: 'aggregate'; args?: [] | false; alias?: string }
+
+type KeyUserTypeConnectionFields = 'pageInfo' | 'edges' | 'aggregate'
+
+export interface KeyUserTypeConnectionFieldDetails {
+   pageInfo: {
+      type: 'PageInfo'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'KeyUserTypeConnection'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.PageInfo> | prisma.PageInfo
+   }
+   edges: {
+      type: 'KeyUserTypeEdge'
+      args: {}
+      description: string
+      list: true
+      nullable: false
+      resolve: (
+         root: core.RootValue<'KeyUserTypeConnection'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.KeyUserTypeEdge[]> | prisma.KeyUserTypeEdge[]
+   }
+   aggregate: {
+      type: 'AggregateKeyUserType'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'KeyUserTypeConnection'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.AggregateKeyUserType> | prisma.AggregateKeyUserType
+   }
+}
+
+// Types for KeyUserTypeEdge
+
+type KeyUserTypeEdgeObject =
+   | KeyUserTypeEdgeFields
+   | { name: 'node'; args?: [] | false; alias?: string }
+   | { name: 'cursor'; args?: [] | false; alias?: string }
+
+type KeyUserTypeEdgeFields = 'node' | 'cursor'
+
+export interface KeyUserTypeEdgeFieldDetails {
+   node: {
+      type: 'KeyUserType'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'KeyUserTypeEdge'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.KeyUserType> | prisma.KeyUserType
+   }
+   cursor: {
+      type: 'String'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: undefined
+   }
+}
+
+// Types for AggregateKeyUserType
+
+type AggregateKeyUserTypeObject =
+   | AggregateKeyUserTypeFields
+   | { name: 'count'; args?: [] | false; alias?: string }
+
+type AggregateKeyUserTypeFields = 'count'
+
+export interface AggregateKeyUserTypeFieldDetails {
+   count: {
+      type: 'Int'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: undefined
+   }
+}
+
+// Types for KeyResultStatusConnection
+
+type KeyResultStatusConnectionObject =
+   | KeyResultStatusConnectionFields
+   | { name: 'pageInfo'; args?: [] | false; alias?: string }
+   | { name: 'edges'; args?: [] | false; alias?: string }
+   | { name: 'aggregate'; args?: [] | false; alias?: string }
+
+type KeyResultStatusConnectionFields = 'pageInfo' | 'edges' | 'aggregate'
+
+export interface KeyResultStatusConnectionFieldDetails {
+   pageInfo: {
+      type: 'PageInfo'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'KeyResultStatusConnection'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.PageInfo> | prisma.PageInfo
+   }
+   edges: {
+      type: 'KeyResultStatusEdge'
+      args: {}
+      description: string
+      list: true
+      nullable: false
+      resolve: (
+         root: core.RootValue<'KeyResultStatusConnection'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.KeyResultStatusEdge[]> | prisma.KeyResultStatusEdge[]
+   }
+   aggregate: {
+      type: 'AggregateKeyResultStatus'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'KeyResultStatusConnection'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) =>
+         | Promise<prisma.AggregateKeyResultStatus>
+         | prisma.AggregateKeyResultStatus
+   }
+}
+
+// Types for KeyResultStatusEdge
+
+type KeyResultStatusEdgeObject =
+   | KeyResultStatusEdgeFields
+   | { name: 'node'; args?: [] | false; alias?: string }
+   | { name: 'cursor'; args?: [] | false; alias?: string }
+
+type KeyResultStatusEdgeFields = 'node' | 'cursor'
+
+export interface KeyResultStatusEdgeFieldDetails {
+   node: {
+      type: 'KeyResultStatus'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'KeyResultStatusEdge'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.KeyResultStatus> | prisma.KeyResultStatus
+   }
+   cursor: {
+      type: 'String'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: undefined
+   }
+}
+
+// Types for AggregateKeyResultStatus
+
+type AggregateKeyResultStatusObject =
+   | AggregateKeyResultStatusFields
+   | { name: 'count'; args?: [] | false; alias?: string }
+
+type AggregateKeyResultStatusFields = 'count'
+
+export interface AggregateKeyResultStatusFieldDetails {
    count: {
       type: 'Int'
       args: {}
@@ -3008,6 +4276,116 @@ type MutationObject =
         alias?: string
      }
    | {
+        name: 'createPath'
+        args?: MutationCreatePathArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'updatePath'
+        args?: MutationUpdatePathArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'upsertPath'
+        args?: MutationUpsertPathArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'deletePath'
+        args?: MutationDeletePathArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'deleteManyPaths'
+        args?: MutationDeleteManyPathsArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'createKeys'
+        args?: MutationCreateKeysArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'updateKeys'
+        args?: MutationUpdateKeysArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'upsertKeys'
+        args?: MutationUpsertKeysArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'deleteKeys'
+        args?: MutationDeleteKeysArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'deleteManyKeyses'
+        args?: MutationDeleteManyKeysesArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'createKeyUserType'
+        args?: MutationCreateKeyUserTypeArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'updateKeyUserType'
+        args?: MutationUpdateKeyUserTypeArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'updateManyKeyUserTypes'
+        args?: MutationUpdateManyKeyUserTypesArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'upsertKeyUserType'
+        args?: MutationUpsertKeyUserTypeArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'deleteKeyUserType'
+        args?: MutationDeleteKeyUserTypeArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'deleteManyKeyUserTypes'
+        args?: MutationDeleteManyKeyUserTypesArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'createKeyResultStatus'
+        args?: MutationCreateKeyResultStatusArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'updateKeyResultStatus'
+        args?: MutationUpdateKeyResultStatusArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'updateManyKeyResultStatuses'
+        args?: MutationUpdateManyKeyResultStatusesArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'upsertKeyResultStatus'
+        args?: MutationUpsertKeyResultStatusArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'deleteKeyResultStatus'
+        args?: MutationDeleteKeyResultStatusArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'deleteManyKeyResultStatuses'
+        args?: MutationDeleteManyKeyResultStatusesArgs[] | false
+        alias?: string
+     }
+   | {
         name: 'createStep'
         args?: MutationCreateStepArgs[] | false
         alias?: string
@@ -3158,6 +4536,28 @@ type MutationFields =
    | 'upsertMenu'
    | 'deleteMenu'
    | 'deleteManyMenus'
+   | 'createPath'
+   | 'updatePath'
+   | 'upsertPath'
+   | 'deletePath'
+   | 'deleteManyPaths'
+   | 'createKeys'
+   | 'updateKeys'
+   | 'upsertKeys'
+   | 'deleteKeys'
+   | 'deleteManyKeyses'
+   | 'createKeyUserType'
+   | 'updateKeyUserType'
+   | 'updateManyKeyUserTypes'
+   | 'upsertKeyUserType'
+   | 'deleteKeyUserType'
+   | 'deleteManyKeyUserTypes'
+   | 'createKeyResultStatus'
+   | 'updateKeyResultStatus'
+   | 'updateManyKeyResultStatuses'
+   | 'upsertKeyResultStatus'
+   | 'deleteKeyResultStatus'
+   | 'deleteManyKeyResultStatuses'
    | 'createStep'
    | 'updateStep'
    | 'updateManySteps'
@@ -3212,6 +4612,28 @@ type MutationUpdateManyMenusArgs = 'data' | 'where'
 type MutationUpsertMenuArgs = 'where' | 'create' | 'update'
 type MutationDeleteMenuArgs = 'where'
 type MutationDeleteManyMenusArgs = 'where'
+type MutationCreatePathArgs = 'data'
+type MutationUpdatePathArgs = 'data' | 'where'
+type MutationUpsertPathArgs = 'where' | 'create' | 'update'
+type MutationDeletePathArgs = 'where'
+type MutationDeleteManyPathsArgs = 'where'
+type MutationCreateKeysArgs = 'data'
+type MutationUpdateKeysArgs = 'data' | 'where'
+type MutationUpsertKeysArgs = 'where' | 'create' | 'update'
+type MutationDeleteKeysArgs = 'where'
+type MutationDeleteManyKeysesArgs = 'where'
+type MutationCreateKeyUserTypeArgs = 'data'
+type MutationUpdateKeyUserTypeArgs = 'data' | 'where'
+type MutationUpdateManyKeyUserTypesArgs = 'data' | 'where'
+type MutationUpsertKeyUserTypeArgs = 'where' | 'create' | 'update'
+type MutationDeleteKeyUserTypeArgs = 'where'
+type MutationDeleteManyKeyUserTypesArgs = 'where'
+type MutationCreateKeyResultStatusArgs = 'data'
+type MutationUpdateKeyResultStatusArgs = 'data' | 'where'
+type MutationUpdateManyKeyResultStatusesArgs = 'data' | 'where'
+type MutationUpsertKeyResultStatusArgs = 'where' | 'create' | 'update'
+type MutationDeleteKeyResultStatusArgs = 'where'
+type MutationDeleteManyKeyResultStatusesArgs = 'where'
 type MutationCreateStepArgs = 'data'
 type MutationUpdateStepArgs = 'data' | 'where'
 type MutationUpdateManyStepsArgs = 'data' | 'where'
@@ -3647,6 +5069,332 @@ export interface MutationFieldDetails {
          info?: GraphQLResolveInfo,
       ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
    }
+   createPath: {
+      type: 'Path'
+      args: Record<MutationCreatePathArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Mutation'>,
+         args: { data: PathCreateInput },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.Path> | prisma.Path
+   }
+   updatePath: {
+      type: 'Path'
+      args: Record<MutationUpdatePathArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'Mutation'>,
+         args: { data: PathUpdateInput; where: PathWhereUniqueInput },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.Path | null> | prisma.Path | null
+   }
+   upsertPath: {
+      type: 'Path'
+      args: Record<MutationUpsertPathArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Mutation'>,
+         args: {
+            where: PathWhereUniqueInput
+            create: PathCreateInput
+            update: PathUpdateInput
+         },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.Path> | prisma.Path
+   }
+   deletePath: {
+      type: 'Path'
+      args: Record<MutationDeletePathArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'Mutation'>,
+         args: { where: PathWhereUniqueInput },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.Path | null> | prisma.Path | null
+   }
+   deleteManyPaths: {
+      type: 'BatchPayload'
+      args: Record<MutationDeleteManyPathsArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Mutation'>,
+         args: { where?: PathWhereInput | null },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+   }
+   createKeys: {
+      type: 'Keys'
+      args: Record<MutationCreateKeysArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Mutation'>,
+         args: { data: KeysCreateInput },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.Keys> | prisma.Keys
+   }
+   updateKeys: {
+      type: 'Keys'
+      args: Record<MutationUpdateKeysArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'Mutation'>,
+         args: { data: KeysUpdateInput; where: KeysWhereUniqueInput },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.Keys | null> | prisma.Keys | null
+   }
+   upsertKeys: {
+      type: 'Keys'
+      args: Record<MutationUpsertKeysArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Mutation'>,
+         args: {
+            where: KeysWhereUniqueInput
+            create: KeysCreateInput
+            update: KeysUpdateInput
+         },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.Keys> | prisma.Keys
+   }
+   deleteKeys: {
+      type: 'Keys'
+      args: Record<MutationDeleteKeysArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'Mutation'>,
+         args: { where: KeysWhereUniqueInput },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.Keys | null> | prisma.Keys | null
+   }
+   deleteManyKeyses: {
+      type: 'BatchPayload'
+      args: Record<MutationDeleteManyKeysesArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Mutation'>,
+         args: { where?: KeysWhereInput | null },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+   }
+   createKeyUserType: {
+      type: 'KeyUserType'
+      args: Record<MutationCreateKeyUserTypeArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Mutation'>,
+         args: { data: KeyUserTypeCreateInput },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.KeyUserType> | prisma.KeyUserType
+   }
+   updateKeyUserType: {
+      type: 'KeyUserType'
+      args: Record<MutationUpdateKeyUserTypeArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'Mutation'>,
+         args: {
+            data: KeyUserTypeUpdateInput
+            where: KeyUserTypeWhereUniqueInput
+         },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.KeyUserType | null> | prisma.KeyUserType | null
+   }
+   updateManyKeyUserTypes: {
+      type: 'BatchPayload'
+      args: Record<MutationUpdateManyKeyUserTypesArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Mutation'>,
+         args: {
+            data: KeyUserTypeUpdateManyMutationInput
+            where?: KeyUserTypeWhereInput | null
+         },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+   }
+   upsertKeyUserType: {
+      type: 'KeyUserType'
+      args: Record<MutationUpsertKeyUserTypeArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Mutation'>,
+         args: {
+            where: KeyUserTypeWhereUniqueInput
+            create: KeyUserTypeCreateInput
+            update: KeyUserTypeUpdateInput
+         },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.KeyUserType> | prisma.KeyUserType
+   }
+   deleteKeyUserType: {
+      type: 'KeyUserType'
+      args: Record<MutationDeleteKeyUserTypeArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'Mutation'>,
+         args: { where: KeyUserTypeWhereUniqueInput },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.KeyUserType | null> | prisma.KeyUserType | null
+   }
+   deleteManyKeyUserTypes: {
+      type: 'BatchPayload'
+      args: Record<MutationDeleteManyKeyUserTypesArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Mutation'>,
+         args: { where?: KeyUserTypeWhereInput | null },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+   }
+   createKeyResultStatus: {
+      type: 'KeyResultStatus'
+      args: Record<MutationCreateKeyResultStatusArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Mutation'>,
+         args: { data: KeyResultStatusCreateInput },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.KeyResultStatus> | prisma.KeyResultStatus
+   }
+   updateKeyResultStatus: {
+      type: 'KeyResultStatus'
+      args: Record<MutationUpdateKeyResultStatusArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'Mutation'>,
+         args: {
+            data: KeyResultStatusUpdateInput
+            where: KeyResultStatusWhereUniqueInput
+         },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) =>
+         | Promise<prisma.KeyResultStatus | null>
+         | prisma.KeyResultStatus
+         | null
+   }
+   updateManyKeyResultStatuses: {
+      type: 'BatchPayload'
+      args: Record<
+         MutationUpdateManyKeyResultStatusesArgs,
+         core.NexusArgDef<string>
+      >
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Mutation'>,
+         args: {
+            data: KeyResultStatusUpdateManyMutationInput
+            where?: KeyResultStatusWhereInput | null
+         },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+   }
+   upsertKeyResultStatus: {
+      type: 'KeyResultStatus'
+      args: Record<MutationUpsertKeyResultStatusArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Mutation'>,
+         args: {
+            where: KeyResultStatusWhereUniqueInput
+            create: KeyResultStatusCreateInput
+            update: KeyResultStatusUpdateInput
+         },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.KeyResultStatus> | prisma.KeyResultStatus
+   }
+   deleteKeyResultStatus: {
+      type: 'KeyResultStatus'
+      args: Record<MutationDeleteKeyResultStatusArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'Mutation'>,
+         args: { where: KeyResultStatusWhereUniqueInput },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) =>
+         | Promise<prisma.KeyResultStatus | null>
+         | prisma.KeyResultStatus
+         | null
+   }
+   deleteManyKeyResultStatuses: {
+      type: 'BatchPayload'
+      args: Record<
+         MutationDeleteManyKeyResultStatusesArgs,
+         core.NexusArgDef<string>
+      >
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'Mutation'>,
+         args: { where?: KeyResultStatusWhereInput | null },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+   }
    createStep: {
       type: 'Step'
       args: Record<MutationCreateStepArgs, core.NexusArgDef<string>>
@@ -4034,6 +5782,18 @@ type SubscriptionObject =
      }
    | { name: 'test'; args?: SubscriptionTestArgs[] | false; alias?: string }
    | { name: 'menu'; args?: SubscriptionMenuArgs[] | false; alias?: string }
+   | { name: 'path'; args?: SubscriptionPathArgs[] | false; alias?: string }
+   | { name: 'keys'; args?: SubscriptionKeysArgs[] | false; alias?: string }
+   | {
+        name: 'keyUserType'
+        args?: SubscriptionKeyUserTypeArgs[] | false
+        alias?: string
+     }
+   | {
+        name: 'keyResultStatus'
+        args?: SubscriptionKeyResultStatusArgs[] | false
+        alias?: string
+     }
    | { name: 'step'; args?: SubscriptionStepArgs[] | false; alias?: string }
    | {
         name: 'testResult'
@@ -4057,6 +5817,10 @@ type SubscriptionFields =
    | 'company'
    | 'test'
    | 'menu'
+   | 'path'
+   | 'keys'
+   | 'keyUserType'
+   | 'keyResultStatus'
    | 'step'
    | 'testResult'
    | 'timeResult'
@@ -4067,6 +5831,10 @@ type SubscriptionWelcomeArgs = 'where'
 type SubscriptionCompanyArgs = 'where'
 type SubscriptionTestArgs = 'where'
 type SubscriptionMenuArgs = 'where'
+type SubscriptionPathArgs = 'where'
+type SubscriptionKeysArgs = 'where'
+type SubscriptionKeyUserTypeArgs = 'where'
+type SubscriptionKeyResultStatusArgs = 'where'
 type SubscriptionStepArgs = 'where'
 type SubscriptionTestResultArgs = 'where'
 type SubscriptionTimeResultArgs = 'where'
@@ -4151,6 +5919,70 @@ export interface SubscriptionFieldDetails {
       ) =>
          | Promise<prisma.MenuSubscriptionPayload | null>
          | prisma.MenuSubscriptionPayload
+         | null
+   }
+   path: {
+      type: 'PathSubscriptionPayload'
+      args: Record<SubscriptionPathArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'Subscription'>,
+         args: { where?: PathSubscriptionWhereInput | null },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) =>
+         | Promise<prisma.PathSubscriptionPayload | null>
+         | prisma.PathSubscriptionPayload
+         | null
+   }
+   keys: {
+      type: 'KeysSubscriptionPayload'
+      args: Record<SubscriptionKeysArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'Subscription'>,
+         args: { where?: KeysSubscriptionWhereInput | null },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) =>
+         | Promise<prisma.KeysSubscriptionPayload | null>
+         | prisma.KeysSubscriptionPayload
+         | null
+   }
+   keyUserType: {
+      type: 'KeyUserTypeSubscriptionPayload'
+      args: Record<SubscriptionKeyUserTypeArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'Subscription'>,
+         args: { where?: KeyUserTypeSubscriptionWhereInput | null },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) =>
+         | Promise<prisma.KeyUserTypeSubscriptionPayload | null>
+         | prisma.KeyUserTypeSubscriptionPayload
+         | null
+   }
+   keyResultStatus: {
+      type: 'KeyResultStatusSubscriptionPayload'
+      args: Record<SubscriptionKeyResultStatusArgs, core.NexusArgDef<string>>
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'Subscription'>,
+         args: { where?: KeyResultStatusSubscriptionWhereInput | null },
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) =>
+         | Promise<prisma.KeyResultStatusSubscriptionPayload | null>
+         | prisma.KeyResultStatusSubscriptionPayload
          | null
    }
    step: {
@@ -4694,9 +6526,10 @@ export interface MenuSubscriptionPayloadFieldDetails {
 type MenuPreviousValuesObject =
    | MenuPreviousValuesFields
    | { name: 'id'; args?: [] | false; alias?: string }
+   | { name: 'root'; args?: [] | false; alias?: string }
    | { name: 'name'; args?: [] | false; alias?: string }
 
-type MenuPreviousValuesFields = 'id' | 'name'
+type MenuPreviousValuesFields = 'id' | 'root' | 'name'
 
 export interface MenuPreviousValuesFieldDetails {
    id: {
@@ -4707,7 +6540,384 @@ export interface MenuPreviousValuesFieldDetails {
       nullable: false
       resolve: undefined
    }
+   root: {
+      type: 'Boolean'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: undefined
+   }
    name: {
+      type: 'String'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: undefined
+   }
+}
+
+// Types for PathSubscriptionPayload
+
+type PathSubscriptionPayloadObject =
+   | PathSubscriptionPayloadFields
+   | { name: 'mutation'; args?: [] | false; alias?: string }
+   | { name: 'node'; args?: [] | false; alias?: string }
+   | { name: 'updatedFields'; args?: [] | false; alias?: string }
+   | { name: 'previousValues'; args?: [] | false; alias?: string }
+
+type PathSubscriptionPayloadFields =
+   | 'mutation'
+   | 'node'
+   | 'updatedFields'
+   | 'previousValues'
+
+export interface PathSubscriptionPayloadFieldDetails {
+   mutation: {
+      type: 'MutationType'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'PathSubscriptionPayload'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.MutationType> | prisma.MutationType
+   }
+   node: {
+      type: 'Path'
+      args: {}
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'PathSubscriptionPayload'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.Path | null> | prisma.Path | null
+   }
+   updatedFields: {
+      type: 'String'
+      args: {}
+      description: string
+      list: true
+      nullable: false
+      resolve: undefined
+   }
+   previousValues: {
+      type: 'PathPreviousValues'
+      args: {}
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'PathSubscriptionPayload'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) =>
+         | Promise<prisma.PathPreviousValues | null>
+         | prisma.PathPreviousValues
+         | null
+   }
+}
+
+// Types for PathPreviousValues
+
+type PathPreviousValuesObject =
+   | PathPreviousValuesFields
+   | { name: 'id'; args?: [] | false; alias?: string }
+
+type PathPreviousValuesFields = 'id'
+
+export interface PathPreviousValuesFieldDetails {
+   id: {
+      type: 'ID'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: undefined
+   }
+}
+
+// Types for KeysSubscriptionPayload
+
+type KeysSubscriptionPayloadObject =
+   | KeysSubscriptionPayloadFields
+   | { name: 'mutation'; args?: [] | false; alias?: string }
+   | { name: 'node'; args?: [] | false; alias?: string }
+   | { name: 'updatedFields'; args?: [] | false; alias?: string }
+   | { name: 'previousValues'; args?: [] | false; alias?: string }
+
+type KeysSubscriptionPayloadFields =
+   | 'mutation'
+   | 'node'
+   | 'updatedFields'
+   | 'previousValues'
+
+export interface KeysSubscriptionPayloadFieldDetails {
+   mutation: {
+      type: 'MutationType'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'KeysSubscriptionPayload'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.MutationType> | prisma.MutationType
+   }
+   node: {
+      type: 'Keys'
+      args: {}
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'KeysSubscriptionPayload'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.Keys | null> | prisma.Keys | null
+   }
+   updatedFields: {
+      type: 'String'
+      args: {}
+      description: string
+      list: true
+      nullable: false
+      resolve: undefined
+   }
+   previousValues: {
+      type: 'KeysPreviousValues'
+      args: {}
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'KeysSubscriptionPayload'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) =>
+         | Promise<prisma.KeysPreviousValues | null>
+         | prisma.KeysPreviousValues
+         | null
+   }
+}
+
+// Types for KeysPreviousValues
+
+type KeysPreviousValuesObject =
+   | KeysPreviousValuesFields
+   | { name: 'id'; args?: [] | false; alias?: string }
+
+type KeysPreviousValuesFields = 'id'
+
+export interface KeysPreviousValuesFieldDetails {
+   id: {
+      type: 'ID'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: undefined
+   }
+}
+
+// Types for KeyUserTypeSubscriptionPayload
+
+type KeyUserTypeSubscriptionPayloadObject =
+   | KeyUserTypeSubscriptionPayloadFields
+   | { name: 'mutation'; args?: [] | false; alias?: string }
+   | { name: 'node'; args?: [] | false; alias?: string }
+   | { name: 'updatedFields'; args?: [] | false; alias?: string }
+   | { name: 'previousValues'; args?: [] | false; alias?: string }
+
+type KeyUserTypeSubscriptionPayloadFields =
+   | 'mutation'
+   | 'node'
+   | 'updatedFields'
+   | 'previousValues'
+
+export interface KeyUserTypeSubscriptionPayloadFieldDetails {
+   mutation: {
+      type: 'MutationType'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'KeyUserTypeSubscriptionPayload'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.MutationType> | prisma.MutationType
+   }
+   node: {
+      type: 'KeyUserType'
+      args: {}
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'KeyUserTypeSubscriptionPayload'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.KeyUserType | null> | prisma.KeyUserType | null
+   }
+   updatedFields: {
+      type: 'String'
+      args: {}
+      description: string
+      list: true
+      nullable: false
+      resolve: undefined
+   }
+   previousValues: {
+      type: 'KeyUserTypePreviousValues'
+      args: {}
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'KeyUserTypeSubscriptionPayload'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) =>
+         | Promise<prisma.KeyUserTypePreviousValues | null>
+         | prisma.KeyUserTypePreviousValues
+         | null
+   }
+}
+
+// Types for KeyUserTypePreviousValues
+
+type KeyUserTypePreviousValuesObject =
+   | KeyUserTypePreviousValuesFields
+   | { name: 'id'; args?: [] | false; alias?: string }
+   | { name: 'key'; args?: [] | false; alias?: string }
+
+type KeyUserTypePreviousValuesFields = 'id' | 'key'
+
+export interface KeyUserTypePreviousValuesFieldDetails {
+   id: {
+      type: 'ID'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: undefined
+   }
+   key: {
+      type: 'String'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: undefined
+   }
+}
+
+// Types for KeyResultStatusSubscriptionPayload
+
+type KeyResultStatusSubscriptionPayloadObject =
+   | KeyResultStatusSubscriptionPayloadFields
+   | { name: 'mutation'; args?: [] | false; alias?: string }
+   | { name: 'node'; args?: [] | false; alias?: string }
+   | { name: 'updatedFields'; args?: [] | false; alias?: string }
+   | { name: 'previousValues'; args?: [] | false; alias?: string }
+
+type KeyResultStatusSubscriptionPayloadFields =
+   | 'mutation'
+   | 'node'
+   | 'updatedFields'
+   | 'previousValues'
+
+export interface KeyResultStatusSubscriptionPayloadFieldDetails {
+   mutation: {
+      type: 'MutationType'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: (
+         root: core.RootValue<'KeyResultStatusSubscriptionPayload'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) => Promise<prisma.MutationType> | prisma.MutationType
+   }
+   node: {
+      type: 'KeyResultStatus'
+      args: {}
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'KeyResultStatusSubscriptionPayload'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) =>
+         | Promise<prisma.KeyResultStatus | null>
+         | prisma.KeyResultStatus
+         | null
+   }
+   updatedFields: {
+      type: 'String'
+      args: {}
+      description: string
+      list: true
+      nullable: false
+      resolve: undefined
+   }
+   previousValues: {
+      type: 'KeyResultStatusPreviousValues'
+      args: {}
+      description: string
+      list: undefined
+      nullable: true
+      resolve: (
+         root: core.RootValue<'KeyResultStatusSubscriptionPayload'>,
+         args: {},
+         context: core.GetGen<'context'>,
+         info?: GraphQLResolveInfo,
+      ) =>
+         | Promise<prisma.KeyResultStatusPreviousValues | null>
+         | prisma.KeyResultStatusPreviousValues
+         | null
+   }
+}
+
+// Types for KeyResultStatusPreviousValues
+
+type KeyResultStatusPreviousValuesObject =
+   | KeyResultStatusPreviousValuesFields
+   | { name: 'id'; args?: [] | false; alias?: string }
+   | { name: 'key'; args?: [] | false; alias?: string }
+
+type KeyResultStatusPreviousValuesFields = 'id' | 'key'
+
+export interface KeyResultStatusPreviousValuesFieldDetails {
+   id: {
+      type: 'ID'
+      args: {}
+      description: string
+      list: undefined
+      nullable: false
+      resolve: undefined
+   }
+   key: {
       type: 'String'
       args: {}
       description: string
@@ -4888,9 +7098,8 @@ type TestResultPreviousValuesObject =
    | { name: 'id'; args?: [] | false; alias?: string }
    | { name: 'start'; args?: [] | false; alias?: string }
    | { name: 'end'; args?: [] | false; alias?: string }
-   | { name: 'status'; args?: [] | false; alias?: string }
 
-type TestResultPreviousValuesFields = 'id' | 'start' | 'end' | 'status'
+type TestResultPreviousValuesFields = 'id' | 'start' | 'end'
 
 export interface TestResultPreviousValuesFieldDetails {
    id: {
@@ -4916,19 +7125,6 @@ export interface TestResultPreviousValuesFieldDetails {
       list: undefined
       nullable: true
       resolve: undefined
-   }
-   status: {
-      type: 'ResultStatus'
-      args: {}
-      description: string
-      list: undefined
-      nullable: false
-      resolve: (
-         root: core.RootValue<'TestResultPreviousValues'>,
-         args: {},
-         context: core.GetGen<'context'>,
-         info?: GraphQLResolveInfo,
-      ) => Promise<prisma.ResultStatus> | prisma.ResultStatus
    }
 }
 
@@ -5112,9 +7308,8 @@ type StepResultPreviousValuesObject =
    | { name: 'id'; args?: [] | false; alias?: string }
    | { name: 'start'; args?: [] | false; alias?: string }
    | { name: 'end'; args?: [] | false; alias?: string }
-   | { name: 'status'; args?: [] | false; alias?: string }
 
-type StepResultPreviousValuesFields = 'id' | 'start' | 'end' | 'status'
+type StepResultPreviousValuesFields = 'id' | 'start' | 'end'
 
 export interface StepResultPreviousValuesFieldDetails {
    id: {
@@ -5141,19 +7336,6 @@ export interface StepResultPreviousValuesFieldDetails {
       nullable: true
       resolve: undefined
    }
-   status: {
-      type: 'ResultStatus'
-      args: {}
-      description: string
-      list: undefined
-      nullable: false
-      resolve: (
-         root: core.RootValue<'StepResultPreviousValues'>,
-         args: {},
-         context: core.GetGen<'context'>,
-         info?: GraphQLResolveInfo,
-      ) => Promise<prisma.ResultStatus> | prisma.ResultStatus
-   }
 }
 
 export interface ViewWhereUniqueInput {
@@ -5178,7 +7360,9 @@ export interface MenuWhereInput {
    id_not_starts_with?: string | null
    id_ends_with?: string | null
    id_not_ends_with?: string | null
-   menu?: MenuWhereInput | null
+   root?: boolean | null
+   root_not?: boolean | null
+   menus_some?: MenuWhereInput | null
    name?: string | null
    name_not?: string | null
    name_in?: string[]
@@ -5212,7 +7396,9 @@ export type MenuWhereInputInputObject =
    | { name: 'id_not_starts_with'; alias?: string }
    | { name: 'id_ends_with'; alias?: string }
    | { name: 'id_not_ends_with'; alias?: string }
-   | { name: 'menu'; alias?: string }
+   | { name: 'root'; alias?: string }
+   | { name: 'root_not'; alias?: string }
+   | { name: 'menus_some'; alias?: string }
    | { name: 'name'; alias?: string }
    | { name: 'name_not'; alias?: string }
    | { name: 'name_in'; alias?: string }
@@ -5314,6 +7500,8 @@ export interface StepWhereInput {
    id_not_starts_with?: string | null
    id_ends_with?: string | null
    id_not_ends_with?: string | null
+   parent?: TestWhereInput | null
+   type_some?: KeyUserTypeWhereInput | null
    question?: string | null
    question_not?: string | null
    question_in?: string[]
@@ -5328,8 +7516,8 @@ export interface StepWhereInput {
    question_not_starts_with?: string | null
    question_ends_with?: string | null
    question_not_ends_with?: string | null
-   target?: MenuWhereInput | null
-   path_some?: MenuWhereInput | null
+   targets_some?: MenuWhereInput | null
+   paths_some?: PathWhereInput | null
    results_some?: StepResultWhereInput | null
    AND?: StepWhereInput[]
 }
@@ -5349,6 +7537,8 @@ export type StepWhereInputInputObject =
    | { name: 'id_not_starts_with'; alias?: string }
    | { name: 'id_ends_with'; alias?: string }
    | { name: 'id_not_ends_with'; alias?: string }
+   | { name: 'parent'; alias?: string }
+   | { name: 'type_some'; alias?: string }
    | { name: 'question'; alias?: string }
    | { name: 'question_not'; alias?: string }
    | { name: 'question_in'; alias?: string }
@@ -5363,9 +7553,113 @@ export type StepWhereInputInputObject =
    | { name: 'question_not_starts_with'; alias?: string }
    | { name: 'question_ends_with'; alias?: string }
    | { name: 'question_not_ends_with'; alias?: string }
-   | { name: 'target'; alias?: string }
-   | { name: 'path_some'; alias?: string }
+   | { name: 'targets_some'; alias?: string }
+   | { name: 'paths_some'; alias?: string }
    | { name: 'results_some'; alias?: string }
+   | { name: 'AND'; alias?: string }
+
+export interface KeyUserTypeWhereInput {
+   id?: string | null
+   id_not?: string | null
+   id_in?: string[]
+   id_not_in?: string[]
+   id_lt?: string | null
+   id_lte?: string | null
+   id_gt?: string | null
+   id_gte?: string | null
+   id_contains?: string | null
+   id_not_contains?: string | null
+   id_starts_with?: string | null
+   id_not_starts_with?: string | null
+   id_ends_with?: string | null
+   id_not_ends_with?: string | null
+   key?: string | null
+   key_not?: string | null
+   key_in?: string[]
+   key_not_in?: string[]
+   key_lt?: string | null
+   key_lte?: string | null
+   key_gt?: string | null
+   key_gte?: string | null
+   key_contains?: string | null
+   key_not_contains?: string | null
+   key_starts_with?: string | null
+   key_not_starts_with?: string | null
+   key_ends_with?: string | null
+   key_not_ends_with?: string | null
+   steps_some?: StepWhereInput | null
+   AND?: KeyUserTypeWhereInput[]
+}
+export type KeyUserTypeWhereInputInputObject =
+   | Extract<keyof KeyUserTypeWhereInput, string>
+   | { name: 'id'; alias?: string }
+   | { name: 'id_not'; alias?: string }
+   | { name: 'id_in'; alias?: string }
+   | { name: 'id_not_in'; alias?: string }
+   | { name: 'id_lt'; alias?: string }
+   | { name: 'id_lte'; alias?: string }
+   | { name: 'id_gt'; alias?: string }
+   | { name: 'id_gte'; alias?: string }
+   | { name: 'id_contains'; alias?: string }
+   | { name: 'id_not_contains'; alias?: string }
+   | { name: 'id_starts_with'; alias?: string }
+   | { name: 'id_not_starts_with'; alias?: string }
+   | { name: 'id_ends_with'; alias?: string }
+   | { name: 'id_not_ends_with'; alias?: string }
+   | { name: 'key'; alias?: string }
+   | { name: 'key_not'; alias?: string }
+   | { name: 'key_in'; alias?: string }
+   | { name: 'key_not_in'; alias?: string }
+   | { name: 'key_lt'; alias?: string }
+   | { name: 'key_lte'; alias?: string }
+   | { name: 'key_gt'; alias?: string }
+   | { name: 'key_gte'; alias?: string }
+   | { name: 'key_contains'; alias?: string }
+   | { name: 'key_not_contains'; alias?: string }
+   | { name: 'key_starts_with'; alias?: string }
+   | { name: 'key_not_starts_with'; alias?: string }
+   | { name: 'key_ends_with'; alias?: string }
+   | { name: 'key_not_ends_with'; alias?: string }
+   | { name: 'steps_some'; alias?: string }
+   | { name: 'AND'; alias?: string }
+
+export interface PathWhereInput {
+   id?: string | null
+   id_not?: string | null
+   id_in?: string[]
+   id_not_in?: string[]
+   id_lt?: string | null
+   id_lte?: string | null
+   id_gt?: string | null
+   id_gte?: string | null
+   id_contains?: string | null
+   id_not_contains?: string | null
+   id_starts_with?: string | null
+   id_not_starts_with?: string | null
+   id_ends_with?: string | null
+   id_not_ends_with?: string | null
+   parent?: StepWhereInput | null
+   paths_some?: MenuWhereInput | null
+   AND?: PathWhereInput[]
+}
+export type PathWhereInputInputObject =
+   | Extract<keyof PathWhereInput, string>
+   | { name: 'id'; alias?: string }
+   | { name: 'id_not'; alias?: string }
+   | { name: 'id_in'; alias?: string }
+   | { name: 'id_not_in'; alias?: string }
+   | { name: 'id_lt'; alias?: string }
+   | { name: 'id_lte'; alias?: string }
+   | { name: 'id_gt'; alias?: string }
+   | { name: 'id_gte'; alias?: string }
+   | { name: 'id_contains'; alias?: string }
+   | { name: 'id_not_contains'; alias?: string }
+   | { name: 'id_starts_with'; alias?: string }
+   | { name: 'id_not_starts_with'; alias?: string }
+   | { name: 'id_ends_with'; alias?: string }
+   | { name: 'id_not_ends_with'; alias?: string }
+   | { name: 'parent'; alias?: string }
+   | { name: 'paths_some'; alias?: string }
    | { name: 'AND'; alias?: string }
 
 export interface StepResultWhereInput {
@@ -5403,10 +7697,7 @@ export interface StepResultWhereInput {
    end_gte?: string | null
    time?: TimeResultWhereInput | null
    path_some?: MenuWhereInput | null
-   status?: prisma.ResultStatus | null
-   status_not?: prisma.ResultStatus | null
-   status_in?: prisma.ResultStatus[]
-   status_not_in?: prisma.ResultStatus[]
+   status?: KeyResultStatusWhereInput | null
    AND?: StepResultWhereInput[]
 }
 export type StepResultWhereInputInputObject =
@@ -5446,9 +7737,6 @@ export type StepResultWhereInputInputObject =
    | { name: 'time'; alias?: string }
    | { name: 'path_some'; alias?: string }
    | { name: 'status'; alias?: string }
-   | { name: 'status_not'; alias?: string }
-   | { name: 'status_in'; alias?: string }
-   | { name: 'status_not_in'; alias?: string }
    | { name: 'AND'; alias?: string }
 
 export interface TestResultWhereInput {
@@ -5485,10 +7773,7 @@ export interface TestResultWhereInput {
    end_gte?: string | null
    time?: TimeResultWhereInput | null
    steps_some?: StepResultWhereInput | null
-   status?: prisma.ResultStatus | null
-   status_not?: prisma.ResultStatus | null
-   status_in?: prisma.ResultStatus[]
-   status_not_in?: prisma.ResultStatus[]
+   status?: KeyResultStatusWhereInput | null
    AND?: TestResultWhereInput[]
 }
 export type TestResultWhereInputInputObject =
@@ -5527,9 +7812,6 @@ export type TestResultWhereInputInputObject =
    | { name: 'time'; alias?: string }
    | { name: 'steps_some'; alias?: string }
    | { name: 'status'; alias?: string }
-   | { name: 'status_not'; alias?: string }
-   | { name: 'status_in'; alias?: string }
-   | { name: 'status_not_in'; alias?: string }
    | { name: 'AND'; alias?: string }
 
 export interface TimeResultWhereInput {
@@ -5609,6 +7891,71 @@ export type TimeResultWhereInputInputObject =
    | { name: 'text_not_starts_with'; alias?: string }
    | { name: 'text_ends_with'; alias?: string }
    | { name: 'text_not_ends_with'; alias?: string }
+   | { name: 'AND'; alias?: string }
+
+export interface KeyResultStatusWhereInput {
+   id?: string | null
+   id_not?: string | null
+   id_in?: string[]
+   id_not_in?: string[]
+   id_lt?: string | null
+   id_lte?: string | null
+   id_gt?: string | null
+   id_gte?: string | null
+   id_contains?: string | null
+   id_not_contains?: string | null
+   id_starts_with?: string | null
+   id_not_starts_with?: string | null
+   id_ends_with?: string | null
+   id_not_ends_with?: string | null
+   key?: string | null
+   key_not?: string | null
+   key_in?: string[]
+   key_not_in?: string[]
+   key_lt?: string | null
+   key_lte?: string | null
+   key_gt?: string | null
+   key_gte?: string | null
+   key_contains?: string | null
+   key_not_contains?: string | null
+   key_starts_with?: string | null
+   key_not_starts_with?: string | null
+   key_ends_with?: string | null
+   key_not_ends_with?: string | null
+   results_some?: TestResultWhereInput | null
+   AND?: KeyResultStatusWhereInput[]
+}
+export type KeyResultStatusWhereInputInputObject =
+   | Extract<keyof KeyResultStatusWhereInput, string>
+   | { name: 'id'; alias?: string }
+   | { name: 'id_not'; alias?: string }
+   | { name: 'id_in'; alias?: string }
+   | { name: 'id_not_in'; alias?: string }
+   | { name: 'id_lt'; alias?: string }
+   | { name: 'id_lte'; alias?: string }
+   | { name: 'id_gt'; alias?: string }
+   | { name: 'id_gte'; alias?: string }
+   | { name: 'id_contains'; alias?: string }
+   | { name: 'id_not_contains'; alias?: string }
+   | { name: 'id_starts_with'; alias?: string }
+   | { name: 'id_not_starts_with'; alias?: string }
+   | { name: 'id_ends_with'; alias?: string }
+   | { name: 'id_not_ends_with'; alias?: string }
+   | { name: 'key'; alias?: string }
+   | { name: 'key_not'; alias?: string }
+   | { name: 'key_in'; alias?: string }
+   | { name: 'key_not_in'; alias?: string }
+   | { name: 'key_lt'; alias?: string }
+   | { name: 'key_lte'; alias?: string }
+   | { name: 'key_gt'; alias?: string }
+   | { name: 'key_gte'; alias?: string }
+   | { name: 'key_contains'; alias?: string }
+   | { name: 'key_not_contains'; alias?: string }
+   | { name: 'key_starts_with'; alias?: string }
+   | { name: 'key_not_starts_with'; alias?: string }
+   | { name: 'key_ends_with'; alias?: string }
+   | { name: 'key_not_ends_with'; alias?: string }
+   | { name: 'results_some'; alias?: string }
    | { name: 'AND'; alias?: string }
 
 export interface ViewWhereInput {
@@ -5894,6 +8241,77 @@ export type MenuWhereUniqueInputInputObject =
    | Extract<keyof MenuWhereUniqueInput, string>
    | { name: 'id'; alias?: string }
 
+export interface PathWhereUniqueInput {
+   id?: string | null
+}
+export type PathWhereUniqueInputInputObject =
+   | Extract<keyof PathWhereUniqueInput, string>
+   | { name: 'id'; alias?: string }
+
+export interface KeysWhereUniqueInput {
+   id?: string | null
+}
+export type KeysWhereUniqueInputInputObject =
+   | Extract<keyof KeysWhereUniqueInput, string>
+   | { name: 'id'; alias?: string }
+
+export interface KeysWhereInput {
+   id?: string | null
+   id_not?: string | null
+   id_in?: string[]
+   id_not_in?: string[]
+   id_lt?: string | null
+   id_lte?: string | null
+   id_gt?: string | null
+   id_gte?: string | null
+   id_contains?: string | null
+   id_not_contains?: string | null
+   id_starts_with?: string | null
+   id_not_starts_with?: string | null
+   id_ends_with?: string | null
+   id_not_ends_with?: string | null
+   userType_some?: KeyUserTypeWhereInput | null
+   resultStatus_some?: KeyResultStatusWhereInput | null
+   AND?: KeysWhereInput[]
+}
+export type KeysWhereInputInputObject =
+   | Extract<keyof KeysWhereInput, string>
+   | { name: 'id'; alias?: string }
+   | { name: 'id_not'; alias?: string }
+   | { name: 'id_in'; alias?: string }
+   | { name: 'id_not_in'; alias?: string }
+   | { name: 'id_lt'; alias?: string }
+   | { name: 'id_lte'; alias?: string }
+   | { name: 'id_gt'; alias?: string }
+   | { name: 'id_gte'; alias?: string }
+   | { name: 'id_contains'; alias?: string }
+   | { name: 'id_not_contains'; alias?: string }
+   | { name: 'id_starts_with'; alias?: string }
+   | { name: 'id_not_starts_with'; alias?: string }
+   | { name: 'id_ends_with'; alias?: string }
+   | { name: 'id_not_ends_with'; alias?: string }
+   | { name: 'userType_some'; alias?: string }
+   | { name: 'resultStatus_some'; alias?: string }
+   | { name: 'AND'; alias?: string }
+
+export interface KeyUserTypeWhereUniqueInput {
+   id?: string | null
+   key?: string | null
+}
+export type KeyUserTypeWhereUniqueInputInputObject =
+   | Extract<keyof KeyUserTypeWhereUniqueInput, string>
+   | { name: 'id'; alias?: string }
+   | { name: 'key'; alias?: string }
+
+export interface KeyResultStatusWhereUniqueInput {
+   id?: string | null
+   key?: string | null
+}
+export type KeyResultStatusWhereUniqueInputInputObject =
+   | Extract<keyof KeyResultStatusWhereUniqueInput, string>
+   | { name: 'id'; alias?: string }
+   | { name: 'key'; alias?: string }
+
 export interface StepWhereUniqueInput {
    id?: string | null
 }
@@ -5992,54 +8410,60 @@ export type MenuCreateManyInputInputObject =
 
 export interface MenuCreateInput {
    id?: string | null
-   menu?: MenuCreateOneWithoutItemsInput | null
+   root?: boolean | null
+   menus?: MenuCreateManyWithoutItemsInput | null
    name?: string
-   items?: MenuCreateManyWithoutMenuInput | null
+   items?: MenuCreateManyWithoutMenusInput | null
 }
 export type MenuCreateInputInputObject =
    | Extract<keyof MenuCreateInput, string>
    | { name: 'id'; alias?: string }
-   | { name: 'menu'; alias?: string }
+   | { name: 'root'; alias?: string }
+   | { name: 'menus'; alias?: string }
    | { name: 'name'; alias?: string }
    | { name: 'items'; alias?: string }
 
-export interface MenuCreateOneWithoutItemsInput {
-   create?: MenuCreateWithoutItemsInput | null
-   connect?: MenuWhereUniqueInput | null
+export interface MenuCreateManyWithoutItemsInput {
+   create?: MenuCreateWithoutItemsInput[]
+   connect?: MenuWhereUniqueInput[]
 }
-export type MenuCreateOneWithoutItemsInputInputObject =
-   | Extract<keyof MenuCreateOneWithoutItemsInput, string>
+export type MenuCreateManyWithoutItemsInputInputObject =
+   | Extract<keyof MenuCreateManyWithoutItemsInput, string>
    | { name: 'create'; alias?: string }
    | { name: 'connect'; alias?: string }
 
 export interface MenuCreateWithoutItemsInput {
    id?: string | null
-   menu?: MenuCreateOneWithoutItemsInput | null
+   root?: boolean | null
+   menus?: MenuCreateManyWithoutItemsInput | null
    name?: string
 }
 export type MenuCreateWithoutItemsInputInputObject =
    | Extract<keyof MenuCreateWithoutItemsInput, string>
    | { name: 'id'; alias?: string }
-   | { name: 'menu'; alias?: string }
+   | { name: 'root'; alias?: string }
+   | { name: 'menus'; alias?: string }
    | { name: 'name'; alias?: string }
 
-export interface MenuCreateManyWithoutMenuInput {
-   create?: MenuCreateWithoutMenuInput[]
+export interface MenuCreateManyWithoutMenusInput {
+   create?: MenuCreateWithoutMenusInput[]
    connect?: MenuWhereUniqueInput[]
 }
-export type MenuCreateManyWithoutMenuInputInputObject =
-   | Extract<keyof MenuCreateManyWithoutMenuInput, string>
+export type MenuCreateManyWithoutMenusInputInputObject =
+   | Extract<keyof MenuCreateManyWithoutMenusInput, string>
    | { name: 'create'; alias?: string }
    | { name: 'connect'; alias?: string }
 
-export interface MenuCreateWithoutMenuInput {
+export interface MenuCreateWithoutMenusInput {
    id?: string | null
+   root?: boolean | null
    name?: string
-   items?: MenuCreateManyWithoutMenuInput | null
+   items?: MenuCreateManyWithoutMenusInput | null
 }
-export type MenuCreateWithoutMenuInputInputObject =
-   | Extract<keyof MenuCreateWithoutMenuInput, string>
+export type MenuCreateWithoutMenusInputInputObject =
+   | Extract<keyof MenuCreateWithoutMenusInput, string>
    | { name: 'id'; alias?: string }
+   | { name: 'root'; alias?: string }
    | { name: 'name'; alias?: string }
    | { name: 'items'; alias?: string }
 
@@ -6055,7 +8479,7 @@ export type TestCreateManyInputInputObject =
 export interface TestCreateInput {
    id?: string | null
    title?: string
-   steps?: StepCreateManyInput | null
+   steps?: StepCreateManyWithoutParentInput | null
    menus?: MenuCreateManyInput | null
    results?: TestResultCreateManyWithoutParentInput | null
 }
@@ -6067,38 +8491,67 @@ export type TestCreateInputInputObject =
    | { name: 'menus'; alias?: string }
    | { name: 'results'; alias?: string }
 
-export interface StepCreateManyInput {
-   create?: StepCreateInput[]
+export interface StepCreateManyWithoutParentInput {
+   create?: StepCreateWithoutParentInput[]
    connect?: StepWhereUniqueInput[]
 }
-export type StepCreateManyInputInputObject =
-   | Extract<keyof StepCreateManyInput, string>
+export type StepCreateManyWithoutParentInputInputObject =
+   | Extract<keyof StepCreateManyWithoutParentInput, string>
    | { name: 'create'; alias?: string }
    | { name: 'connect'; alias?: string }
 
-export interface StepCreateInput {
+export interface StepCreateWithoutParentInput {
    id?: string | null
+   type?: KeyUserTypeCreateManyWithoutStepsInput | null
    question?: string
-   target?: MenuCreateOneInput
-   path?: MenuCreateManyInput | null
+   targets?: MenuCreateManyInput | null
+   paths?: PathCreateManyWithoutParentInput | null
    results?: StepResultCreateManyWithoutParentInput | null
 }
-export type StepCreateInputInputObject =
-   | Extract<keyof StepCreateInput, string>
+export type StepCreateWithoutParentInputInputObject =
+   | Extract<keyof StepCreateWithoutParentInput, string>
    | { name: 'id'; alias?: string }
+   | { name: 'type'; alias?: string }
    | { name: 'question'; alias?: string }
-   | { name: 'target'; alias?: string }
-   | { name: 'path'; alias?: string }
+   | { name: 'targets'; alias?: string }
+   | { name: 'paths'; alias?: string }
    | { name: 'results'; alias?: string }
 
-export interface MenuCreateOneInput {
-   create?: MenuCreateInput | null
-   connect?: MenuWhereUniqueInput | null
+export interface KeyUserTypeCreateManyWithoutStepsInput {
+   create?: KeyUserTypeCreateWithoutStepsInput[]
+   connect?: KeyUserTypeWhereUniqueInput[]
 }
-export type MenuCreateOneInputInputObject =
-   | Extract<keyof MenuCreateOneInput, string>
+export type KeyUserTypeCreateManyWithoutStepsInputInputObject =
+   | Extract<keyof KeyUserTypeCreateManyWithoutStepsInput, string>
    | { name: 'create'; alias?: string }
    | { name: 'connect'; alias?: string }
+
+export interface KeyUserTypeCreateWithoutStepsInput {
+   id?: string | null
+   key?: string
+}
+export type KeyUserTypeCreateWithoutStepsInputInputObject =
+   | Extract<keyof KeyUserTypeCreateWithoutStepsInput, string>
+   | { name: 'id'; alias?: string }
+   | { name: 'key'; alias?: string }
+
+export interface PathCreateManyWithoutParentInput {
+   create?: PathCreateWithoutParentInput[]
+   connect?: PathWhereUniqueInput[]
+}
+export type PathCreateManyWithoutParentInputInputObject =
+   | Extract<keyof PathCreateManyWithoutParentInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'connect'; alias?: string }
+
+export interface PathCreateWithoutParentInput {
+   id?: string | null
+   paths?: MenuCreateManyInput | null
+}
+export type PathCreateWithoutParentInputInputObject =
+   | Extract<keyof PathCreateWithoutParentInput, string>
+   | { name: 'id'; alias?: string }
+   | { name: 'paths'; alias?: string }
 
 export interface StepResultCreateManyWithoutParentInput {
    create?: StepResultCreateWithoutParentInput[]
@@ -6116,7 +8569,7 @@ export interface StepResultCreateWithoutParentInput {
    end?: string | null
    time?: TimeResultCreateOneInput | null
    path?: MenuCreateManyInput | null
-   status?: prisma.ResultStatus | null
+   status?: KeyResultStatusCreateOneInput
 }
 export type StepResultCreateWithoutParentInputInputObject =
    | Extract<keyof StepResultCreateWithoutParentInput, string>
@@ -6143,7 +8596,7 @@ export interface TestResultCreateWithoutStepsInput {
    start?: string
    end?: string | null
    time?: TimeResultCreateOneInput | null
-   status?: prisma.ResultStatus | null
+   status?: KeyResultStatusCreateOneWithoutResultsInput
 }
 export type TestResultCreateWithoutStepsInputInputObject =
    | Extract<keyof TestResultCreateWithoutStepsInput, string>
@@ -6166,7 +8619,7 @@ export type TestCreateOneWithoutResultsInputInputObject =
 export interface TestCreateWithoutResultsInput {
    id?: string | null
    title?: string
-   steps?: StepCreateManyInput | null
+   steps?: StepCreateManyWithoutParentInput | null
    menus?: MenuCreateManyInput | null
 }
 export type TestCreateWithoutResultsInputInputObject =
@@ -6196,31 +8649,69 @@ export type TimeResultCreateInputInputObject =
    | { name: 'int'; alias?: string }
    | { name: 'text'; alias?: string }
 
-export interface TestResultCreateManyWithoutParentInput {
-   create?: TestResultCreateWithoutParentInput[]
-   connect?: TestResultWhereUniqueInput[]
+export interface KeyResultStatusCreateOneWithoutResultsInput {
+   create?: KeyResultStatusCreateWithoutResultsInput | null
+   connect?: KeyResultStatusWhereUniqueInput | null
 }
-export type TestResultCreateManyWithoutParentInputInputObject =
-   | Extract<keyof TestResultCreateManyWithoutParentInput, string>
+export type KeyResultStatusCreateOneWithoutResultsInputInputObject =
+   | Extract<keyof KeyResultStatusCreateOneWithoutResultsInput, string>
    | { name: 'create'; alias?: string }
    | { name: 'connect'; alias?: string }
 
-export interface TestResultCreateWithoutParentInput {
+export interface KeyResultStatusCreateWithoutResultsInput {
    id?: string | null
+   key?: string
+}
+export type KeyResultStatusCreateWithoutResultsInputInputObject =
+   | Extract<keyof KeyResultStatusCreateWithoutResultsInput, string>
+   | { name: 'id'; alias?: string }
+   | { name: 'key'; alias?: string }
+
+export interface KeyResultStatusCreateOneInput {
+   create?: KeyResultStatusCreateInput | null
+   connect?: KeyResultStatusWhereUniqueInput | null
+}
+export type KeyResultStatusCreateOneInputInputObject =
+   | Extract<keyof KeyResultStatusCreateOneInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'connect'; alias?: string }
+
+export interface KeyResultStatusCreateInput {
+   id?: string | null
+   key?: string
+   results?: TestResultCreateManyWithoutStatusInput | null
+}
+export type KeyResultStatusCreateInputInputObject =
+   | Extract<keyof KeyResultStatusCreateInput, string>
+   | { name: 'id'; alias?: string }
+   | { name: 'key'; alias?: string }
+   | { name: 'results'; alias?: string }
+
+export interface TestResultCreateManyWithoutStatusInput {
+   create?: TestResultCreateWithoutStatusInput[]
+   connect?: TestResultWhereUniqueInput[]
+}
+export type TestResultCreateManyWithoutStatusInputInputObject =
+   | Extract<keyof TestResultCreateManyWithoutStatusInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'connect'; alias?: string }
+
+export interface TestResultCreateWithoutStatusInput {
+   id?: string | null
+   parent?: TestCreateOneWithoutResultsInput
    start?: string
    end?: string | null
    time?: TimeResultCreateOneInput | null
    steps?: StepResultCreateManyWithoutResultParentInput | null
-   status?: prisma.ResultStatus | null
 }
-export type TestResultCreateWithoutParentInputInputObject =
-   | Extract<keyof TestResultCreateWithoutParentInput, string>
+export type TestResultCreateWithoutStatusInputInputObject =
+   | Extract<keyof TestResultCreateWithoutStatusInput, string>
    | { name: 'id'; alias?: string }
+   | { name: 'parent'; alias?: string }
    | { name: 'start'; alias?: string }
    | { name: 'end'; alias?: string }
    | { name: 'time'; alias?: string }
    | { name: 'steps'; alias?: string }
-   | { name: 'status'; alias?: string }
 
 export interface StepResultCreateManyWithoutResultParentInput {
    create?: StepResultCreateWithoutResultParentInput[]
@@ -6238,7 +8729,7 @@ export interface StepResultCreateWithoutResultParentInput {
    end?: string | null
    time?: TimeResultCreateOneInput | null
    path?: MenuCreateManyInput | null
-   status?: prisma.ResultStatus | null
+   status?: KeyResultStatusCreateOneInput
 }
 export type StepResultCreateWithoutResultParentInputInputObject =
    | Extract<keyof StepResultCreateWithoutResultParentInput, string>
@@ -6261,16 +8752,96 @@ export type StepCreateOneWithoutResultsInputInputObject =
 
 export interface StepCreateWithoutResultsInput {
    id?: string | null
+   parent?: TestCreateOneWithoutStepsInput | null
+   type?: KeyUserTypeCreateManyWithoutStepsInput | null
    question?: string
-   target?: MenuCreateOneInput
-   path?: MenuCreateManyInput | null
+   targets?: MenuCreateManyInput | null
+   paths?: PathCreateManyWithoutParentInput | null
 }
 export type StepCreateWithoutResultsInputInputObject =
    | Extract<keyof StepCreateWithoutResultsInput, string>
    | { name: 'id'; alias?: string }
+   | { name: 'parent'; alias?: string }
+   | { name: 'type'; alias?: string }
    | { name: 'question'; alias?: string }
-   | { name: 'target'; alias?: string }
-   | { name: 'path'; alias?: string }
+   | { name: 'targets'; alias?: string }
+   | { name: 'paths'; alias?: string }
+
+export interface TestCreateOneWithoutStepsInput {
+   create?: TestCreateWithoutStepsInput | null
+   connect?: TestWhereUniqueInput | null
+}
+export type TestCreateOneWithoutStepsInputInputObject =
+   | Extract<keyof TestCreateOneWithoutStepsInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'connect'; alias?: string }
+
+export interface TestCreateWithoutStepsInput {
+   id?: string | null
+   title?: string
+   menus?: MenuCreateManyInput | null
+   results?: TestResultCreateManyWithoutParentInput | null
+}
+export type TestCreateWithoutStepsInputInputObject =
+   | Extract<keyof TestCreateWithoutStepsInput, string>
+   | { name: 'id'; alias?: string }
+   | { name: 'title'; alias?: string }
+   | { name: 'menus'; alias?: string }
+   | { name: 'results'; alias?: string }
+
+export interface TestResultCreateManyWithoutParentInput {
+   create?: TestResultCreateWithoutParentInput[]
+   connect?: TestResultWhereUniqueInput[]
+}
+export type TestResultCreateManyWithoutParentInputInputObject =
+   | Extract<keyof TestResultCreateManyWithoutParentInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'connect'; alias?: string }
+
+export interface TestResultCreateWithoutParentInput {
+   id?: string | null
+   start?: string
+   end?: string | null
+   time?: TimeResultCreateOneInput | null
+   steps?: StepResultCreateManyWithoutResultParentInput | null
+   status?: KeyResultStatusCreateOneWithoutResultsInput
+}
+export type TestResultCreateWithoutParentInputInputObject =
+   | Extract<keyof TestResultCreateWithoutParentInput, string>
+   | { name: 'id'; alias?: string }
+   | { name: 'start'; alias?: string }
+   | { name: 'end'; alias?: string }
+   | { name: 'time'; alias?: string }
+   | { name: 'steps'; alias?: string }
+   | { name: 'status'; alias?: string }
+
+export interface StepCreateManyInput {
+   create?: StepCreateInput[]
+   connect?: StepWhereUniqueInput[]
+}
+export type StepCreateManyInputInputObject =
+   | Extract<keyof StepCreateManyInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'connect'; alias?: string }
+
+export interface StepCreateInput {
+   id?: string | null
+   parent?: TestCreateOneWithoutStepsInput | null
+   type?: KeyUserTypeCreateManyWithoutStepsInput | null
+   question?: string
+   targets?: MenuCreateManyInput | null
+   paths?: PathCreateManyWithoutParentInput | null
+   results?: StepResultCreateManyWithoutParentInput | null
+}
+export type StepCreateInputInputObject =
+   | Extract<keyof StepCreateInput, string>
+   | { name: 'id'; alias?: string }
+   | { name: 'parent'; alias?: string }
+   | { name: 'type'; alias?: string }
+   | { name: 'question'; alias?: string }
+   | { name: 'targets'; alias?: string }
+   | { name: 'paths'; alias?: string }
+   | { name: 'results'; alias?: string }
 
 export interface ViewUpdateInput {
    welcome?: WelcomeUpdateOneRequiredInput | null
@@ -6384,64 +8955,31 @@ export type MenuUpdateWithWhereUniqueNestedInputInputObject =
    | { name: 'data'; alias?: string }
 
 export interface MenuUpdateDataInput {
-   menu?: MenuUpdateOneWithoutItemsInput | null
+   root?: boolean | null
+   menus?: MenuUpdateManyWithoutItemsInput | null
    name?: string | null
-   items?: MenuUpdateManyWithoutMenuInput | null
+   items?: MenuUpdateManyWithoutMenusInput | null
 }
 export type MenuUpdateDataInputInputObject =
    | Extract<keyof MenuUpdateDataInput, string>
-   | { name: 'menu'; alias?: string }
+   | { name: 'root'; alias?: string }
+   | { name: 'menus'; alias?: string }
    | { name: 'name'; alias?: string }
    | { name: 'items'; alias?: string }
 
-export interface MenuUpdateOneWithoutItemsInput {
-   create?: MenuCreateWithoutItemsInput | null
-   update?: MenuUpdateWithoutItemsDataInput | null
-   upsert?: MenuUpsertWithoutItemsInput | null
-   delete?: boolean | null
-   disconnect?: boolean | null
-   connect?: MenuWhereUniqueInput | null
-}
-export type MenuUpdateOneWithoutItemsInputInputObject =
-   | Extract<keyof MenuUpdateOneWithoutItemsInput, string>
-   | { name: 'create'; alias?: string }
-   | { name: 'update'; alias?: string }
-   | { name: 'upsert'; alias?: string }
-   | { name: 'delete'; alias?: string }
-   | { name: 'disconnect'; alias?: string }
-   | { name: 'connect'; alias?: string }
-
-export interface MenuUpdateWithoutItemsDataInput {
-   menu?: MenuUpdateOneWithoutItemsInput | null
-   name?: string | null
-}
-export type MenuUpdateWithoutItemsDataInputInputObject =
-   | Extract<keyof MenuUpdateWithoutItemsDataInput, string>
-   | { name: 'menu'; alias?: string }
-   | { name: 'name'; alias?: string }
-
-export interface MenuUpsertWithoutItemsInput {
-   update?: MenuUpdateWithoutItemsDataInput
-   create?: MenuCreateWithoutItemsInput
-}
-export type MenuUpsertWithoutItemsInputInputObject =
-   | Extract<keyof MenuUpsertWithoutItemsInput, string>
-   | { name: 'update'; alias?: string }
-   | { name: 'create'; alias?: string }
-
-export interface MenuUpdateManyWithoutMenuInput {
-   create?: MenuCreateWithoutMenuInput[]
+export interface MenuUpdateManyWithoutItemsInput {
+   create?: MenuCreateWithoutItemsInput[]
    delete?: MenuWhereUniqueInput[]
    connect?: MenuWhereUniqueInput[]
    set?: MenuWhereUniqueInput[]
    disconnect?: MenuWhereUniqueInput[]
-   update?: MenuUpdateWithWhereUniqueWithoutMenuInput[]
-   upsert?: MenuUpsertWithWhereUniqueWithoutMenuInput[]
+   update?: MenuUpdateWithWhereUniqueWithoutItemsInput[]
+   upsert?: MenuUpsertWithWhereUniqueWithoutItemsInput[]
    deleteMany?: MenuScalarWhereInput[]
    updateMany?: MenuUpdateManyWithWhereNestedInput[]
 }
-export type MenuUpdateManyWithoutMenuInputInputObject =
-   | Extract<keyof MenuUpdateManyWithoutMenuInput, string>
+export type MenuUpdateManyWithoutItemsInputInputObject =
+   | Extract<keyof MenuUpdateManyWithoutItemsInput, string>
    | { name: 'create'; alias?: string }
    | { name: 'delete'; alias?: string }
    | { name: 'connect'; alias?: string }
@@ -6452,31 +8990,33 @@ export type MenuUpdateManyWithoutMenuInputInputObject =
    | { name: 'deleteMany'; alias?: string }
    | { name: 'updateMany'; alias?: string }
 
-export interface MenuUpdateWithWhereUniqueWithoutMenuInput {
+export interface MenuUpdateWithWhereUniqueWithoutItemsInput {
    where?: MenuWhereUniqueInput
-   data?: MenuUpdateWithoutMenuDataInput
+   data?: MenuUpdateWithoutItemsDataInput
 }
-export type MenuUpdateWithWhereUniqueWithoutMenuInputInputObject =
-   | Extract<keyof MenuUpdateWithWhereUniqueWithoutMenuInput, string>
+export type MenuUpdateWithWhereUniqueWithoutItemsInputInputObject =
+   | Extract<keyof MenuUpdateWithWhereUniqueWithoutItemsInput, string>
    | { name: 'where'; alias?: string }
    | { name: 'data'; alias?: string }
 
-export interface MenuUpdateWithoutMenuDataInput {
+export interface MenuUpdateWithoutItemsDataInput {
+   root?: boolean | null
+   menus?: MenuUpdateManyWithoutItemsInput | null
    name?: string | null
-   items?: MenuUpdateManyWithoutMenuInput | null
 }
-export type MenuUpdateWithoutMenuDataInputInputObject =
-   | Extract<keyof MenuUpdateWithoutMenuDataInput, string>
+export type MenuUpdateWithoutItemsDataInputInputObject =
+   | Extract<keyof MenuUpdateWithoutItemsDataInput, string>
+   | { name: 'root'; alias?: string }
+   | { name: 'menus'; alias?: string }
    | { name: 'name'; alias?: string }
-   | { name: 'items'; alias?: string }
 
-export interface MenuUpsertWithWhereUniqueWithoutMenuInput {
+export interface MenuUpsertWithWhereUniqueWithoutItemsInput {
    where?: MenuWhereUniqueInput
-   update?: MenuUpdateWithoutMenuDataInput
-   create?: MenuCreateWithoutMenuInput
+   update?: MenuUpdateWithoutItemsDataInput
+   create?: MenuCreateWithoutItemsInput
 }
-export type MenuUpsertWithWhereUniqueWithoutMenuInputInputObject =
-   | Extract<keyof MenuUpsertWithWhereUniqueWithoutMenuInput, string>
+export type MenuUpsertWithWhereUniqueWithoutItemsInputInputObject =
+   | Extract<keyof MenuUpsertWithWhereUniqueWithoutItemsInput, string>
    | { name: 'where'; alias?: string }
    | { name: 'update'; alias?: string }
    | { name: 'create'; alias?: string }
@@ -6496,6 +9036,8 @@ export interface MenuScalarWhereInput {
    id_not_starts_with?: string | null
    id_ends_with?: string | null
    id_not_ends_with?: string | null
+   root?: boolean | null
+   root_not?: boolean | null
    name?: string | null
    name_not?: string | null
    name_in?: string[]
@@ -6530,6 +9072,8 @@ export type MenuScalarWhereInputInputObject =
    | { name: 'id_not_starts_with'; alias?: string }
    | { name: 'id_ends_with'; alias?: string }
    | { name: 'id_not_ends_with'; alias?: string }
+   | { name: 'root'; alias?: string }
+   | { name: 'root_not'; alias?: string }
    | { name: 'name'; alias?: string }
    | { name: 'name_not'; alias?: string }
    | { name: 'name_in'; alias?: string }
@@ -6558,11 +9102,67 @@ export type MenuUpdateManyWithWhereNestedInputInputObject =
    | { name: 'data'; alias?: string }
 
 export interface MenuUpdateManyDataInput {
+   root?: boolean | null
    name?: string | null
 }
 export type MenuUpdateManyDataInputInputObject =
    | Extract<keyof MenuUpdateManyDataInput, string>
+   | { name: 'root'; alias?: string }
    | { name: 'name'; alias?: string }
+
+export interface MenuUpdateManyWithoutMenusInput {
+   create?: MenuCreateWithoutMenusInput[]
+   delete?: MenuWhereUniqueInput[]
+   connect?: MenuWhereUniqueInput[]
+   set?: MenuWhereUniqueInput[]
+   disconnect?: MenuWhereUniqueInput[]
+   update?: MenuUpdateWithWhereUniqueWithoutMenusInput[]
+   upsert?: MenuUpsertWithWhereUniqueWithoutMenusInput[]
+   deleteMany?: MenuScalarWhereInput[]
+   updateMany?: MenuUpdateManyWithWhereNestedInput[]
+}
+export type MenuUpdateManyWithoutMenusInputInputObject =
+   | Extract<keyof MenuUpdateManyWithoutMenusInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'delete'; alias?: string }
+   | { name: 'connect'; alias?: string }
+   | { name: 'set'; alias?: string }
+   | { name: 'disconnect'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'upsert'; alias?: string }
+   | { name: 'deleteMany'; alias?: string }
+   | { name: 'updateMany'; alias?: string }
+
+export interface MenuUpdateWithWhereUniqueWithoutMenusInput {
+   where?: MenuWhereUniqueInput
+   data?: MenuUpdateWithoutMenusDataInput
+}
+export type MenuUpdateWithWhereUniqueWithoutMenusInputInputObject =
+   | Extract<keyof MenuUpdateWithWhereUniqueWithoutMenusInput, string>
+   | { name: 'where'; alias?: string }
+   | { name: 'data'; alias?: string }
+
+export interface MenuUpdateWithoutMenusDataInput {
+   root?: boolean | null
+   name?: string | null
+   items?: MenuUpdateManyWithoutMenusInput | null
+}
+export type MenuUpdateWithoutMenusDataInputInputObject =
+   | Extract<keyof MenuUpdateWithoutMenusDataInput, string>
+   | { name: 'root'; alias?: string }
+   | { name: 'name'; alias?: string }
+   | { name: 'items'; alias?: string }
+
+export interface MenuUpsertWithWhereUniqueWithoutMenusInput {
+   where?: MenuWhereUniqueInput
+   update?: MenuUpdateWithoutMenusDataInput
+   create?: MenuCreateWithoutMenusInput
+}
+export type MenuUpsertWithWhereUniqueWithoutMenusInputInputObject =
+   | Extract<keyof MenuUpsertWithWhereUniqueWithoutMenusInput, string>
+   | { name: 'where'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'create'; alias?: string }
 
 export interface MenuUpsertWithWhereUniqueNestedInput {
    where?: MenuWhereUniqueInput
@@ -6609,7 +9209,7 @@ export type TestUpdateWithWhereUniqueNestedInputInputObject =
 
 export interface TestUpdateDataInput {
    title?: string | null
-   steps?: StepUpdateManyInput | null
+   steps?: StepUpdateManyWithoutParentInput | null
    menus?: MenuUpdateManyInput | null
    results?: TestResultUpdateManyWithoutParentInput | null
 }
@@ -6620,72 +9220,272 @@ export type TestUpdateDataInputInputObject =
    | { name: 'menus'; alias?: string }
    | { name: 'results'; alias?: string }
 
-export interface StepUpdateManyInput {
-   create?: StepCreateInput[]
-   update?: StepUpdateWithWhereUniqueNestedInput[]
-   upsert?: StepUpsertWithWhereUniqueNestedInput[]
+export interface StepUpdateManyWithoutParentInput {
+   create?: StepCreateWithoutParentInput[]
    delete?: StepWhereUniqueInput[]
    connect?: StepWhereUniqueInput[]
    set?: StepWhereUniqueInput[]
    disconnect?: StepWhereUniqueInput[]
+   update?: StepUpdateWithWhereUniqueWithoutParentInput[]
+   upsert?: StepUpsertWithWhereUniqueWithoutParentInput[]
    deleteMany?: StepScalarWhereInput[]
    updateMany?: StepUpdateManyWithWhereNestedInput[]
 }
-export type StepUpdateManyInputInputObject =
-   | Extract<keyof StepUpdateManyInput, string>
+export type StepUpdateManyWithoutParentInputInputObject =
+   | Extract<keyof StepUpdateManyWithoutParentInput, string>
    | { name: 'create'; alias?: string }
-   | { name: 'update'; alias?: string }
-   | { name: 'upsert'; alias?: string }
    | { name: 'delete'; alias?: string }
    | { name: 'connect'; alias?: string }
    | { name: 'set'; alias?: string }
    | { name: 'disconnect'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'upsert'; alias?: string }
    | { name: 'deleteMany'; alias?: string }
    | { name: 'updateMany'; alias?: string }
 
-export interface StepUpdateWithWhereUniqueNestedInput {
+export interface StepUpdateWithWhereUniqueWithoutParentInput {
    where?: StepWhereUniqueInput
-   data?: StepUpdateDataInput
+   data?: StepUpdateWithoutParentDataInput
 }
-export type StepUpdateWithWhereUniqueNestedInputInputObject =
-   | Extract<keyof StepUpdateWithWhereUniqueNestedInput, string>
+export type StepUpdateWithWhereUniqueWithoutParentInputInputObject =
+   | Extract<keyof StepUpdateWithWhereUniqueWithoutParentInput, string>
    | { name: 'where'; alias?: string }
    | { name: 'data'; alias?: string }
 
-export interface StepUpdateDataInput {
+export interface StepUpdateWithoutParentDataInput {
+   type?: KeyUserTypeUpdateManyWithoutStepsInput | null
    question?: string | null
-   target?: MenuUpdateOneRequiredInput | null
-   path?: MenuUpdateManyInput | null
+   targets?: MenuUpdateManyInput | null
+   paths?: PathUpdateManyWithoutParentInput | null
    results?: StepResultUpdateManyWithoutParentInput | null
 }
-export type StepUpdateDataInputInputObject =
-   | Extract<keyof StepUpdateDataInput, string>
+export type StepUpdateWithoutParentDataInputInputObject =
+   | Extract<keyof StepUpdateWithoutParentDataInput, string>
+   | { name: 'type'; alias?: string }
    | { name: 'question'; alias?: string }
-   | { name: 'target'; alias?: string }
-   | { name: 'path'; alias?: string }
+   | { name: 'targets'; alias?: string }
+   | { name: 'paths'; alias?: string }
    | { name: 'results'; alias?: string }
 
-export interface MenuUpdateOneRequiredInput {
-   create?: MenuCreateInput | null
-   update?: MenuUpdateDataInput | null
-   upsert?: MenuUpsertNestedInput | null
-   connect?: MenuWhereUniqueInput | null
+export interface KeyUserTypeUpdateManyWithoutStepsInput {
+   create?: KeyUserTypeCreateWithoutStepsInput[]
+   delete?: KeyUserTypeWhereUniqueInput[]
+   connect?: KeyUserTypeWhereUniqueInput[]
+   set?: KeyUserTypeWhereUniqueInput[]
+   disconnect?: KeyUserTypeWhereUniqueInput[]
+   update?: KeyUserTypeUpdateWithWhereUniqueWithoutStepsInput[]
+   upsert?: KeyUserTypeUpsertWithWhereUniqueWithoutStepsInput[]
+   deleteMany?: KeyUserTypeScalarWhereInput[]
+   updateMany?: KeyUserTypeUpdateManyWithWhereNestedInput[]
 }
-export type MenuUpdateOneRequiredInputInputObject =
-   | Extract<keyof MenuUpdateOneRequiredInput, string>
+export type KeyUserTypeUpdateManyWithoutStepsInputInputObject =
+   | Extract<keyof KeyUserTypeUpdateManyWithoutStepsInput, string>
    | { name: 'create'; alias?: string }
+   | { name: 'delete'; alias?: string }
+   | { name: 'connect'; alias?: string }
+   | { name: 'set'; alias?: string }
+   | { name: 'disconnect'; alias?: string }
    | { name: 'update'; alias?: string }
    | { name: 'upsert'; alias?: string }
-   | { name: 'connect'; alias?: string }
+   | { name: 'deleteMany'; alias?: string }
+   | { name: 'updateMany'; alias?: string }
 
-export interface MenuUpsertNestedInput {
-   update?: MenuUpdateDataInput
-   create?: MenuCreateInput
+export interface KeyUserTypeUpdateWithWhereUniqueWithoutStepsInput {
+   where?: KeyUserTypeWhereUniqueInput
+   data?: KeyUserTypeUpdateWithoutStepsDataInput
 }
-export type MenuUpsertNestedInputInputObject =
-   | Extract<keyof MenuUpsertNestedInput, string>
+export type KeyUserTypeUpdateWithWhereUniqueWithoutStepsInputInputObject =
+   | Extract<keyof KeyUserTypeUpdateWithWhereUniqueWithoutStepsInput, string>
+   | { name: 'where'; alias?: string }
+   | { name: 'data'; alias?: string }
+
+export interface KeyUserTypeUpdateWithoutStepsDataInput {
+   key?: string | null
+}
+export type KeyUserTypeUpdateWithoutStepsDataInputInputObject =
+   | Extract<keyof KeyUserTypeUpdateWithoutStepsDataInput, string>
+   | { name: 'key'; alias?: string }
+
+export interface KeyUserTypeUpsertWithWhereUniqueWithoutStepsInput {
+   where?: KeyUserTypeWhereUniqueInput
+   update?: KeyUserTypeUpdateWithoutStepsDataInput
+   create?: KeyUserTypeCreateWithoutStepsInput
+}
+export type KeyUserTypeUpsertWithWhereUniqueWithoutStepsInputInputObject =
+   | Extract<keyof KeyUserTypeUpsertWithWhereUniqueWithoutStepsInput, string>
+   | { name: 'where'; alias?: string }
    | { name: 'update'; alias?: string }
    | { name: 'create'; alias?: string }
+
+export interface KeyUserTypeScalarWhereInput {
+   id?: string | null
+   id_not?: string | null
+   id_in?: string[]
+   id_not_in?: string[]
+   id_lt?: string | null
+   id_lte?: string | null
+   id_gt?: string | null
+   id_gte?: string | null
+   id_contains?: string | null
+   id_not_contains?: string | null
+   id_starts_with?: string | null
+   id_not_starts_with?: string | null
+   id_ends_with?: string | null
+   id_not_ends_with?: string | null
+   key?: string | null
+   key_not?: string | null
+   key_in?: string[]
+   key_not_in?: string[]
+   key_lt?: string | null
+   key_lte?: string | null
+   key_gt?: string | null
+   key_gte?: string | null
+   key_contains?: string | null
+   key_not_contains?: string | null
+   key_starts_with?: string | null
+   key_not_starts_with?: string | null
+   key_ends_with?: string | null
+   key_not_ends_with?: string | null
+   AND?: KeyUserTypeScalarWhereInput[]
+   OR?: KeyUserTypeScalarWhereInput[]
+   NOT?: KeyUserTypeScalarWhereInput[]
+}
+export type KeyUserTypeScalarWhereInputInputObject =
+   | Extract<keyof KeyUserTypeScalarWhereInput, string>
+   | { name: 'id'; alias?: string }
+   | { name: 'id_not'; alias?: string }
+   | { name: 'id_in'; alias?: string }
+   | { name: 'id_not_in'; alias?: string }
+   | { name: 'id_lt'; alias?: string }
+   | { name: 'id_lte'; alias?: string }
+   | { name: 'id_gt'; alias?: string }
+   | { name: 'id_gte'; alias?: string }
+   | { name: 'id_contains'; alias?: string }
+   | { name: 'id_not_contains'; alias?: string }
+   | { name: 'id_starts_with'; alias?: string }
+   | { name: 'id_not_starts_with'; alias?: string }
+   | { name: 'id_ends_with'; alias?: string }
+   | { name: 'id_not_ends_with'; alias?: string }
+   | { name: 'key'; alias?: string }
+   | { name: 'key_not'; alias?: string }
+   | { name: 'key_in'; alias?: string }
+   | { name: 'key_not_in'; alias?: string }
+   | { name: 'key_lt'; alias?: string }
+   | { name: 'key_lte'; alias?: string }
+   | { name: 'key_gt'; alias?: string }
+   | { name: 'key_gte'; alias?: string }
+   | { name: 'key_contains'; alias?: string }
+   | { name: 'key_not_contains'; alias?: string }
+   | { name: 'key_starts_with'; alias?: string }
+   | { name: 'key_not_starts_with'; alias?: string }
+   | { name: 'key_ends_with'; alias?: string }
+   | { name: 'key_not_ends_with'; alias?: string }
+   | { name: 'AND'; alias?: string }
+   | { name: 'OR'; alias?: string }
+   | { name: 'NOT'; alias?: string }
+
+export interface KeyUserTypeUpdateManyWithWhereNestedInput {
+   where?: KeyUserTypeScalarWhereInput
+   data?: KeyUserTypeUpdateManyDataInput
+}
+export type KeyUserTypeUpdateManyWithWhereNestedInputInputObject =
+   | Extract<keyof KeyUserTypeUpdateManyWithWhereNestedInput, string>
+   | { name: 'where'; alias?: string }
+   | { name: 'data'; alias?: string }
+
+export interface KeyUserTypeUpdateManyDataInput {
+   key?: string | null
+}
+export type KeyUserTypeUpdateManyDataInputInputObject =
+   | Extract<keyof KeyUserTypeUpdateManyDataInput, string>
+   | { name: 'key'; alias?: string }
+
+export interface PathUpdateManyWithoutParentInput {
+   create?: PathCreateWithoutParentInput[]
+   delete?: PathWhereUniqueInput[]
+   connect?: PathWhereUniqueInput[]
+   set?: PathWhereUniqueInput[]
+   disconnect?: PathWhereUniqueInput[]
+   update?: PathUpdateWithWhereUniqueWithoutParentInput[]
+   upsert?: PathUpsertWithWhereUniqueWithoutParentInput[]
+   deleteMany?: PathScalarWhereInput[]
+}
+export type PathUpdateManyWithoutParentInputInputObject =
+   | Extract<keyof PathUpdateManyWithoutParentInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'delete'; alias?: string }
+   | { name: 'connect'; alias?: string }
+   | { name: 'set'; alias?: string }
+   | { name: 'disconnect'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'upsert'; alias?: string }
+   | { name: 'deleteMany'; alias?: string }
+
+export interface PathUpdateWithWhereUniqueWithoutParentInput {
+   where?: PathWhereUniqueInput
+   data?: PathUpdateWithoutParentDataInput
+}
+export type PathUpdateWithWhereUniqueWithoutParentInputInputObject =
+   | Extract<keyof PathUpdateWithWhereUniqueWithoutParentInput, string>
+   | { name: 'where'; alias?: string }
+   | { name: 'data'; alias?: string }
+
+export interface PathUpdateWithoutParentDataInput {
+   paths?: MenuUpdateManyInput | null
+}
+export type PathUpdateWithoutParentDataInputInputObject =
+   | Extract<keyof PathUpdateWithoutParentDataInput, string>
+   | { name: 'paths'; alias?: string }
+
+export interface PathUpsertWithWhereUniqueWithoutParentInput {
+   where?: PathWhereUniqueInput
+   update?: PathUpdateWithoutParentDataInput
+   create?: PathCreateWithoutParentInput
+}
+export type PathUpsertWithWhereUniqueWithoutParentInputInputObject =
+   | Extract<keyof PathUpsertWithWhereUniqueWithoutParentInput, string>
+   | { name: 'where'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'create'; alias?: string }
+
+export interface PathScalarWhereInput {
+   id?: string | null
+   id_not?: string | null
+   id_in?: string[]
+   id_not_in?: string[]
+   id_lt?: string | null
+   id_lte?: string | null
+   id_gt?: string | null
+   id_gte?: string | null
+   id_contains?: string | null
+   id_not_contains?: string | null
+   id_starts_with?: string | null
+   id_not_starts_with?: string | null
+   id_ends_with?: string | null
+   id_not_ends_with?: string | null
+   AND?: PathScalarWhereInput[]
+   OR?: PathScalarWhereInput[]
+   NOT?: PathScalarWhereInput[]
+}
+export type PathScalarWhereInputInputObject =
+   | Extract<keyof PathScalarWhereInput, string>
+   | { name: 'id'; alias?: string }
+   | { name: 'id_not'; alias?: string }
+   | { name: 'id_in'; alias?: string }
+   | { name: 'id_not_in'; alias?: string }
+   | { name: 'id_lt'; alias?: string }
+   | { name: 'id_lte'; alias?: string }
+   | { name: 'id_gt'; alias?: string }
+   | { name: 'id_gte'; alias?: string }
+   | { name: 'id_contains'; alias?: string }
+   | { name: 'id_not_contains'; alias?: string }
+   | { name: 'id_starts_with'; alias?: string }
+   | { name: 'id_not_starts_with'; alias?: string }
+   | { name: 'id_ends_with'; alias?: string }
+   | { name: 'id_not_ends_with'; alias?: string }
+   | { name: 'AND'; alias?: string }
+   | { name: 'OR'; alias?: string }
+   | { name: 'NOT'; alias?: string }
 
 export interface StepResultUpdateManyWithoutParentInput {
    create?: StepResultCreateWithoutParentInput[]
@@ -6725,7 +9525,7 @@ export interface StepResultUpdateWithoutParentDataInput {
    end?: string | null
    time?: TimeResultUpdateOneInput | null
    path?: MenuUpdateManyInput | null
-   status?: prisma.ResultStatus | null
+   status?: KeyResultStatusUpdateOneRequiredInput | null
 }
 export type StepResultUpdateWithoutParentDataInputInputObject =
    | Extract<keyof StepResultUpdateWithoutParentDataInput, string>
@@ -6754,7 +9554,7 @@ export interface TestResultUpdateWithoutStepsDataInput {
    start?: string | null
    end?: string | null
    time?: TimeResultUpdateOneInput | null
-   status?: prisma.ResultStatus | null
+   status?: KeyResultStatusUpdateOneRequiredWithoutResultsInput | null
 }
 export type TestResultUpdateWithoutStepsDataInputInputObject =
    | Extract<keyof TestResultUpdateWithoutStepsDataInput, string>
@@ -6779,7 +9579,7 @@ export type TestUpdateOneRequiredWithoutResultsInputInputObject =
 
 export interface TestUpdateWithoutResultsDataInput {
    title?: string | null
-   steps?: StepUpdateManyInput | null
+   steps?: StepUpdateManyWithoutParentInput | null
    menus?: MenuUpdateManyInput | null
 }
 export type TestUpdateWithoutResultsDataInputInputObject =
@@ -6832,6 +9632,35 @@ export type TimeResultUpsertNestedInputInputObject =
    | { name: 'update'; alias?: string }
    | { name: 'create'; alias?: string }
 
+export interface KeyResultStatusUpdateOneRequiredWithoutResultsInput {
+   create?: KeyResultStatusCreateWithoutResultsInput | null
+   update?: KeyResultStatusUpdateWithoutResultsDataInput | null
+   upsert?: KeyResultStatusUpsertWithoutResultsInput | null
+   connect?: KeyResultStatusWhereUniqueInput | null
+}
+export type KeyResultStatusUpdateOneRequiredWithoutResultsInputInputObject =
+   | Extract<keyof KeyResultStatusUpdateOneRequiredWithoutResultsInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'upsert'; alias?: string }
+   | { name: 'connect'; alias?: string }
+
+export interface KeyResultStatusUpdateWithoutResultsDataInput {
+   key?: string | null
+}
+export type KeyResultStatusUpdateWithoutResultsDataInputInputObject =
+   | Extract<keyof KeyResultStatusUpdateWithoutResultsDataInput, string>
+   | { name: 'key'; alias?: string }
+
+export interface KeyResultStatusUpsertWithoutResultsInput {
+   update?: KeyResultStatusUpdateWithoutResultsDataInput
+   create?: KeyResultStatusCreateWithoutResultsInput
+}
+export type KeyResultStatusUpsertWithoutResultsInputInputObject =
+   | Extract<keyof KeyResultStatusUpsertWithoutResultsInput, string>
+   | { name: 'update'; alias?: string }
+   | { name: 'create'; alias?: string }
+
 export interface TestResultUpsertWithoutStepsInput {
    update?: TestResultUpdateWithoutStepsDataInput
    create?: TestResultCreateWithoutStepsInput
@@ -6841,13 +9670,358 @@ export type TestResultUpsertWithoutStepsInputInputObject =
    | { name: 'update'; alias?: string }
    | { name: 'create'; alias?: string }
 
-export interface StepResultUpsertWithWhereUniqueWithoutParentInput {
-   where?: StepResultWhereUniqueInput
-   update?: StepResultUpdateWithoutParentDataInput
-   create?: StepResultCreateWithoutParentInput
+export interface KeyResultStatusUpdateOneRequiredInput {
+   create?: KeyResultStatusCreateInput | null
+   update?: KeyResultStatusUpdateDataInput | null
+   upsert?: KeyResultStatusUpsertNestedInput | null
+   connect?: KeyResultStatusWhereUniqueInput | null
 }
-export type StepResultUpsertWithWhereUniqueWithoutParentInputInputObject =
-   | Extract<keyof StepResultUpsertWithWhereUniqueWithoutParentInput, string>
+export type KeyResultStatusUpdateOneRequiredInputInputObject =
+   | Extract<keyof KeyResultStatusUpdateOneRequiredInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'upsert'; alias?: string }
+   | { name: 'connect'; alias?: string }
+
+export interface KeyResultStatusUpdateDataInput {
+   key?: string | null
+   results?: TestResultUpdateManyWithoutStatusInput | null
+}
+export type KeyResultStatusUpdateDataInputInputObject =
+   | Extract<keyof KeyResultStatusUpdateDataInput, string>
+   | { name: 'key'; alias?: string }
+   | { name: 'results'; alias?: string }
+
+export interface TestResultUpdateManyWithoutStatusInput {
+   create?: TestResultCreateWithoutStatusInput[]
+   delete?: TestResultWhereUniqueInput[]
+   connect?: TestResultWhereUniqueInput[]
+   set?: TestResultWhereUniqueInput[]
+   disconnect?: TestResultWhereUniqueInput[]
+   update?: TestResultUpdateWithWhereUniqueWithoutStatusInput[]
+   upsert?: TestResultUpsertWithWhereUniqueWithoutStatusInput[]
+   deleteMany?: TestResultScalarWhereInput[]
+   updateMany?: TestResultUpdateManyWithWhereNestedInput[]
+}
+export type TestResultUpdateManyWithoutStatusInputInputObject =
+   | Extract<keyof TestResultUpdateManyWithoutStatusInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'delete'; alias?: string }
+   | { name: 'connect'; alias?: string }
+   | { name: 'set'; alias?: string }
+   | { name: 'disconnect'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'upsert'; alias?: string }
+   | { name: 'deleteMany'; alias?: string }
+   | { name: 'updateMany'; alias?: string }
+
+export interface TestResultUpdateWithWhereUniqueWithoutStatusInput {
+   where?: TestResultWhereUniqueInput
+   data?: TestResultUpdateWithoutStatusDataInput
+}
+export type TestResultUpdateWithWhereUniqueWithoutStatusInputInputObject =
+   | Extract<keyof TestResultUpdateWithWhereUniqueWithoutStatusInput, string>
+   | { name: 'where'; alias?: string }
+   | { name: 'data'; alias?: string }
+
+export interface TestResultUpdateWithoutStatusDataInput {
+   parent?: TestUpdateOneRequiredWithoutResultsInput | null
+   start?: string | null
+   end?: string | null
+   time?: TimeResultUpdateOneInput | null
+   steps?: StepResultUpdateManyWithoutResultParentInput | null
+}
+export type TestResultUpdateWithoutStatusDataInputInputObject =
+   | Extract<keyof TestResultUpdateWithoutStatusDataInput, string>
+   | { name: 'parent'; alias?: string }
+   | { name: 'start'; alias?: string }
+   | { name: 'end'; alias?: string }
+   | { name: 'time'; alias?: string }
+   | { name: 'steps'; alias?: string }
+
+export interface StepResultUpdateManyWithoutResultParentInput {
+   create?: StepResultCreateWithoutResultParentInput[]
+   delete?: StepResultWhereUniqueInput[]
+   connect?: StepResultWhereUniqueInput[]
+   set?: StepResultWhereUniqueInput[]
+   disconnect?: StepResultWhereUniqueInput[]
+   update?: StepResultUpdateWithWhereUniqueWithoutResultParentInput[]
+   upsert?: StepResultUpsertWithWhereUniqueWithoutResultParentInput[]
+   deleteMany?: StepResultScalarWhereInput[]
+   updateMany?: StepResultUpdateManyWithWhereNestedInput[]
+}
+export type StepResultUpdateManyWithoutResultParentInputInputObject =
+   | Extract<keyof StepResultUpdateManyWithoutResultParentInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'delete'; alias?: string }
+   | { name: 'connect'; alias?: string }
+   | { name: 'set'; alias?: string }
+   | { name: 'disconnect'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'upsert'; alias?: string }
+   | { name: 'deleteMany'; alias?: string }
+   | { name: 'updateMany'; alias?: string }
+
+export interface StepResultUpdateWithWhereUniqueWithoutResultParentInput {
+   where?: StepResultWhereUniqueInput
+   data?: StepResultUpdateWithoutResultParentDataInput
+}
+export type StepResultUpdateWithWhereUniqueWithoutResultParentInputInputObject =
+   | Extract<
+        keyof StepResultUpdateWithWhereUniqueWithoutResultParentInput,
+        string
+     >
+   | { name: 'where'; alias?: string }
+   | { name: 'data'; alias?: string }
+
+export interface StepResultUpdateWithoutResultParentDataInput {
+   parent?: StepUpdateOneRequiredWithoutResultsInput | null
+   start?: string | null
+   end?: string | null
+   time?: TimeResultUpdateOneInput | null
+   path?: MenuUpdateManyInput | null
+   status?: KeyResultStatusUpdateOneRequiredInput | null
+}
+export type StepResultUpdateWithoutResultParentDataInputInputObject =
+   | Extract<keyof StepResultUpdateWithoutResultParentDataInput, string>
+   | { name: 'parent'; alias?: string }
+   | { name: 'start'; alias?: string }
+   | { name: 'end'; alias?: string }
+   | { name: 'time'; alias?: string }
+   | { name: 'path'; alias?: string }
+   | { name: 'status'; alias?: string }
+
+export interface StepUpdateOneRequiredWithoutResultsInput {
+   create?: StepCreateWithoutResultsInput | null
+   update?: StepUpdateWithoutResultsDataInput | null
+   upsert?: StepUpsertWithoutResultsInput | null
+   connect?: StepWhereUniqueInput | null
+}
+export type StepUpdateOneRequiredWithoutResultsInputInputObject =
+   | Extract<keyof StepUpdateOneRequiredWithoutResultsInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'upsert'; alias?: string }
+   | { name: 'connect'; alias?: string }
+
+export interface StepUpdateWithoutResultsDataInput {
+   parent?: TestUpdateOneWithoutStepsInput | null
+   type?: KeyUserTypeUpdateManyWithoutStepsInput | null
+   question?: string | null
+   targets?: MenuUpdateManyInput | null
+   paths?: PathUpdateManyWithoutParentInput | null
+}
+export type StepUpdateWithoutResultsDataInputInputObject =
+   | Extract<keyof StepUpdateWithoutResultsDataInput, string>
+   | { name: 'parent'; alias?: string }
+   | { name: 'type'; alias?: string }
+   | { name: 'question'; alias?: string }
+   | { name: 'targets'; alias?: string }
+   | { name: 'paths'; alias?: string }
+
+export interface TestUpdateOneWithoutStepsInput {
+   create?: TestCreateWithoutStepsInput | null
+   update?: TestUpdateWithoutStepsDataInput | null
+   upsert?: TestUpsertWithoutStepsInput | null
+   delete?: boolean | null
+   disconnect?: boolean | null
+   connect?: TestWhereUniqueInput | null
+}
+export type TestUpdateOneWithoutStepsInputInputObject =
+   | Extract<keyof TestUpdateOneWithoutStepsInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'upsert'; alias?: string }
+   | { name: 'delete'; alias?: string }
+   | { name: 'disconnect'; alias?: string }
+   | { name: 'connect'; alias?: string }
+
+export interface TestUpdateWithoutStepsDataInput {
+   title?: string | null
+   menus?: MenuUpdateManyInput | null
+   results?: TestResultUpdateManyWithoutParentInput | null
+}
+export type TestUpdateWithoutStepsDataInputInputObject =
+   | Extract<keyof TestUpdateWithoutStepsDataInput, string>
+   | { name: 'title'; alias?: string }
+   | { name: 'menus'; alias?: string }
+   | { name: 'results'; alias?: string }
+
+export interface TestResultUpdateManyWithoutParentInput {
+   create?: TestResultCreateWithoutParentInput[]
+   delete?: TestResultWhereUniqueInput[]
+   connect?: TestResultWhereUniqueInput[]
+   set?: TestResultWhereUniqueInput[]
+   disconnect?: TestResultWhereUniqueInput[]
+   update?: TestResultUpdateWithWhereUniqueWithoutParentInput[]
+   upsert?: TestResultUpsertWithWhereUniqueWithoutParentInput[]
+   deleteMany?: TestResultScalarWhereInput[]
+   updateMany?: TestResultUpdateManyWithWhereNestedInput[]
+}
+export type TestResultUpdateManyWithoutParentInputInputObject =
+   | Extract<keyof TestResultUpdateManyWithoutParentInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'delete'; alias?: string }
+   | { name: 'connect'; alias?: string }
+   | { name: 'set'; alias?: string }
+   | { name: 'disconnect'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'upsert'; alias?: string }
+   | { name: 'deleteMany'; alias?: string }
+   | { name: 'updateMany'; alias?: string }
+
+export interface TestResultUpdateWithWhereUniqueWithoutParentInput {
+   where?: TestResultWhereUniqueInput
+   data?: TestResultUpdateWithoutParentDataInput
+}
+export type TestResultUpdateWithWhereUniqueWithoutParentInputInputObject =
+   | Extract<keyof TestResultUpdateWithWhereUniqueWithoutParentInput, string>
+   | { name: 'where'; alias?: string }
+   | { name: 'data'; alias?: string }
+
+export interface TestResultUpdateWithoutParentDataInput {
+   start?: string | null
+   end?: string | null
+   time?: TimeResultUpdateOneInput | null
+   steps?: StepResultUpdateManyWithoutResultParentInput | null
+   status?: KeyResultStatusUpdateOneRequiredWithoutResultsInput | null
+}
+export type TestResultUpdateWithoutParentDataInputInputObject =
+   | Extract<keyof TestResultUpdateWithoutParentDataInput, string>
+   | { name: 'start'; alias?: string }
+   | { name: 'end'; alias?: string }
+   | { name: 'time'; alias?: string }
+   | { name: 'steps'; alias?: string }
+   | { name: 'status'; alias?: string }
+
+export interface TestResultUpsertWithWhereUniqueWithoutParentInput {
+   where?: TestResultWhereUniqueInput
+   update?: TestResultUpdateWithoutParentDataInput
+   create?: TestResultCreateWithoutParentInput
+}
+export type TestResultUpsertWithWhereUniqueWithoutParentInputInputObject =
+   | Extract<keyof TestResultUpsertWithWhereUniqueWithoutParentInput, string>
+   | { name: 'where'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'create'; alias?: string }
+
+export interface TestResultScalarWhereInput {
+   id?: string | null
+   id_not?: string | null
+   id_in?: string[]
+   id_not_in?: string[]
+   id_lt?: string | null
+   id_lte?: string | null
+   id_gt?: string | null
+   id_gte?: string | null
+   id_contains?: string | null
+   id_not_contains?: string | null
+   id_starts_with?: string | null
+   id_not_starts_with?: string | null
+   id_ends_with?: string | null
+   id_not_ends_with?: string | null
+   start?: string | null
+   start_not?: string | null
+   start_in?: string[]
+   start_not_in?: string[]
+   start_lt?: string | null
+   start_lte?: string | null
+   start_gt?: string | null
+   start_gte?: string | null
+   end?: string | null
+   end_not?: string | null
+   end_in?: string[]
+   end_not_in?: string[]
+   end_lt?: string | null
+   end_lte?: string | null
+   end_gt?: string | null
+   end_gte?: string | null
+   AND?: TestResultScalarWhereInput[]
+   OR?: TestResultScalarWhereInput[]
+   NOT?: TestResultScalarWhereInput[]
+}
+export type TestResultScalarWhereInputInputObject =
+   | Extract<keyof TestResultScalarWhereInput, string>
+   | { name: 'id'; alias?: string }
+   | { name: 'id_not'; alias?: string }
+   | { name: 'id_in'; alias?: string }
+   | { name: 'id_not_in'; alias?: string }
+   | { name: 'id_lt'; alias?: string }
+   | { name: 'id_lte'; alias?: string }
+   | { name: 'id_gt'; alias?: string }
+   | { name: 'id_gte'; alias?: string }
+   | { name: 'id_contains'; alias?: string }
+   | { name: 'id_not_contains'; alias?: string }
+   | { name: 'id_starts_with'; alias?: string }
+   | { name: 'id_not_starts_with'; alias?: string }
+   | { name: 'id_ends_with'; alias?: string }
+   | { name: 'id_not_ends_with'; alias?: string }
+   | { name: 'start'; alias?: string }
+   | { name: 'start_not'; alias?: string }
+   | { name: 'start_in'; alias?: string }
+   | { name: 'start_not_in'; alias?: string }
+   | { name: 'start_lt'; alias?: string }
+   | { name: 'start_lte'; alias?: string }
+   | { name: 'start_gt'; alias?: string }
+   | { name: 'start_gte'; alias?: string }
+   | { name: 'end'; alias?: string }
+   | { name: 'end_not'; alias?: string }
+   | { name: 'end_in'; alias?: string }
+   | { name: 'end_not_in'; alias?: string }
+   | { name: 'end_lt'; alias?: string }
+   | { name: 'end_lte'; alias?: string }
+   | { name: 'end_gt'; alias?: string }
+   | { name: 'end_gte'; alias?: string }
+   | { name: 'AND'; alias?: string }
+   | { name: 'OR'; alias?: string }
+   | { name: 'NOT'; alias?: string }
+
+export interface TestResultUpdateManyWithWhereNestedInput {
+   where?: TestResultScalarWhereInput
+   data?: TestResultUpdateManyDataInput
+}
+export type TestResultUpdateManyWithWhereNestedInputInputObject =
+   | Extract<keyof TestResultUpdateManyWithWhereNestedInput, string>
+   | { name: 'where'; alias?: string }
+   | { name: 'data'; alias?: string }
+
+export interface TestResultUpdateManyDataInput {
+   start?: string | null
+   end?: string | null
+}
+export type TestResultUpdateManyDataInputInputObject =
+   | Extract<keyof TestResultUpdateManyDataInput, string>
+   | { name: 'start'; alias?: string }
+   | { name: 'end'; alias?: string }
+
+export interface TestUpsertWithoutStepsInput {
+   update?: TestUpdateWithoutStepsDataInput
+   create?: TestCreateWithoutStepsInput
+}
+export type TestUpsertWithoutStepsInputInputObject =
+   | Extract<keyof TestUpsertWithoutStepsInput, string>
+   | { name: 'update'; alias?: string }
+   | { name: 'create'; alias?: string }
+
+export interface StepUpsertWithoutResultsInput {
+   update?: StepUpdateWithoutResultsDataInput
+   create?: StepCreateWithoutResultsInput
+}
+export type StepUpsertWithoutResultsInputInputObject =
+   | Extract<keyof StepUpsertWithoutResultsInput, string>
+   | { name: 'update'; alias?: string }
+   | { name: 'create'; alias?: string }
+
+export interface StepResultUpsertWithWhereUniqueWithoutResultParentInput {
+   where?: StepResultWhereUniqueInput
+   update?: StepResultUpdateWithoutResultParentDataInput
+   create?: StepResultCreateWithoutResultParentInput
+}
+export type StepResultUpsertWithWhereUniqueWithoutResultParentInputInputObject =
+   | Extract<
+        keyof StepResultUpsertWithWhereUniqueWithoutResultParentInput,
+        string
+     >
    | { name: 'where'; alias?: string }
    | { name: 'update'; alias?: string }
    | { name: 'create'; alias?: string }
@@ -6883,10 +10057,6 @@ export interface StepResultScalarWhereInput {
    end_lte?: string | null
    end_gt?: string | null
    end_gte?: string | null
-   status?: prisma.ResultStatus | null
-   status_not?: prisma.ResultStatus | null
-   status_in?: prisma.ResultStatus[]
-   status_not_in?: prisma.ResultStatus[]
    AND?: StepResultScalarWhereInput[]
    OR?: StepResultScalarWhereInput[]
    NOT?: StepResultScalarWhereInput[]
@@ -6923,10 +10093,6 @@ export type StepResultScalarWhereInputInputObject =
    | { name: 'end_lte'; alias?: string }
    | { name: 'end_gt'; alias?: string }
    | { name: 'end_gte'; alias?: string }
-   | { name: 'status'; alias?: string }
-   | { name: 'status_not'; alias?: string }
-   | { name: 'status_in'; alias?: string }
-   | { name: 'status_not_in'; alias?: string }
    | { name: 'AND'; alias?: string }
    | { name: 'OR'; alias?: string }
    | { name: 'NOT'; alias?: string }
@@ -6943,21 +10109,50 @@ export type StepResultUpdateManyWithWhereNestedInputInputObject =
 export interface StepResultUpdateManyDataInput {
    start?: string | null
    end?: string | null
-   status?: prisma.ResultStatus | null
 }
 export type StepResultUpdateManyDataInputInputObject =
    | Extract<keyof StepResultUpdateManyDataInput, string>
    | { name: 'start'; alias?: string }
    | { name: 'end'; alias?: string }
-   | { name: 'status'; alias?: string }
 
-export interface StepUpsertWithWhereUniqueNestedInput {
-   where?: StepWhereUniqueInput
-   update?: StepUpdateDataInput
-   create?: StepCreateInput
+export interface TestResultUpsertWithWhereUniqueWithoutStatusInput {
+   where?: TestResultWhereUniqueInput
+   update?: TestResultUpdateWithoutStatusDataInput
+   create?: TestResultCreateWithoutStatusInput
 }
-export type StepUpsertWithWhereUniqueNestedInputInputObject =
-   | Extract<keyof StepUpsertWithWhereUniqueNestedInput, string>
+export type TestResultUpsertWithWhereUniqueWithoutStatusInputInputObject =
+   | Extract<keyof TestResultUpsertWithWhereUniqueWithoutStatusInput, string>
+   | { name: 'where'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'create'; alias?: string }
+
+export interface KeyResultStatusUpsertNestedInput {
+   update?: KeyResultStatusUpdateDataInput
+   create?: KeyResultStatusCreateInput
+}
+export type KeyResultStatusUpsertNestedInputInputObject =
+   | Extract<keyof KeyResultStatusUpsertNestedInput, string>
+   | { name: 'update'; alias?: string }
+   | { name: 'create'; alias?: string }
+
+export interface StepResultUpsertWithWhereUniqueWithoutParentInput {
+   where?: StepResultWhereUniqueInput
+   update?: StepResultUpdateWithoutParentDataInput
+   create?: StepResultCreateWithoutParentInput
+}
+export type StepResultUpsertWithWhereUniqueWithoutParentInputInputObject =
+   | Extract<keyof StepResultUpsertWithWhereUniqueWithoutParentInput, string>
+   | { name: 'where'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'create'; alias?: string }
+
+export interface StepUpsertWithWhereUniqueWithoutParentInput {
+   where?: StepWhereUniqueInput
+   update?: StepUpdateWithoutParentDataInput
+   create?: StepCreateWithoutParentInput
+}
+export type StepUpsertWithWhereUniqueWithoutParentInputInputObject =
+   | Extract<keyof StepUpsertWithWhereUniqueWithoutParentInput, string>
    | { name: 'where'; alias?: string }
    | { name: 'update'; alias?: string }
    | { name: 'create'; alias?: string }
@@ -7044,262 +10239,6 @@ export interface StepUpdateManyDataInput {
 export type StepUpdateManyDataInputInputObject =
    | Extract<keyof StepUpdateManyDataInput, string>
    | { name: 'question'; alias?: string }
-
-export interface TestResultUpdateManyWithoutParentInput {
-   create?: TestResultCreateWithoutParentInput[]
-   delete?: TestResultWhereUniqueInput[]
-   connect?: TestResultWhereUniqueInput[]
-   set?: TestResultWhereUniqueInput[]
-   disconnect?: TestResultWhereUniqueInput[]
-   update?: TestResultUpdateWithWhereUniqueWithoutParentInput[]
-   upsert?: TestResultUpsertWithWhereUniqueWithoutParentInput[]
-   deleteMany?: TestResultScalarWhereInput[]
-   updateMany?: TestResultUpdateManyWithWhereNestedInput[]
-}
-export type TestResultUpdateManyWithoutParentInputInputObject =
-   | Extract<keyof TestResultUpdateManyWithoutParentInput, string>
-   | { name: 'create'; alias?: string }
-   | { name: 'delete'; alias?: string }
-   | { name: 'connect'; alias?: string }
-   | { name: 'set'; alias?: string }
-   | { name: 'disconnect'; alias?: string }
-   | { name: 'update'; alias?: string }
-   | { name: 'upsert'; alias?: string }
-   | { name: 'deleteMany'; alias?: string }
-   | { name: 'updateMany'; alias?: string }
-
-export interface TestResultUpdateWithWhereUniqueWithoutParentInput {
-   where?: TestResultWhereUniqueInput
-   data?: TestResultUpdateWithoutParentDataInput
-}
-export type TestResultUpdateWithWhereUniqueWithoutParentInputInputObject =
-   | Extract<keyof TestResultUpdateWithWhereUniqueWithoutParentInput, string>
-   | { name: 'where'; alias?: string }
-   | { name: 'data'; alias?: string }
-
-export interface TestResultUpdateWithoutParentDataInput {
-   start?: string | null
-   end?: string | null
-   time?: TimeResultUpdateOneInput | null
-   steps?: StepResultUpdateManyWithoutResultParentInput | null
-   status?: prisma.ResultStatus | null
-}
-export type TestResultUpdateWithoutParentDataInputInputObject =
-   | Extract<keyof TestResultUpdateWithoutParentDataInput, string>
-   | { name: 'start'; alias?: string }
-   | { name: 'end'; alias?: string }
-   | { name: 'time'; alias?: string }
-   | { name: 'steps'; alias?: string }
-   | { name: 'status'; alias?: string }
-
-export interface StepResultUpdateManyWithoutResultParentInput {
-   create?: StepResultCreateWithoutResultParentInput[]
-   delete?: StepResultWhereUniqueInput[]
-   connect?: StepResultWhereUniqueInput[]
-   set?: StepResultWhereUniqueInput[]
-   disconnect?: StepResultWhereUniqueInput[]
-   update?: StepResultUpdateWithWhereUniqueWithoutResultParentInput[]
-   upsert?: StepResultUpsertWithWhereUniqueWithoutResultParentInput[]
-   deleteMany?: StepResultScalarWhereInput[]
-   updateMany?: StepResultUpdateManyWithWhereNestedInput[]
-}
-export type StepResultUpdateManyWithoutResultParentInputInputObject =
-   | Extract<keyof StepResultUpdateManyWithoutResultParentInput, string>
-   | { name: 'create'; alias?: string }
-   | { name: 'delete'; alias?: string }
-   | { name: 'connect'; alias?: string }
-   | { name: 'set'; alias?: string }
-   | { name: 'disconnect'; alias?: string }
-   | { name: 'update'; alias?: string }
-   | { name: 'upsert'; alias?: string }
-   | { name: 'deleteMany'; alias?: string }
-   | { name: 'updateMany'; alias?: string }
-
-export interface StepResultUpdateWithWhereUniqueWithoutResultParentInput {
-   where?: StepResultWhereUniqueInput
-   data?: StepResultUpdateWithoutResultParentDataInput
-}
-export type StepResultUpdateWithWhereUniqueWithoutResultParentInputInputObject =
-   | Extract<
-        keyof StepResultUpdateWithWhereUniqueWithoutResultParentInput,
-        string
-     >
-   | { name: 'where'; alias?: string }
-   | { name: 'data'; alias?: string }
-
-export interface StepResultUpdateWithoutResultParentDataInput {
-   parent?: StepUpdateOneRequiredWithoutResultsInput | null
-   start?: string | null
-   end?: string | null
-   time?: TimeResultUpdateOneInput | null
-   path?: MenuUpdateManyInput | null
-   status?: prisma.ResultStatus | null
-}
-export type StepResultUpdateWithoutResultParentDataInputInputObject =
-   | Extract<keyof StepResultUpdateWithoutResultParentDataInput, string>
-   | { name: 'parent'; alias?: string }
-   | { name: 'start'; alias?: string }
-   | { name: 'end'; alias?: string }
-   | { name: 'time'; alias?: string }
-   | { name: 'path'; alias?: string }
-   | { name: 'status'; alias?: string }
-
-export interface StepUpdateOneRequiredWithoutResultsInput {
-   create?: StepCreateWithoutResultsInput | null
-   update?: StepUpdateWithoutResultsDataInput | null
-   upsert?: StepUpsertWithoutResultsInput | null
-   connect?: StepWhereUniqueInput | null
-}
-export type StepUpdateOneRequiredWithoutResultsInputInputObject =
-   | Extract<keyof StepUpdateOneRequiredWithoutResultsInput, string>
-   | { name: 'create'; alias?: string }
-   | { name: 'update'; alias?: string }
-   | { name: 'upsert'; alias?: string }
-   | { name: 'connect'; alias?: string }
-
-export interface StepUpdateWithoutResultsDataInput {
-   question?: string | null
-   target?: MenuUpdateOneRequiredInput | null
-   path?: MenuUpdateManyInput | null
-}
-export type StepUpdateWithoutResultsDataInputInputObject =
-   | Extract<keyof StepUpdateWithoutResultsDataInput, string>
-   | { name: 'question'; alias?: string }
-   | { name: 'target'; alias?: string }
-   | { name: 'path'; alias?: string }
-
-export interface StepUpsertWithoutResultsInput {
-   update?: StepUpdateWithoutResultsDataInput
-   create?: StepCreateWithoutResultsInput
-}
-export type StepUpsertWithoutResultsInputInputObject =
-   | Extract<keyof StepUpsertWithoutResultsInput, string>
-   | { name: 'update'; alias?: string }
-   | { name: 'create'; alias?: string }
-
-export interface StepResultUpsertWithWhereUniqueWithoutResultParentInput {
-   where?: StepResultWhereUniqueInput
-   update?: StepResultUpdateWithoutResultParentDataInput
-   create?: StepResultCreateWithoutResultParentInput
-}
-export type StepResultUpsertWithWhereUniqueWithoutResultParentInputInputObject =
-   | Extract<
-        keyof StepResultUpsertWithWhereUniqueWithoutResultParentInput,
-        string
-     >
-   | { name: 'where'; alias?: string }
-   | { name: 'update'; alias?: string }
-   | { name: 'create'; alias?: string }
-
-export interface TestResultUpsertWithWhereUniqueWithoutParentInput {
-   where?: TestResultWhereUniqueInput
-   update?: TestResultUpdateWithoutParentDataInput
-   create?: TestResultCreateWithoutParentInput
-}
-export type TestResultUpsertWithWhereUniqueWithoutParentInputInputObject =
-   | Extract<keyof TestResultUpsertWithWhereUniqueWithoutParentInput, string>
-   | { name: 'where'; alias?: string }
-   | { name: 'update'; alias?: string }
-   | { name: 'create'; alias?: string }
-
-export interface TestResultScalarWhereInput {
-   id?: string | null
-   id_not?: string | null
-   id_in?: string[]
-   id_not_in?: string[]
-   id_lt?: string | null
-   id_lte?: string | null
-   id_gt?: string | null
-   id_gte?: string | null
-   id_contains?: string | null
-   id_not_contains?: string | null
-   id_starts_with?: string | null
-   id_not_starts_with?: string | null
-   id_ends_with?: string | null
-   id_not_ends_with?: string | null
-   start?: string | null
-   start_not?: string | null
-   start_in?: string[]
-   start_not_in?: string[]
-   start_lt?: string | null
-   start_lte?: string | null
-   start_gt?: string | null
-   start_gte?: string | null
-   end?: string | null
-   end_not?: string | null
-   end_in?: string[]
-   end_not_in?: string[]
-   end_lt?: string | null
-   end_lte?: string | null
-   end_gt?: string | null
-   end_gte?: string | null
-   status?: prisma.ResultStatus | null
-   status_not?: prisma.ResultStatus | null
-   status_in?: prisma.ResultStatus[]
-   status_not_in?: prisma.ResultStatus[]
-   AND?: TestResultScalarWhereInput[]
-   OR?: TestResultScalarWhereInput[]
-   NOT?: TestResultScalarWhereInput[]
-}
-export type TestResultScalarWhereInputInputObject =
-   | Extract<keyof TestResultScalarWhereInput, string>
-   | { name: 'id'; alias?: string }
-   | { name: 'id_not'; alias?: string }
-   | { name: 'id_in'; alias?: string }
-   | { name: 'id_not_in'; alias?: string }
-   | { name: 'id_lt'; alias?: string }
-   | { name: 'id_lte'; alias?: string }
-   | { name: 'id_gt'; alias?: string }
-   | { name: 'id_gte'; alias?: string }
-   | { name: 'id_contains'; alias?: string }
-   | { name: 'id_not_contains'; alias?: string }
-   | { name: 'id_starts_with'; alias?: string }
-   | { name: 'id_not_starts_with'; alias?: string }
-   | { name: 'id_ends_with'; alias?: string }
-   | { name: 'id_not_ends_with'; alias?: string }
-   | { name: 'start'; alias?: string }
-   | { name: 'start_not'; alias?: string }
-   | { name: 'start_in'; alias?: string }
-   | { name: 'start_not_in'; alias?: string }
-   | { name: 'start_lt'; alias?: string }
-   | { name: 'start_lte'; alias?: string }
-   | { name: 'start_gt'; alias?: string }
-   | { name: 'start_gte'; alias?: string }
-   | { name: 'end'; alias?: string }
-   | { name: 'end_not'; alias?: string }
-   | { name: 'end_in'; alias?: string }
-   | { name: 'end_not_in'; alias?: string }
-   | { name: 'end_lt'; alias?: string }
-   | { name: 'end_lte'; alias?: string }
-   | { name: 'end_gt'; alias?: string }
-   | { name: 'end_gte'; alias?: string }
-   | { name: 'status'; alias?: string }
-   | { name: 'status_not'; alias?: string }
-   | { name: 'status_in'; alias?: string }
-   | { name: 'status_not_in'; alias?: string }
-   | { name: 'AND'; alias?: string }
-   | { name: 'OR'; alias?: string }
-   | { name: 'NOT'; alias?: string }
-
-export interface TestResultUpdateManyWithWhereNestedInput {
-   where?: TestResultScalarWhereInput
-   data?: TestResultUpdateManyDataInput
-}
-export type TestResultUpdateManyWithWhereNestedInputInputObject =
-   | Extract<keyof TestResultUpdateManyWithWhereNestedInput, string>
-   | { name: 'where'; alias?: string }
-   | { name: 'data'; alias?: string }
-
-export interface TestResultUpdateManyDataInput {
-   start?: string | null
-   end?: string | null
-   status?: prisma.ResultStatus | null
-}
-export type TestResultUpdateManyDataInputInputObject =
-   | Extract<keyof TestResultUpdateManyDataInput, string>
-   | { name: 'start'; alias?: string }
-   | { name: 'end'; alias?: string }
-   | { name: 'status'; alias?: string }
 
 export interface TestUpsertWithWhereUniqueNestedInput {
    where?: TestWhereUniqueInput
@@ -7395,6 +10334,66 @@ export type TestUpdateManyDataInputInputObject =
    | Extract<keyof TestUpdateManyDataInput, string>
    | { name: 'title'; alias?: string }
 
+export interface StepUpdateManyInput {
+   create?: StepCreateInput[]
+   update?: StepUpdateWithWhereUniqueNestedInput[]
+   upsert?: StepUpsertWithWhereUniqueNestedInput[]
+   delete?: StepWhereUniqueInput[]
+   connect?: StepWhereUniqueInput[]
+   set?: StepWhereUniqueInput[]
+   disconnect?: StepWhereUniqueInput[]
+   deleteMany?: StepScalarWhereInput[]
+   updateMany?: StepUpdateManyWithWhereNestedInput[]
+}
+export type StepUpdateManyInputInputObject =
+   | Extract<keyof StepUpdateManyInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'upsert'; alias?: string }
+   | { name: 'delete'; alias?: string }
+   | { name: 'connect'; alias?: string }
+   | { name: 'set'; alias?: string }
+   | { name: 'disconnect'; alias?: string }
+   | { name: 'deleteMany'; alias?: string }
+   | { name: 'updateMany'; alias?: string }
+
+export interface StepUpdateWithWhereUniqueNestedInput {
+   where?: StepWhereUniqueInput
+   data?: StepUpdateDataInput
+}
+export type StepUpdateWithWhereUniqueNestedInputInputObject =
+   | Extract<keyof StepUpdateWithWhereUniqueNestedInput, string>
+   | { name: 'where'; alias?: string }
+   | { name: 'data'; alias?: string }
+
+export interface StepUpdateDataInput {
+   parent?: TestUpdateOneWithoutStepsInput | null
+   type?: KeyUserTypeUpdateManyWithoutStepsInput | null
+   question?: string | null
+   targets?: MenuUpdateManyInput | null
+   paths?: PathUpdateManyWithoutParentInput | null
+   results?: StepResultUpdateManyWithoutParentInput | null
+}
+export type StepUpdateDataInputInputObject =
+   | Extract<keyof StepUpdateDataInput, string>
+   | { name: 'parent'; alias?: string }
+   | { name: 'type'; alias?: string }
+   | { name: 'question'; alias?: string }
+   | { name: 'targets'; alias?: string }
+   | { name: 'paths'; alias?: string }
+   | { name: 'results'; alias?: string }
+
+export interface StepUpsertWithWhereUniqueNestedInput {
+   where?: StepWhereUniqueInput
+   update?: StepUpdateDataInput
+   create?: StepCreateInput
+}
+export type StepUpsertWithWhereUniqueNestedInputInputObject =
+   | Extract<keyof StepUpsertWithWhereUniqueNestedInput, string>
+   | { name: 'where'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'create'; alias?: string }
+
 export interface WelcomeUpdateInput {
    title?: string | null
    message?: string | null
@@ -7437,7 +10436,7 @@ export type CompanyUpdateManyMutationInputInputObject =
 
 export interface TestUpdateInput {
    title?: string | null
-   steps?: StepUpdateManyInput | null
+   steps?: StepUpdateManyWithoutParentInput | null
    menus?: MenuUpdateManyInput | null
    results?: TestResultUpdateManyWithoutParentInput | null
 }
@@ -7456,34 +10455,468 @@ export type TestUpdateManyMutationInputInputObject =
    | { name: 'title'; alias?: string }
 
 export interface MenuUpdateInput {
-   menu?: MenuUpdateOneWithoutItemsInput | null
+   root?: boolean | null
+   menus?: MenuUpdateManyWithoutItemsInput | null
    name?: string | null
-   items?: MenuUpdateManyWithoutMenuInput | null
+   items?: MenuUpdateManyWithoutMenusInput | null
 }
 export type MenuUpdateInputInputObject =
    | Extract<keyof MenuUpdateInput, string>
-   | { name: 'menu'; alias?: string }
+   | { name: 'root'; alias?: string }
+   | { name: 'menus'; alias?: string }
    | { name: 'name'; alias?: string }
    | { name: 'items'; alias?: string }
 
 export interface MenuUpdateManyMutationInput {
+   root?: boolean | null
    name?: string | null
 }
 export type MenuUpdateManyMutationInputInputObject =
    | Extract<keyof MenuUpdateManyMutationInput, string>
+   | { name: 'root'; alias?: string }
    | { name: 'name'; alias?: string }
 
-export interface StepUpdateInput {
+export interface PathCreateInput {
+   id?: string | null
+   parent?: StepCreateOneWithoutPathsInput
+   paths?: MenuCreateManyInput | null
+}
+export type PathCreateInputInputObject =
+   | Extract<keyof PathCreateInput, string>
+   | { name: 'id'; alias?: string }
+   | { name: 'parent'; alias?: string }
+   | { name: 'paths'; alias?: string }
+
+export interface StepCreateOneWithoutPathsInput {
+   create?: StepCreateWithoutPathsInput | null
+   connect?: StepWhereUniqueInput | null
+}
+export type StepCreateOneWithoutPathsInputInputObject =
+   | Extract<keyof StepCreateOneWithoutPathsInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'connect'; alias?: string }
+
+export interface StepCreateWithoutPathsInput {
+   id?: string | null
+   parent?: TestCreateOneWithoutStepsInput | null
+   type?: KeyUserTypeCreateManyWithoutStepsInput | null
+   question?: string
+   targets?: MenuCreateManyInput | null
+   results?: StepResultCreateManyWithoutParentInput | null
+}
+export type StepCreateWithoutPathsInputInputObject =
+   | Extract<keyof StepCreateWithoutPathsInput, string>
+   | { name: 'id'; alias?: string }
+   | { name: 'parent'; alias?: string }
+   | { name: 'type'; alias?: string }
+   | { name: 'question'; alias?: string }
+   | { name: 'targets'; alias?: string }
+   | { name: 'results'; alias?: string }
+
+export interface PathUpdateInput {
+   parent?: StepUpdateOneRequiredWithoutPathsInput | null
+   paths?: MenuUpdateManyInput | null
+}
+export type PathUpdateInputInputObject =
+   | Extract<keyof PathUpdateInput, string>
+   | { name: 'parent'; alias?: string }
+   | { name: 'paths'; alias?: string }
+
+export interface StepUpdateOneRequiredWithoutPathsInput {
+   create?: StepCreateWithoutPathsInput | null
+   update?: StepUpdateWithoutPathsDataInput | null
+   upsert?: StepUpsertWithoutPathsInput | null
+   connect?: StepWhereUniqueInput | null
+}
+export type StepUpdateOneRequiredWithoutPathsInputInputObject =
+   | Extract<keyof StepUpdateOneRequiredWithoutPathsInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'upsert'; alias?: string }
+   | { name: 'connect'; alias?: string }
+
+export interface StepUpdateWithoutPathsDataInput {
+   parent?: TestUpdateOneWithoutStepsInput | null
+   type?: KeyUserTypeUpdateManyWithoutStepsInput | null
    question?: string | null
-   target?: MenuUpdateOneRequiredInput | null
-   path?: MenuUpdateManyInput | null
+   targets?: MenuUpdateManyInput | null
+   results?: StepResultUpdateManyWithoutParentInput | null
+}
+export type StepUpdateWithoutPathsDataInputInputObject =
+   | Extract<keyof StepUpdateWithoutPathsDataInput, string>
+   | { name: 'parent'; alias?: string }
+   | { name: 'type'; alias?: string }
+   | { name: 'question'; alias?: string }
+   | { name: 'targets'; alias?: string }
+   | { name: 'results'; alias?: string }
+
+export interface StepUpsertWithoutPathsInput {
+   update?: StepUpdateWithoutPathsDataInput
+   create?: StepCreateWithoutPathsInput
+}
+export type StepUpsertWithoutPathsInputInputObject =
+   | Extract<keyof StepUpsertWithoutPathsInput, string>
+   | { name: 'update'; alias?: string }
+   | { name: 'create'; alias?: string }
+
+export interface KeysCreateInput {
+   id?: string | null
+   userType?: KeyUserTypeCreateManyInput | null
+   resultStatus?: KeyResultStatusCreateManyInput | null
+}
+export type KeysCreateInputInputObject =
+   | Extract<keyof KeysCreateInput, string>
+   | { name: 'id'; alias?: string }
+   | { name: 'userType'; alias?: string }
+   | { name: 'resultStatus'; alias?: string }
+
+export interface KeyUserTypeCreateManyInput {
+   create?: KeyUserTypeCreateInput[]
+   connect?: KeyUserTypeWhereUniqueInput[]
+}
+export type KeyUserTypeCreateManyInputInputObject =
+   | Extract<keyof KeyUserTypeCreateManyInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'connect'; alias?: string }
+
+export interface KeyUserTypeCreateInput {
+   id?: string | null
+   key?: string
+   steps?: StepCreateManyWithoutTypeInput | null
+}
+export type KeyUserTypeCreateInputInputObject =
+   | Extract<keyof KeyUserTypeCreateInput, string>
+   | { name: 'id'; alias?: string }
+   | { name: 'key'; alias?: string }
+   | { name: 'steps'; alias?: string }
+
+export interface StepCreateManyWithoutTypeInput {
+   create?: StepCreateWithoutTypeInput[]
+   connect?: StepWhereUniqueInput[]
+}
+export type StepCreateManyWithoutTypeInputInputObject =
+   | Extract<keyof StepCreateManyWithoutTypeInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'connect'; alias?: string }
+
+export interface StepCreateWithoutTypeInput {
+   id?: string | null
+   parent?: TestCreateOneWithoutStepsInput | null
+   question?: string
+   targets?: MenuCreateManyInput | null
+   paths?: PathCreateManyWithoutParentInput | null
+   results?: StepResultCreateManyWithoutParentInput | null
+}
+export type StepCreateWithoutTypeInputInputObject =
+   | Extract<keyof StepCreateWithoutTypeInput, string>
+   | { name: 'id'; alias?: string }
+   | { name: 'parent'; alias?: string }
+   | { name: 'question'; alias?: string }
+   | { name: 'targets'; alias?: string }
+   | { name: 'paths'; alias?: string }
+   | { name: 'results'; alias?: string }
+
+export interface KeyResultStatusCreateManyInput {
+   create?: KeyResultStatusCreateInput[]
+   connect?: KeyResultStatusWhereUniqueInput[]
+}
+export type KeyResultStatusCreateManyInputInputObject =
+   | Extract<keyof KeyResultStatusCreateManyInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'connect'; alias?: string }
+
+export interface KeysUpdateInput {
+   userType?: KeyUserTypeUpdateManyInput | null
+   resultStatus?: KeyResultStatusUpdateManyInput | null
+}
+export type KeysUpdateInputInputObject =
+   | Extract<keyof KeysUpdateInput, string>
+   | { name: 'userType'; alias?: string }
+   | { name: 'resultStatus'; alias?: string }
+
+export interface KeyUserTypeUpdateManyInput {
+   create?: KeyUserTypeCreateInput[]
+   update?: KeyUserTypeUpdateWithWhereUniqueNestedInput[]
+   upsert?: KeyUserTypeUpsertWithWhereUniqueNestedInput[]
+   delete?: KeyUserTypeWhereUniqueInput[]
+   connect?: KeyUserTypeWhereUniqueInput[]
+   set?: KeyUserTypeWhereUniqueInput[]
+   disconnect?: KeyUserTypeWhereUniqueInput[]
+   deleteMany?: KeyUserTypeScalarWhereInput[]
+   updateMany?: KeyUserTypeUpdateManyWithWhereNestedInput[]
+}
+export type KeyUserTypeUpdateManyInputInputObject =
+   | Extract<keyof KeyUserTypeUpdateManyInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'upsert'; alias?: string }
+   | { name: 'delete'; alias?: string }
+   | { name: 'connect'; alias?: string }
+   | { name: 'set'; alias?: string }
+   | { name: 'disconnect'; alias?: string }
+   | { name: 'deleteMany'; alias?: string }
+   | { name: 'updateMany'; alias?: string }
+
+export interface KeyUserTypeUpdateWithWhereUniqueNestedInput {
+   where?: KeyUserTypeWhereUniqueInput
+   data?: KeyUserTypeUpdateDataInput
+}
+export type KeyUserTypeUpdateWithWhereUniqueNestedInputInputObject =
+   | Extract<keyof KeyUserTypeUpdateWithWhereUniqueNestedInput, string>
+   | { name: 'where'; alias?: string }
+   | { name: 'data'; alias?: string }
+
+export interface KeyUserTypeUpdateDataInput {
+   key?: string | null
+   steps?: StepUpdateManyWithoutTypeInput | null
+}
+export type KeyUserTypeUpdateDataInputInputObject =
+   | Extract<keyof KeyUserTypeUpdateDataInput, string>
+   | { name: 'key'; alias?: string }
+   | { name: 'steps'; alias?: string }
+
+export interface StepUpdateManyWithoutTypeInput {
+   create?: StepCreateWithoutTypeInput[]
+   delete?: StepWhereUniqueInput[]
+   connect?: StepWhereUniqueInput[]
+   set?: StepWhereUniqueInput[]
+   disconnect?: StepWhereUniqueInput[]
+   update?: StepUpdateWithWhereUniqueWithoutTypeInput[]
+   upsert?: StepUpsertWithWhereUniqueWithoutTypeInput[]
+   deleteMany?: StepScalarWhereInput[]
+   updateMany?: StepUpdateManyWithWhereNestedInput[]
+}
+export type StepUpdateManyWithoutTypeInputInputObject =
+   | Extract<keyof StepUpdateManyWithoutTypeInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'delete'; alias?: string }
+   | { name: 'connect'; alias?: string }
+   | { name: 'set'; alias?: string }
+   | { name: 'disconnect'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'upsert'; alias?: string }
+   | { name: 'deleteMany'; alias?: string }
+   | { name: 'updateMany'; alias?: string }
+
+export interface StepUpdateWithWhereUniqueWithoutTypeInput {
+   where?: StepWhereUniqueInput
+   data?: StepUpdateWithoutTypeDataInput
+}
+export type StepUpdateWithWhereUniqueWithoutTypeInputInputObject =
+   | Extract<keyof StepUpdateWithWhereUniqueWithoutTypeInput, string>
+   | { name: 'where'; alias?: string }
+   | { name: 'data'; alias?: string }
+
+export interface StepUpdateWithoutTypeDataInput {
+   parent?: TestUpdateOneWithoutStepsInput | null
+   question?: string | null
+   targets?: MenuUpdateManyInput | null
+   paths?: PathUpdateManyWithoutParentInput | null
+   results?: StepResultUpdateManyWithoutParentInput | null
+}
+export type StepUpdateWithoutTypeDataInputInputObject =
+   | Extract<keyof StepUpdateWithoutTypeDataInput, string>
+   | { name: 'parent'; alias?: string }
+   | { name: 'question'; alias?: string }
+   | { name: 'targets'; alias?: string }
+   | { name: 'paths'; alias?: string }
+   | { name: 'results'; alias?: string }
+
+export interface StepUpsertWithWhereUniqueWithoutTypeInput {
+   where?: StepWhereUniqueInput
+   update?: StepUpdateWithoutTypeDataInput
+   create?: StepCreateWithoutTypeInput
+}
+export type StepUpsertWithWhereUniqueWithoutTypeInputInputObject =
+   | Extract<keyof StepUpsertWithWhereUniqueWithoutTypeInput, string>
+   | { name: 'where'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'create'; alias?: string }
+
+export interface KeyUserTypeUpsertWithWhereUniqueNestedInput {
+   where?: KeyUserTypeWhereUniqueInput
+   update?: KeyUserTypeUpdateDataInput
+   create?: KeyUserTypeCreateInput
+}
+export type KeyUserTypeUpsertWithWhereUniqueNestedInputInputObject =
+   | Extract<keyof KeyUserTypeUpsertWithWhereUniqueNestedInput, string>
+   | { name: 'where'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'create'; alias?: string }
+
+export interface KeyResultStatusUpdateManyInput {
+   create?: KeyResultStatusCreateInput[]
+   update?: KeyResultStatusUpdateWithWhereUniqueNestedInput[]
+   upsert?: KeyResultStatusUpsertWithWhereUniqueNestedInput[]
+   delete?: KeyResultStatusWhereUniqueInput[]
+   connect?: KeyResultStatusWhereUniqueInput[]
+   set?: KeyResultStatusWhereUniqueInput[]
+   disconnect?: KeyResultStatusWhereUniqueInput[]
+   deleteMany?: KeyResultStatusScalarWhereInput[]
+   updateMany?: KeyResultStatusUpdateManyWithWhereNestedInput[]
+}
+export type KeyResultStatusUpdateManyInputInputObject =
+   | Extract<keyof KeyResultStatusUpdateManyInput, string>
+   | { name: 'create'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'upsert'; alias?: string }
+   | { name: 'delete'; alias?: string }
+   | { name: 'connect'; alias?: string }
+   | { name: 'set'; alias?: string }
+   | { name: 'disconnect'; alias?: string }
+   | { name: 'deleteMany'; alias?: string }
+   | { name: 'updateMany'; alias?: string }
+
+export interface KeyResultStatusUpdateWithWhereUniqueNestedInput {
+   where?: KeyResultStatusWhereUniqueInput
+   data?: KeyResultStatusUpdateDataInput
+}
+export type KeyResultStatusUpdateWithWhereUniqueNestedInputInputObject =
+   | Extract<keyof KeyResultStatusUpdateWithWhereUniqueNestedInput, string>
+   | { name: 'where'; alias?: string }
+   | { name: 'data'; alias?: string }
+
+export interface KeyResultStatusUpsertWithWhereUniqueNestedInput {
+   where?: KeyResultStatusWhereUniqueInput
+   update?: KeyResultStatusUpdateDataInput
+   create?: KeyResultStatusCreateInput
+}
+export type KeyResultStatusUpsertWithWhereUniqueNestedInputInputObject =
+   | Extract<keyof KeyResultStatusUpsertWithWhereUniqueNestedInput, string>
+   | { name: 'where'; alias?: string }
+   | { name: 'update'; alias?: string }
+   | { name: 'create'; alias?: string }
+
+export interface KeyResultStatusScalarWhereInput {
+   id?: string | null
+   id_not?: string | null
+   id_in?: string[]
+   id_not_in?: string[]
+   id_lt?: string | null
+   id_lte?: string | null
+   id_gt?: string | null
+   id_gte?: string | null
+   id_contains?: string | null
+   id_not_contains?: string | null
+   id_starts_with?: string | null
+   id_not_starts_with?: string | null
+   id_ends_with?: string | null
+   id_not_ends_with?: string | null
+   key?: string | null
+   key_not?: string | null
+   key_in?: string[]
+   key_not_in?: string[]
+   key_lt?: string | null
+   key_lte?: string | null
+   key_gt?: string | null
+   key_gte?: string | null
+   key_contains?: string | null
+   key_not_contains?: string | null
+   key_starts_with?: string | null
+   key_not_starts_with?: string | null
+   key_ends_with?: string | null
+   key_not_ends_with?: string | null
+   AND?: KeyResultStatusScalarWhereInput[]
+   OR?: KeyResultStatusScalarWhereInput[]
+   NOT?: KeyResultStatusScalarWhereInput[]
+}
+export type KeyResultStatusScalarWhereInputInputObject =
+   | Extract<keyof KeyResultStatusScalarWhereInput, string>
+   | { name: 'id'; alias?: string }
+   | { name: 'id_not'; alias?: string }
+   | { name: 'id_in'; alias?: string }
+   | { name: 'id_not_in'; alias?: string }
+   | { name: 'id_lt'; alias?: string }
+   | { name: 'id_lte'; alias?: string }
+   | { name: 'id_gt'; alias?: string }
+   | { name: 'id_gte'; alias?: string }
+   | { name: 'id_contains'; alias?: string }
+   | { name: 'id_not_contains'; alias?: string }
+   | { name: 'id_starts_with'; alias?: string }
+   | { name: 'id_not_starts_with'; alias?: string }
+   | { name: 'id_ends_with'; alias?: string }
+   | { name: 'id_not_ends_with'; alias?: string }
+   | { name: 'key'; alias?: string }
+   | { name: 'key_not'; alias?: string }
+   | { name: 'key_in'; alias?: string }
+   | { name: 'key_not_in'; alias?: string }
+   | { name: 'key_lt'; alias?: string }
+   | { name: 'key_lte'; alias?: string }
+   | { name: 'key_gt'; alias?: string }
+   | { name: 'key_gte'; alias?: string }
+   | { name: 'key_contains'; alias?: string }
+   | { name: 'key_not_contains'; alias?: string }
+   | { name: 'key_starts_with'; alias?: string }
+   | { name: 'key_not_starts_with'; alias?: string }
+   | { name: 'key_ends_with'; alias?: string }
+   | { name: 'key_not_ends_with'; alias?: string }
+   | { name: 'AND'; alias?: string }
+   | { name: 'OR'; alias?: string }
+   | { name: 'NOT'; alias?: string }
+
+export interface KeyResultStatusUpdateManyWithWhereNestedInput {
+   where?: KeyResultStatusScalarWhereInput
+   data?: KeyResultStatusUpdateManyDataInput
+}
+export type KeyResultStatusUpdateManyWithWhereNestedInputInputObject =
+   | Extract<keyof KeyResultStatusUpdateManyWithWhereNestedInput, string>
+   | { name: 'where'; alias?: string }
+   | { name: 'data'; alias?: string }
+
+export interface KeyResultStatusUpdateManyDataInput {
+   key?: string | null
+}
+export type KeyResultStatusUpdateManyDataInputInputObject =
+   | Extract<keyof KeyResultStatusUpdateManyDataInput, string>
+   | { name: 'key'; alias?: string }
+
+export interface KeyUserTypeUpdateInput {
+   key?: string | null
+   steps?: StepUpdateManyWithoutTypeInput | null
+}
+export type KeyUserTypeUpdateInputInputObject =
+   | Extract<keyof KeyUserTypeUpdateInput, string>
+   | { name: 'key'; alias?: string }
+   | { name: 'steps'; alias?: string }
+
+export interface KeyUserTypeUpdateManyMutationInput {
+   key?: string | null
+}
+export type KeyUserTypeUpdateManyMutationInputInputObject =
+   | Extract<keyof KeyUserTypeUpdateManyMutationInput, string>
+   | { name: 'key'; alias?: string }
+
+export interface KeyResultStatusUpdateInput {
+   key?: string | null
+   results?: TestResultUpdateManyWithoutStatusInput | null
+}
+export type KeyResultStatusUpdateInputInputObject =
+   | Extract<keyof KeyResultStatusUpdateInput, string>
+   | { name: 'key'; alias?: string }
+   | { name: 'results'; alias?: string }
+
+export interface KeyResultStatusUpdateManyMutationInput {
+   key?: string | null
+}
+export type KeyResultStatusUpdateManyMutationInputInputObject =
+   | Extract<keyof KeyResultStatusUpdateManyMutationInput, string>
+   | { name: 'key'; alias?: string }
+
+export interface StepUpdateInput {
+   parent?: TestUpdateOneWithoutStepsInput | null
+   type?: KeyUserTypeUpdateManyWithoutStepsInput | null
+   question?: string | null
+   targets?: MenuUpdateManyInput | null
+   paths?: PathUpdateManyWithoutParentInput | null
    results?: StepResultUpdateManyWithoutParentInput | null
 }
 export type StepUpdateInputInputObject =
    | Extract<keyof StepUpdateInput, string>
+   | { name: 'parent'; alias?: string }
+   | { name: 'type'; alias?: string }
    | { name: 'question'; alias?: string }
-   | { name: 'target'; alias?: string }
-   | { name: 'path'; alias?: string }
+   | { name: 'targets'; alias?: string }
+   | { name: 'paths'; alias?: string }
    | { name: 'results'; alias?: string }
 
 export interface StepUpdateManyMutationInput {
@@ -7500,7 +10933,7 @@ export interface TestResultCreateInput {
    end?: string | null
    time?: TimeResultCreateOneInput | null
    steps?: StepResultCreateManyWithoutResultParentInput | null
-   status?: prisma.ResultStatus | null
+   status?: KeyResultStatusCreateOneWithoutResultsInput
 }
 export type TestResultCreateInputInputObject =
    | Extract<keyof TestResultCreateInput, string>
@@ -7518,7 +10951,7 @@ export interface TestResultUpdateInput {
    end?: string | null
    time?: TimeResultUpdateOneInput | null
    steps?: StepResultUpdateManyWithoutResultParentInput | null
-   status?: prisma.ResultStatus | null
+   status?: KeyResultStatusUpdateOneRequiredWithoutResultsInput | null
 }
 export type TestResultUpdateInputInputObject =
    | Extract<keyof TestResultUpdateInput, string>
@@ -7532,13 +10965,11 @@ export type TestResultUpdateInputInputObject =
 export interface TestResultUpdateManyMutationInput {
    start?: string | null
    end?: string | null
-   status?: prisma.ResultStatus | null
 }
 export type TestResultUpdateManyMutationInputInputObject =
    | Extract<keyof TestResultUpdateManyMutationInput, string>
    | { name: 'start'; alias?: string }
    | { name: 'end'; alias?: string }
-   | { name: 'status'; alias?: string }
 
 export interface TimeResultUpdateInput {
    int?: number | null
@@ -7566,7 +10997,7 @@ export interface StepResultCreateInput {
    end?: string | null
    time?: TimeResultCreateOneInput | null
    path?: MenuCreateManyInput | null
-   status?: prisma.ResultStatus | null
+   status?: KeyResultStatusCreateOneInput
 }
 export type StepResultCreateInputInputObject =
    | Extract<keyof StepResultCreateInput, string>
@@ -7586,7 +11017,7 @@ export interface StepResultUpdateInput {
    end?: string | null
    time?: TimeResultUpdateOneInput | null
    path?: MenuUpdateManyInput | null
-   status?: prisma.ResultStatus | null
+   status?: KeyResultStatusUpdateOneRequiredInput | null
 }
 export type StepResultUpdateInputInputObject =
    | Extract<keyof StepResultUpdateInput, string>
@@ -7601,13 +11032,11 @@ export type StepResultUpdateInputInputObject =
 export interface StepResultUpdateManyMutationInput {
    start?: string | null
    end?: string | null
-   status?: prisma.ResultStatus | null
 }
 export type StepResultUpdateManyMutationInputInputObject =
    | Extract<keyof StepResultUpdateManyMutationInput, string>
    | { name: 'start'; alias?: string }
    | { name: 'end'; alias?: string }
-   | { name: 'status'; alias?: string }
 
 export interface ViewSubscriptionWhereInput {
    mutation_in?: prisma.MutationType[]
@@ -7694,6 +11123,74 @@ export type MenuSubscriptionWhereInputInputObject =
    | { name: 'node'; alias?: string }
    | { name: 'AND'; alias?: string }
 
+export interface PathSubscriptionWhereInput {
+   mutation_in?: prisma.MutationType[]
+   updatedFields_contains?: string | null
+   updatedFields_contains_every?: string[]
+   updatedFields_contains_some?: string[]
+   node?: PathWhereInput | null
+   AND?: PathSubscriptionWhereInput[]
+}
+export type PathSubscriptionWhereInputInputObject =
+   | Extract<keyof PathSubscriptionWhereInput, string>
+   | { name: 'mutation_in'; alias?: string }
+   | { name: 'updatedFields_contains'; alias?: string }
+   | { name: 'updatedFields_contains_every'; alias?: string }
+   | { name: 'updatedFields_contains_some'; alias?: string }
+   | { name: 'node'; alias?: string }
+   | { name: 'AND'; alias?: string }
+
+export interface KeysSubscriptionWhereInput {
+   mutation_in?: prisma.MutationType[]
+   updatedFields_contains?: string | null
+   updatedFields_contains_every?: string[]
+   updatedFields_contains_some?: string[]
+   node?: KeysWhereInput | null
+   AND?: KeysSubscriptionWhereInput[]
+}
+export type KeysSubscriptionWhereInputInputObject =
+   | Extract<keyof KeysSubscriptionWhereInput, string>
+   | { name: 'mutation_in'; alias?: string }
+   | { name: 'updatedFields_contains'; alias?: string }
+   | { name: 'updatedFields_contains_every'; alias?: string }
+   | { name: 'updatedFields_contains_some'; alias?: string }
+   | { name: 'node'; alias?: string }
+   | { name: 'AND'; alias?: string }
+
+export interface KeyUserTypeSubscriptionWhereInput {
+   mutation_in?: prisma.MutationType[]
+   updatedFields_contains?: string | null
+   updatedFields_contains_every?: string[]
+   updatedFields_contains_some?: string[]
+   node?: KeyUserTypeWhereInput | null
+   AND?: KeyUserTypeSubscriptionWhereInput[]
+}
+export type KeyUserTypeSubscriptionWhereInputInputObject =
+   | Extract<keyof KeyUserTypeSubscriptionWhereInput, string>
+   | { name: 'mutation_in'; alias?: string }
+   | { name: 'updatedFields_contains'; alias?: string }
+   | { name: 'updatedFields_contains_every'; alias?: string }
+   | { name: 'updatedFields_contains_some'; alias?: string }
+   | { name: 'node'; alias?: string }
+   | { name: 'AND'; alias?: string }
+
+export interface KeyResultStatusSubscriptionWhereInput {
+   mutation_in?: prisma.MutationType[]
+   updatedFields_contains?: string | null
+   updatedFields_contains_every?: string[]
+   updatedFields_contains_some?: string[]
+   node?: KeyResultStatusWhereInput | null
+   AND?: KeyResultStatusSubscriptionWhereInput[]
+}
+export type KeyResultStatusSubscriptionWhereInputInputObject =
+   | Extract<keyof KeyResultStatusSubscriptionWhereInput, string>
+   | { name: 'mutation_in'; alias?: string }
+   | { name: 'updatedFields_contains'; alias?: string }
+   | { name: 'updatedFields_contains_every'; alias?: string }
+   | { name: 'updatedFields_contains_some'; alias?: string }
+   | { name: 'node'; alias?: string }
+   | { name: 'AND'; alias?: string }
+
 export interface StepSubscriptionWhereInput {
    mutation_in?: prisma.MutationType[]
    updatedFields_contains?: string | null
@@ -7765,10 +11262,10 @@ export type StepResultSubscriptionWhereInputInputObject =
 export type MenuOrderByInputValues =
    | 'id_ASC'
    | 'id_DESC'
+   | 'root_ASC'
+   | 'root_DESC'
    | 'name_ASC'
    | 'name_DESC'
-
-export type ResultStatusValues = 'SUCESSES' | 'PARTIAL' | 'FAIL' | 'ABORTED'
 
 export type TestOrderByInputValues =
    | 'id_ASC'
@@ -7782,6 +11279,14 @@ export type StepOrderByInputValues =
    | 'question_ASC'
    | 'question_DESC'
 
+export type KeyUserTypeOrderByInputValues =
+   | 'id_ASC'
+   | 'id_DESC'
+   | 'key_ASC'
+   | 'key_DESC'
+
+export type PathOrderByInputValues = 'id_ASC' | 'id_DESC'
+
 export type StepResultOrderByInputValues =
    | 'id_ASC'
    | 'id_DESC'
@@ -7789,8 +11294,6 @@ export type StepResultOrderByInputValues =
    | 'start_DESC'
    | 'end_ASC'
    | 'end_DESC'
-   | 'status_ASC'
-   | 'status_DESC'
 
 export type TestResultOrderByInputValues =
    | 'id_ASC'
@@ -7799,8 +11302,6 @@ export type TestResultOrderByInputValues =
    | 'start_DESC'
    | 'end_ASC'
    | 'end_DESC'
-   | 'status_ASC'
-   | 'status_DESC'
 
 export type ViewOrderByInputValues = 'id_ASC' | 'id_DESC'
 
@@ -7821,6 +11322,14 @@ export type CompanyOrderByInputValues =
    | 'abbr_DESC'
    | 'logo_ASC'
    | 'logo_DESC'
+
+export type KeyResultStatusOrderByInputValues =
+   | 'id_ASC'
+   | 'id_DESC'
+   | 'key_ASC'
+   | 'key_DESC'
+
+export type KeysOrderByInputValues = 'id_ASC' | 'id_DESC'
 
 export type TimeResultOrderByInputValues =
    | 'id_ASC'

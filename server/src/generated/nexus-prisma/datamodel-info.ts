@@ -10,8 +10,11 @@ export default {
       Company: ['id'],
       Test: ['id'],
       Menu: ['id'],
+      Path: ['id'],
+      Keys: ['id'],
+      KeyUserType: ['id', 'key'],
+      KeyResultStatus: ['id', 'key'],
       Step: ['id'],
-      ResultStatus: [],
       TestResult: ['id'],
       TimeResult: ['id'],
       StepResult: ['id'],
@@ -1054,6 +1057,826 @@ export default {
                         ofType: {
                            kind: 'OBJECT',
                            name: 'MenuConnection',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'path',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'PathWhereUniqueInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'Path',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'paths',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'PathWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'orderBy',
+                           description: null,
+                           type: {
+                              kind: 'ENUM',
+                              name: 'PathOrderByInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'skip',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'after',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'before',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'first',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'last',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'LIST',
+                           name: null,
+                           ofType: {
+                              kind: 'OBJECT',
+                              name: 'Path',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'pathsConnection',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'PathWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'orderBy',
+                           description: null,
+                           type: {
+                              kind: 'ENUM',
+                              name: 'PathOrderByInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'skip',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'after',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'before',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'first',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'last',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'PathConnection',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'keys',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeysWhereUniqueInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'Keys',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'keyses',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeysWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'orderBy',
+                           description: null,
+                           type: {
+                              kind: 'ENUM',
+                              name: 'KeysOrderByInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'skip',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'after',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'before',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'first',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'last',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'LIST',
+                           name: null,
+                           ofType: {
+                              kind: 'OBJECT',
+                              name: 'Keys',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'keysesConnection',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeysWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'orderBy',
+                           description: null,
+                           type: {
+                              kind: 'ENUM',
+                              name: 'KeysOrderByInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'skip',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'after',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'before',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'first',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'last',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'KeysConnection',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'keyUserType',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeyUserTypeWhereUniqueInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'KeyUserType',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'keyUserTypes',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'orderBy',
+                           description: null,
+                           type: {
+                              kind: 'ENUM',
+                              name: 'KeyUserTypeOrderByInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'skip',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'after',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'before',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'first',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'last',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'LIST',
+                           name: null,
+                           ofType: {
+                              kind: 'OBJECT',
+                              name: 'KeyUserType',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'keyUserTypesConnection',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'orderBy',
+                           description: null,
+                           type: {
+                              kind: 'ENUM',
+                              name: 'KeyUserTypeOrderByInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'skip',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'after',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'before',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'first',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'last',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'KeyUserTypeConnection',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'keyResultStatus',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeyResultStatusWhereUniqueInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'KeyResultStatus',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'keyResultStatuses',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyResultStatusWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'orderBy',
+                           description: null,
+                           type: {
+                              kind: 'ENUM',
+                              name: 'KeyResultStatusOrderByInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'skip',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'after',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'before',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'first',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'last',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'LIST',
+                           name: null,
+                           ofType: {
+                              kind: 'OBJECT',
+                              name: 'KeyResultStatus',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'keyResultStatusesConnection',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyResultStatusWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'orderBy',
+                           description: null,
+                           type: {
+                              kind: 'ENUM',
+                              name: 'KeyResultStatusOrderByInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'skip',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'after',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'before',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'first',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'last',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'KeyResultStatusConnection',
                            ofType: null,
                         },
                      },
@@ -2577,7 +3400,27 @@ export default {
                      defaultValue: null,
                   },
                   {
-                     name: 'menu',
+                     name: 'root',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'Boolean',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'root_not',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'Boolean',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'menus_some',
                      description: null,
                      type: {
                         kind: 'INPUT_OBJECT',
@@ -2776,6 +3619,17 @@ export default {
                possibleTypes: null,
             },
             {
+               kind: 'SCALAR',
+               name: 'Boolean',
+               description:
+                  'The `Boolean` scalar type represents `true` or `false`.',
+               fields: null,
+               inputFields: null,
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
                kind: 'ENUM',
                name: 'MenuOrderByInput',
                description: null,
@@ -2791,6 +3645,18 @@ export default {
                   },
                   {
                      name: 'id_DESC',
+                     description: null,
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'root_ASC',
+                     description: null,
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'root_DESC',
                      description: null,
                      isDeprecated: false,
                      deprecationReason: null,
@@ -2843,13 +3709,108 @@ export default {
                      deprecationReason: null,
                   },
                   {
-                     name: 'menu',
+                     name: 'root',
                      description: null,
                      args: [],
                      type: {
-                        kind: 'OBJECT',
-                        name: 'Menu',
-                        ofType: null,
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'Boolean',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'menus',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'MenuWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'orderBy',
+                           description: null,
+                           type: {
+                              kind: 'ENUM',
+                              name: 'MenuOrderByInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'skip',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'after',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'before',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'first',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'last',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'OBJECT',
+                              name: 'Menu',
+                              ofType: null,
+                           },
+                        },
                      },
                      isDeprecated: false,
                      deprecationReason: null,
@@ -3501,6 +4462,26 @@ export default {
                      defaultValue: null,
                   },
                   {
+                     name: 'parent',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TestWhereInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'type_some',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyUserTypeWhereInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
                      name: 'question',
                      description: null,
                      type: {
@@ -3657,7 +4638,7 @@ export default {
                      defaultValue: null,
                   },
                   {
-                     name: 'target',
+                     name: 'targets_some',
                      description: null,
                      type: {
                         kind: 'INPUT_OBJECT',
@@ -3667,11 +4648,11 @@ export default {
                      defaultValue: null,
                   },
                   {
-                     name: 'path_some',
+                     name: 'paths_some',
                      description: null,
                      type: {
                         kind: 'INPUT_OBJECT',
-                        name: 'MenuWhereInput',
+                        name: 'PathWhereInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -3698,6 +4679,562 @@ export default {
                            ofType: {
                               kind: 'INPUT_OBJECT',
                               name: 'StepWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyUserTypeWhereInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'ID',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'ID',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_lt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_lte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_gt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_gte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_not',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_not_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_lt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_lte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_gt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_gte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_not_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_not_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_not_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'steps_some',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepWhereInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'AND',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'PathWhereInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'ID',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'ID',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_lt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_lte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_gt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_gte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'parent',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepWhereInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'paths_some',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'MenuWhereInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'AND',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'PathWhereInput',
                               ofType: null,
                            },
                         },
@@ -4107,55 +5644,9 @@ export default {
                      name: 'status',
                      description: null,
                      type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyResultStatusWhereInput',
                         ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'status_not',
-                     description: null,
-                     type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'status_in',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'ENUM',
-                              name: 'ResultStatus',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'status_not_in',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'ENUM',
-                              name: 'ResultStatus',
-                              ofType: null,
-                           },
-                        },
                      },
                      defaultValue: null,
                   },
@@ -4570,55 +6061,9 @@ export default {
                      name: 'status',
                      description: null,
                      type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyResultStatusWhereInput',
                         ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'status_not',
-                     description: null,
-                     type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'status_in',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'ENUM',
-                              name: 'ResultStatus',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'status_not_in',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'ENUM',
-                              name: 'ResultStatus',
-                              ofType: null,
-                           },
-                        },
                      },
                      defaultValue: null,
                   },
@@ -5093,38 +6538,354 @@ export default {
                possibleTypes: null,
             },
             {
-               kind: 'ENUM',
-               name: 'ResultStatus',
+               kind: 'INPUT_OBJECT',
+               name: 'KeyResultStatusWhereInput',
                description: null,
                fields: null,
-               inputFields: null,
-               interfaces: null,
-               enumValues: [
+               inputFields: [
                   {
-                     name: 'SUCESSES',
+                     name: 'id',
                      description: null,
-                     isDeprecated: false,
-                     deprecationReason: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
                   },
                   {
-                     name: 'PARTIAL',
+                     name: 'id_not',
                      description: null,
-                     isDeprecated: false,
-                     deprecationReason: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
                   },
                   {
-                     name: 'FAIL',
+                     name: 'id_in',
                      description: null,
-                     isDeprecated: false,
-                     deprecationReason: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'ID',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
                   },
                   {
-                     name: 'ABORTED',
+                     name: 'id_not_in',
                      description: null,
-                     isDeprecated: false,
-                     deprecationReason: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'ID',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_lt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_lte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_gt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_gte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_not',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_not_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_lt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_lte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_gt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_gte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_not_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_not_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_not_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'results_some',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TestResultWhereInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'AND',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyResultStatusWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
                   },
                ],
+               interfaces: null,
+               enumValues: null,
                possibleTypes: null,
             },
             {
@@ -5535,6 +7296,109 @@ export default {
                      deprecationReason: null,
                   },
                   {
+                     name: 'parent',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'Test',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'type',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'orderBy',
+                           description: null,
+                           type: {
+                              kind: 'ENUM',
+                              name: 'KeyUserTypeOrderByInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'skip',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'after',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'before',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'first',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'last',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'OBJECT',
+                              name: 'KeyUserType',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
                      name: 'question',
                      description: null,
                      args: [],
@@ -5551,23 +7415,7 @@ export default {
                      deprecationReason: null,
                   },
                   {
-                     name: 'target',
-                     description: null,
-                     args: [],
-                     type: {
-                        kind: 'NON_NULL',
-                        name: null,
-                        ofType: {
-                           kind: 'OBJECT',
-                           name: 'Menu',
-                           ofType: null,
-                        },
-                     },
-                     isDeprecated: false,
-                     deprecationReason: null,
-                  },
-                  {
-                     name: 'path',
+                     name: 'targets',
                      description: null,
                      args: [
                         {
@@ -5650,6 +7498,97 @@ export default {
                            ofType: {
                               kind: 'OBJECT',
                               name: 'Menu',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'paths',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'PathWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'orderBy',
+                           description: null,
+                           type: {
+                              kind: 'ENUM',
+                              name: 'PathOrderByInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'skip',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'after',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'before',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'first',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'last',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'OBJECT',
+                              name: 'Path',
                               ofType: null,
                            },
                         },
@@ -5756,6 +7695,332 @@ export default {
             },
             {
                kind: 'ENUM',
+               name: 'KeyUserTypeOrderByInput',
+               description: null,
+               fields: null,
+               inputFields: null,
+               interfaces: null,
+               enumValues: [
+                  {
+                     name: 'id_ASC',
+                     description: null,
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'id_DESC',
+                     description: null,
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'key_ASC',
+                     description: null,
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'key_DESC',
+                     description: null,
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               possibleTypes: null,
+            },
+            {
+               kind: 'OBJECT',
+               name: 'KeyUserType',
+               description: null,
+               fields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'ID',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'key',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'String',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'steps',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'orderBy',
+                           description: null,
+                           type: {
+                              kind: 'ENUM',
+                              name: 'StepOrderByInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'skip',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'after',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'before',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'first',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'last',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'OBJECT',
+                              name: 'Step',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'ENUM',
+               name: 'PathOrderByInput',
+               description: null,
+               fields: null,
+               inputFields: null,
+               interfaces: null,
+               enumValues: [
+                  {
+                     name: 'id_ASC',
+                     description: null,
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'id_DESC',
+                     description: null,
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               possibleTypes: null,
+            },
+            {
+               kind: 'OBJECT',
+               name: 'Path',
+               description: null,
+               fields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'ID',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'parent',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'Step',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'paths',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'MenuWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'orderBy',
+                           description: null,
+                           type: {
+                              kind: 'ENUM',
+                              name: 'MenuOrderByInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'skip',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'after',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'before',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'first',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'last',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'OBJECT',
+                              name: 'Menu',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'ENUM',
                name: 'StepResultOrderByInput',
                description: null,
                fields: null,
@@ -5794,18 +8059,6 @@ export default {
                   },
                   {
                      name: 'end_DESC',
-                     description: null,
-                     isDeprecated: false,
-                     deprecationReason: null,
-                  },
-                  {
-                     name: 'status_ASC',
-                     description: null,
-                     isDeprecated: false,
-                     deprecationReason: null,
-                  },
-                  {
-                     name: 'status_DESC',
                      description: null,
                      isDeprecated: false,
                      deprecationReason: null,
@@ -6005,8 +8258,8 @@ export default {
                         kind: 'NON_NULL',
                         name: null,
                         ofType: {
-                           kind: 'ENUM',
-                           name: 'ResultStatus',
+                           kind: 'OBJECT',
+                           name: 'KeyResultStatus',
                            ofType: null,
                         },
                      },
@@ -6195,8 +8448,8 @@ export default {
                         kind: 'NON_NULL',
                         name: null,
                         ofType: {
-                           kind: 'ENUM',
-                           name: 'ResultStatus',
+                           kind: 'OBJECT',
+                           name: 'KeyResultStatus',
                            ofType: null,
                         },
                      },
@@ -6269,6 +8522,140 @@ export default {
                possibleTypes: null,
             },
             {
+               kind: 'OBJECT',
+               name: 'KeyResultStatus',
+               description: null,
+               fields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'ID',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'key',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'String',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'results',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'TestResultWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'orderBy',
+                           description: null,
+                           type: {
+                              kind: 'ENUM',
+                              name: 'TestResultOrderByInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'skip',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'after',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'before',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'first',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'last',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'OBJECT',
+                              name: 'TestResult',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
                kind: 'ENUM',
                name: 'TestResultOrderByInput',
                description: null,
@@ -6308,18 +8695,6 @@ export default {
                   },
                   {
                      name: 'end_DESC',
-                     description: null,
-                     isDeprecated: false,
-                     deprecationReason: null,
-                  },
-                  {
-                     name: 'status_ASC',
-                     description: null,
-                     isDeprecated: false,
-                     deprecationReason: null,
-                  },
-                  {
-                     name: 'status_DESC',
                      description: null,
                      isDeprecated: false,
                      deprecationReason: null,
@@ -7866,17 +10241,6 @@ export default {
                possibleTypes: null,
             },
             {
-               kind: 'SCALAR',
-               name: 'Boolean',
-               description:
-                  'The `Boolean` scalar type represents `true` or `false`.',
-               fields: null,
-               inputFields: null,
-               interfaces: null,
-               enumValues: null,
-               possibleTypes: null,
-            },
-            {
                kind: 'OBJECT',
                name: 'ViewEdge',
                description: null,
@@ -8644,6 +11008,1114 @@ export default {
             {
                kind: 'OBJECT',
                name: 'AggregateMenu',
+               description: null,
+               fields: [
+                  {
+                     name: 'count',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'Int',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'PathWhereUniqueInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'OBJECT',
+               name: 'PathConnection',
+               description: null,
+               fields: [
+                  {
+                     name: 'pageInfo',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'PageInfo',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'edges',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'LIST',
+                           name: null,
+                           ofType: {
+                              kind: 'OBJECT',
+                              name: 'PathEdge',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'aggregate',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'AggregatePath',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'OBJECT',
+               name: 'PathEdge',
+               description: null,
+               fields: [
+                  {
+                     name: 'node',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'Path',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'cursor',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'String',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'OBJECT',
+               name: 'AggregatePath',
+               description: null,
+               fields: [
+                  {
+                     name: 'count',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'Int',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeysWhereUniqueInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'OBJECT',
+               name: 'Keys',
+               description: null,
+               fields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'ID',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'userType',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'orderBy',
+                           description: null,
+                           type: {
+                              kind: 'ENUM',
+                              name: 'KeyUserTypeOrderByInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'skip',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'after',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'before',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'first',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'last',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'OBJECT',
+                              name: 'KeyUserType',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'resultStatus',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyResultStatusWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'orderBy',
+                           description: null,
+                           type: {
+                              kind: 'ENUM',
+                              name: 'KeyResultStatusOrderByInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'skip',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'after',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'before',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'first',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'last',
+                           description: null,
+                           type: {
+                              kind: 'SCALAR',
+                              name: 'Int',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'OBJECT',
+                              name: 'KeyResultStatus',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'ENUM',
+               name: 'KeyResultStatusOrderByInput',
+               description: null,
+               fields: null,
+               inputFields: null,
+               interfaces: null,
+               enumValues: [
+                  {
+                     name: 'id_ASC',
+                     description: null,
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'id_DESC',
+                     description: null,
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'key_ASC',
+                     description: null,
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'key_DESC',
+                     description: null,
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeysWhereInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'ID',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'ID',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_lt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_lte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_gt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_gte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'userType_some',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyUserTypeWhereInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'resultStatus_some',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyResultStatusWhereInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'AND',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeysWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'ENUM',
+               name: 'KeysOrderByInput',
+               description: null,
+               fields: null,
+               inputFields: null,
+               interfaces: null,
+               enumValues: [
+                  {
+                     name: 'id_ASC',
+                     description: null,
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'id_DESC',
+                     description: null,
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               possibleTypes: null,
+            },
+            {
+               kind: 'OBJECT',
+               name: 'KeysConnection',
+               description: null,
+               fields: [
+                  {
+                     name: 'pageInfo',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'PageInfo',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'edges',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'LIST',
+                           name: null,
+                           ofType: {
+                              kind: 'OBJECT',
+                              name: 'KeysEdge',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'aggregate',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'AggregateKeys',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'OBJECT',
+               name: 'KeysEdge',
+               description: null,
+               fields: [
+                  {
+                     name: 'node',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'Keys',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'cursor',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'String',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'OBJECT',
+               name: 'AggregateKeys',
+               description: null,
+               fields: [
+                  {
+                     name: 'count',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'Int',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyUserTypeWhereUniqueInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'OBJECT',
+               name: 'KeyUserTypeConnection',
+               description: null,
+               fields: [
+                  {
+                     name: 'pageInfo',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'PageInfo',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'edges',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'LIST',
+                           name: null,
+                           ofType: {
+                              kind: 'OBJECT',
+                              name: 'KeyUserTypeEdge',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'aggregate',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'AggregateKeyUserType',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'OBJECT',
+               name: 'KeyUserTypeEdge',
+               description: null,
+               fields: [
+                  {
+                     name: 'node',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'KeyUserType',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'cursor',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'String',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'OBJECT',
+               name: 'AggregateKeyUserType',
+               description: null,
+               fields: [
+                  {
+                     name: 'count',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'Int',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyResultStatusWhereUniqueInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'OBJECT',
+               name: 'KeyResultStatusConnection',
+               description: null,
+               fields: [
+                  {
+                     name: 'pageInfo',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'PageInfo',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'edges',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'LIST',
+                           name: null,
+                           ofType: {
+                              kind: 'OBJECT',
+                              name: 'KeyResultStatusEdge',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'aggregate',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'AggregateKeyResultStatus',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'OBJECT',
+               name: 'KeyResultStatusEdge',
+               description: null,
+               fields: [
+                  {
+                     name: 'node',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'KeyResultStatus',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'cursor',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'String',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'OBJECT',
+               name: 'AggregateKeyResultStatus',
                description: null,
                fields: [
                   {
@@ -10453,6 +13925,828 @@ export default {
                      deprecationReason: null,
                   },
                   {
+                     name: 'createPath',
+                     description: null,
+                     args: [
+                        {
+                           name: 'data',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'PathCreateInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'Path',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'updatePath',
+                     description: null,
+                     args: [
+                        {
+                           name: 'data',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'PathUpdateInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'PathWhereUniqueInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'Path',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'upsertPath',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'PathWhereUniqueInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'create',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'PathCreateInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'update',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'PathUpdateInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'Path',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'deletePath',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'PathWhereUniqueInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'Path',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'deleteManyPaths',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'PathWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'BatchPayload',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'createKeys',
+                     description: null,
+                     args: [
+                        {
+                           name: 'data',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeysCreateInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'Keys',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'updateKeys',
+                     description: null,
+                     args: [
+                        {
+                           name: 'data',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeysUpdateInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeysWhereUniqueInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'Keys',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'upsertKeys',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeysWhereUniqueInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'create',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeysCreateInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'update',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeysUpdateInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'Keys',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'deleteKeys',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeysWhereUniqueInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'Keys',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'deleteManyKeyses',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeysWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'BatchPayload',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'createKeyUserType',
+                     description: null,
+                     args: [
+                        {
+                           name: 'data',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeyUserTypeCreateInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'KeyUserType',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'updateKeyUserType',
+                     description: null,
+                     args: [
+                        {
+                           name: 'data',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeyUserTypeUpdateInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeyUserTypeWhereUniqueInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'KeyUserType',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'updateManyKeyUserTypes',
+                     description: null,
+                     args: [
+                        {
+                           name: 'data',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeyUserTypeUpdateManyMutationInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'BatchPayload',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'upsertKeyUserType',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeyUserTypeWhereUniqueInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'create',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeyUserTypeCreateInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'update',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeyUserTypeUpdateInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'KeyUserType',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'deleteKeyUserType',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeyUserTypeWhereUniqueInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'KeyUserType',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'deleteManyKeyUserTypes',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'BatchPayload',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'createKeyResultStatus',
+                     description: null,
+                     args: [
+                        {
+                           name: 'data',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeyResultStatusCreateInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'KeyResultStatus',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'updateKeyResultStatus',
+                     description: null,
+                     args: [
+                        {
+                           name: 'data',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeyResultStatusUpdateInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeyResultStatusWhereUniqueInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'KeyResultStatus',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'updateManyKeyResultStatuses',
+                     description: null,
+                     args: [
+                        {
+                           name: 'data',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeyResultStatusUpdateManyMutationInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyResultStatusWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'BatchPayload',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'upsertKeyResultStatus',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeyResultStatusWhereUniqueInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'create',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeyResultStatusCreateInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                        {
+                           name: 'update',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeyResultStatusUpdateInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'KeyResultStatus',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'deleteKeyResultStatus',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'NON_NULL',
+                              name: null,
+                              ofType: {
+                                 kind: 'INPUT_OBJECT',
+                                 name: 'KeyResultStatusWhereUniqueInput',
+                                 ofType: null,
+                              },
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'KeyResultStatus',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'deleteManyKeyResultStatuses',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyResultStatusWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'OBJECT',
+                           name: 'BatchPayload',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
                      name: 'createStep',
                      description: null,
                      args: [
@@ -11671,11 +15965,21 @@ export default {
                      defaultValue: null,
                   },
                   {
-                     name: 'menu',
+                     name: 'root',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'Boolean',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'menus',
                      description: null,
                      type: {
                         kind: 'INPUT_OBJECT',
-                        name: 'MenuCreateOneWithoutItemsInput',
+                        name: 'MenuCreateManyWithoutItemsInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -11699,7 +16003,7 @@ export default {
                      description: null,
                      type: {
                         kind: 'INPUT_OBJECT',
-                        name: 'MenuCreateManyWithoutMenuInput',
+                        name: 'MenuCreateManyWithoutMenusInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -11711,83 +16015,7 @@ export default {
             },
             {
                kind: 'INPUT_OBJECT',
-               name: 'MenuCreateOneWithoutItemsInput',
-               description: null,
-               fields: null,
-               inputFields: [
-                  {
-                     name: 'create',
-                     description: null,
-                     type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'MenuCreateWithoutItemsInput',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'connect',
-                     description: null,
-                     type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'MenuWhereUniqueInput',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-               ],
-               interfaces: null,
-               enumValues: null,
-               possibleTypes: null,
-            },
-            {
-               kind: 'INPUT_OBJECT',
-               name: 'MenuCreateWithoutItemsInput',
-               description: null,
-               fields: null,
-               inputFields: [
-                  {
-                     name: 'id',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'ID',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'menu',
-                     description: null,
-                     type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'MenuCreateOneWithoutItemsInput',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'name',
-                     description: null,
-                     type: {
-                        kind: 'NON_NULL',
-                        name: null,
-                        ofType: {
-                           kind: 'SCALAR',
-                           name: 'String',
-                           ofType: null,
-                        },
-                     },
-                     defaultValue: null,
-                  },
-               ],
-               interfaces: null,
-               enumValues: null,
-               possibleTypes: null,
-            },
-            {
-               kind: 'INPUT_OBJECT',
-               name: 'MenuCreateManyWithoutMenuInput',
+               name: 'MenuCreateManyWithoutItemsInput',
                description: null,
                fields: null,
                inputFields: [
@@ -11802,7 +16030,7 @@ export default {
                            name: null,
                            ofType: {
                               kind: 'INPUT_OBJECT',
-                              name: 'MenuCreateWithoutMenuInput',
+                              name: 'MenuCreateWithoutItemsInput',
                               ofType: null,
                            },
                         },
@@ -11834,7 +16062,7 @@ export default {
             },
             {
                kind: 'INPUT_OBJECT',
-               name: 'MenuCreateWithoutMenuInput',
+               name: 'MenuCreateWithoutItemsInput',
                description: null,
                fields: null,
                inputFields: [
@@ -11844,6 +16072,118 @@ export default {
                      type: {
                         kind: 'SCALAR',
                         name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'root',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'Boolean',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'menus',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'MenuCreateManyWithoutItemsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'name',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'String',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'MenuCreateManyWithoutMenusInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'MenuCreateWithoutMenusInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'MenuWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'MenuCreateWithoutMenusInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'root',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'Boolean',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -11867,7 +16207,7 @@ export default {
                      description: null,
                      type: {
                         kind: 'INPUT_OBJECT',
-                        name: 'MenuCreateManyWithoutMenuInput',
+                        name: 'MenuCreateManyWithoutMenusInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -11959,7 +16299,7 @@ export default {
                      description: null,
                      type: {
                         kind: 'INPUT_OBJECT',
-                        name: 'StepCreateManyInput',
+                        name: 'StepCreateManyWithoutParentInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -11991,7 +16331,7 @@ export default {
             },
             {
                kind: 'INPUT_OBJECT',
-               name: 'StepCreateManyInput',
+               name: 'StepCreateManyWithoutParentInput',
                description: null,
                fields: null,
                inputFields: [
@@ -12006,7 +16346,7 @@ export default {
                            name: null,
                            ofType: {
                               kind: 'INPUT_OBJECT',
-                              name: 'StepCreateInput',
+                              name: 'StepCreateWithoutParentInput',
                               ofType: null,
                            },
                         },
@@ -12038,7 +16378,7 @@ export default {
             },
             {
                kind: 'INPUT_OBJECT',
-               name: 'StepCreateInput',
+               name: 'StepCreateWithoutParentInput',
                description: null,
                fields: null,
                inputFields: [
@@ -12048,6 +16388,16 @@ export default {
                      type: {
                         kind: 'SCALAR',
                         name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'type',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyUserTypeCreateManyWithoutStepsInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -12067,25 +16417,21 @@ export default {
                      defaultValue: null,
                   },
                   {
-                     name: 'target',
-                     description: null,
-                     type: {
-                        kind: 'NON_NULL',
-                        name: null,
-                        ofType: {
-                           kind: 'INPUT_OBJECT',
-                           name: 'MenuCreateOneInput',
-                           ofType: null,
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'path',
+                     name: 'targets',
                      description: null,
                      type: {
                         kind: 'INPUT_OBJECT',
                         name: 'MenuCreateManyInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'paths',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'PathCreateManyWithoutParentInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -12107,7 +16453,7 @@ export default {
             },
             {
                kind: 'INPUT_OBJECT',
-               name: 'MenuCreateOneInput',
+               name: 'KeyUserTypeCreateManyWithoutStepsInput',
                description: null,
                fields: null,
                inputFields: [
@@ -12115,9 +16461,17 @@ export default {
                      name: 'create',
                      description: null,
                      type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'MenuCreateInput',
-                        ofType: null,
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeCreateWithoutStepsInput',
+                              ofType: null,
+                           },
+                        },
                      },
                      defaultValue: null,
                   },
@@ -12125,8 +16479,129 @@ export default {
                      name: 'connect',
                      description: null,
                      type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyUserTypeCreateWithoutStepsInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'String',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'PathCreateManyWithoutParentInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'PathCreateWithoutParentInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'PathWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'PathCreateWithoutParentInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'paths',
+                     description: null,
+                     type: {
                         kind: 'INPUT_OBJECT',
-                        name: 'MenuWhereUniqueInput',
+                        name: 'MenuCreateManyInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -12261,9 +16736,13 @@ export default {
                      name: 'status',
                      description: null,
                      type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
-                        ofType: null,
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyResultStatusCreateOneInput',
+                           ofType: null,
+                        },
                      },
                      defaultValue: null,
                   },
@@ -12371,9 +16850,13 @@ export default {
                      name: 'status',
                      description: null,
                      type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
-                        ofType: null,
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyResultStatusCreateOneWithoutResultsInput',
+                           ofType: null,
+                        },
                      },
                      defaultValue: null,
                   },
@@ -12448,7 +16931,7 @@ export default {
                      description: null,
                      type: {
                         kind: 'INPUT_OBJECT',
-                        name: 'StepCreateManyInput',
+                        name: 'StepCreateManyWithoutParentInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -12550,7 +17033,149 @@ export default {
             },
             {
                kind: 'INPUT_OBJECT',
-               name: 'TestResultCreateManyWithoutParentInput',
+               name: 'KeyResultStatusCreateOneWithoutResultsInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyResultStatusCreateWithoutResultsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyResultStatusWhereUniqueInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyResultStatusCreateWithoutResultsInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'String',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyResultStatusCreateOneInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyResultStatusCreateInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyResultStatusWhereUniqueInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyResultStatusCreateInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'String',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'results',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TestResultCreateManyWithoutStatusInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'TestResultCreateManyWithoutStatusInput',
                description: null,
                fields: null,
                inputFields: [
@@ -12565,7 +17190,7 @@ export default {
                            name: null,
                            ofType: {
                               kind: 'INPUT_OBJECT',
-                              name: 'TestResultCreateWithoutParentInput',
+                              name: 'TestResultCreateWithoutStatusInput',
                               ofType: null,
                            },
                         },
@@ -12597,7 +17222,7 @@ export default {
             },
             {
                kind: 'INPUT_OBJECT',
-               name: 'TestResultCreateWithoutParentInput',
+               name: 'TestResultCreateWithoutStatusInput',
                description: null,
                fields: null,
                inputFields: [
@@ -12608,6 +17233,20 @@ export default {
                         kind: 'SCALAR',
                         name: 'ID',
                         ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'parent',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'TestCreateOneWithoutResultsInput',
+                           ofType: null,
+                        },
                      },
                      defaultValue: null,
                   },
@@ -12651,16 +17290,6 @@ export default {
                      type: {
                         kind: 'INPUT_OBJECT',
                         name: 'StepResultCreateManyWithoutResultParentInput',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'status',
-                     description: null,
-                     type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -12795,9 +17424,13 @@ export default {
                      name: 'status',
                      description: null,
                      type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
-                        ofType: null,
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyResultStatusCreateOneInput',
+                           ofType: null,
+                        },
                      },
                      defaultValue: null,
                   },
@@ -12854,6 +17487,26 @@ export default {
                      defaultValue: null,
                   },
                   {
+                     name: 'parent',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TestCreateOneWithoutStepsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'type',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyUserTypeCreateManyWithoutStepsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
                      name: 'question',
                      description: null,
                      type: {
@@ -12868,25 +17521,365 @@ export default {
                      defaultValue: null,
                   },
                   {
-                     name: 'target',
+                     name: 'targets',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'MenuCreateManyInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'paths',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'PathCreateManyWithoutParentInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'TestCreateOneWithoutStepsInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TestCreateWithoutStepsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TestWhereUniqueInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'TestCreateWithoutStepsInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'title',
                      description: null,
                      type: {
                         kind: 'NON_NULL',
                         name: null,
                         ofType: {
-                           kind: 'INPUT_OBJECT',
-                           name: 'MenuCreateOneInput',
+                           kind: 'SCALAR',
+                           name: 'String',
                            ofType: null,
                         },
                      },
                      defaultValue: null,
                   },
                   {
-                     name: 'path',
+                     name: 'menus',
                      description: null,
                      type: {
                         kind: 'INPUT_OBJECT',
                         name: 'MenuCreateManyInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'results',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TestResultCreateManyWithoutParentInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'TestResultCreateManyWithoutParentInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'TestResultCreateWithoutParentInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'TestResultWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'TestResultCreateWithoutParentInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'start',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'DateTime',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'end',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'DateTime',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'time',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TimeResultCreateOneInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'steps',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepResultCreateManyWithoutResultParentInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'status',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyResultStatusCreateOneWithoutResultsInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepCreateManyInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepCreateInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepCreateInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'parent',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TestCreateOneWithoutStepsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'type',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyUserTypeCreateManyWithoutStepsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'question',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'String',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'targets',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'MenuCreateManyInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'paths',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'PathCreateManyWithoutParentInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'results',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepResultCreateManyWithoutParentInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -13428,11 +18421,21 @@ export default {
                fields: null,
                inputFields: [
                   {
-                     name: 'menu',
+                     name: 'root',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'Boolean',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'menus',
                      description: null,
                      type: {
                         kind: 'INPUT_OBJECT',
-                        name: 'MenuUpdateOneWithoutItemsInput',
+                        name: 'MenuUpdateManyWithoutItemsInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -13452,7 +18455,7 @@ export default {
                      description: null,
                      type: {
                         kind: 'INPUT_OBJECT',
-                        name: 'MenuUpdateManyWithoutMenuInput',
+                        name: 'MenuUpdateManyWithoutMenusInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -13464,148 +18467,7 @@ export default {
             },
             {
                kind: 'INPUT_OBJECT',
-               name: 'MenuUpdateOneWithoutItemsInput',
-               description: null,
-               fields: null,
-               inputFields: [
-                  {
-                     name: 'create',
-                     description: null,
-                     type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'MenuCreateWithoutItemsInput',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'update',
-                     description: null,
-                     type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'MenuUpdateWithoutItemsDataInput',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'upsert',
-                     description: null,
-                     type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'MenuUpsertWithoutItemsInput',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'delete',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'Boolean',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'disconnect',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'Boolean',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'connect',
-                     description: null,
-                     type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'MenuWhereUniqueInput',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-               ],
-               interfaces: null,
-               enumValues: null,
-               possibleTypes: null,
-            },
-            {
-               kind: 'INPUT_OBJECT',
-               name: 'MenuUpdateWithoutItemsDataInput',
-               description: null,
-               fields: null,
-               inputFields: [
-                  {
-                     name: 'menu',
-                     description: null,
-                     type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'MenuUpdateOneWithoutItemsInput',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'name',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'String',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-               ],
-               interfaces: null,
-               enumValues: null,
-               possibleTypes: null,
-            },
-            {
-               kind: 'INPUT_OBJECT',
-               name: 'MenuUpsertWithoutItemsInput',
-               description: null,
-               fields: null,
-               inputFields: [
-                  {
-                     name: 'update',
-                     description: null,
-                     type: {
-                        kind: 'NON_NULL',
-                        name: null,
-                        ofType: {
-                           kind: 'INPUT_OBJECT',
-                           name: 'MenuUpdateWithoutItemsDataInput',
-                           ofType: null,
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'create',
-                     description: null,
-                     type: {
-                        kind: 'NON_NULL',
-                        name: null,
-                        ofType: {
-                           kind: 'INPUT_OBJECT',
-                           name: 'MenuCreateWithoutItemsInput',
-                           ofType: null,
-                        },
-                     },
-                     defaultValue: null,
-                  },
-               ],
-               interfaces: null,
-               enumValues: null,
-               possibleTypes: null,
-            },
-            {
-               kind: 'INPUT_OBJECT',
-               name: 'MenuUpdateManyWithoutMenuInput',
+               name: 'MenuUpdateManyWithoutItemsInput',
                description: null,
                fields: null,
                inputFields: [
@@ -13620,7 +18482,7 @@ export default {
                            name: null,
                            ofType: {
                               kind: 'INPUT_OBJECT',
-                              name: 'MenuCreateWithoutMenuInput',
+                              name: 'MenuCreateWithoutItemsInput',
                               ofType: null,
                            },
                         },
@@ -13710,7 +18572,8 @@ export default {
                            name: null,
                            ofType: {
                               kind: 'INPUT_OBJECT',
-                              name: 'MenuUpdateWithWhereUniqueWithoutMenuInput',
+                              name:
+                                 'MenuUpdateWithWhereUniqueWithoutItemsInput',
                               ofType: null,
                            },
                         },
@@ -13728,7 +18591,8 @@ export default {
                            name: null,
                            ofType: {
                               kind: 'INPUT_OBJECT',
-                              name: 'MenuUpsertWithWhereUniqueWithoutMenuInput',
+                              name:
+                                 'MenuUpsertWithWhereUniqueWithoutItemsInput',
                               ofType: null,
                            },
                         },
@@ -13778,7 +18642,7 @@ export default {
             },
             {
                kind: 'INPUT_OBJECT',
-               name: 'MenuUpdateWithWhereUniqueWithoutMenuInput',
+               name: 'MenuUpdateWithWhereUniqueWithoutItemsInput',
                description: null,
                fields: null,
                inputFields: [
@@ -13804,7 +18668,7 @@ export default {
                         name: null,
                         ofType: {
                            kind: 'INPUT_OBJECT',
-                           name: 'MenuUpdateWithoutMenuDataInput',
+                           name: 'MenuUpdateWithoutItemsDataInput',
                            ofType: null,
                         },
                      },
@@ -13817,26 +18681,36 @@ export default {
             },
             {
                kind: 'INPUT_OBJECT',
-               name: 'MenuUpdateWithoutMenuDataInput',
+               name: 'MenuUpdateWithoutItemsDataInput',
                description: null,
                fields: null,
                inputFields: [
+                  {
+                     name: 'root',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'Boolean',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'menus',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'MenuUpdateManyWithoutItemsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
                   {
                      name: 'name',
                      description: null,
                      type: {
                         kind: 'SCALAR',
                         name: 'String',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'items',
-                     description: null,
-                     type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'MenuUpdateManyWithoutMenuInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -13848,7 +18722,7 @@ export default {
             },
             {
                kind: 'INPUT_OBJECT',
-               name: 'MenuUpsertWithWhereUniqueWithoutMenuInput',
+               name: 'MenuUpsertWithWhereUniqueWithoutItemsInput',
                description: null,
                fields: null,
                inputFields: [
@@ -13874,7 +18748,7 @@ export default {
                         name: null,
                         ofType: {
                            kind: 'INPUT_OBJECT',
-                           name: 'MenuUpdateWithoutMenuDataInput',
+                           name: 'MenuUpdateWithoutItemsDataInput',
                            ofType: null,
                         },
                      },
@@ -13888,7 +18762,7 @@ export default {
                         name: null,
                         ofType: {
                            kind: 'INPUT_OBJECT',
-                           name: 'MenuCreateWithoutMenuInput',
+                           name: 'MenuCreateWithoutItemsInput',
                            ofType: null,
                         },
                      },
@@ -14057,6 +18931,26 @@ export default {
                      type: {
                         kind: 'SCALAR',
                         name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'root',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'Boolean',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'root_not',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'Boolean',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -14322,12 +19216,330 @@ export default {
                fields: null,
                inputFields: [
                   {
+                     name: 'root',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'Boolean',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
                      name: 'name',
                      description: null,
                      type: {
                         kind: 'SCALAR',
                         name: 'String',
                         ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'MenuUpdateManyWithoutMenusInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'MenuCreateWithoutMenusInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'delete',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'MenuWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'MenuWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'set',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'MenuWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'disconnect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'MenuWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name:
+                                 'MenuUpdateWithWhereUniqueWithoutMenusInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'upsert',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name:
+                                 'MenuUpsertWithWhereUniqueWithoutMenusInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'deleteMany',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'MenuScalarWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'updateMany',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'MenuUpdateManyWithWhereNestedInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'MenuUpdateWithWhereUniqueWithoutMenusInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'where',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'MenuWhereUniqueInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'data',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'MenuUpdateWithoutMenusDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'MenuUpdateWithoutMenusDataInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'root',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'Boolean',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'name',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'items',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'MenuUpdateManyWithoutMenusInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'MenuUpsertWithWhereUniqueWithoutMenusInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'where',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'MenuWhereUniqueInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'MenuUpdateWithoutMenusDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'MenuCreateWithoutMenusInput',
+                           ofType: null,
+                        },
                      },
                      defaultValue: null,
                   },
@@ -14622,7 +19834,7 @@ export default {
                      description: null,
                      type: {
                         kind: 'INPUT_OBJECT',
-                        name: 'StepUpdateManyInput',
+                        name: 'StepUpdateManyWithoutParentInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -14654,7 +19866,7 @@ export default {
             },
             {
                kind: 'INPUT_OBJECT',
-               name: 'StepUpdateManyInput',
+               name: 'StepUpdateManyWithoutParentInput',
                description: null,
                fields: null,
                inputFields: [
@@ -14669,43 +19881,7 @@ export default {
                            name: null,
                            ofType: {
                               kind: 'INPUT_OBJECT',
-                              name: 'StepCreateInput',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'update',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'INPUT_OBJECT',
-                              name: 'StepUpdateWithWhereUniqueNestedInput',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'upsert',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'INPUT_OBJECT',
-                              name: 'StepUpsertWithWhereUniqueNestedInput',
+                              name: 'StepCreateWithoutParentInput',
                               ofType: null,
                            },
                         },
@@ -14785,6 +19961,44 @@ export default {
                      defaultValue: null,
                   },
                   {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name:
+                                 'StepUpdateWithWhereUniqueWithoutParentInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'upsert',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name:
+                                 'StepUpsertWithWhereUniqueWithoutParentInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
                      name: 'deleteMany',
                      description: null,
                      type: {
@@ -14827,7 +20041,7 @@ export default {
             },
             {
                kind: 'INPUT_OBJECT',
-               name: 'StepUpdateWithWhereUniqueNestedInput',
+               name: 'StepUpdateWithWhereUniqueWithoutParentInput',
                description: null,
                fields: null,
                inputFields: [
@@ -14853,7 +20067,7 @@ export default {
                         name: null,
                         ofType: {
                            kind: 'INPUT_OBJECT',
-                           name: 'StepUpdateDataInput',
+                           name: 'StepUpdateWithoutParentDataInput',
                            ofType: null,
                         },
                      },
@@ -14866,10 +20080,20 @@ export default {
             },
             {
                kind: 'INPUT_OBJECT',
-               name: 'StepUpdateDataInput',
+               name: 'StepUpdateWithoutParentDataInput',
                description: null,
                fields: null,
                inputFields: [
+                  {
+                     name: 'type',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyUserTypeUpdateManyWithoutStepsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
                   {
                      name: 'question',
                      description: null,
@@ -14881,21 +20105,21 @@ export default {
                      defaultValue: null,
                   },
                   {
-                     name: 'target',
+                     name: 'targets',
                      description: null,
                      type: {
                         kind: 'INPUT_OBJECT',
-                        name: 'MenuUpdateOneRequiredInput',
+                        name: 'MenuUpdateManyInput',
                         ofType: null,
                      },
                      defaultValue: null,
                   },
                   {
-                     name: 'path',
+                     name: 'paths',
                      description: null,
                      type: {
                         kind: 'INPUT_OBJECT',
-                        name: 'MenuUpdateManyInput',
+                        name: 'PathUpdateManyWithoutParentInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -14917,7 +20141,7 @@ export default {
             },
             {
                kind: 'INPUT_OBJECT',
-               name: 'MenuUpdateOneRequiredInput',
+               name: 'KeyUserTypeUpdateManyWithoutStepsInput',
                description: null,
                fields: null,
                inputFields: [
@@ -14925,29 +20149,35 @@ export default {
                      name: 'create',
                      description: null,
                      type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'MenuCreateInput',
-                        ofType: null,
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeCreateWithoutStepsInput',
+                              ofType: null,
+                           },
+                        },
                      },
                      defaultValue: null,
                   },
                   {
-                     name: 'update',
+                     name: 'delete',
                      description: null,
                      type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'MenuUpdateDataInput',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'upsert',
-                     description: null,
-                     type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'MenuUpsertNestedInput',
-                        ofType: null,
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
                      },
                      defaultValue: null,
                   },
@@ -14955,8 +20185,186 @@ export default {
                      name: 'connect',
                      description: null,
                      type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'MenuWhereUniqueInput',
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'set',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'disconnect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name:
+                                 'KeyUserTypeUpdateWithWhereUniqueWithoutStepsInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'upsert',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name:
+                                 'KeyUserTypeUpsertWithWhereUniqueWithoutStepsInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'deleteMany',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeScalarWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'updateMany',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeUpdateManyWithWhereNestedInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyUserTypeUpdateWithWhereUniqueWithoutStepsInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'where',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyUserTypeWhereUniqueInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'data',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyUserTypeUpdateWithoutStepsDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyUserTypeUpdateWithoutStepsDataInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'key',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -14968,10 +20376,24 @@ export default {
             },
             {
                kind: 'INPUT_OBJECT',
-               name: 'MenuUpsertNestedInput',
+               name: 'KeyUserTypeUpsertWithWhereUniqueWithoutStepsInput',
                description: null,
                fields: null,
                inputFields: [
+                  {
+                     name: 'where',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyUserTypeWhereUniqueInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
                   {
                      name: 'update',
                      description: null,
@@ -14980,7 +20402,7 @@ export default {
                         name: null,
                         ofType: {
                            kind: 'INPUT_OBJECT',
-                           name: 'MenuUpdateDataInput',
+                           name: 'KeyUserTypeUpdateWithoutStepsDataInput',
                            ofType: null,
                         },
                      },
@@ -14994,8 +20416,936 @@ export default {
                         name: null,
                         ofType: {
                            kind: 'INPUT_OBJECT',
-                           name: 'MenuCreateInput',
+                           name: 'KeyUserTypeCreateWithoutStepsInput',
                            ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyUserTypeScalarWhereInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'ID',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'ID',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_lt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_lte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_gt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_gte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_not',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_not_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_lt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_lte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_gt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_gte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_not_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_not_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_not_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'AND',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeScalarWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'OR',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeScalarWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'NOT',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeScalarWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyUserTypeUpdateManyWithWhereNestedInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'where',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyUserTypeScalarWhereInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'data',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyUserTypeUpdateManyDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyUserTypeUpdateManyDataInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'key',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'PathUpdateManyWithoutParentInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'PathCreateWithoutParentInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'delete',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'PathWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'PathWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'set',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'PathWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'disconnect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'PathWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name:
+                                 'PathUpdateWithWhereUniqueWithoutParentInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'upsert',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name:
+                                 'PathUpsertWithWhereUniqueWithoutParentInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'deleteMany',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'PathScalarWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'PathUpdateWithWhereUniqueWithoutParentInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'where',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'PathWhereUniqueInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'data',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'PathUpdateWithoutParentDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'PathUpdateWithoutParentDataInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'paths',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'MenuUpdateManyInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'PathUpsertWithWhereUniqueWithoutParentInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'where',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'PathWhereUniqueInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'PathUpdateWithoutParentDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'PathCreateWithoutParentInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'PathScalarWhereInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'ID',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'ID',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_lt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_lte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_gt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_gte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'AND',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'PathScalarWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'OR',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'PathScalarWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'NOT',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'PathScalarWhereInput',
+                              ofType: null,
+                           },
                         },
                      },
                      defaultValue: null,
@@ -15279,8 +21629,8 @@ export default {
                      name: 'status',
                      description: null,
                      type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyResultStatusUpdateOneRequiredInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -15391,8 +21741,9 @@ export default {
                      name: 'status',
                      description: null,
                      type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
+                        kind: 'INPUT_OBJECT',
+                        name:
+                           'KeyResultStatusUpdateOneRequiredWithoutResultsInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -15474,7 +21825,7 @@ export default {
                      description: null,
                      type: {
                         kind: 'INPUT_OBJECT',
-                        name: 'StepUpdateManyInput',
+                        name: 'StepUpdateManyWithoutParentInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -15676,6 +22027,117 @@ export default {
             },
             {
                kind: 'INPUT_OBJECT',
+               name: 'KeyResultStatusUpdateOneRequiredWithoutResultsInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyResultStatusCreateWithoutResultsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyResultStatusUpdateWithoutResultsDataInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'upsert',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyResultStatusUpsertWithoutResultsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyResultStatusWhereUniqueInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyResultStatusUpdateWithoutResultsDataInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'key',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyResultStatusUpsertWithoutResultsInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyResultStatusUpdateWithoutResultsDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyResultStatusCreateWithoutResultsInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
                name: 'TestResultUpsertWithoutStepsInput',
                description: null,
                fields: null,
@@ -15715,7 +22177,1763 @@ export default {
             },
             {
                kind: 'INPUT_OBJECT',
-               name: 'StepResultUpsertWithWhereUniqueWithoutParentInput',
+               name: 'KeyResultStatusUpdateOneRequiredInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyResultStatusCreateInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyResultStatusUpdateDataInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'upsert',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyResultStatusUpsertNestedInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyResultStatusWhereUniqueInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyResultStatusUpdateDataInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'key',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'results',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TestResultUpdateManyWithoutStatusInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'TestResultUpdateManyWithoutStatusInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'TestResultCreateWithoutStatusInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'delete',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'TestResultWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'TestResultWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'set',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'TestResultWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'disconnect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'TestResultWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name:
+                                 'TestResultUpdateWithWhereUniqueWithoutStatusInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'upsert',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name:
+                                 'TestResultUpsertWithWhereUniqueWithoutStatusInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'deleteMany',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'TestResultScalarWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'updateMany',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'TestResultUpdateManyWithWhereNestedInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'TestResultUpdateWithWhereUniqueWithoutStatusInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'where',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'TestResultWhereUniqueInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'data',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'TestResultUpdateWithoutStatusDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'TestResultUpdateWithoutStatusDataInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'parent',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TestUpdateOneRequiredWithoutResultsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'start',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'DateTime',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'end',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'DateTime',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'time',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TimeResultUpdateOneInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'steps',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepResultUpdateManyWithoutResultParentInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepResultUpdateManyWithoutResultParentInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepResultCreateWithoutResultParentInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'delete',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepResultWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepResultWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'set',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepResultWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'disconnect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepResultWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name:
+                                 'StepResultUpdateWithWhereUniqueWithoutResultParentInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'upsert',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name:
+                                 'StepResultUpsertWithWhereUniqueWithoutResultParentInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'deleteMany',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepResultScalarWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'updateMany',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepResultUpdateManyWithWhereNestedInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepResultUpdateWithWhereUniqueWithoutResultParentInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'where',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'StepResultWhereUniqueInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'data',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'StepResultUpdateWithoutResultParentDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepResultUpdateWithoutResultParentDataInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'parent',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepUpdateOneRequiredWithoutResultsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'start',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'DateTime',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'end',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'DateTime',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'time',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TimeResultUpdateOneInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'path',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'MenuUpdateManyInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'status',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyResultStatusUpdateOneRequiredInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepUpdateOneRequiredWithoutResultsInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepCreateWithoutResultsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepUpdateWithoutResultsDataInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'upsert',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepUpsertWithoutResultsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepWhereUniqueInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepUpdateWithoutResultsDataInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'parent',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TestUpdateOneWithoutStepsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'type',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyUserTypeUpdateManyWithoutStepsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'question',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'targets',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'MenuUpdateManyInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'paths',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'PathUpdateManyWithoutParentInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'TestUpdateOneWithoutStepsInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TestCreateWithoutStepsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TestUpdateWithoutStepsDataInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'upsert',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TestUpsertWithoutStepsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'delete',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'Boolean',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'disconnect',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'Boolean',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TestWhereUniqueInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'TestUpdateWithoutStepsDataInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'title',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'menus',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'MenuUpdateManyInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'results',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TestResultUpdateManyWithoutParentInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'TestResultUpdateManyWithoutParentInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'TestResultCreateWithoutParentInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'delete',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'TestResultWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'TestResultWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'set',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'TestResultWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'disconnect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'TestResultWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name:
+                                 'TestResultUpdateWithWhereUniqueWithoutParentInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'upsert',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name:
+                                 'TestResultUpsertWithWhereUniqueWithoutParentInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'deleteMany',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'TestResultScalarWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'updateMany',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'TestResultUpdateManyWithWhereNestedInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'TestResultUpdateWithWhereUniqueWithoutParentInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'where',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'TestResultWhereUniqueInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'data',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'TestResultUpdateWithoutParentDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'TestResultUpdateWithoutParentDataInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'start',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'DateTime',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'end',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'DateTime',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'time',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TimeResultUpdateOneInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'steps',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepResultUpdateManyWithoutResultParentInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'status',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name:
+                           'KeyResultStatusUpdateOneRequiredWithoutResultsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'TestResultUpsertWithWhereUniqueWithoutParentInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'where',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'TestResultWhereUniqueInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'TestResultUpdateWithoutParentDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'TestResultCreateWithoutParentInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'TestResultScalarWhereInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'ID',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'ID',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_lt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_lte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_gt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_gte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'start',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'DateTime',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'start_not',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'DateTime',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'start_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'DateTime',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'start_not_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'DateTime',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'start_lt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'DateTime',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'start_lte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'DateTime',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'start_gt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'DateTime',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'start_gte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'DateTime',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'end',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'DateTime',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'end_not',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'DateTime',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'end_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'DateTime',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'end_not_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'DateTime',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'end_lt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'DateTime',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'end_lte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'DateTime',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'end_gt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'DateTime',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'end_gte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'DateTime',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'AND',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'TestResultScalarWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'OR',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'TestResultScalarWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'NOT',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'TestResultScalarWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'TestResultUpdateManyWithWhereNestedInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'where',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'TestResultScalarWhereInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'data',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'TestResultUpdateManyDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'TestResultUpdateManyDataInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'start',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'DateTime',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'end',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'DateTime',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'TestUpsertWithoutStepsInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'TestUpdateWithoutStepsDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'TestCreateWithoutStepsInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepUpsertWithoutResultsInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'StepUpdateWithoutResultsDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'StepCreateWithoutResultsInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepResultUpsertWithWhereUniqueWithoutResultParentInput',
                description: null,
                fields: null,
                inputFields: [
@@ -15741,7 +23959,7 @@ export default {
                         name: null,
                         ofType: {
                            kind: 'INPUT_OBJECT',
-                           name: 'StepResultUpdateWithoutParentDataInput',
+                           name: 'StepResultUpdateWithoutResultParentDataInput',
                            ofType: null,
                         },
                      },
@@ -15755,7 +23973,7 @@ export default {
                         name: null,
                         ofType: {
                            kind: 'INPUT_OBJECT',
-                           name: 'StepResultCreateWithoutParentInput',
+                           name: 'StepResultCreateWithoutResultParentInput',
                            ofType: null,
                         },
                      },
@@ -16121,62 +24339,6 @@ export default {
                      defaultValue: null,
                   },
                   {
-                     name: 'status',
-                     description: null,
-                     type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'status_not',
-                     description: null,
-                     type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'status_in',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'ENUM',
-                              name: 'ResultStatus',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'status_not_in',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'ENUM',
-                              name: 'ResultStatus',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
                      name: 'AND',
                      description: null,
                      type: {
@@ -16300,13 +24462,56 @@ export default {
                      },
                      defaultValue: null,
                   },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'TestResultUpsertWithWhereUniqueWithoutStatusInput',
+               description: null,
+               fields: null,
+               inputFields: [
                   {
-                     name: 'status',
+                     name: 'where',
                      description: null,
                      type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
-                        ofType: null,
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'TestResultWhereUniqueInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'TestResultUpdateWithoutStatusDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'TestResultCreateWithoutStatusInput',
+                           ofType: null,
+                        },
                      },
                      defaultValue: null,
                   },
@@ -16317,7 +24522,99 @@ export default {
             },
             {
                kind: 'INPUT_OBJECT',
-               name: 'StepUpsertWithWhereUniqueNestedInput',
+               name: 'KeyResultStatusUpsertNestedInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyResultStatusUpdateDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyResultStatusCreateInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepResultUpsertWithWhereUniqueWithoutParentInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'where',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'StepResultWhereUniqueInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'StepResultUpdateWithoutParentDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'StepResultCreateWithoutParentInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepUpsertWithWhereUniqueWithoutParentInput',
                description: null,
                fields: null,
                inputFields: [
@@ -16343,7 +24640,7 @@ export default {
                         name: null,
                         ofType: {
                            kind: 'INPUT_OBJECT',
-                           name: 'StepUpdateDataInput',
+                           name: 'StepUpdateWithoutParentDataInput',
                            ofType: null,
                         },
                      },
@@ -16357,7 +24654,7 @@ export default {
                         name: null,
                         ofType: {
                            kind: 'INPUT_OBJECT',
-                           name: 'StepCreateInput',
+                           name: 'StepCreateWithoutParentInput',
                            ofType: null,
                         },
                      },
@@ -16796,1352 +25093,6 @@ export default {
                      type: {
                         kind: 'SCALAR',
                         name: 'String',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-               ],
-               interfaces: null,
-               enumValues: null,
-               possibleTypes: null,
-            },
-            {
-               kind: 'INPUT_OBJECT',
-               name: 'TestResultUpdateManyWithoutParentInput',
-               description: null,
-               fields: null,
-               inputFields: [
-                  {
-                     name: 'create',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'INPUT_OBJECT',
-                              name: 'TestResultCreateWithoutParentInput',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'delete',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'INPUT_OBJECT',
-                              name: 'TestResultWhereUniqueInput',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'connect',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'INPUT_OBJECT',
-                              name: 'TestResultWhereUniqueInput',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'set',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'INPUT_OBJECT',
-                              name: 'TestResultWhereUniqueInput',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'disconnect',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'INPUT_OBJECT',
-                              name: 'TestResultWhereUniqueInput',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'update',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'INPUT_OBJECT',
-                              name:
-                                 'TestResultUpdateWithWhereUniqueWithoutParentInput',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'upsert',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'INPUT_OBJECT',
-                              name:
-                                 'TestResultUpsertWithWhereUniqueWithoutParentInput',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'deleteMany',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'INPUT_OBJECT',
-                              name: 'TestResultScalarWhereInput',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'updateMany',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'INPUT_OBJECT',
-                              name: 'TestResultUpdateManyWithWhereNestedInput',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-               ],
-               interfaces: null,
-               enumValues: null,
-               possibleTypes: null,
-            },
-            {
-               kind: 'INPUT_OBJECT',
-               name: 'TestResultUpdateWithWhereUniqueWithoutParentInput',
-               description: null,
-               fields: null,
-               inputFields: [
-                  {
-                     name: 'where',
-                     description: null,
-                     type: {
-                        kind: 'NON_NULL',
-                        name: null,
-                        ofType: {
-                           kind: 'INPUT_OBJECT',
-                           name: 'TestResultWhereUniqueInput',
-                           ofType: null,
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'data',
-                     description: null,
-                     type: {
-                        kind: 'NON_NULL',
-                        name: null,
-                        ofType: {
-                           kind: 'INPUT_OBJECT',
-                           name: 'TestResultUpdateWithoutParentDataInput',
-                           ofType: null,
-                        },
-                     },
-                     defaultValue: null,
-                  },
-               ],
-               interfaces: null,
-               enumValues: null,
-               possibleTypes: null,
-            },
-            {
-               kind: 'INPUT_OBJECT',
-               name: 'TestResultUpdateWithoutParentDataInput',
-               description: null,
-               fields: null,
-               inputFields: [
-                  {
-                     name: 'start',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'DateTime',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'end',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'DateTime',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'time',
-                     description: null,
-                     type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'TimeResultUpdateOneInput',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'steps',
-                     description: null,
-                     type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'StepResultUpdateManyWithoutResultParentInput',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'status',
-                     description: null,
-                     type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-               ],
-               interfaces: null,
-               enumValues: null,
-               possibleTypes: null,
-            },
-            {
-               kind: 'INPUT_OBJECT',
-               name: 'StepResultUpdateManyWithoutResultParentInput',
-               description: null,
-               fields: null,
-               inputFields: [
-                  {
-                     name: 'create',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'INPUT_OBJECT',
-                              name: 'StepResultCreateWithoutResultParentInput',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'delete',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'INPUT_OBJECT',
-                              name: 'StepResultWhereUniqueInput',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'connect',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'INPUT_OBJECT',
-                              name: 'StepResultWhereUniqueInput',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'set',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'INPUT_OBJECT',
-                              name: 'StepResultWhereUniqueInput',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'disconnect',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'INPUT_OBJECT',
-                              name: 'StepResultWhereUniqueInput',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'update',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'INPUT_OBJECT',
-                              name:
-                                 'StepResultUpdateWithWhereUniqueWithoutResultParentInput',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'upsert',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'INPUT_OBJECT',
-                              name:
-                                 'StepResultUpsertWithWhereUniqueWithoutResultParentInput',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'deleteMany',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'INPUT_OBJECT',
-                              name: 'StepResultScalarWhereInput',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'updateMany',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'INPUT_OBJECT',
-                              name: 'StepResultUpdateManyWithWhereNestedInput',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-               ],
-               interfaces: null,
-               enumValues: null,
-               possibleTypes: null,
-            },
-            {
-               kind: 'INPUT_OBJECT',
-               name: 'StepResultUpdateWithWhereUniqueWithoutResultParentInput',
-               description: null,
-               fields: null,
-               inputFields: [
-                  {
-                     name: 'where',
-                     description: null,
-                     type: {
-                        kind: 'NON_NULL',
-                        name: null,
-                        ofType: {
-                           kind: 'INPUT_OBJECT',
-                           name: 'StepResultWhereUniqueInput',
-                           ofType: null,
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'data',
-                     description: null,
-                     type: {
-                        kind: 'NON_NULL',
-                        name: null,
-                        ofType: {
-                           kind: 'INPUT_OBJECT',
-                           name: 'StepResultUpdateWithoutResultParentDataInput',
-                           ofType: null,
-                        },
-                     },
-                     defaultValue: null,
-                  },
-               ],
-               interfaces: null,
-               enumValues: null,
-               possibleTypes: null,
-            },
-            {
-               kind: 'INPUT_OBJECT',
-               name: 'StepResultUpdateWithoutResultParentDataInput',
-               description: null,
-               fields: null,
-               inputFields: [
-                  {
-                     name: 'parent',
-                     description: null,
-                     type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'StepUpdateOneRequiredWithoutResultsInput',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'start',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'DateTime',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'end',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'DateTime',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'time',
-                     description: null,
-                     type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'TimeResultUpdateOneInput',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'path',
-                     description: null,
-                     type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'MenuUpdateManyInput',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'status',
-                     description: null,
-                     type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-               ],
-               interfaces: null,
-               enumValues: null,
-               possibleTypes: null,
-            },
-            {
-               kind: 'INPUT_OBJECT',
-               name: 'StepUpdateOneRequiredWithoutResultsInput',
-               description: null,
-               fields: null,
-               inputFields: [
-                  {
-                     name: 'create',
-                     description: null,
-                     type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'StepCreateWithoutResultsInput',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'update',
-                     description: null,
-                     type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'StepUpdateWithoutResultsDataInput',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'upsert',
-                     description: null,
-                     type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'StepUpsertWithoutResultsInput',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'connect',
-                     description: null,
-                     type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'StepWhereUniqueInput',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-               ],
-               interfaces: null,
-               enumValues: null,
-               possibleTypes: null,
-            },
-            {
-               kind: 'INPUT_OBJECT',
-               name: 'StepUpdateWithoutResultsDataInput',
-               description: null,
-               fields: null,
-               inputFields: [
-                  {
-                     name: 'question',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'String',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'target',
-                     description: null,
-                     type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'MenuUpdateOneRequiredInput',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'path',
-                     description: null,
-                     type: {
-                        kind: 'INPUT_OBJECT',
-                        name: 'MenuUpdateManyInput',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-               ],
-               interfaces: null,
-               enumValues: null,
-               possibleTypes: null,
-            },
-            {
-               kind: 'INPUT_OBJECT',
-               name: 'StepUpsertWithoutResultsInput',
-               description: null,
-               fields: null,
-               inputFields: [
-                  {
-                     name: 'update',
-                     description: null,
-                     type: {
-                        kind: 'NON_NULL',
-                        name: null,
-                        ofType: {
-                           kind: 'INPUT_OBJECT',
-                           name: 'StepUpdateWithoutResultsDataInput',
-                           ofType: null,
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'create',
-                     description: null,
-                     type: {
-                        kind: 'NON_NULL',
-                        name: null,
-                        ofType: {
-                           kind: 'INPUT_OBJECT',
-                           name: 'StepCreateWithoutResultsInput',
-                           ofType: null,
-                        },
-                     },
-                     defaultValue: null,
-                  },
-               ],
-               interfaces: null,
-               enumValues: null,
-               possibleTypes: null,
-            },
-            {
-               kind: 'INPUT_OBJECT',
-               name: 'StepResultUpsertWithWhereUniqueWithoutResultParentInput',
-               description: null,
-               fields: null,
-               inputFields: [
-                  {
-                     name: 'where',
-                     description: null,
-                     type: {
-                        kind: 'NON_NULL',
-                        name: null,
-                        ofType: {
-                           kind: 'INPUT_OBJECT',
-                           name: 'StepResultWhereUniqueInput',
-                           ofType: null,
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'update',
-                     description: null,
-                     type: {
-                        kind: 'NON_NULL',
-                        name: null,
-                        ofType: {
-                           kind: 'INPUT_OBJECT',
-                           name: 'StepResultUpdateWithoutResultParentDataInput',
-                           ofType: null,
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'create',
-                     description: null,
-                     type: {
-                        kind: 'NON_NULL',
-                        name: null,
-                        ofType: {
-                           kind: 'INPUT_OBJECT',
-                           name: 'StepResultCreateWithoutResultParentInput',
-                           ofType: null,
-                        },
-                     },
-                     defaultValue: null,
-                  },
-               ],
-               interfaces: null,
-               enumValues: null,
-               possibleTypes: null,
-            },
-            {
-               kind: 'INPUT_OBJECT',
-               name: 'TestResultUpsertWithWhereUniqueWithoutParentInput',
-               description: null,
-               fields: null,
-               inputFields: [
-                  {
-                     name: 'where',
-                     description: null,
-                     type: {
-                        kind: 'NON_NULL',
-                        name: null,
-                        ofType: {
-                           kind: 'INPUT_OBJECT',
-                           name: 'TestResultWhereUniqueInput',
-                           ofType: null,
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'update',
-                     description: null,
-                     type: {
-                        kind: 'NON_NULL',
-                        name: null,
-                        ofType: {
-                           kind: 'INPUT_OBJECT',
-                           name: 'TestResultUpdateWithoutParentDataInput',
-                           ofType: null,
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'create',
-                     description: null,
-                     type: {
-                        kind: 'NON_NULL',
-                        name: null,
-                        ofType: {
-                           kind: 'INPUT_OBJECT',
-                           name: 'TestResultCreateWithoutParentInput',
-                           ofType: null,
-                        },
-                     },
-                     defaultValue: null,
-                  },
-               ],
-               interfaces: null,
-               enumValues: null,
-               possibleTypes: null,
-            },
-            {
-               kind: 'INPUT_OBJECT',
-               name: 'TestResultScalarWhereInput',
-               description: null,
-               fields: null,
-               inputFields: [
-                  {
-                     name: 'id',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'ID',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'id_not',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'ID',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'id_in',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'SCALAR',
-                              name: 'ID',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'id_not_in',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'SCALAR',
-                              name: 'ID',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'id_lt',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'ID',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'id_lte',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'ID',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'id_gt',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'ID',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'id_gte',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'ID',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'id_contains',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'ID',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'id_not_contains',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'ID',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'id_starts_with',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'ID',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'id_not_starts_with',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'ID',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'id_ends_with',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'ID',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'id_not_ends_with',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'ID',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'start',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'DateTime',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'start_not',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'DateTime',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'start_in',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'SCALAR',
-                              name: 'DateTime',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'start_not_in',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'SCALAR',
-                              name: 'DateTime',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'start_lt',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'DateTime',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'start_lte',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'DateTime',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'start_gt',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'DateTime',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'start_gte',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'DateTime',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'end',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'DateTime',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'end_not',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'DateTime',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'end_in',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'SCALAR',
-                              name: 'DateTime',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'end_not_in',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'SCALAR',
-                              name: 'DateTime',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'end_lt',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'DateTime',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'end_lte',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'DateTime',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'end_gt',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'DateTime',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'end_gte',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'DateTime',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'status',
-                     description: null,
-                     type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'status_not',
-                     description: null,
-                     type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'status_in',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'ENUM',
-                              name: 'ResultStatus',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'status_not_in',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'ENUM',
-                              name: 'ResultStatus',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'AND',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'INPUT_OBJECT',
-                              name: 'TestResultScalarWhereInput',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'OR',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'INPUT_OBJECT',
-                              name: 'TestResultScalarWhereInput',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'NOT',
-                     description: null,
-                     type: {
-                        kind: 'LIST',
-                        name: null,
-                        ofType: {
-                           kind: 'NON_NULL',
-                           name: null,
-                           ofType: {
-                              kind: 'INPUT_OBJECT',
-                              name: 'TestResultScalarWhereInput',
-                              ofType: null,
-                           },
-                        },
-                     },
-                     defaultValue: null,
-                  },
-               ],
-               interfaces: null,
-               enumValues: null,
-               possibleTypes: null,
-            },
-            {
-               kind: 'INPUT_OBJECT',
-               name: 'TestResultUpdateManyWithWhereNestedInput',
-               description: null,
-               fields: null,
-               inputFields: [
-                  {
-                     name: 'where',
-                     description: null,
-                     type: {
-                        kind: 'NON_NULL',
-                        name: null,
-                        ofType: {
-                           kind: 'INPUT_OBJECT',
-                           name: 'TestResultScalarWhereInput',
-                           ofType: null,
-                        },
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'data',
-                     description: null,
-                     type: {
-                        kind: 'NON_NULL',
-                        name: null,
-                        ofType: {
-                           kind: 'INPUT_OBJECT',
-                           name: 'TestResultUpdateManyDataInput',
-                           ofType: null,
-                        },
-                     },
-                     defaultValue: null,
-                  },
-               ],
-               interfaces: null,
-               enumValues: null,
-               possibleTypes: null,
-            },
-            {
-               kind: 'INPUT_OBJECT',
-               name: 'TestResultUpdateManyDataInput',
-               description: null,
-               fields: null,
-               inputFields: [
-                  {
-                     name: 'start',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'DateTime',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'end',
-                     description: null,
-                     type: {
-                        kind: 'SCALAR',
-                        name: 'DateTime',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'status',
-                     description: null,
-                     type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -18642,6 +25593,342 @@ export default {
                possibleTypes: null,
             },
             {
+               kind: 'INPUT_OBJECT',
+               name: 'StepUpdateManyInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepCreateInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepUpdateWithWhereUniqueNestedInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'upsert',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepUpsertWithWhereUniqueNestedInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'delete',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'set',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'disconnect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'deleteMany',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepScalarWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'updateMany',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepUpdateManyWithWhereNestedInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepUpdateWithWhereUniqueNestedInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'where',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'StepWhereUniqueInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'data',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'StepUpdateDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepUpdateDataInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'parent',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TestUpdateOneWithoutStepsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'type',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyUserTypeUpdateManyWithoutStepsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'question',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'targets',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'MenuUpdateManyInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'paths',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'PathUpdateManyWithoutParentInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'results',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepResultUpdateManyWithoutParentInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepUpsertWithWhereUniqueNestedInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'where',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'StepWhereUniqueInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'StepUpdateDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'StepCreateInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
                kind: 'OBJECT',
                name: 'BatchPayload',
                description: null,
@@ -18843,7 +26130,7 @@ export default {
                      description: null,
                      type: {
                         kind: 'INPUT_OBJECT',
-                        name: 'StepUpdateManyInput',
+                        name: 'StepUpdateManyWithoutParentInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -18901,11 +26188,21 @@ export default {
                fields: null,
                inputFields: [
                   {
-                     name: 'menu',
+                     name: 'root',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'Boolean',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'menus',
                      description: null,
                      type: {
                         kind: 'INPUT_OBJECT',
-                        name: 'MenuUpdateOneWithoutItemsInput',
+                        name: 'MenuUpdateManyWithoutItemsInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -18925,7 +26222,7 @@ export default {
                      description: null,
                      type: {
                         kind: 'INPUT_OBJECT',
-                        name: 'MenuUpdateManyWithoutMenuInput',
+                        name: 'MenuUpdateManyWithoutMenusInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -18942,7 +26239,2116 @@ export default {
                fields: null,
                inputFields: [
                   {
+                     name: 'root',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'Boolean',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
                      name: 'name',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'PathCreateInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'parent',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'StepCreateOneWithoutPathsInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'paths',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'MenuCreateManyInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepCreateOneWithoutPathsInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepCreateWithoutPathsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepWhereUniqueInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepCreateWithoutPathsInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'parent',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TestCreateOneWithoutStepsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'type',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyUserTypeCreateManyWithoutStepsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'question',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'String',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'targets',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'MenuCreateManyInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'results',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepResultCreateManyWithoutParentInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'PathUpdateInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'parent',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepUpdateOneRequiredWithoutPathsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'paths',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'MenuUpdateManyInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepUpdateOneRequiredWithoutPathsInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepCreateWithoutPathsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepUpdateWithoutPathsDataInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'upsert',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepUpsertWithoutPathsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepWhereUniqueInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepUpdateWithoutPathsDataInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'parent',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TestUpdateOneWithoutStepsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'type',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyUserTypeUpdateManyWithoutStepsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'question',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'targets',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'MenuUpdateManyInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'results',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepResultUpdateManyWithoutParentInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepUpsertWithoutPathsInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'StepUpdateWithoutPathsDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'StepCreateWithoutPathsInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeysCreateInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'userType',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyUserTypeCreateManyInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'resultStatus',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyResultStatusCreateManyInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyUserTypeCreateManyInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeCreateInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyUserTypeCreateInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'String',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'steps',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepCreateManyWithoutTypeInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepCreateManyWithoutTypeInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepCreateWithoutTypeInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepCreateWithoutTypeInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'parent',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TestCreateOneWithoutStepsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'question',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'String',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'targets',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'MenuCreateManyInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'paths',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'PathCreateManyWithoutParentInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'results',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepResultCreateManyWithoutParentInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyResultStatusCreateManyInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyResultStatusCreateInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyResultStatusWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeysUpdateInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'userType',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyUserTypeUpdateManyInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'resultStatus',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyResultStatusUpdateManyInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyUserTypeUpdateManyInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeCreateInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name:
+                                 'KeyUserTypeUpdateWithWhereUniqueNestedInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'upsert',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name:
+                                 'KeyUserTypeUpsertWithWhereUniqueNestedInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'delete',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'set',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'disconnect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'deleteMany',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeScalarWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'updateMany',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeUpdateManyWithWhereNestedInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyUserTypeUpdateWithWhereUniqueNestedInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'where',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyUserTypeWhereUniqueInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'data',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyUserTypeUpdateDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyUserTypeUpdateDataInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'key',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'steps',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepUpdateManyWithoutTypeInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepUpdateManyWithoutTypeInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepCreateWithoutTypeInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'delete',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'set',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'disconnect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepUpdateWithWhereUniqueWithoutTypeInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'upsert',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepUpsertWithWhereUniqueWithoutTypeInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'deleteMany',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepScalarWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'updateMany',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'StepUpdateManyWithWhereNestedInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepUpdateWithWhereUniqueWithoutTypeInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'where',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'StepWhereUniqueInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'data',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'StepUpdateWithoutTypeDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepUpdateWithoutTypeDataInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'parent',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TestUpdateOneWithoutStepsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'question',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'targets',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'MenuUpdateManyInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'paths',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'PathUpdateManyWithoutParentInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'results',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepResultUpdateManyWithoutParentInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'StepUpsertWithWhereUniqueWithoutTypeInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'where',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'StepWhereUniqueInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'StepUpdateWithoutTypeDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'StepCreateWithoutTypeInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyUserTypeUpsertWithWhereUniqueNestedInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'where',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyUserTypeWhereUniqueInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyUserTypeUpdateDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyUserTypeCreateInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyResultStatusUpdateManyInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyResultStatusCreateInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name:
+                                 'KeyResultStatusUpdateWithWhereUniqueNestedInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'upsert',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name:
+                                 'KeyResultStatusUpsertWithWhereUniqueNestedInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'delete',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyResultStatusWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'connect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyResultStatusWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'set',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyResultStatusWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'disconnect',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyResultStatusWhereUniqueInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'deleteMany',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyResultStatusScalarWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'updateMany',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name:
+                                 'KeyResultStatusUpdateManyWithWhereNestedInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyResultStatusUpdateWithWhereUniqueNestedInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'where',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyResultStatusWhereUniqueInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'data',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyResultStatusUpdateDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyResultStatusUpsertWithWhereUniqueNestedInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'where',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyResultStatusWhereUniqueInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'update',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyResultStatusUpdateDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'create',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyResultStatusCreateInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyResultStatusScalarWhereInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'ID',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'ID',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_lt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_lte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_gt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_gte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'id_not_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'ID',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_not',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_not_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_lt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_lte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_gt',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_gte',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_not_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_not_starts_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'key_not_ends_with',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'AND',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyResultStatusScalarWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'OR',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyResultStatusScalarWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'NOT',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyResultStatusScalarWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyResultStatusUpdateManyWithWhereNestedInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'where',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyResultStatusScalarWhereInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'data',
+                     description: null,
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyResultStatusUpdateManyDataInput',
+                           ofType: null,
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyResultStatusUpdateManyDataInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'key',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyUserTypeUpdateInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'key',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'steps',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'StepUpdateManyWithoutTypeInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyUserTypeUpdateManyMutationInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'key',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyResultStatusUpdateInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'key',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'results',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TestResultUpdateManyWithoutStatusInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyResultStatusUpdateManyMutationInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'key',
                      description: null,
                      type: {
                         kind: 'SCALAR',
@@ -18963,6 +28369,26 @@ export default {
                fields: null,
                inputFields: [
                   {
+                     name: 'parent',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'TestUpdateOneWithoutStepsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'type',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyUserTypeUpdateManyWithoutStepsInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
                      name: 'question',
                      description: null,
                      type: {
@@ -18973,21 +28399,21 @@ export default {
                      defaultValue: null,
                   },
                   {
-                     name: 'target',
+                     name: 'targets',
                      description: null,
                      type: {
                         kind: 'INPUT_OBJECT',
-                        name: 'MenuUpdateOneRequiredInput',
+                        name: 'MenuUpdateManyInput',
                         ofType: null,
                      },
                      defaultValue: null,
                   },
                   {
-                     name: 'path',
+                     name: 'paths',
                      description: null,
                      type: {
                         kind: 'INPUT_OBJECT',
-                        name: 'MenuUpdateManyInput',
+                        name: 'PathUpdateManyWithoutParentInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -19106,9 +28532,13 @@ export default {
                      name: 'status',
                      description: null,
                      type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
-                        ofType: null,
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyResultStatusCreateOneWithoutResultsInput',
+                           ofType: null,
+                        },
                      },
                      defaultValue: null,
                   },
@@ -19177,8 +28607,9 @@ export default {
                      name: 'status',
                      description: null,
                      type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
+                        kind: 'INPUT_OBJECT',
+                        name:
+                           'KeyResultStatusUpdateOneRequiredWithoutResultsInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -19210,16 +28641,6 @@ export default {
                      type: {
                         kind: 'SCALAR',
                         name: 'DateTime',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'status',
-                     description: null,
-                     type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -19383,9 +28804,13 @@ export default {
                      name: 'status',
                      description: null,
                      type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
-                        ofType: null,
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'INPUT_OBJECT',
+                           name: 'KeyResultStatusCreateOneInput',
+                           ofType: null,
+                        },
                      },
                      defaultValue: null,
                   },
@@ -19464,8 +28889,8 @@ export default {
                      name: 'status',
                      description: null,
                      type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyResultStatusUpdateOneRequiredInput',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -19497,16 +28922,6 @@ export default {
                      type: {
                         kind: 'SCALAR',
                         name: 'DateTime',
-                        ofType: null,
-                     },
-                     defaultValue: null,
-                  },
-                  {
-                     name: 'status',
-                     description: null,
-                     type: {
-                        kind: 'ENUM',
-                        name: 'ResultStatus',
                         ofType: null,
                      },
                      defaultValue: null,
@@ -19631,6 +29046,98 @@ export default {
                      type: {
                         kind: 'OBJECT',
                         name: 'MenuSubscriptionPayload',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'path',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'PathSubscriptionWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'PathSubscriptionPayload',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'keys',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeysSubscriptionWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'KeysSubscriptionPayload',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'keyUserType',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeSubscriptionWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'KeyUserTypeSubscriptionPayload',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'keyResultStatus',
+                     description: null,
+                     args: [
+                        {
+                           name: 'where',
+                           description: null,
+                           type: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyResultStatusSubscriptionWhereInput',
+                              ofType: null,
+                           },
+                           defaultValue: null,
+                        },
+                     ],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'KeyResultStatusSubscriptionPayload',
                         ofType: null,
                      },
                      isDeprecated: false,
@@ -20851,7 +30358,859 @@ export default {
                      deprecationReason: null,
                   },
                   {
+                     name: 'root',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'Boolean',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
                      name: 'name',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'String',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'PathSubscriptionWhereInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'mutation_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'ENUM',
+                              name: 'MutationType',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'updatedFields_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'updatedFields_contains_every',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'updatedFields_contains_some',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'node',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'PathWhereInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'AND',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'PathSubscriptionWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'OBJECT',
+               name: 'PathSubscriptionPayload',
+               description: null,
+               fields: [
+                  {
+                     name: 'mutation',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'ENUM',
+                           name: 'MutationType',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'node',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'Path',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'updatedFields',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'previousValues',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'PathPreviousValues',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'OBJECT',
+               name: 'PathPreviousValues',
+               description: null,
+               fields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'ID',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeysSubscriptionWhereInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'mutation_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'ENUM',
+                              name: 'MutationType',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'updatedFields_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'updatedFields_contains_every',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'updatedFields_contains_some',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'node',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeysWhereInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'AND',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeysSubscriptionWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'OBJECT',
+               name: 'KeysSubscriptionPayload',
+               description: null,
+               fields: [
+                  {
+                     name: 'mutation',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'ENUM',
+                           name: 'MutationType',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'node',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'Keys',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'updatedFields',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'previousValues',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'KeysPreviousValues',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'OBJECT',
+               name: 'KeysPreviousValues',
+               description: null,
+               fields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'ID',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyUserTypeSubscriptionWhereInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'mutation_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'ENUM',
+                              name: 'MutationType',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'updatedFields_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'updatedFields_contains_every',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'updatedFields_contains_some',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'node',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyUserTypeWhereInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'AND',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyUserTypeSubscriptionWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'OBJECT',
+               name: 'KeyUserTypeSubscriptionPayload',
+               description: null,
+               fields: [
+                  {
+                     name: 'mutation',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'ENUM',
+                           name: 'MutationType',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'node',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'KeyUserType',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'updatedFields',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'previousValues',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'KeyUserTypePreviousValues',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'OBJECT',
+               name: 'KeyUserTypePreviousValues',
+               description: null,
+               fields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'ID',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'key',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'String',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'INPUT_OBJECT',
+               name: 'KeyResultStatusSubscriptionWhereInput',
+               description: null,
+               fields: null,
+               inputFields: [
+                  {
+                     name: 'mutation_in',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'ENUM',
+                              name: 'MutationType',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'updatedFields_contains',
+                     description: null,
+                     type: {
+                        kind: 'SCALAR',
+                        name: 'String',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'updatedFields_contains_every',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'updatedFields_contains_some',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'node',
+                     description: null,
+                     type: {
+                        kind: 'INPUT_OBJECT',
+                        name: 'KeyResultStatusWhereInput',
+                        ofType: null,
+                     },
+                     defaultValue: null,
+                  },
+                  {
+                     name: 'AND',
+                     description: null,
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'INPUT_OBJECT',
+                              name: 'KeyResultStatusSubscriptionWhereInput',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     defaultValue: null,
+                  },
+               ],
+               interfaces: null,
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'OBJECT',
+               name: 'KeyResultStatusSubscriptionPayload',
+               description: null,
+               fields: [
+                  {
+                     name: 'mutation',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'ENUM',
+                           name: 'MutationType',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'node',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'KeyResultStatus',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'updatedFields',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'LIST',
+                        name: null,
+                        ofType: {
+                           kind: 'NON_NULL',
+                           name: null,
+                           ofType: {
+                              kind: 'SCALAR',
+                              name: 'String',
+                              ofType: null,
+                           },
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'previousValues',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'OBJECT',
+                        name: 'KeyResultStatusPreviousValues',
+                        ofType: null,
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+               ],
+               inputFields: null,
+               interfaces: [],
+               enumValues: null,
+               possibleTypes: null,
+            },
+            {
+               kind: 'OBJECT',
+               name: 'KeyResultStatusPreviousValues',
+               description: null,
+               fields: [
+                  {
+                     name: 'id',
+                     description: null,
+                     args: [],
+                     type: {
+                        kind: 'NON_NULL',
+                        name: null,
+                        ofType: {
+                           kind: 'SCALAR',
+                           name: 'ID',
+                           ofType: null,
+                        },
+                     },
+                     isDeprecated: false,
+                     deprecationReason: null,
+                  },
+                  {
+                     name: 'key',
                      description: null,
                      args: [],
                      type: {
@@ -21308,22 +31667,6 @@ export default {
                         kind: 'SCALAR',
                         name: 'DateTime',
                         ofType: null,
-                     },
-                     isDeprecated: false,
-                     deprecationReason: null,
-                  },
-                  {
-                     name: 'status',
-                     description: null,
-                     args: [],
-                     type: {
-                        kind: 'NON_NULL',
-                        name: null,
-                        ofType: {
-                           kind: 'ENUM',
-                           name: 'ResultStatus',
-                           ofType: null,
-                        },
                      },
                      isDeprecated: false,
                      deprecationReason: null,
@@ -21786,22 +32129,6 @@ export default {
                         kind: 'SCALAR',
                         name: 'DateTime',
                         ofType: null,
-                     },
-                     isDeprecated: false,
-                     deprecationReason: null,
-                  },
-                  {
-                     name: 'status',
-                     description: null,
-                     args: [],
-                     type: {
-                        kind: 'NON_NULL',
-                        name: null,
-                        ofType: {
-                           kind: 'ENUM',
-                           name: 'ResultStatus',
-                           ofType: null,
-                        },
                      },
                      isDeprecated: false,
                      deprecationReason: null,

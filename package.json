@@ -23,16 +23,16 @@
     "commit": "git-cz"
   },
   "devDependencies": {
-    "@commitlint/cli": "^7.5.2",
-    "@commitlint/config-conventional": "^7.5.0",
-    "all-contributors-cli": "^6.3.1",
+    "@commitlint/cli": "^7.6.1",
+    "@commitlint/config-conventional": "^7.6.0",
+    "all-contributors-cli": "^6.4.0",
     "commitizen": "^3.1.1",
     "cz-conventional-changelog": "^2.1.0",
     "husky": "^2.2.0",
-    "lint-staged": "^8.1.5",
+    "lint-staged": "^8.1.6",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.17.0",
-    "semantic-release": "^15.13.3"
+    "semantic-release": "^15.13.12"
   },
   "husky": {
     "hooks": {
@@ -84,5 +84,6 @@
       "@semantic-release/release-notes-generator",
       "@semantic-release/github"
     ]
-  }
+  },
+  "dependencies": {}
 }

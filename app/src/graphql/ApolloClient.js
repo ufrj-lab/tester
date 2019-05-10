@@ -11,18 +11,20 @@ import resolvers from './resolvers'
 export const cache = new InMemoryCache()
 
 // persistCache({
-//   cache,
-//   storage: window.localStorage,
-//})
+//    cache,
+//    storage: window.localStorage,
+// })
 
 export const data = {
    state: {
       __typename: 'State',
+      timeStart: null,
       test: null,
       result: null,
       path: [],
       finish: false,
       current: 0,
+      pub: 'all',
    },
 }
 

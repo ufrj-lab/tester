@@ -70,6 +70,305 @@ input CompanyWhereInput {
 
 scalar DateTime
 
+type KeyResultStatus {
+   id: ID!
+   key: String!
+   results(
+      after: String
+      before: String
+      first: Int
+      last: Int
+      orderBy: TestResultOrderByInput
+      skip: Int
+      where: TestResultWhereInput
+   ): [TestResult!]
+}
+
+input KeyResultStatusCreateInput {
+   id: ID
+   key: String!
+   results: TestResultCreateManyWithoutStatusInput
+}
+
+input KeyResultStatusCreateOneInput {
+   connect: KeyResultStatusWhereUniqueInput
+   create: KeyResultStatusCreateInput
+}
+
+input KeyResultStatusCreateOneWithoutResultsInput {
+   connect: KeyResultStatusWhereUniqueInput
+   create: KeyResultStatusCreateWithoutResultsInput
+}
+
+input KeyResultStatusCreateWithoutResultsInput {
+   id: ID
+   key: String!
+}
+
+enum KeyResultStatusOrderByInput {
+   id_ASC
+   id_DESC
+   key_ASC
+   key_DESC
+}
+
+input KeyResultStatusUpdateDataInput {
+   key: String
+   results: TestResultUpdateManyWithoutStatusInput
+}
+
+input KeyResultStatusUpdateOneRequiredInput {
+   connect: KeyResultStatusWhereUniqueInput
+   create: KeyResultStatusCreateInput
+   update: KeyResultStatusUpdateDataInput
+   upsert: KeyResultStatusUpsertNestedInput
+}
+
+input KeyResultStatusUpdateOneRequiredWithoutResultsInput {
+   connect: KeyResultStatusWhereUniqueInput
+   create: KeyResultStatusCreateWithoutResultsInput
+   update: KeyResultStatusUpdateWithoutResultsDataInput
+   upsert: KeyResultStatusUpsertWithoutResultsInput
+}
+
+input KeyResultStatusUpdateWithoutResultsDataInput {
+   key: String
+}
+
+input KeyResultStatusUpsertNestedInput {
+   create: KeyResultStatusCreateInput!
+   update: KeyResultStatusUpdateDataInput!
+}
+
+input KeyResultStatusUpsertWithoutResultsInput {
+   create: KeyResultStatusCreateWithoutResultsInput!
+   update: KeyResultStatusUpdateWithoutResultsDataInput!
+}
+
+input KeyResultStatusWhereInput {
+   AND: [KeyResultStatusWhereInput!]
+   id: ID
+   id_contains: ID
+   id_ends_with: ID
+   id_gt: ID
+   id_gte: ID
+   id_in: [ID!]
+   id_lt: ID
+   id_lte: ID
+   id_not: ID
+   id_not_contains: ID
+   id_not_ends_with: ID
+   id_not_in: [ID!]
+   id_not_starts_with: ID
+   id_starts_with: ID
+   key: String
+   key_contains: String
+   key_ends_with: String
+   key_gt: String
+   key_gte: String
+   key_in: [String!]
+   key_lt: String
+   key_lte: String
+   key_not: String
+   key_not_contains: String
+   key_not_ends_with: String
+   key_not_in: [String!]
+   key_not_starts_with: String
+   key_starts_with: String
+   results_some: TestResultWhereInput
+}
+
+input KeyResultStatusWhereUniqueInput {
+   id: ID
+   key: String
+}
+
+type Keys {
+   id: ID!
+   resultStatus(
+      after: String
+      before: String
+      first: Int
+      last: Int
+      orderBy: KeyResultStatusOrderByInput
+      skip: Int
+      where: KeyResultStatusWhereInput
+   ): [KeyResultStatus!]
+   userType(
+      after: String
+      before: String
+      first: Int
+      last: Int
+      orderBy: KeyUserTypeOrderByInput
+      skip: Int
+      where: KeyUserTypeWhereInput
+   ): [KeyUserType!]
+}
+
+enum KeysOrderByInput {
+   id_ASC
+   id_DESC
+}
+
+input KeysWhereInput {
+   AND: [KeysWhereInput!]
+   id: ID
+   id_contains: ID
+   id_ends_with: ID
+   id_gt: ID
+   id_gte: ID
+   id_in: [ID!]
+   id_lt: ID
+   id_lte: ID
+   id_not: ID
+   id_not_contains: ID
+   id_not_ends_with: ID
+   id_not_in: [ID!]
+   id_not_starts_with: ID
+   id_starts_with: ID
+   resultStatus_some: KeyResultStatusWhereInput
+   userType_some: KeyUserTypeWhereInput
+}
+
+type KeyUserType {
+   id: ID!
+   key: String!
+   steps(
+      after: String
+      before: String
+      first: Int
+      last: Int
+      orderBy: StepOrderByInput
+      skip: Int
+      where: StepWhereInput
+   ): [Step!]
+}
+
+input KeyUserTypeCreateManyWithoutStepsInput {
+   connect: [KeyUserTypeWhereUniqueInput!]
+   create: [KeyUserTypeCreateWithoutStepsInput!]
+}
+
+input KeyUserTypeCreateWithoutStepsInput {
+   id: ID
+   key: String!
+}
+
+enum KeyUserTypeOrderByInput {
+   id_ASC
+   id_DESC
+   key_ASC
+   key_DESC
+}
+
+input KeyUserTypeScalarWhereInput {
+   AND: [KeyUserTypeScalarWhereInput!]
+   id: ID
+   id_contains: ID
+   id_ends_with: ID
+   id_gt: ID
+   id_gte: ID
+   id_in: [ID!]
+   id_lt: ID
+   id_lte: ID
+   id_not: ID
+   id_not_contains: ID
+   id_not_ends_with: ID
+   id_not_in: [ID!]
+   id_not_starts_with: ID
+   id_starts_with: ID
+   key: String
+   key_contains: String
+   key_ends_with: String
+   key_gt: String
+   key_gte: String
+   key_in: [String!]
+   key_lt: String
+   key_lte: String
+   key_not: String
+   key_not_contains: String
+   key_not_ends_with: String
+   key_not_in: [String!]
+   key_not_starts_with: String
+   key_starts_with: String
+   NOT: [KeyUserTypeScalarWhereInput!]
+   OR: [KeyUserTypeScalarWhereInput!]
+}
+
+input KeyUserTypeUpdateManyDataInput {
+   key: String
+}
+
+input KeyUserTypeUpdateManyWithoutStepsInput {
+   connect: [KeyUserTypeWhereUniqueInput!]
+   create: [KeyUserTypeCreateWithoutStepsInput!]
+   delete: [KeyUserTypeWhereUniqueInput!]
+   deleteMany: [KeyUserTypeScalarWhereInput!]
+   disconnect: [KeyUserTypeWhereUniqueInput!]
+   set: [KeyUserTypeWhereUniqueInput!]
+   update: [KeyUserTypeUpdateWithWhereUniqueWithoutStepsInput!]
+   updateMany: [KeyUserTypeUpdateManyWithWhereNestedInput!]
+   upsert: [KeyUserTypeUpsertWithWhereUniqueWithoutStepsInput!]
+}
+
+input KeyUserTypeUpdateManyWithWhereNestedInput {
+   data: KeyUserTypeUpdateManyDataInput!
+   where: KeyUserTypeScalarWhereInput!
+}
+
+input KeyUserTypeUpdateWithoutStepsDataInput {
+   key: String
+}
+
+input KeyUserTypeUpdateWithWhereUniqueWithoutStepsInput {
+   data: KeyUserTypeUpdateWithoutStepsDataInput!
+   where: KeyUserTypeWhereUniqueInput!
+}
+
+input KeyUserTypeUpsertWithWhereUniqueWithoutStepsInput {
+   create: KeyUserTypeCreateWithoutStepsInput!
+   update: KeyUserTypeUpdateWithoutStepsDataInput!
+   where: KeyUserTypeWhereUniqueInput!
+}
+
+input KeyUserTypeWhereInput {
+   AND: [KeyUserTypeWhereInput!]
+   id: ID
+   id_contains: ID
+   id_ends_with: ID
+   id_gt: ID
+   id_gte: ID
+   id_in: [ID!]
+   id_lt: ID
+   id_lte: ID
+   id_not: ID
+   id_not_contains: ID
+   id_not_ends_with: ID
+   id_not_in: [ID!]
+   id_not_starts_with: ID
+   id_starts_with: ID
+   key: String
+   key_contains: String
+   key_ends_with: String
+   key_gt: String
+   key_gte: String
+   key_in: [String!]
+   key_lt: String
+   key_lte: String
+   key_not: String
+   key_not_contains: String
+   key_not_ends_with: String
+   key_not_in: [String!]
+   key_not_starts_with: String
+   key_starts_with: String
+   steps_some: StepWhereInput
+}
+
+input KeyUserTypeWhereUniqueInput {
+   id: ID
+   key: String
+}
+
 type Menu {
    id: ID!
    items(
@@ -81,15 +380,25 @@ type Menu {
       skip: Int
       where: MenuWhereInput
    ): [Menu!]
-   menu: Menu
+   menus(
+      after: String
+      before: String
+      first: Int
+      last: Int
+      orderBy: MenuOrderByInput
+      skip: Int
+      where: MenuWhereInput
+   ): [Menu!]
    name: String!
+   root: Boolean!
 }
 
 input MenuCreateInput {
    id: ID
-   items: MenuCreateManyWithoutMenuInput
-   menu: MenuCreateOneWithoutItemsInput
+   items: MenuCreateManyWithoutMenusInput
+   menus: MenuCreateManyWithoutItemsInput
    name: String!
+   root: Boolean
 }
 
 input MenuCreateManyInput {
@@ -97,31 +406,28 @@ input MenuCreateManyInput {
    create: [MenuCreateInput!]
 }
 
-input MenuCreateManyWithoutMenuInput {
+input MenuCreateManyWithoutItemsInput {
    connect: [MenuWhereUniqueInput!]
-   create: [MenuCreateWithoutMenuInput!]
+   create: [MenuCreateWithoutItemsInput!]
 }
 
-input MenuCreateOneInput {
-   connect: MenuWhereUniqueInput
-   create: MenuCreateInput
-}
-
-input MenuCreateOneWithoutItemsInput {
-   connect: MenuWhereUniqueInput
-   create: MenuCreateWithoutItemsInput
+input MenuCreateManyWithoutMenusInput {
+   connect: [MenuWhereUniqueInput!]
+   create: [MenuCreateWithoutMenusInput!]
 }
 
 input MenuCreateWithoutItemsInput {
    id: ID
-   menu: MenuCreateOneWithoutItemsInput
+   menus: MenuCreateManyWithoutItemsInput
    name: String!
+   root: Boolean
 }
 
-input MenuCreateWithoutMenuInput {
+input MenuCreateWithoutMenusInput {
    id: ID
-   items: MenuCreateManyWithoutMenuInput
+   items: MenuCreateManyWithoutMenusInput
    name: String!
+   root: Boolean
 }
 
 enum MenuOrderByInput {
@@ -129,6 +435,8 @@ enum MenuOrderByInput {
    id_DESC
    name_ASC
    name_DESC
+   root_ASC
+   root_DESC
 }
 
 input MenuScalarWhereInput {
@@ -163,16 +471,20 @@ input MenuScalarWhereInput {
    name_starts_with: String
    NOT: [MenuScalarWhereInput!]
    OR: [MenuScalarWhereInput!]
+   root: Boolean
+   root_not: Boolean
 }
 
 input MenuUpdateDataInput {
-   items: MenuUpdateManyWithoutMenuInput
-   menu: MenuUpdateOneWithoutItemsInput
+   items: MenuUpdateManyWithoutMenusInput
+   menus: MenuUpdateManyWithoutItemsInput
    name: String
+   root: Boolean
 }
 
 input MenuUpdateManyDataInput {
    name: String
+   root: Boolean
 }
 
 input MenuUpdateManyInput {
@@ -187,16 +499,28 @@ input MenuUpdateManyInput {
    upsert: [MenuUpsertWithWhereUniqueNestedInput!]
 }
 
-input MenuUpdateManyWithoutMenuInput {
+input MenuUpdateManyWithoutItemsInput {
    connect: [MenuWhereUniqueInput!]
-   create: [MenuCreateWithoutMenuInput!]
+   create: [MenuCreateWithoutItemsInput!]
    delete: [MenuWhereUniqueInput!]
    deleteMany: [MenuScalarWhereInput!]
    disconnect: [MenuWhereUniqueInput!]
    set: [MenuWhereUniqueInput!]
-   update: [MenuUpdateWithWhereUniqueWithoutMenuInput!]
+   update: [MenuUpdateWithWhereUniqueWithoutItemsInput!]
    updateMany: [MenuUpdateManyWithWhereNestedInput!]
-   upsert: [MenuUpsertWithWhereUniqueWithoutMenuInput!]
+   upsert: [MenuUpsertWithWhereUniqueWithoutItemsInput!]
+}
+
+input MenuUpdateManyWithoutMenusInput {
+   connect: [MenuWhereUniqueInput!]
+   create: [MenuCreateWithoutMenusInput!]
+   delete: [MenuWhereUniqueInput!]
+   deleteMany: [MenuScalarWhereInput!]
+   disconnect: [MenuWhereUniqueInput!]
+   set: [MenuWhereUniqueInput!]
+   update: [MenuUpdateWithWhereUniqueWithoutMenusInput!]
+   updateMany: [MenuUpdateManyWithWhereNestedInput!]
+   upsert: [MenuUpsertWithWhereUniqueWithoutMenusInput!]
 }
 
 input MenuUpdateManyWithWhereNestedInput {
@@ -204,30 +528,16 @@ input MenuUpdateManyWithWhereNestedInput {
    where: MenuScalarWhereInput!
 }
 
-input MenuUpdateOneRequiredInput {
-   connect: MenuWhereUniqueInput
-   create: MenuCreateInput
-   update: MenuUpdateDataInput
-   upsert: MenuUpsertNestedInput
-}
-
-input MenuUpdateOneWithoutItemsInput {
-   connect: MenuWhereUniqueInput
-   create: MenuCreateWithoutItemsInput
-   delete: Boolean
-   disconnect: Boolean
-   update: MenuUpdateWithoutItemsDataInput
-   upsert: MenuUpsertWithoutItemsInput
-}
-
 input MenuUpdateWithoutItemsDataInput {
-   menu: MenuUpdateOneWithoutItemsInput
+   menus: MenuUpdateManyWithoutItemsInput
    name: String
+   root: Boolean
 }
 
-input MenuUpdateWithoutMenuDataInput {
-   items: MenuUpdateManyWithoutMenuInput
+input MenuUpdateWithoutMenusDataInput {
+   items: MenuUpdateManyWithoutMenusInput
    name: String
+   root: Boolean
 }
 
 input MenuUpdateWithWhereUniqueNestedInput {
@@ -235,19 +545,14 @@ input MenuUpdateWithWhereUniqueNestedInput {
    where: MenuWhereUniqueInput!
 }
 
-input MenuUpdateWithWhereUniqueWithoutMenuInput {
-   data: MenuUpdateWithoutMenuDataInput!
+input MenuUpdateWithWhereUniqueWithoutItemsInput {
+   data: MenuUpdateWithoutItemsDataInput!
    where: MenuWhereUniqueInput!
 }
 
-input MenuUpsertNestedInput {
-   create: MenuCreateInput!
-   update: MenuUpdateDataInput!
-}
-
-input MenuUpsertWithoutItemsInput {
-   create: MenuCreateWithoutItemsInput!
-   update: MenuUpdateWithoutItemsDataInput!
+input MenuUpdateWithWhereUniqueWithoutMenusInput {
+   data: MenuUpdateWithoutMenusDataInput!
+   where: MenuWhereUniqueInput!
 }
 
 input MenuUpsertWithWhereUniqueNestedInput {
@@ -256,9 +561,15 @@ input MenuUpsertWithWhereUniqueNestedInput {
    where: MenuWhereUniqueInput!
 }
 
-input MenuUpsertWithWhereUniqueWithoutMenuInput {
-   create: MenuCreateWithoutMenuInput!
-   update: MenuUpdateWithoutMenuDataInput!
+input MenuUpsertWithWhereUniqueWithoutItemsInput {
+   create: MenuCreateWithoutItemsInput!
+   update: MenuUpdateWithoutItemsDataInput!
+   where: MenuWhereUniqueInput!
+}
+
+input MenuUpsertWithWhereUniqueWithoutMenusInput {
+   create: MenuCreateWithoutMenusInput!
+   update: MenuUpdateWithoutMenusDataInput!
    where: MenuWhereUniqueInput!
 }
 
@@ -279,7 +590,7 @@ input MenuWhereInput {
    id_not_starts_with: ID
    id_starts_with: ID
    items_some: MenuWhereInput
-   menu: MenuWhereInput
+   menus_some: MenuWhereInput
    name: String
    name_contains: String
    name_ends_with: String
@@ -294,6 +605,8 @@ input MenuWhereInput {
    name_not_in: [String!]
    name_not_starts_with: String
    name_starts_with: String
+   root: Boolean
+   root_not: Boolean
 }
 
 input MenuWhereUniqueInput {
@@ -313,7 +626,115 @@ type Mutation {
    ): TestResult
 }
 
+type Path {
+   id: ID!
+   parent: Step!
+   paths(
+      after: String
+      before: String
+      first: Int
+      last: Int
+      orderBy: MenuOrderByInput
+      skip: Int
+      where: MenuWhereInput
+   ): [Menu!]
+}
+
+input PathCreateManyWithoutParentInput {
+   connect: [PathWhereUniqueInput!]
+   create: [PathCreateWithoutParentInput!]
+}
+
+input PathCreateWithoutParentInput {
+   id: ID
+   paths: MenuCreateManyInput
+}
+
+enum PathOrderByInput {
+   id_ASC
+   id_DESC
+}
+
+input PathScalarWhereInput {
+   AND: [PathScalarWhereInput!]
+   id: ID
+   id_contains: ID
+   id_ends_with: ID
+   id_gt: ID
+   id_gte: ID
+   id_in: [ID!]
+   id_lt: ID
+   id_lte: ID
+   id_not: ID
+   id_not_contains: ID
+   id_not_ends_with: ID
+   id_not_in: [ID!]
+   id_not_starts_with: ID
+   id_starts_with: ID
+   NOT: [PathScalarWhereInput!]
+   OR: [PathScalarWhereInput!]
+}
+
+input PathUpdateManyWithoutParentInput {
+   connect: [PathWhereUniqueInput!]
+   create: [PathCreateWithoutParentInput!]
+   delete: [PathWhereUniqueInput!]
+   deleteMany: [PathScalarWhereInput!]
+   disconnect: [PathWhereUniqueInput!]
+   set: [PathWhereUniqueInput!]
+   update: [PathUpdateWithWhereUniqueWithoutParentInput!]
+   upsert: [PathUpsertWithWhereUniqueWithoutParentInput!]
+}
+
+input PathUpdateWithoutParentDataInput {
+   paths: MenuUpdateManyInput
+}
+
+input PathUpdateWithWhereUniqueWithoutParentInput {
+   data: PathUpdateWithoutParentDataInput!
+   where: PathWhereUniqueInput!
+}
+
+input PathUpsertWithWhereUniqueWithoutParentInput {
+   create: PathCreateWithoutParentInput!
+   update: PathUpdateWithoutParentDataInput!
+   where: PathWhereUniqueInput!
+}
+
+input PathWhereInput {
+   AND: [PathWhereInput!]
+   id: ID
+   id_contains: ID
+   id_ends_with: ID
+   id_gt: ID
+   id_gte: ID
+   id_in: [ID!]
+   id_lt: ID
+   id_lte: ID
+   id_not: ID
+   id_not_contains: ID
+   id_not_ends_with: ID
+   id_not_in: [ID!]
+   id_not_starts_with: ID
+   id_starts_with: ID
+   parent: StepWhereInput
+   paths_some: MenuWhereInput
+}
+
+input PathWhereUniqueInput {
+   id: ID
+}
+
 type Query {
+   keys(
+      after: String
+      before: String
+      first: Int
+      last: Int
+      orderBy: KeysOrderByInput
+      skip: Int
+      where: KeysWhereInput
+   ): [Keys!]!
    results(
       after: String
       before: String
@@ -335,24 +756,18 @@ type Query {
    ): [View!]!
 }
 
-enum ResultStatus {
-   ABORTED
-   FAIL
-   PARTIAL
-   SUCESSES
-}
-
 type Step {
    id: ID!
-   path(
+   parent: Test
+   paths(
       after: String
       before: String
       first: Int
       last: Int
-      orderBy: MenuOrderByInput
+      orderBy: PathOrderByInput
       skip: Int
-      where: MenuWhereInput
-   ): [Menu!]
+      where: PathWhereInput
+   ): [Path!]
    question: String!
    results(
       after: String
@@ -363,20 +778,29 @@ type Step {
       skip: Int
       where: StepResultWhereInput
    ): [StepResult!]
-   target: Menu!
+   targets(
+      after: String
+      before: String
+      first: Int
+      last: Int
+      orderBy: MenuOrderByInput
+      skip: Int
+      where: MenuWhereInput
+   ): [Menu!]
+   type(
+      after: String
+      before: String
+      first: Int
+      last: Int
+      orderBy: KeyUserTypeOrderByInput
+      skip: Int
+      where: KeyUserTypeWhereInput
+   ): [KeyUserType!]
 }
 
-input StepCreateInput {
-   id: ID
-   path: MenuCreateManyInput
-   question: String!
-   results: StepResultCreateManyWithoutParentInput
-   target: MenuCreateOneInput!
-}
-
-input StepCreateManyInput {
+input StepCreateManyWithoutParentInput {
    connect: [StepWhereUniqueInput!]
-   create: [StepCreateInput!]
+   create: [StepCreateWithoutParentInput!]
 }
 
 input StepCreateOneWithoutResultsInput {
@@ -384,11 +808,22 @@ input StepCreateOneWithoutResultsInput {
    create: StepCreateWithoutResultsInput
 }
 
+input StepCreateWithoutParentInput {
+   id: ID
+   paths: PathCreateManyWithoutParentInput
+   question: String!
+   results: StepResultCreateManyWithoutParentInput
+   targets: MenuCreateManyInput
+   type: KeyUserTypeCreateManyWithoutStepsInput
+}
+
 input StepCreateWithoutResultsInput {
    id: ID
-   path: MenuCreateManyInput
+   parent: TestCreateOneWithoutStepsInput
+   paths: PathCreateManyWithoutParentInput
    question: String!
-   target: MenuCreateOneInput!
+   targets: MenuCreateManyInput
+   type: KeyUserTypeCreateManyWithoutStepsInput
 }
 
 enum StepOrderByInput {
@@ -413,7 +848,7 @@ type StepResult {
    ): [Menu!]
    resultParent: TestResult!
    start: DateTime!
-   status: ResultStatus!
+   status: KeyResultStatus!
    time: TimeResult
 }
 
@@ -424,7 +859,7 @@ input StepResultCreateInput {
    path: MenuCreateManyInput
    resultParent: TestResultCreateOneWithoutStepsInput!
    start: DateTime!
-   status: ResultStatus
+   status: KeyResultStatusCreateOneInput!
    time: TimeResultCreateOneInput
 }
 
@@ -444,7 +879,7 @@ input StepResultCreateWithoutParentInput {
    path: MenuCreateManyInput
    resultParent: TestResultCreateOneWithoutStepsInput!
    start: DateTime!
-   status: ResultStatus
+   status: KeyResultStatusCreateOneInput!
    time: TimeResultCreateOneInput
 }
 
@@ -454,7 +889,7 @@ input StepResultCreateWithoutResultParentInput {
    parent: StepCreateOneWithoutResultsInput!
    path: MenuCreateManyInput
    start: DateTime!
-   status: ResultStatus
+   status: KeyResultStatusCreateOneInput!
    time: TimeResultCreateOneInput
 }
 
@@ -465,8 +900,6 @@ enum StepResultOrderByInput {
    id_DESC
    start_ASC
    start_DESC
-   status_ASC
-   status_DESC
 }
 
 input StepResultScalarWhereInput {
@@ -503,10 +936,6 @@ input StepResultScalarWhereInput {
    start_lte: DateTime
    start_not: DateTime
    start_not_in: [DateTime!]
-   status: ResultStatus
-   status_in: [ResultStatus!]
-   status_not: ResultStatus
-   status_not_in: [ResultStatus!]
 }
 
 input StepResultUpdateInput {
@@ -515,14 +944,13 @@ input StepResultUpdateInput {
    path: MenuUpdateManyInput
    resultParent: TestResultUpdateOneRequiredWithoutStepsInput
    start: DateTime
-   status: ResultStatus
+   status: KeyResultStatusUpdateOneRequiredInput
    time: TimeResultUpdateOneInput
 }
 
 input StepResultUpdateManyDataInput {
    end: DateTime
    start: DateTime
-   status: ResultStatus
 }
 
 input StepResultUpdateManyWithoutParentInput {
@@ -559,7 +987,7 @@ input StepResultUpdateWithoutParentDataInput {
    path: MenuUpdateManyInput
    resultParent: TestResultUpdateOneRequiredWithoutStepsInput
    start: DateTime
-   status: ResultStatus
+   status: KeyResultStatusUpdateOneRequiredInput
    time: TimeResultUpdateOneInput
 }
 
@@ -568,7 +996,7 @@ input StepResultUpdateWithoutResultParentDataInput {
    parent: StepUpdateOneRequiredWithoutResultsInput
    path: MenuUpdateManyInput
    start: DateTime
-   status: ResultStatus
+   status: KeyResultStatusUpdateOneRequiredInput
    time: TimeResultUpdateOneInput
 }
 
@@ -629,10 +1057,7 @@ input StepResultWhereInput {
    start_lte: DateTime
    start_not: DateTime
    start_not_in: [DateTime!]
-   status: ResultStatus
-   status_in: [ResultStatus!]
-   status_not: ResultStatus
-   status_not_in: [ResultStatus!]
+   status: KeyResultStatusWhereInput
    time: TimeResultWhereInput
 }
 
@@ -674,27 +1099,20 @@ input StepScalarWhereInput {
    question_starts_with: String
 }
 
-input StepUpdateDataInput {
-   path: MenuUpdateManyInput
-   question: String
-   results: StepResultUpdateManyWithoutParentInput
-   target: MenuUpdateOneRequiredInput
-}
-
 input StepUpdateManyDataInput {
    question: String
 }
 
-input StepUpdateManyInput {
+input StepUpdateManyWithoutParentInput {
    connect: [StepWhereUniqueInput!]
-   create: [StepCreateInput!]
+   create: [StepCreateWithoutParentInput!]
    delete: [StepWhereUniqueInput!]
    deleteMany: [StepScalarWhereInput!]
    disconnect: [StepWhereUniqueInput!]
    set: [StepWhereUniqueInput!]
-   update: [StepUpdateWithWhereUniqueNestedInput!]
+   update: [StepUpdateWithWhereUniqueWithoutParentInput!]
    updateMany: [StepUpdateManyWithWhereNestedInput!]
-   upsert: [StepUpsertWithWhereUniqueNestedInput!]
+   upsert: [StepUpsertWithWhereUniqueWithoutParentInput!]
 }
 
 input StepUpdateManyWithWhereNestedInput {
@@ -709,14 +1127,24 @@ input StepUpdateOneRequiredWithoutResultsInput {
    upsert: StepUpsertWithoutResultsInput
 }
 
-input StepUpdateWithoutResultsDataInput {
-   path: MenuUpdateManyInput
+input StepUpdateWithoutParentDataInput {
+   paths: PathUpdateManyWithoutParentInput
    question: String
-   target: MenuUpdateOneRequiredInput
+   results: StepResultUpdateManyWithoutParentInput
+   targets: MenuUpdateManyInput
+   type: KeyUserTypeUpdateManyWithoutStepsInput
 }
 
-input StepUpdateWithWhereUniqueNestedInput {
-   data: StepUpdateDataInput!
+input StepUpdateWithoutResultsDataInput {
+   parent: TestUpdateOneWithoutStepsInput
+   paths: PathUpdateManyWithoutParentInput
+   question: String
+   targets: MenuUpdateManyInput
+   type: KeyUserTypeUpdateManyWithoutStepsInput
+}
+
+input StepUpdateWithWhereUniqueWithoutParentInput {
+   data: StepUpdateWithoutParentDataInput!
    where: StepWhereUniqueInput!
 }
 
@@ -725,9 +1153,9 @@ input StepUpsertWithoutResultsInput {
    update: StepUpdateWithoutResultsDataInput!
 }
 
-input StepUpsertWithWhereUniqueNestedInput {
-   create: StepCreateInput!
-   update: StepUpdateDataInput!
+input StepUpsertWithWhereUniqueWithoutParentInput {
+   create: StepCreateWithoutParentInput!
+   update: StepUpdateWithoutParentDataInput!
    where: StepWhereUniqueInput!
 }
 
@@ -747,7 +1175,8 @@ input StepWhereInput {
    id_not_in: [ID!]
    id_not_starts_with: ID
    id_starts_with: ID
-   path_some: MenuWhereInput
+   parent: TestWhereInput
+   paths_some: PathWhereInput
    question: String
    question_contains: String
    question_ends_with: String
@@ -763,7 +1192,8 @@ input StepWhereInput {
    question_not_starts_with: String
    question_starts_with: String
    results_some: StepResultWhereInput
-   target: MenuWhereInput
+   targets_some: MenuWhereInput
+   type_some: KeyUserTypeWhereInput
 }
 
 input StepWhereUniqueInput {
@@ -807,10 +1237,22 @@ input TestCreateOneWithoutResultsInput {
    create: TestCreateWithoutResultsInput
 }
 
+input TestCreateOneWithoutStepsInput {
+   connect: TestWhereUniqueInput
+   create: TestCreateWithoutStepsInput
+}
+
 input TestCreateWithoutResultsInput {
    id: ID
    menus: MenuCreateManyInput
-   steps: StepCreateManyInput
+   steps: StepCreateManyWithoutParentInput
+   title: String!
+}
+
+input TestCreateWithoutStepsInput {
+   id: ID
+   menus: MenuCreateManyInput
+   results: TestResultCreateManyWithoutParentInput
    title: String!
 }
 
@@ -826,7 +1268,7 @@ type TestResult {
    id: ID!
    parent: Test!
    start: DateTime!
-   status: ResultStatus!
+   status: KeyResultStatus!
    steps(
       after: String
       before: String
@@ -844,9 +1286,19 @@ input TestResultCreateInput {
    id: ID
    parent: TestCreateOneWithoutResultsInput!
    start: DateTime!
-   status: ResultStatus
+   status: KeyResultStatusCreateOneWithoutResultsInput!
    steps: StepResultCreateManyWithoutResultParentInput
    time: TimeResultCreateOneInput
+}
+
+input TestResultCreateManyWithoutParentInput {
+   connect: [TestResultWhereUniqueInput!]
+   create: [TestResultCreateWithoutParentInput!]
+}
+
+input TestResultCreateManyWithoutStatusInput {
+   connect: [TestResultWhereUniqueInput!]
+   create: [TestResultCreateWithoutStatusInput!]
 }
 
 input TestResultCreateOneWithoutStepsInput {
@@ -854,12 +1306,30 @@ input TestResultCreateOneWithoutStepsInput {
    create: TestResultCreateWithoutStepsInput
 }
 
+input TestResultCreateWithoutParentInput {
+   end: DateTime
+   id: ID
+   start: DateTime!
+   status: KeyResultStatusCreateOneWithoutResultsInput!
+   steps: StepResultCreateManyWithoutResultParentInput
+   time: TimeResultCreateOneInput
+}
+
+input TestResultCreateWithoutStatusInput {
+   end: DateTime
+   id: ID
+   parent: TestCreateOneWithoutResultsInput!
+   start: DateTime!
+   steps: StepResultCreateManyWithoutResultParentInput
+   time: TimeResultCreateOneInput
+}
+
 input TestResultCreateWithoutStepsInput {
    end: DateTime
    id: ID
    parent: TestCreateOneWithoutResultsInput!
    start: DateTime!
-   status: ResultStatus
+   status: KeyResultStatusCreateOneWithoutResultsInput!
    time: TimeResultCreateOneInput
 }
 
@@ -870,17 +1340,85 @@ enum TestResultOrderByInput {
    id_DESC
    start_ASC
    start_DESC
-   status_ASC
-   status_DESC
+}
+
+input TestResultScalarWhereInput {
+   AND: [TestResultScalarWhereInput!]
+   end: DateTime
+   end_gt: DateTime
+   end_gte: DateTime
+   end_in: [DateTime!]
+   end_lt: DateTime
+   end_lte: DateTime
+   end_not: DateTime
+   end_not_in: [DateTime!]
+   id: ID
+   id_contains: ID
+   id_ends_with: ID
+   id_gt: ID
+   id_gte: ID
+   id_in: [ID!]
+   id_lt: ID
+   id_lte: ID
+   id_not: ID
+   id_not_contains: ID
+   id_not_ends_with: ID
+   id_not_in: [ID!]
+   id_not_starts_with: ID
+   id_starts_with: ID
+   NOT: [TestResultScalarWhereInput!]
+   OR: [TestResultScalarWhereInput!]
+   start: DateTime
+   start_gt: DateTime
+   start_gte: DateTime
+   start_in: [DateTime!]
+   start_lt: DateTime
+   start_lte: DateTime
+   start_not: DateTime
+   start_not_in: [DateTime!]
 }
 
 input TestResultUpdateInput {
    end: DateTime
    parent: TestUpdateOneRequiredWithoutResultsInput
    start: DateTime
-   status: ResultStatus
+   status: KeyResultStatusUpdateOneRequiredWithoutResultsInput
    steps: StepResultUpdateManyWithoutResultParentInput
    time: TimeResultUpdateOneInput
+}
+
+input TestResultUpdateManyDataInput {
+   end: DateTime
+   start: DateTime
+}
+
+input TestResultUpdateManyWithoutParentInput {
+   connect: [TestResultWhereUniqueInput!]
+   create: [TestResultCreateWithoutParentInput!]
+   delete: [TestResultWhereUniqueInput!]
+   deleteMany: [TestResultScalarWhereInput!]
+   disconnect: [TestResultWhereUniqueInput!]
+   set: [TestResultWhereUniqueInput!]
+   update: [TestResultUpdateWithWhereUniqueWithoutParentInput!]
+   updateMany: [TestResultUpdateManyWithWhereNestedInput!]
+   upsert: [TestResultUpsertWithWhereUniqueWithoutParentInput!]
+}
+
+input TestResultUpdateManyWithoutStatusInput {
+   connect: [TestResultWhereUniqueInput!]
+   create: [TestResultCreateWithoutStatusInput!]
+   delete: [TestResultWhereUniqueInput!]
+   deleteMany: [TestResultScalarWhereInput!]
+   disconnect: [TestResultWhereUniqueInput!]
+   set: [TestResultWhereUniqueInput!]
+   update: [TestResultUpdateWithWhereUniqueWithoutStatusInput!]
+   updateMany: [TestResultUpdateManyWithWhereNestedInput!]
+   upsert: [TestResultUpsertWithWhereUniqueWithoutStatusInput!]
+}
+
+input TestResultUpdateManyWithWhereNestedInput {
+   data: TestResultUpdateManyDataInput!
+   where: TestResultScalarWhereInput!
 }
 
 input TestResultUpdateOneRequiredWithoutStepsInput {
@@ -890,17 +1428,55 @@ input TestResultUpdateOneRequiredWithoutStepsInput {
    upsert: TestResultUpsertWithoutStepsInput
 }
 
+input TestResultUpdateWithoutParentDataInput {
+   end: DateTime
+   start: DateTime
+   status: KeyResultStatusUpdateOneRequiredWithoutResultsInput
+   steps: StepResultUpdateManyWithoutResultParentInput
+   time: TimeResultUpdateOneInput
+}
+
+input TestResultUpdateWithoutStatusDataInput {
+   end: DateTime
+   parent: TestUpdateOneRequiredWithoutResultsInput
+   start: DateTime
+   steps: StepResultUpdateManyWithoutResultParentInput
+   time: TimeResultUpdateOneInput
+}
+
 input TestResultUpdateWithoutStepsDataInput {
    end: DateTime
    parent: TestUpdateOneRequiredWithoutResultsInput
    start: DateTime
-   status: ResultStatus
+   status: KeyResultStatusUpdateOneRequiredWithoutResultsInput
    time: TimeResultUpdateOneInput
+}
+
+input TestResultUpdateWithWhereUniqueWithoutParentInput {
+   data: TestResultUpdateWithoutParentDataInput!
+   where: TestResultWhereUniqueInput!
+}
+
+input TestResultUpdateWithWhereUniqueWithoutStatusInput {
+   data: TestResultUpdateWithoutStatusDataInput!
+   where: TestResultWhereUniqueInput!
 }
 
 input TestResultUpsertWithoutStepsInput {
    create: TestResultCreateWithoutStepsInput!
    update: TestResultUpdateWithoutStepsDataInput!
+}
+
+input TestResultUpsertWithWhereUniqueWithoutParentInput {
+   create: TestResultCreateWithoutParentInput!
+   update: TestResultUpdateWithoutParentDataInput!
+   where: TestResultWhereUniqueInput!
+}
+
+input TestResultUpsertWithWhereUniqueWithoutStatusInput {
+   create: TestResultCreateWithoutStatusInput!
+   update: TestResultUpdateWithoutStatusDataInput!
+   where: TestResultWhereUniqueInput!
 }
 
 input TestResultWhereInput {
@@ -936,10 +1512,7 @@ input TestResultWhereInput {
    start_lte: DateTime
    start_not: DateTime
    start_not_in: [DateTime!]
-   status: ResultStatus
-   status_in: [ResultStatus!]
-   status_not: ResultStatus
-   status_not_in: [ResultStatus!]
+   status: KeyResultStatusWhereInput
    steps_some: StepResultWhereInput
    time: TimeResultWhereInput
 }
@@ -955,15 +1528,35 @@ input TestUpdateOneRequiredWithoutResultsInput {
    upsert: TestUpsertWithoutResultsInput
 }
 
+input TestUpdateOneWithoutStepsInput {
+   connect: TestWhereUniqueInput
+   create: TestCreateWithoutStepsInput
+   delete: Boolean
+   disconnect: Boolean
+   update: TestUpdateWithoutStepsDataInput
+   upsert: TestUpsertWithoutStepsInput
+}
+
 input TestUpdateWithoutResultsDataInput {
    menus: MenuUpdateManyInput
-   steps: StepUpdateManyInput
+   steps: StepUpdateManyWithoutParentInput
+   title: String
+}
+
+input TestUpdateWithoutStepsDataInput {
+   menus: MenuUpdateManyInput
+   results: TestResultUpdateManyWithoutParentInput
    title: String
 }
 
 input TestUpsertWithoutResultsInput {
    create: TestCreateWithoutResultsInput!
    update: TestUpdateWithoutResultsDataInput!
+}
+
+input TestUpsertWithoutStepsInput {
+   create: TestCreateWithoutStepsInput!
+   update: TestUpdateWithoutStepsDataInput!
 }
 
 input TestWhereInput {

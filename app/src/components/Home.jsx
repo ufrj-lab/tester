@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from 'react'
 
-import styled from 'styled-components'
-import { btnSetStyle } from './_styles'
+import { btnSetStyle, boxContentSetStyle } from './_styles'
 
 import { Helmet } from 'react-helmet'
 import { Link, Redirect } from 'react-router-dom'
@@ -13,7 +12,15 @@ import { CREATE_TEST_RESULT, UPDATE_STATE } from '../graphql/Mutation'
 
 import HeaderStyled from './Header'
 
-const Btn = ({ running, setRunning, id, history, className, children }) => (
+const Btn = ({
+  running,
+  setRunning,
+  id,
+  history,
+  className,
+  children,
+  params,
+}) => (
   <Mutation mutation={CREATE_TEST_RESULT}>
     {create => (
       <Mutation mutation={UPDATE_STATE}>
@@ -37,12 +44,15 @@ const Btn = ({ running, setRunning, id, history, className, children }) => (
                 variables: {
                   start: new Date(),
                   parent: id,
+                  status: 'ABORTED',
                 },
               })
               await updateState({
                 variables: {
+                  start: new Date(),
                   test: id,
                   result: resultID,
+                  pub: params.public,
                 },
               })
 
@@ -67,6 +77,7 @@ const Main = ({
   id,
   className,
   title,
+  params,
 }) => (
   <main className={className}>
     <h2>{title}</h2>
@@ -75,15 +86,25 @@ const Main = ({
         __html: welcome.message,
       }}
     />
-    <BtnStyled bgColor="success" {...{ history, running, setRunning, id }}>
+    <BtnStyled
+      bgColor="success"
+      {...{ history, running, setRunning, id, params }}
+    >
       Vamos começar!
     </BtnStyled>
   </main>
 )
 
-const MainStyled = styled(Main)``
+const MainStyled = boxContentSetStyle(Main)
 
-const Home = ({ prefixTitle, first = 1, history, state: { finish } }) => {
+const Home = ({
+  prefixTitle,
+  first = 1,
+  history,
+  state,
+  match: { params },
+}) => {
+  const { finish } = state
   const [running, setRunning] = useState(false)
 
   if (finish) return <Redirect to="/obrigado" />
@@ -91,8 +112,8 @@ const Home = ({ prefixTitle, first = 1, history, state: { finish } }) => {
   return (
     <Query query={GET_HOME} variables={{ first }}>
       {({ loading, error, data: { views } }) => {
-        if (loading) return 'loading'
-        if (error) return 'error'
+        if (loading) return null
+        if (error) return null
 
         const [{ welcome, company, tests }] = views
 
@@ -105,7 +126,7 @@ const Home = ({ prefixTitle, first = 1, history, state: { finish } }) => {
             </Helmet>
             <HeaderStyled {...{ company }} />
             <MainStyled
-              {...{ id, running, setRunning, history, welcome, title }}
+              {...{ id, running, setRunning, history, welcome, title, params }}
             />
           </Fragment>
         )

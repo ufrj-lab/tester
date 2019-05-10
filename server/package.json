@@ -12,17 +12,17 @@
     "start": "tsnd --no-notify --respawn --transpileOnly src/"
   },
   "dependencies": {
-    "apollo-server": "^2.4.8",
-    "graphql": "^14.2.1",
+    "apollo-server": "^2.5.0",
+    "graphql": "^14.3.0",
     "nexus": "^0.11.7",
     "nexus-prisma": "^0.3.7",
-    "prisma-client-lib": "^1.32.0"
+    "prisma-client-lib": "^1.32.2"
   },
   "devDependencies": {
     "@types/graphql": "^14.2.0",
     "nexus-prisma-generate": "^0.3.7",
-    "prisma": "1.32.0",
-    "ts-node-dev": "^1.0.0-pre.33",
+    "prisma": "1.32.2",
+    "ts-node-dev": "^1.0.0-pre.39",
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.4.5"

@@ -6,6 +6,7 @@ export const Query = prismaObjectType({
          'views',
          { name: 'testResults', alias: 'results' },
          'test',
+         { name: 'keyses', alias: 'keys' },
       ])
    },
 })

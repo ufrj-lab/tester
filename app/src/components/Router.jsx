@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 
 import Home from './Home'
 import Tanks from './Tanks'
@@ -25,9 +25,12 @@ export default ({ first = 1, state }) => (
 
       return (
         <Switch>
+          <Route exact path="/">
+            <Redirect to="/home/all" />
+          </Route>
           <Route
             exact
-            path="/"
+            path="/home/:public"
             render={props => (
               <Home {...props} state={state} prefixTitle={prefixTitle} />
             )}
@@ -54,7 +57,12 @@ export default ({ first = 1, state }) => (
           <Route
             path="/:path"
             render={props => (
-              <NotFound {...props} state={state} prefixTitle={prefixTitle} />
+              <NotFound
+                {...props}
+                company={company}
+                state={state}
+                prefixTitle={prefixTitle}
+              />
             )}
           />
         </Switch>

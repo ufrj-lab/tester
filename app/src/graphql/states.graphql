@@ -5,10 +5,12 @@ extend type Query {
 }
 
 type State {
+   start: Datetime
    test: ID
    result: ID
    finish: Boolean! @default(value: false)
    current: Int! @default(value: 0)
+   pub: String! @default(value: "all")
 }
 
 extend type Mutation {

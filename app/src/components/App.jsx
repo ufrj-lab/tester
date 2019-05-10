@@ -11,7 +11,10 @@ export default () => (
   <Fragment>
     <GlobalStyle />
     <Query query={GET_STATE}>
-      {({ data: { state } }) => <Router state={state} />}
+      {({ data: { state } }) => {
+        console.log(state)
+        return <Router state={state} />
+      }}
     </Query>
   </Fragment>
 )
