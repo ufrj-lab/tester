@@ -1,41 +1,40 @@
-type MultiLanguageContent {
+type View {
    id: ID! @id
-   pt: String
-   en: String
+
+   welcome: Welcome! @relation(link: INLINE)
+   company: Company! @relation(link: INLINE)
+
+   menus: [Menu!]! @relation(link: INLINE)
+
+   tests: [Test!]! @relation(link: INLINE)
+   steps: [Step!]! @relation(link: INLINE)
 }
 
 type Welcome {
    id: ID! @id
 
-   test: Test!
-
-   title: MultiLanguageContent! @relation(link: INLINE, onDelete: CASCADE)
-   message: MultiLanguageContent! @relation(link: INLINE, onDelete: CASCADE)
+   title: String!
+   message: String!
 }
 
 type Company {
    id: ID! @id
 
-   name: String! @unique
+   name: String!
    abbr: String
 
-   welcome: Welcome! @relation(link: INLINE, onDelete: CASCADE)
-
-   tests: [Test!]! @relation(link: INLINE, onDelete: CASCADE)
+   logo: String
 }
 
 type Test {
    id: ID! @id
 
-   welcome: Welcome! @relation(link: INLINE, onDelete: CASCADE)
-   company: Company!
+   title: String!
 
-   title: MultiLanguageContent! @relation(link: INLINE, onDelete: CASCADE)
+   steps: [Step!]! @relation(link: INLINE)
+   menus: [Menu!]! @relation(link: INLINE)
 
-   steps: [Step!]! @relation(link: INLINE, onDelete: CASCADE)
-   menus: [Menu!]! @relation(link: INLINE, onDelete: CASCADE)
-
-   results: [TestResult!]! @relation(link: INLINE, onDelete: CASCADE)
+   results: [TestResult!]!
 }
 
 type Menu {
@@ -47,7 +46,7 @@ type Menu {
 
    name: String!
 
-   items: [Menu!]! @relation(name: "SubMenu", link: INLINE, onDelete: CASCADE)
+   items: [Menu!]! @relation(link: INLINE, name: "SubMenu")
 }
 
 type Path {
@@ -93,7 +92,7 @@ type Step {
 type TestResult {
    id: ID! @id
 
-   parent: Test!
+   parent: Test! @relation(link: INLINE)
 
    start: DateTime!
    end: DateTime
