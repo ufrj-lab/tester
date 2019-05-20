@@ -1,5 +1,6 @@
 db/*.yml
 dist
+.env
 node_modules
 src/generated
 src/initial.json

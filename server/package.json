@@ -7,6 +7,7 @@
   "author": "Vinícius Carvalho <vinicius.fc93@gmail.com>",
   "license": "AGPL-3.0",
   "scripts": {
+    "postinstall": "prisma generate && nexus-prisma-generate --output ./src/generated/nexus-prisma",
     "build": "tsc",
     "lint": "tslint --fix -c tslint.json 'src/**/*.ts'",
     "start": "tsnd --no-notify --respawn --transpileOnly ./"

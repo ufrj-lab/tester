@@ -20,11 +20,14 @@ const writeFile = promisify(writeFileDefault)
 export async function seedingDataBase() {
    if ((await prisma.keys()).length > 0) {
       // tslint:disable-next-line: no-console
-      console.info('Seeding already maked!')
-      return
+      console.info('Seeding already make!')
+      return writeFile(
+         resolve(__dirname, '../src/generated/initial.json'),
+         JSON.stringify({ ...(await prisma.tests({ first: 1 }))[0] }),
+      )
    } else {
       // tslint:disable-next-line: no-console
-      console.info('Seeding!')
+      console.info('Seeding...')
    }
 
    const menusResult = {

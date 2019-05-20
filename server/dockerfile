@@ -9,8 +9,6 @@ WORKDIR /app
 
 RUN   npm i -g prisma && \
       npm i --no-optional && \
-      prisma generate && \
-      npx nexus-prisma-generate --output ./src/generated/nexus-prisma && \
       npm run build && \
       mkdir prod/ && \
       mkdir prod/db && \
