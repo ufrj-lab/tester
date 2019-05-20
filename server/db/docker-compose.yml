@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   orm:
-    image: prismagraphql/prisma:1.32
+    image: prismagraphql/prisma:1.33
     ports:
       - target: 4466
         published: 4466

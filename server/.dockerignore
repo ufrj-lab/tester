@@ -1,0 +1,5 @@
+db/*.yml
+dist
+node_modules
+src/generated
+src/initial.json

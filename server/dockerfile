@@ -1,0 +1,49 @@
+FROM node:slim AS build
+
+ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
+ENV PATH=$PATH:/home/node/.npm-global/bin
+
+COPY ./ /app
+
+WORKDIR /app
+
+RUN   npm i -g prisma && \
+      npm i --no-optional && \
+      prisma generate && \
+      npx nexus-prisma-generate --output ./src/generated/nexus-prisma && \
+      npm run build && \
+      mkdir prod/ && \
+      mkdir prod/db && \
+      cp docker-entrypoint.sh ./prod && \
+      cp ./db/*.prisma ./prod/db && \
+      cp package*.json ./prod && \
+      cp prisma.yml ./prod && \
+      cp -r ./dist ./prod && \
+      chmod +x ./prod/docker-entrypoint.sh
+
+
+
+FROM node:slim
+
+ENV NPM_CONFIG_PREFIX home/node/.npm-global
+ENV PATH $PATH:/home/node/.npm-global/bin
+
+ENV NODE_ENV=production
+
+ENV TINI_VERSION v0.18.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN chmod +x /tini
+ENTRYPOINT ["/tini", "--", "/app/docker-entrypoint.sh"]
+
+EXPOSE 4000
+
+COPY --from=build --chown=node:node /home/node/.npm-global /home/node/.npm-global
+COPY --from=build --chown=node:node /app/prod /app
+
+WORKDIR /app
+
+VOLUME ./dist/src/generated
+
+USER node
+
+RUN npm i --no-optional

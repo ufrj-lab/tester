@@ -9,7 +9,10 @@ import HeaderStyled from './Header'
 const Btn = ({ company, className }) =>
   company.abbr ? (
     <a className={className} href="https://ufrj.br">
-      Ir para o portal da <abbr title={company.name}>{company.abbr}</abbr>
+      Ir para o portal da{' '}
+      <abbr style={{ display: 'contents' }} title={company.name}>
+        {company.abbr}
+      </abbr>
     </a>
   ) : (
     <a className={className} href="https://ufrj.br">

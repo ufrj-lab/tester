@@ -1,595 +1,662 @@
-import { prisma } from '../src/generated/prisma-client'
+import {
+   CompanyCreateOneWithoutTestsInput,
+   KeyCreateInput,
+   KeyCreateOneInput,
+   Maybe,
+   MenuCreateManyInput,
+   MenuCreateManyWithoutMenusInput,
+   MessageCreateOneInput,
+   MultiLanguageContentCreateOneInput,
+   prisma,
+   StepCreateManyInput,
+} from '../src/generated/prisma-client'
 
-async function main() {
-   // const menus = await prisma.createMenu({})
+import { writeFile as writeFileDefault } from 'fs'
+import { resolve } from 'path'
+import { promisify } from 'util'
 
-   // const levelZero = setListMenu(
-   //    ['Persona', 'Principal', 'Secundário'],
-   //    undefined,
-   //    true,
-   // )
+const writeFile = promisify(writeFileDefault)
+
+export async function seedingDataBase() {
+   if ((await prisma.keys()).length > 0) {
+      // tslint:disable-next-line: no-console
+      console.info('Seeding already maked!')
+      return
+   } else {
+      // tslint:disable-next-line: no-console
+      console.info('Seeding!')
+   }
+
+   const menusResult = {
+      personas: await createMenu({
+         itemsCreate: [
+            {
+               itemsCreate: [
+                  { name: 'Formação', itemsCreate: [{ name: 'Iniciações' }] },
+               ],
+               name: 'Alunos',
+            },
+            {
+               itemsCreate: [
+                  {
+                     itemsCreate: [{ name: 'Planos de Carreira' }],
+                     name: 'Carreira e Qualificação',
+                  },
+                  {
+                     itemsCreate: [{ name: 'Perícias' }],
+                     name: 'Saúde e Bem-estar',
+                  },
+                  {
+                     itemsCreate: [
+                        { name: 'Calendário Acadêmico' },
+                        { name: 'SIGA' },
+                        { name: 'Periódicos' },
+                     ],
+                     name: 'Ferramentas Acadêmicas',
+                  },
+                  {
+                     itemsCreate: [{ name: 'SIGEPE' }],
+                     name: 'Ferramentas Administrativas',
+                  },
+               ],
+               name: 'Professor',
+            },
+            { name: 'Servidor' },
+            {
+               itemsCreate: [{ name: 'Serviços' }],
+
+               name: 'Sociedade',
+            },
+            { name: 'Imprensa' },
+         ],
+         name: 'Persona',
+         order: 1,
+         root: true,
+      }),
+      principal: await createMenu({
+         itemsCreate: [
+            {
+               itemsCreate: [
+                  { name: 'A Reitoria' },
+                  { name: 'Transparência' },
+                  { name: 'Comunicação' },
+               ],
+               name: 'A Universidade',
+            },
+            {
+               itemsCreate: [
+                  { name: 'Capacitação' },
+                  { name: 'Educação Básica' },
+                  { name: 'Residência Profissional' },
+                  { name: 'Formação Docente' },
+               ],
+               name: 'Ensino',
+            },
+            {
+               itemsCreate: [
+                  { name: 'Produção Acadêmica' },
+                  { name: 'Iniciativas' },
+                  { name: 'Bolsas' },
+               ],
+               name: 'Pesquisa',
+            },
+            { name: 'Ingresso', itemsCreate: [{ name: 'Pessoal' }] },
+            { name: 'Nos Campi' },
+         ],
+
+         name: 'Principal',
+         order: 2,
+         root: true,
+      }),
+      secundario: await createMenu({
+         itemsCreate: [
+            { name: 'Notícias' },
+            { name: 'Eventos' },
+            { name: 'Sistemas' },
+            { name: 'Relações Internacionais' },
+            { name: 'Acessibilidade' },
+         ],
+         name: 'Secundário',
+         order: 3,
+         root: true,
+      }),
+   }
+
+   const flatObjMenus = convertObjMenusToFlatObject(menusResult)
+
+   logMenuDefinitions(flatObjMenus)
+
+   const {
+      Alunos,
+      Formacao,
+      Iniciacoes,
+      Professor,
+      CarreiraeQualificacao,
+      PlanosdeCarreira,
+      SaudeeBemestar,
+      Pericias,
+      FerramentasAcademicas,
+      CalendarioAcademico,
+      SIGA,
+      Periodicos,
+      FerramentasAdministrativas,
+      SIGEPE,
+      Servidor,
+      Sociedade,
+      Servicos,
+      AUniversidade,
+      AReitoria,
+      Transparencia,
+      Comunicacao,
+      Ensino,
+      Capacitacao,
+      EducacaoBasica,
+      ResidenciaProfissional,
+      FormacaoDocente,
+      Pesquisa,
+      ProducaoAcademica,
+      Iniciativas,
+      Bolsas,
+      Ingresso,
+      Pessoal,
+      Secundario,
+      Eventos,
+      Sistemas,
+   } = flatObjMenus
+
+   await updateMenus([
+      {
+         ...Servidor,
+         connect: [
+            FerramentasAdministrativas,
+            CarreiraeQualificacao,
+            SaudeeBemestar,
+         ],
+      },
+      {
+         ...Alunos,
+         connect: [FerramentasAcademicas],
+      },
+      {
+         ...Ingresso,
+         connect: [ResidenciaProfissional],
+      },
+      {
+         ...Sociedade,
+         connect: [Ingresso],
+      },
+      {
+         ...Secundario,
+         connect: [Transparencia],
+      },
+      {
+         ...CarreiraeQualificacao,
+         connect: [Capacitacao],
+      },
+      {
+         ...Servicos,
+         connect: [EducacaoBasica],
+      },
+      {
+         ...Formacao,
+         connect: [ResidenciaProfissional, FormacaoDocente],
+      },
+      {
+         ...Sistemas,
+         connect: [SIGA, SIGEPE],
+      },
+   ])
+
+   const userTypes = ['STUDENT', 'PROFESSOR', 'STAFF', 'ALL']
+   const languages = ['PT', 'EN']
+   const [userStudent, userProfessor, userStaff, userAll] = userTypes
+   const [pt] = languages
+
    const steps = [
       {
-         paths: [],
-         pt: 'Encontre as datas relevantes para o ano letivo.',
-         targets: [],
+         paths: [[Alunos, FerramentasAcademicas, CalendarioAcademico]],
+         question: 'Encontre as datas relevantes para o ano letivo.',
+         userType: [userStudent],
       },
       {
-         paths: [],
-         pt:
+         paths: [[Sistemas, SIGA], [Alunos, FerramentasAcademicas, SIGA]],
+         question:
             'Encontre a ferramenta utilizada para se matricular em uma disciplina.',
-         targets: [],
+         userType: [userStudent],
       },
       {
-         paths: [],
-         pt: 'Encontre bolsas de monitoria disponíveis.',
-         targets: [],
+         paths: [[Alunos, Formacao, Iniciacoes]],
+         question: 'Encontre bolsas de monitoria disponíveis.',
+         userType: [userStudent],
       },
       {
-         paths: [],
-         pt: 'Encontre a periódicos e artigos produzidos na UFRJ.',
-         targets: [],
+         paths: [
+            [Pesquisa, ProducaoAcademica],
+            [Professor, FerramentasAcademicas, Periodicos],
+         ],
+         question: 'Encontre a periódicos e artigos produzidos na UFRJ.',
+         userType: [userProfessor],
       },
       {
-         paths: [],
-         pt: 'Encontre a ferramenta utilizada para lançar notas de alunos.',
-         targets: [],
+         paths: [[Sistemas, SIGA], [Professor, FerramentasAcademicas, SIGA]],
+         question:
+            'Encontre a ferramenta utilizada para lançar notas de alunos.',
+         userType: [userProfessor],
       },
       {
-         paths: [],
-         pt: 'Encontre mais informações sobre seu plano de carreira.',
-         targets: [],
+         paths: [[Professor, CarreiraeQualificacao, PlanosdeCarreira]],
+         question: 'Encontre mais informações sobre seu plano de carreira.',
+         userType: [userProfessor],
       },
       {
-         paths: [],
-         pt: 'Encontre a ferramenta utilizada para marcar suas férias.',
-         targets: [],
+         paths: [
+            [Sistemas, SIGEPE],
+            [Servidor, FerramentasAdministrativas, SIGEPE],
+         ],
+         question: 'Encontre a ferramenta utilizada para marcar suas férias.',
+         userType: [userStaff],
       },
       {
-         paths: [],
-         pt: 'Encontre como agendar perícia médica para pedido de afastamento.',
-         targets: [],
+         paths: [[Servidor, SaudeeBemestar, Pericias]],
+         question:
+            'Encontre como agendar perícia médica para pedido de afastamento.',
+         userType: [userStaff],
       },
       {
-         paths: [],
-         pt:
+         paths: [
+            [Ensino, Capacitacao],
+            [Servidor, CarreiraeQualificacao, Capacitacao],
+         ],
+         question:
             'Encontre cursos de capacitação voltados para sua área de atuação.',
-         targets: [],
+         userType: [userStaff],
       },
       {
-         paths: [],
-         pt: 'Encontre informações sobre a prefeitura da cidade universitária.',
-         targets: [],
+         paths: [[AUniversidade, AReitoria]],
+         question:
+            'Encontre informações sobre a prefeitura da cidade universitária.',
+         userType: [userAll],
       },
       {
-         paths: [],
-         pt:
+         paths: [
+            [Ensino, EducacaoBasica],
+            [Sociedade, Servicos, EducacaoBasica],
+         ],
+         question:
             'Encontre informações sobre a escola de educação infantil da UFRJ.',
-         targets: [],
+         userType: [userAll],
       },
       {
-         paths: [],
-         pt: 'Encontre os concursos disponíveis para servidores e professores.',
-         targets: [],
+         paths: [[Ingresso, Pessoal], [Sociedade, Ingresso, Pessoal]],
+         question:
+            'Encontre os concursos disponíveis para servidores e professores.',
+         userType: [userAll],
       },
       {
-         paths: [],
-         pt:
+         paths: [
+            [Ensino, ResidenciaProfissional],
+            [Ingresso, ResidenciaProfissional],
+            [Alunos, Formacao, ResidenciaProfissional],
+            [Sociedade, Ingresso, ResidenciaProfissional],
+         ],
+         question:
             'Encontre as vagas disponíveis para a residência médica em pediatria.',
-         targets: [],
+         userType: [userAll],
       },
       {
-         paths: [],
-         pt:
+         paths: [[AUniversidade, Comunicacao]],
+         question:
             'Encontre o contato da assessoria de imprensa do gabinete do reitor.',
-         targets: [],
+         userType: [userAll],
       },
       {
-         paths: [],
-         pt:
+         paths: [[Eventos], [AUniversidade, Iniciativas]],
+         question:
             'Encontre informações sobre seminários de discussão e apresentação de trabalhos científicos.',
-         targets: [],
+         userType: [userAll],
       },
       {
-         paths: [],
-         pt: 'Encontre dados sobre as finanças da UFRJ em 2018.',
-         targets: [],
+         paths: [[Transparencia], [AUniversidade, Transparencia]],
+         question: 'Encontre dados sobre as finanças da UFRJ em 2018.',
+         userType: [userAll],
       },
       {
-         paths: [],
-         pt:
+         paths: [
+            [Ensino, FormacaoDocente],
+            [Alunos, Formacao, FormacaoDocente],
+         ],
+         question:
             'Encontre informações sobre políticas de incentivo à formação de professores.',
-         targets: [],
+         userType: [userAll],
       },
       {
-         paths: [],
-         pt: 'Encontre informações sobre bolsas de pós-doutorado.',
-         targets: [],
+         paths: [[Pesquisa, Bolsas]],
+         question: 'Encontre informações sobre bolsas de pós-doutorado.',
+         userType: [userAll],
       },
    ]
 
-   return prisma
+   const keys = await createKey({
+      languages,
+      stepResultStatus: ['SUCCESS', 'PARTIAL', 'FAIL'],
+      testResultStatus: ['ABORTED', 'FINISH'],
+      userTypes,
+   })
+
+   const id = await prisma
       .createTest({
-         company: {
-            create: {
-               abbr: 'UFRJ',
-               name: 'Universidade Federal do Rio de Janeiro',
-               welcome: {
-                  create: {
-                     message: {
-                        create: { pt: 'Legal' },
-                     },
-                     title: {
-                        create: { pt: 'Oie' },
-                     },
-                  },
-               },
-            },
-         },
-         instruction: {
-            create: {
-               message: {
-                  create: {
-                     pt:
-                        '<p>Seja bem-vindo ao teste de navegação do Portal UFRJ! Obrigado por concordar em participar. Essa atividade deverá levar cerca de 10 minutos. Sua resposta nos ajudará a organizar o conteúdo do nosso novo portal.</p><h2>Instruções</h2><p>Como funciona o teste:</p><ol><li>Será dada a você a tarefa de encontrar uma informação dentro de um menu.</li><li>Navegue pelo menu até que encontre o link onde acreditaria encontrar a informação solicitada.</li><li>Se não for pelo caminho que gostaria, você pode voltar clicando nos links de cima.</li></ol><i>Não estamos testando suas habilidade, não há respostas erradas.</i>',
-                  },
-               },
-               title: {
-                  create: {
-                     pt: 'Instruções',
-                  },
-               },
-            },
-         },
-         keys: {
-            create: {
-               languages: { create: [{ key: 'PT' }, { key: 'EN' }] },
-               stepResultStatus: {
-                  create: [
-                     { key: 'SUCCESS' },
-                     { key: 'PARTIAL' },
-                     { key: 'FAIL' },
-                  ],
-               },
-               testResultStatus: {
-                  create: [{ key: 'ABORTED' }, { key: 'FINISH' }],
-               },
-               userTypes: {
-                  create: [
-                     { key: 'STUDENT' },
-                     { key: 'PROFESSOR' },
-                     { key: 'STAFF' },
-                     { key: 'ALL' },
-                  ],
-               },
-            },
-         },
-         languages: {
-            connect: [{ key: 'PT' }],
-         },
-         publics: {
-            connect: [
-               { key: 'STUDENT' },
-               { key: 'PROFESSOR' },
-               { key: 'STAFF' },
-               { key: 'ALL' },
-            ],
-         },
-         title: {
-            create: {
-               pt: 'Teste de navegação do novo portal',
-            },
-         },
+         company: setCreateCompany({
+            abbr: 'UFRJ',
+            name: 'Universidade Federal do Rio de Janeiro',
+            welcomeBody: 'legal',
+            welcomeTitle: 'oie',
+         }),
+         instruction: setCreateMessage({
+            message:
+               '<p>Seja bem-vindo ao teste de navegação do Portal UFRJ! Obrigado por concordar em participar. Essa atividade deverá levar cerca de 10 minutos. Sua resposta nos ajudará a organizar o conteúdo do nosso novo portal.</p><h2>Instruções</h2><p>Como funciona o teste:</p><ol><li>Será dada a você a tarefa de encontrar uma informação dentro de um menu.</li><li>Navegue pelo menu até que encontre o link onde acreditaria encontrar a informação solicitada.</li><li>Se não for pelo caminho que gostaria, você pode voltar clicando nos links de cima.</li></ol><i>Não estamos testando suas habilidade, não há respostas erradas.</i>',
+            title: 'Instruções',
+         }),
+         keys: keys as KeyCreateOneInput,
+         languages: setConnectMany(setKeyInArray([pt])),
+         // tslint:disable-next-line:no-object-literal-type-assertion
+         menus: {
+            ...convertObjMenusToArrayConnect(flatObjMenus),
+         } as Maybe<MenuCreateManyInput>,
+         publics: setConnectMany(setKeyInArray(userTypes)),
+         steps: setCreateManyStep(steps) as Maybe<StepCreateManyInput>,
+         title: setCreatePt('Teste de navegação do novo portal'),
       })
       .id()
+
+   return writeFile(
+      resolve(__dirname, '../src/generated/initial.json'),
+      JSON.stringify({ id }),
+   )
 }
 
-main()
+seedingDataBase()
    // tslint:disable-next-line: no-console
-   .then(data => console.info(data))
+   .then(() => console.info('Seeding done!'))
    // tslint:disable-next-line: no-console
    .catch(e => console.error(e))
 
-// async function test() {
-//    const setConnectArray = async (arr: Array<Promise<string>>) => ({
-//       connect: (await Promise.all(arr)).map(id => ({ id })),
-//    })
+// DETAILS ==========================================
 
-//    const setMenu = async (
-//       name: string,
-//       parents: Array<Promise<string>> | undefined = undefined,
-//       root: boolean = false,
-//    ): Promise<string> =>
-//       prisma
-//          .createMenu({
-//             menus: parents && (await setConnectArray(parents)),
-//             name,
-//             root,
-//          })
-//          .id()
+async function createKey(data: any) {
+   return setConnect({
+      id: await prisma.createKey(setKeys(data) as KeyCreateInput).id(),
+   })
+}
+async function createMenu({
+   name,
+   order,
+   itemsCreate,
+   itemsConnect,
+   root,
+}: IMenuCreate) {
+   const data = setCreateMenu({ name, order, itemsCreate, itemsConnect, root })
+   return prisma.createMenu(data).$fragment(`
+         fragment MenuIdName on Menu {
+            id
+            name {
+               pt
+            }
+            items {
+               id
+               name {
+                  pt
+               }
+               items {
+                  id
+                  name {
+                     pt
+                  }
+                  items {
+                     id
+                     name {
+                        pt
+                     }
+                  }
+               }
+            }
+         }
+      `)
+}
 
-//    const setListMenu = (
-//       array: string[],
-//       parent: Array<Promise<string>> | undefined = undefined,
-//       root: boolean = false,
-//    ) => array.map(name => setMenu(name, parent, root))
+function setStep(step: any) {
+   const { paths, question, userType } = step
+   return {
+      paths: setCreateMany(
+         paths.map((path: any) => ({ items: setConnectMany(path) })),
+      ),
+      question: setCreatePt(question),
+      targets: setConnectMany(
+         paths
+            .map((path: any) => path[path.length - 1])
+            .filter(
+               (item: any, pos: number, arr: any[]) =>
+                  arr.indexOf(item) === pos,
+            ),
+      ),
+      type: setConnectMany(userType.map((key: any) => ({ key }))),
+   }
+}
+function setCreateManyStep(steps: object[]) {
+   return setCreateMany(steps.map(step => setStep(step)))
+}
+function setCreateManyMenu(arr: IMenuCreate[]) {
+   return setCreateMany(
+      arr.map(({ name, itemsCreate, itemsConnect, root }: IMenuCreate) =>
+         setCreateMenu({ name, itemsCreate, itemsConnect, root }),
+      ),
+   )
+}
 
-//    interface IInputPath {
-//       parent: Promise<string>
-//       paths: Array<Array<Promise<string>>>
-//    }
+function setConnectManyMenu(arr: IMenuConnect[]) {
+   return setConnectMany(
+      arr.map(({ id }: IMenuConnect) => ({
+         id,
+      })),
+   )
+}
 
-//    const setPath = async (
-//       step: IInputPath,
-//    ): Promise<Array<Promise<string>>> => {
-//       const { parent, paths: pathsAll } = step
+function setCreateMenu({
+   name,
+   root,
+   order,
+   itemsConnect,
+   itemsCreate,
+}: IMenuCreate): IMenuPrisma {
+   return {
+      items: ((itemsCreate || itemsConnect) && {
+         ...(itemsCreate && setCreateManyMenu(itemsCreate)),
+         ...(itemsConnect && setConnectManyMenu(itemsConnect)),
+      }) as MenuCreateManyWithoutMenusInput,
+      name: setCreatePt(name),
+      order,
+      root,
+   }
+}
 
-//       return pathsAll.map(async path =>
-//          prisma
-//             .createPath({
-//                parent: { connect: { id: await parent } },
-//                paths: await setConnectArray(path),
-//             })
-//             .id(),
-//       )
-//    }
+function setCreateCompany({
+   name,
+   welcomeTitle: title,
+   welcomeBody: message,
+   abbr,
+}: ICompany) {
+   return setCreate({
+      abbr,
+      name,
+      welcome: setCreateMessage({ title, message }),
+   }) as CompanyCreateOneWithoutTestsInput
+}
 
-//    const setStep = async (
-//       question: string,
-//       targets: Array<Promise<string>> | undefined = undefined,
-//       pathsT: Array<Array<Promise<string>>> | undefined = undefined,
-//       type: Array<Promise<string>>,
-//    ) => ({
-//       parent: prisma
-//          .createStep({
-//             question,
-//             targets: targets && (await setConnectArray(targets)),
-//             type: await setConnectArray(type),
-//          })
-//          .id(),
-//       paths: pathsT,
-//    })
+function setKeys({
+   languages,
+   stepResultStatus,
+   testResultStatus,
+   userTypes,
+}: IKeys) {
+   return {
+      languages: setCreateMany(setKeyInArray(languages)),
+      stepResultStatus: setCreateMany(setKeyInArray(stepResultStatus)),
+      testResultStatus: setCreateMany(setKeyInArray(testResultStatus)),
+      userTypes: setCreateMany(setKeyInArray(userTypes)),
+   }
+}
 
-//    const levelZero = setListMenu(
-//       ['Persona', 'Principal', 'Secundário'],
-//       undefined,
-//       true,
-//    )
-//    const [persona, principal, secundario] = levelZero
+function setKeyInArray(arr: string[]) {
+   return arr.map(key => setKey(key))
+}
 
-//    const personas = setListMenu(
-//       ['Alunos', 'Professor', 'Servidor', 'Sociedade', 'Imprensa'],
-//       [persona],
-//    )
-//    const [
-//       personaAluno,
-//       personaProfessor,
-//       personaServidor,
-//       personaSocieadade,
-//       personaImprensa,
-//    ] = personas
+function setCreatePt(str: string) {
+   return setCreate({ pt: str }) as MultiLanguageContentCreateOneInput
+}
 
-//    const principais = setListMenu(
-//       ['A Universidade', 'Ensino', 'Pesquisa', 'Ingresso', 'Nos Campi'],
-//       [principal],
-//    )
-//    const [
-//       principalAUniversidade,
-//       principalEnsino,
-//       principalPesquisa,
-//       principalIngresso,
-//       principalNosCampi,
-//    ] = principais
+function setCreateMessage({ title, message }: IMessage) {
+   return setCreate({
+      message: setCreatePt(message),
+      title: setCreatePt(title),
+   }) as MessageCreateOneInput
+}
 
-//    const secundarios = setListMenu(
-//       [
-//          'Notícias',
-//          'Eventos',
-//          'Sistemas',
-//          'Relações Internacionais',
-//          'Acessibilidade',
-//       ],
-//       [secundario],
-//    )
-//    const [
-//       secundarioNoticias,
-//       secundarioEventos,
-//       secundarioSistemas,
-//       secundarioRelacoesInternacionais,
-//       secundarioAcessibilidade,
-//    ] = secundarios
+function setCreate(target: object) {
+   return { create: target }
+}
+function setCreateMany(target: object[]) {
+   return { create: target }
+}
 
-//    const levelOne = [...personas, ...principais, ...secundarios]
+function setConnect(target: object) {
+   return { connect: target }
+}
+function setConnectMany(target: object[]) {
+   return { connect: target }
+}
 
-//    const levelTwo = [
-//       setMenu('Carreira e Qualificação', [personaServidor, personaProfessor]),
-//       setMenu('Serviços', [personaSocieadade]),
-//       setMenu('Ingresso', [personaSocieadade]),
-//       setMenu('Formação', [personaAluno, principalEnsino]),
-//       setMenu('Ferramentas Acadêmicas', [personaAluno, personaProfessor]),
-//       setMenu('Produção Acadêmica', [principalPesquisa]),
-//       setMenu('Ferramentas Administrativas', [
-//          personaProfessor,
-//          personaServidor,
-//       ]),
-//       setMenu('Saúde e Bem-estar', [personaProfessor, personaServidor]),
-//       setMenu('A Reitoria', [principalAUniversidade]),
-//       setMenu('Transparência', [secundario, principalAUniversidade]),
-//    ]
+function setKey(str: string) {
+   return { key: str }
+}
 
-//    const [
-//       carreiraQualificacao,
-//       servicos,
-//       ingresso,
-//       formacao,
-//       ferramentasAcademicas,
-//       producaoAcademica,
-//       ferramentasAdministrativas,
-//       saudeBemEstar,
-//       reitoria,
-//       transparencia,
-//    ] = levelTwo
+function convertObjMenusToFlatObject(menus: any): any {
+   const objMenus = {}
 
-//    const levelTree = [
-//       setMenu('Capacitação', [principalEnsino, carreiraQualificacao]),
-//       setMenu('Educação Básica', [principalEnsino, servicos]),
-//       setMenu('Pessoal', [principalIngresso, ingresso]),
-//       setMenu('Residência Profissional', [
-//          principalEnsino,
-//          principalIngresso,
-//          formacao,
-//          ingresso,
-//       ]),
-//       setMenu('Comunicação', [principalAUniversidade]),
-//       setMenu('Iniciativas', [principalPesquisa]),
-//       setMenu('Formação Docente', [principalEnsino, formacao]),
-//       setMenu('Bolsas', [principalPesquisa]),
-//       setMenu('Calendário Acadêmico', [ferramentasAcademicas]),
-//       setMenu('SIGA', [ferramentasAcademicas, secundarioSistemas]),
-//       setMenu('Iniciações', [formacao]),
-//       setMenu('Periódicos', [ferramentasAcademicas]),
-//       setMenu('Planos de Carreira', [carreiraQualificacao]),
-//       setMenu('SIGEPE', [ferramentasAdministrativas, secundarioSistemas]),
-//       setMenu('Perícias', [saudeBemEstar]),
-//    ]
-//    const [
-//       capacitacao,
-//       educacaoBasica,
-//       pessoal,
-//       residenciaProfissional,
-//       comunicacao,
-//       iniciativas,
-//       formacaoDocente,
-//       bolsas,
-//       calendarioAcademico,
-//       siga,
-//       iniciacoes,
-//       periodicos,
-//       planosCarreira,
-//       sigepe,
-//       pericias,
-//    ] = levelTree
+   function setNewElement(
+      name: string,
+      id: string,
+      tryName?: string,
+      numberTry = 0,
+   ) {
+      const baseKey = !tryName
+         ? name
+              .replace(/[ãá]/gim, 'a')
+              .replace(/[ôõó]/gim, 'o')
+              .replace(/[ç]/gim, 'c')
+              .replace(/[í]/gim, 'i')
+              .replace(/[ú]/gim, 'u')
+              .replace(/[ê]/gim, 'e')
+              .replace(/[-]/gim, '')
+              .split(' ')
+              .join('')
+              .trim()
+         : tryName
 
-//    const menus = [...levelZero, ...levelOne, ...levelTwo, ...levelTree]
-//    const menusConnect = setConnectArray(menus)
+      const realKey =
+         numberTry > 0
+            ? `${baseKey}${String.fromCharCode(65 + numberTry)}`
+            : baseKey
 
-//    const keyUserType = ['PROFESSOR', 'STUDENT', 'STAFF', 'ALL'].map(key =>
-//       prisma.createKeyUserType({ key }).id(),
-//    )
+      // @ts-ignore
+      const newElement = objMenus[realKey]
 
-//    const [targetProfessor, targetStudent, targetStaff, targetAll] = keyUserType
+      if (!newElement) {
+         // @ts-ignore
+         objMenus[realKey] = { id }
+      } else {
+         setNewElement(name, id, baseKey, numberTry + 1)
+      }
+   }
+   function convertElement(element: any) {
+      const {
+         id,
+         name: { pt: name },
+         items,
+      } = element
 
-//    const steps = [
-//       setStep(
-//          'Encontre as datas relevantes para o ano letivo.',
-//          [calendarioAcademico],
-//          [[personaAluno, ferramentasAcademicas, calendarioAcademico]],
-//          [targetStudent],
-//       ),
-//       setStep(
-//          'Encontre a ferramenta utilizada para se matricular em uma disciplina.',
-//          [siga],
-//          [
-//             [secundarioSistemas, siga],
-//             [personaAluno, ferramentasAcademicas, siga],
-//          ],
-//          [targetStudent],
-//       ),
-//       setStep(
-//          'Encontre bolsas de monitoria disponíveis.',
-//          [iniciacoes],
-//          [[personaAluno, formacao, iniciacoes]],
-//          [targetStudent],
-//       ),
-//       setStep(
-//          'Encontre a periódicos e artigos produzidos na UFRJ.',
-//          [producaoAcademica, periodicos],
-//          [
-//             [principalPesquisa, producaoAcademica],
-//             [personaProfessor, ferramentasAcademicas, periodicos],
-//          ],
-//          [targetProfessor],
-//       ),
-//       setStep(
-//          'Encontre a ferramenta utilizada para lançar notas de alunos.',
-//          [siga],
-//          [
-//             [secundarioSistemas, siga],
-//             [personaProfessor, ferramentasAcademicas, siga],
-//          ],
-//          [targetProfessor],
-//       ),
-//       setStep(
-//          'Encontre mais informações sobre seu plano de carreira.',
-//          [planosCarreira],
-//          [[personaProfessor, carreiraQualificacao, planosCarreira]],
-//          [targetProfessor],
-//       ),
-//       setStep(
-//          'Encontre a ferramenta utilizada para marcar suas férias.',
-//          [sigepe],
-//          [
-//             [secundarioSistemas, sigepe],
-//             [personaServidor, ferramentasAdministrativas, sigepe],
-//          ],
-//          [targetStaff],
-//       ),
-//       setStep(
-//          'Encontre como agendar perícia médica para pedido de afastamento.',
-//          [pericias],
-//          [[personaServidor, saudeBemEstar, pericias]],
-//          [targetStaff],
-//       ),
-//       setStep(
-//          'Encontre cursos de capacitação voltados para sua área de atuação.',
-//          [capacitacao],
-//          [
-//             [principalEnsino, capacitacao],
-//             [personaServidor, carreiraQualificacao, capacitacao],
-//          ],
-//          [targetStaff],
-//       ),
-//       setStep(
-//          'Encontre informações sobre a prefeitura da cidade universitária.',
-//          [reitoria],
-//          [[principalAUniversidade, reitoria]],
-//          [targetAll],
-//       ),
-//       setStep(
-//          'Encontre informações sobre a escola de educação infantil da UFRJ.',
-//          [educacaoBasica],
-//          [
-//             [principalEnsino, educacaoBasica],
-//             [personaSocieadade, servicos, educacaoBasica],
-//          ],
-//          [targetAll],
-//       ),
-//       setStep(
-//          'Encontre os concursos disponíveis para servidores e professores.',
-//          [pessoal],
-//          [[principalIngresso, pessoal], [personaSocieadade, ingresso, pessoal]],
-//          [targetAll],
-//       ),
-//       setStep(
-//          'Encontre as vagas disponíveis para a residência médica em pediatria.',
-//          [residenciaProfissional],
-//          [
-//             [principalEnsino, residenciaProfissional],
-//             [principalIngresso, residenciaProfissional],
-//             [personaAluno, formacao, residenciaProfissional],
-//             [personaSocieadade, ingresso, residenciaProfissional],
-//          ],
-//          [targetAll],
-//       ),
-//       setStep(
-//          'Encontre o contato da assessoria de imprensa do gabinete do reitor.',
-//          [comunicacao],
-//          [[principalAUniversidade, comunicacao]],
-//          [targetAll],
-//       ),
-//       setStep(
-//          'Encontre informações sobre seminários de discussão e apresentação de trabalhos científicos.',
-//          [secundarioEventos, iniciativas],
-//          [[secundarioEventos], [principalAUniversidade, iniciativas]],
-//          [targetAll],
-//       ),
-//       setStep(
-//          'Encontre dados sobre as finanças da UFRJ em 2018.',
-//          [transparencia],
-//          [[transparencia], [principalAUniversidade, transparencia]],
-//          [targetAll],
-//       ),
-//       setStep(
-//          'Encontre informações sobre políticas de incentivo à formação de professores.',
-//          [formacaoDocente],
-//          [
-//             [principalEnsino, formacaoDocente],
-//             [personaAluno, formacao, formacaoDocente],
-//          ],
-//          [targetAll],
-//       ),
-//       setStep(
-//          'Encontre informações sobre bolsas de pós-doutorado.',
-//          [bolsas],
-//          [[principalPesquisa, bolsas]],
-//          [targetAll],
-//       ),
-//    ]
+      setNewElement(name, id)
 
-//    const paths: Array<Array<Promise<string>>> = []
+      if (items) {
+         items.forEach((subElement: any) => convertElement(subElement))
+      }
+   }
 
-//    const stepsConnect = setConnectArray(
-//       steps.map(async step => {
-//          const { parent, paths: PromsiePaths } = await step
+   // tslint:disable-next-line:forin
+   for (const key in menus) {
+      convertElement(menus[key])
+   }
 
-//          if (PromsiePaths) {
-//             PromsiePaths.push(await setPath({ parent, paths: PromsiePaths }))
-//          }
+   return objMenus
+}
 
-//          return parent
-//       }),
-//    )
+function updateMenus(arr: Array<Promise<any>>) {
+   return Promise.all(
+      arr.map(({ id, connect }: any) =>
+         prisma.updateMenu({ where: { id }, data: { items: { connect } } }),
+      ),
+   )
+}
 
-//    const keyResultStatus = [
-//       'SUCCESS',
-//       'PARTIAL',
-//       'FAIL',
-//       'ABORTED',
-//       'FINISH',
-//    ].map(key => prisma.createKeyResultStatus({ key }).id())
+function logMenuDefinitions(objMenus: any) {
+   // tslint:disable-next-line: no-console
+   console.log(
+      `\n\nStart menu definitions ===================\n\nconst {\n${Object.keys(
+         objMenus,
+      )
+         .map(key => `    ${key}`)
+         .join(
+            ',\n',
+         )}\n} = objMenus\n\nEnd menu definitions ===================\n\n`,
+   )
+}
 
-//    const userType = await setConnectArray(keyUserType)
-//    const resultStatus = await setConnectArray(keyResultStatus)
+function convertObjMenusToArrayConnect(objMenus: any) {
+   return setConnectMany(Object.keys(objMenus).map(key => objMenus[key]))
+}
 
-//    const commons = {
-//       menus: await menusConnect,
-//       steps: await stepsConnect,
-//    }
+interface IMessage {
+   title: string
+   message: string
+}
 
-//    const keys = {
-//       resultStatus,
-//       userType,
-//    }
+interface IKeys {
+   languages: string[]
+   stepResultStatus: string[]
+   testResultStatus: string[]
+   userTypes: string[]
+}
 
-//    await Promise.all(paths)
-//    await prisma.createKeys(keys).id()
+interface ICompany {
+   name: string
+   welcomeTitle: string
+   welcomeBody: string
+   abbr?: string
+}
 
-//    await prisma
-//       .createView({
-//          ...commons,
-//          company: {
-//             create: {
-//                abbr: 'UFRJ',
-//                name: 'Universidade Federal do Rio de Janeiro',
-//             },
-//          },
-//          tests: {
-//             create: [
-//                {
-//                   ...commons,
-//                   title: 'Teste de navegação do novo portal',
-//                },
-//             ],
-//          },
-//          welcome: {
-//             create: {
-//                message: `
-//                <p>Seja bem-vindo ao teste de navegação do Portal UFRJ! Obrigado por concordar em participar. Essa atividade deverá levar cerca de 10 minutos. Sua resposta nos ajudará a organizar o conteúdo do nosso novo portal.</p>
-//                <h2>Instruções</h2>
-//                <p>Como funciona o teste:</p>
-//                <ol>
-//                   <li>Será dada a você a tarefa de encontrar uma informação dentro de um menu.</li>
-//                   <li>Navegue pelo menu até que encontre o link onde acreditaria encontrar a informação solicitada.</li>
-//                   <li>Se não for pelo caminho que gostaria, você pode voltar clicando nos links de cima.</li>
-//                </ol>
-//                <i>Não estamos testando suas habilidade, não há respostas erradas.</i>
-//                `,
-//                title: 'Bem-vindo!',
-//             },
-//          },
-//       })
-//       .id()
-// }
+interface IMenuConnect {
+   id: string
+}
 
-// tslint:disable-next-line: no-console
-// main().catch(e => console.error(e))
+interface IMenuCreate {
+   name: string
+   order?: number
+   itemsCreate?: IMenuCreate[]
+   itemsConnect?: IMenuConnect[]
+   noCreate?: boolean
+   root?: boolean
+}
+interface IMenuPrisma {
+   name: MultiLanguageContentCreateOneInput
+   items?: Maybe<MenuCreateManyWithoutMenusInput>
+   order?: number
+   root?: boolean
+}

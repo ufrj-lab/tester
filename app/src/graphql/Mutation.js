@@ -23,16 +23,11 @@ export const UPDATE_TEST_RESULT = gql`
       $id: ID!
       $status: String!
       $end: DateTime!
-      $timeInt: Int!
-      $timeText: String!
+      $time: Int!
    ) {
       updateTestResult(
          where: { id: $id }
-         data: {
-            status: { connect: { key: $status } }
-            end: $end
-            time: { create: { int: $timeInt, text: $timeText } }
-         }
+         data: { status: { connect: { key: $status } }, end: $end, time: $time }
       ) {
          id
       }
@@ -46,8 +41,7 @@ export const CREATE_STEP_RESULT = gql`
       $start: DateTime!
       $end: DateTime!
       $path: [MenuWhereUniqueInput!]!
-      $timeInt: Int!
-      $timeText: String!
+      $time: Int!
       $status: String!
    ) {
       createStepResult(
@@ -55,8 +49,8 @@ export const CREATE_STEP_RESULT = gql`
             start: $start
             end: $end
             parent: { connect: { id: $parent } }
-            resultParent: { connect: { id: $result } }
-            time: { create: { int: $timeInt, text: $timeText } }
+            result: { connect: { id: $result } }
+            time: $time
             path: { connect: $path }
             status: { connect: { key: $status } }
          }
@@ -68,6 +62,7 @@ export const CREATE_STEP_RESULT = gql`
 
 export const UPDATE_STATE = gql`
    mutation updateState(
+      $start: DateTime
       $test: ID
       $result: ID
       $current: Int
@@ -75,6 +70,7 @@ export const UPDATE_STATE = gql`
       $pub: String
    ) {
       updateState(
+         start: $start
          test: $test
          result: $result
          current: $current

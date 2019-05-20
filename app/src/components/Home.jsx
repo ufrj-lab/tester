@@ -15,7 +15,7 @@ import HeaderStyled from './Header'
 const Btn = ({
   running,
   setRunning,
-  id,
+  testID,
   history,
   className,
   children,
@@ -27,7 +27,7 @@ const Btn = ({
         {updateState => (
           <Link
             className={className}
-            to="/teste"
+            to="/test"
             onClick={async event => {
               if (!running) event.preventDefault()
               else return
@@ -43,14 +43,14 @@ const Btn = ({
               } = await create({
                 variables: {
                   start: new Date(),
-                  parent: id,
+                  parent: testID,
                   status: 'ABORTED',
                 },
               })
               await updateState({
                 variables: {
                   start: new Date(),
-                  test: id,
+                  test: testID,
                   result: resultID,
                   pub: params.public,
                 },
@@ -74,13 +74,12 @@ const Main = ({
   history,
   running,
   setRunning,
-  id,
+  testID,
   className,
-  title,
   params,
 }) => (
   <main className={className}>
-    <h2>{title}</h2>
+    <h2>{welcome.title}</h2>
     <div
       dangerouslySetInnerHTML={{
         __html: welcome.message,
@@ -88,7 +87,7 @@ const Main = ({
     />
     <BtnStyled
       bgColor="success"
-      {...{ history, running, setRunning, id, params }}
+      {...{ history, running, setRunning, testID, params }}
     >
       Vamos começar!
     </BtnStyled>
@@ -97,36 +96,47 @@ const Main = ({
 
 const MainStyled = boxContentSetStyle(Main)
 
-const Home = ({
-  prefixTitle,
-  first = 1,
-  history,
-  state,
-  match: { params },
-}) => {
-  const { finish } = state
+const Home = ({ prefixTitle, queryID, history, state, match: { params } }) => {
+  console.log('HOME', state)
+  const { finish, result } = state
   const [running, setRunning] = useState(false)
+
+  if (result) return <Redirect to="/test" />
 
   if (finish) return <Redirect to="/obrigado" />
 
   return (
-    <Query query={GET_HOME} variables={{ first }}>
-      {({ loading, error, data: { views } }) => {
+    <Query query={GET_HOME} variables={{ id: queryID }}>
+      {({ loading, error, data: { test } }) => {
         if (loading) return null
         if (error) return null
+        const {
+          company,
+          instruction,
+          title: { pt: title },
+        } = test
 
-        const [{ welcome, company, tests }] = views
+        const {
+          message: { pt: message },
+        } = instruction
 
-        const [{ id, title }] = tests
+        const welcome = { title, message }
 
         return (
           <Fragment>
             <Helmet>
-              <title>{prefixTitle(welcome.title)}</title>
+              <title>{prefixTitle(title)}</title>
             </Helmet>
             <HeaderStyled {...{ company }} />
             <MainStyled
-              {...{ id, running, setRunning, history, welcome, title, params }}
+              {...{
+                testID: queryID,
+                welcome,
+                running,
+                setRunning,
+                history,
+                params,
+              }}
             />
           </Fragment>
         )

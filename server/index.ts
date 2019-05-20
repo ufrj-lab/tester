@@ -1,7 +1,8 @@
 import { ApolloServer, ServerInfo } from 'apollo-server'
-import { prisma } from './generated/prisma-client'
-import { IContext, IRequest } from './interfaces'
-import { schema } from './schema'
+import { seedingDataBase } from './db/seed'
+import { prisma } from './src/generated/prisma-client'
+import { IContext, IRequest } from './src/interfaces'
+import { schema } from './src/schema'
 
 const server = new ApolloServer({
    context: ({ req }: IRequest): IContext => ({

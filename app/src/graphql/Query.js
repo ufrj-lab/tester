@@ -3,6 +3,7 @@ import gql from 'graphql-tag'
 export const GET_STATE = gql`
    query getState {
       state @client {
+         start
          test
          result
          finish
@@ -12,119 +13,82 @@ export const GET_STATE = gql`
    }
 `
 
-export const GET_BASIC = gql`
-   query getBasic($first: Int!) {
-      views(first: $first) {
-         id
-         company {
-            id
-            name
-            abbr
-         }
-      }
-   }
-`
-
 export const GET_HOME = gql`
-   query getHome($first: Int!) {
-      views(first: $first) {
-         id
-         company @client {
-            id
+   query getHome($id: ID!) {
+      test(where: { id: $id }) {
+         title {
+            pt
+         }
+         company {
             name
             abbr
          }
-         welcome {
-            title
-            message
-         }
-         tests(first: $first) {
-            id
-            title
+         instruction {
+            title {
+               pt
+            }
+            message {
+               pt
+            }
          }
       }
    }
 `
 
-export const GET_TEST = (specific = false) =>
-   gql(`
-   query FirstViewAndTest($id: ID!, $key: String) {
+export const GET_TEST = gql`
+   query getTest($id: ID!, $types: [String!]!) {
       test(where: { id: $id }) {
-         id
-         title
-         menus(where: { root: true }) {
+         title @client {
+            pt
+         }
+         steps(where: { type_some: { key_in: $types } }) {
             id
-            name
-            items {
-               id
-               name
+            question {
+               pt
+            }
+            paths {
                items {
                   id
-                  name
+               }
+            }
+            targets {
+               id
+            }
+            type {
+               key
+            }
+         }
+         menus(where: { root: true }) {
+            id
+            order
+            name {
+               pt
+            }
+            items {
+               id
+               name {
+                  pt
+               }
+               items {
+                  id
+                  name {
+                     pt
+                  }
                   items {
                      id
-                     name
-                  }
-               }
-            }
-         }
-      }
-      keys {
-         ${
-            specific
-               ? `
-            specific: userType(where: { key: $key }) {
-               key
-               steps(where: { parent: { id: $id } }) {
-                  id
-                  question
-                  paths {
-                     paths {
+                     name {
+                        pt
+                     }
+                     items {
                         id
+                        name {
+                           pt
+                        }
                      }
                   }
-                  targets {
-                     id
-                  }
                }
             }
-            all: userType(where: { key: "ALL" }) {
-               key
-               steps(where: { parent: { id: $id } }) {
-                  id
-                  question
-                  paths {
-                     paths {
-                        id
-                     }
-                  }
-                  targets {
-                     id
-                  }
-               }
-            }
-         `
-               : `
-            all: userType(where: { key: $key }) {
-               key
-               steps(where: { parent: { id: $id } }) {
-                  id
-                  question
-                  paths {
-                     paths {
-                        id
-                     }
-                  }
-                  targets {
-                     id
-                  }
-               }
-            }
-         `
-         }
-         status: resultStatus {
-            key
          }
       }
    }
-`)
+`

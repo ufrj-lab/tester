@@ -607,4 +607,6 @@ healthchecksdb
 
 # Custom
 
-app/.jest/results.json
+app/public/initial.json
+**/generated
+**/dist

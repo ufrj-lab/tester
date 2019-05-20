@@ -4,8 +4,6 @@ import datamodelInfo from './generated/nexus-prisma'
 import { prisma } from './generated/prisma-client'
 import * as allTypes from './resolvers'
 
-import { prettier } from '../../package.json'
-
 export const schema = makePrismaSchema({
    types: allTypes,
 
@@ -15,7 +13,7 @@ export const schema = makePrismaSchema({
    },
 
    outputs: {
-      schema: join(__dirname, '../../app/src/graphql/generated/schema.graphql'),
+      schema: join(__dirname, './generated/schema.graphql'),
       typegen: join(__dirname, './generated/nexus.ts'),
    },
 
@@ -35,6 +33,12 @@ export const schema = makePrismaSchema({
    },
 
    prettierConfig: {
-      ...prettier,
+      arrowParens: 'avoid',
+      bracketSpacing: true,
+      printWidth: 80,
+      proseWrap: 'always',
+      semi: false,
+      singleQuote: true,
+      trailingComma: 'all',
    },
 })

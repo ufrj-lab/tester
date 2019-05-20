@@ -14,5 +14,5 @@ type State {
 }
 
 extend type Mutation {
-   updateState(result: ID, test: ID, current: Int): State
+   updateState(start: DateTime, result: ID, test: ID, current: Int): State
 }

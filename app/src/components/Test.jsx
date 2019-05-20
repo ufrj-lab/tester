@@ -18,9 +18,8 @@ import Menus from './Menus'
 
 import { btnSetStyle, switchColor, variables } from './_styles'
 
-import { getTimeSemantic } from '../utils'
-
 const arraysEqualIds = (a, b) => {
+  console.log(a, b)
   if (a === b) return true
   if (a === null || b === null) return false
   if (a.length !== b.length) return false
@@ -48,7 +47,7 @@ const testPath = (userPath, idealPath) => {
 
   if (finalCorrect) {
     for (let i = 0; i < paths.length; i++) {
-      const { paths: correctPath } = paths[i]
+      const { items: correctPath } = paths[i]
       const isEqual = arraysEqualIds(correctPath, userPath)
       if (isEqual) {
         return 'SUCCESS'
@@ -63,7 +62,7 @@ const testPath = (userPath, idealPath) => {
 const Btn = ({ mutations, ids, status, hooks, className, tests }) => (
   <Link
     className={className && `${className} --big`}
-    to="/teste"
+    to="/test"
     onClick={async event => {
       const { running, timer, next, active, path } = hooks
       if (!running.data && next.data) event.preventDefault()
@@ -81,8 +80,7 @@ const Btn = ({ mutations, ids, status, hooks, className, tests }) => (
         variables: {
           start: timer.data,
           end,
-          timeInt: time,
-          timeText: getTimeSemantic(time),
+          time: time,
           path: path.data,
           result: ids.result,
           parent: ids.parent,
@@ -90,17 +88,22 @@ const Btn = ({ mutations, ids, status, hooks, className, tests }) => (
         },
       }
 
-      await mutations.create(result)
+      mutations.createStepResult(result)
 
       const finish = status.nextCount >= status.length
 
       if (finish) {
         await mutations.updateTestResult({
-          end: new Date(),
+          variables: {
+            id: ids.result,
+            end,
+            time: end - new Date(status.startTest),
+            status: 'FINISH',
+          },
         })
       }
 
-      await mutations.updateState({
+      mutations.updateState({
         variables: {
           finish,
           current: status.nextCount,
@@ -120,10 +123,53 @@ const Btn = ({ mutations, ids, status, hooks, className, tests }) => (
 
 const BtnStyled = btnSetStyle(Btn)
 
-const Main = ({ menus, hooks, btnProps, className }) => (
+const BackGroundClose = ({ className, hooks }) => {
+  const { active } = hooks
+
+  return (
+    <a
+      className={className}
+      href="/test"
+      onClick={event => {
+        event.preventDefault()
+        active.set({
+          ...active.data,
+          actives: [],
+        })
+      }}
+    >
+      Voltar
+    </a>
+  )
+}
+
+const BackGroundCloseStyled = styled(BackGroundClose)`
+  background-color: ${switchColor('gray')};
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 0;
+  opacity: 0;
+  font-size: 0;
+  color: transparent;
+  display: block;
+  pointer-events: none;
+  transition: 0.3s;
+  ${({ disabled }) =>
+    disabled
+      ? ''
+      : `
+    opacity: .9;
+    pointer-events: all;
+  `}
+`
+const Main = ({ menus, hooks, btnProps, className, disabled }) => (
   <main className={className}>
     <Menus {...{ menus, hooks }} />
     <BtnStyled center={true} bgColor="success" {...{ ...btnProps }} />
+    <BackGroundCloseStyled disabled={disabled} hooks={hooks} />
   </main>
 )
 
@@ -136,27 +182,6 @@ const MainStyled = styled(Main)`
   flex-direction: column;
   flex: 1;
   justify-content: flex-start;
-  &:after {
-    content: '';
-    background-color: ${switchColor('gray')};
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    z-index: 0;
-    opacity: 0;
-    display: block;
-    pointer-events: none;
-    transition: 0.3s;
-    ${({ disabled }) =>
-      disabled
-        ? ''
-        : `
-      opacity: .9;
-      pointer-events: all;
-    `}
-  }
 `
 
 const Header = ({ current, length, step, className }) => (
@@ -169,7 +194,7 @@ const Header = ({ current, length, step, className }) => (
         </span>
         :
       </span>
-      {step.question}{' '}
+      {step.question.pt}{' '}
     </h1>
   </header>
 )
@@ -206,6 +231,7 @@ const HeaderStyled = styled(Header)`
 `
 
 export default ({ prefixTitle, state }) => {
+  // console.log('TEST', state)
   const [runningData, setRunning] = useState(false)
 
   const [nextData, setNext] = useState(false)
@@ -261,13 +287,13 @@ export default ({ prefixTitle, state }) => {
 
   const nextCount = current + 1
 
-  const haveSpecific = pub !== 'all'
-
-  const query = GET_TEST(haveSpecific)
+  const types = [pub.toUpperCase(), 'ALL'].filter(
+    (key, pos, arr) => arr.indexOf(key) === pos,
+  )
 
   return (
     <Mutation mutation={CREATE_STEP_RESULT}>
-      {create => {
+      {createStepResult => {
         return (
           <Mutation mutation={UPDATE_STATE}>
             {updateState => {
@@ -276,26 +302,21 @@ export default ({ prefixTitle, state }) => {
                   {updateTestResult => {
                     return (
                       <Query
-                        query={query}
-                        variables={{ id: testID, key: pub.toUpperCase() }}
+                        query={GET_TEST}
+                        variables={{
+                          id: testID,
+                          types,
+                        }}
                       >
-                        {({
-                          loading,
-                          error,
-                          data: { test, keys: arrKeys },
-                        }) => {
+                        {({ loading, error, data: { test } }) => {
                           if (loading) return null
                           if (error) return null
 
-                          const [keys] = arrKeys
-
-                          const { specific, all } = keys
-
-                          const { menus, title } = test
-
-                          const steps = haveSpecific
-                            ? [...specific[0].steps, ...all[0].steps]
-                            : [...all[0].steps]
+                          const {
+                            menus,
+                            steps,
+                            title: { pt: title },
+                          } = test
 
                           const length = steps.length
 
@@ -314,7 +335,7 @@ export default ({ prefixTitle, state }) => {
                             },
                             hooks,
                             mutations: {
-                              create,
+                              createStepResult,
                               updateState,
                               updateTestResult,
                             },

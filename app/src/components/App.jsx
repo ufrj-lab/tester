@@ -12,7 +12,6 @@ export default () => (
     <GlobalStyle />
     <Query query={GET_STATE}>
       {({ data: { state } }) => {
-        console.log(state)
         return <Router state={state} />
       }}
     </Query>

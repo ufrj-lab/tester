@@ -1,5 +1,5 @@
-endpoint: http://localhost:4466
-datamodel: ./db/datamodel.graphql
+endpoint: ${env:PRISMA_ENDPOINT}
+datamodel: ./db/datamodel.prisma
 
 databaseType: document
 
@@ -10,6 +10,3 @@ generate:
 hooks:
   post-deploy:
     - npx nexus-prisma-generate --output ./src/generated/nexus-prisma
-
-seed:
-  run: npx ts-node ./db/seed.ts

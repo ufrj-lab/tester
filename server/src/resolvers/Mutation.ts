@@ -7,7 +7,6 @@ export const Mutation = prismaObjectType({
          'createTestResult',
          'createStepResult',
          'updateTestResult',
-         'updateStepResult',
       ])
    },
 })

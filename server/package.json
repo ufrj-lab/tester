@@ -5,26 +5,28 @@
   "private": true,
   "main": "index.js",
   "author": "Vinícius Carvalho <vinicius.fc93@gmail.com>",
-  "license": "MIT",
+  "license": "AGPL-3.0",
   "scripts": {
     "build": "tsc",
     "lint": "tslint --fix -c tslint.json 'src/**/*.ts'",
-    "start": "tsnd --no-notify --respawn --transpileOnly src/"
+    "start": "tsnd --no-notify --respawn --transpileOnly ./"
   },
   "dependencies": {
     "apollo-server": "^2.5.0",
     "graphql": "^14.3.0",
     "nexus": "^0.11.7",
     "nexus-prisma": "^0.3.7",
-    "prisma-client-lib": "^1.32.2"
+    "prisma-client-lib": "^1.33.0"
   },
   "devDependencies": {
     "@types/graphql": "^14.2.0",
     "nexus-prisma-generate": "^0.3.7",
-    "prisma": "1.32.2",
     "ts-node-dev": "^1.0.0-pre.39",
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.4.5"
+  },
+  "optionalDependencies": {
+    "prisma": "^1.33.0"
   }
 }

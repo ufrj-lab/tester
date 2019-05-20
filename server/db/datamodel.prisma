@@ -71,6 +71,8 @@ type Test {
 type Menu {
    id: ID! @id
 
+   order: Int
+
    root: Boolean! @default(value: false)
 
    menus: [Menu!]! @relation(name: "SubMenu")
@@ -78,6 +80,12 @@ type Menu {
    name: MultiLanguageContent! @relation(onDelete: CASCADE)
 
    items: [Menu!]! @relation(name: "SubMenu", onDelete: CASCADE)
+}
+
+type Path {
+   id: ID! @id
+
+   items: [Menu!]!
 }
 
 type Step {
@@ -89,7 +97,7 @@ type Step {
 
    targets: [Menu!]! @relation(name: "TargetsInTheStep")
 
-   paths: [[Menu!]!]! @relation(name: "PathsInTheStep")
+   paths: [Path!]! @relation(onDelete: CASCADE)
 
    results: [StepResult!]! @relation(onDelete: CASCADE)
 }
@@ -102,7 +110,7 @@ type TestResult {
    start: DateTime!
    end: DateTime
 
-   duration: Int!
+   time: Int
 
    steps: [StepResult!]! @relation(onDelete: CASCADE)
 
@@ -117,7 +125,7 @@ type StepResult {
    result: TestResult!
 
    start: DateTime!
-   end: DateTime
+   end: DateTime!
 
    time: Int!
 
