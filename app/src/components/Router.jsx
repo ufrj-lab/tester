@@ -25,6 +25,7 @@ export default ({ state }) => {
   return (
     <Query query={GET_HOME} variables={{ id: queryID }}>
       {({ loading, error, data }) => {
+        console.log(loading, JSON.stringify(error, null, 2), data)
         if (loading) return null
         if (error) return null
         console.log('ROUTER', state)

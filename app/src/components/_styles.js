@@ -1,38 +1,38 @@
 import styled, { createGlobalStyle } from 'styled-components'
 
 export const variables = {
-   fontFamily: {
-      serif: 'serif',
-      sansSerif: `'Alegreya Sans', sans-serif`,
-   },
-   colors: {
-      black: '#222',
-      gray: '#eee',
-      white: '#fff',
-      primary: '#003399',
-      success: 'green',
-      error: 'red',
-      error25: '#ff00001a',
-      warning: 'orange',
-   },
-   shadows: {
-      base: '0px 2px 10px #0000001a',
-      init: '0px 2px 2px #0000001a',
-   },
+  fontFamily: {
+    serif: 'serif',
+    sansSerif: `'Alegreya Sans', sans-serif`,
+  },
+  colors: {
+    black: '#222',
+    gray: '#eee',
+    white: '#fff',
+    primary: '#003399',
+    success: 'green',
+    error: 'red',
+    error25: '#ff00001a',
+    warning: 'orange',
+  },
+  shadows: {
+    base: '0px 2px 10px #0000001a',
+    init: '0px 2px 2px #0000001a',
+  },
 }
 
 export const switchColor = color => variables.colors[color]
 
 export const setFont = ({
-   serif = false,
-   weight = 400,
-   textDecoration = 'none',
-   textTransform = 'none',
-   txColor: color = 'white',
-   fontSize = '1em',
+  serif = false,
+  weight = 400,
+  textDecoration = 'none',
+  textTransform = 'none',
+  txColor: color = 'white',
+  fontSize = '1em',
 }) => {
-   const { fontFamily } = variables
-   return `
+  const { fontFamily } = variables
+  return `
       font-size: ${fontSize}
       font-family: ${serif ? fontFamily.serif : fontFamily.sansSerif};
       font-weight: ${weight};
@@ -43,7 +43,7 @@ export const setFont = ({
 }
 
 export const linkMenuSetStyle = component => styled(component)`
-   ${({ txColor = 'primary', selected }) => `
+  ${({ txColor = 'primary', selected }) => `
       display: flex;
       border: 2px solid;
       ${setFont({ weight: 700, txColor })}
@@ -57,8 +57,8 @@ export const linkMenuSetStyle = component => styled(component)`
       transform: translateX(0);
       transition: .3s;
       ${
-         selected
-            ? `
+        selected
+          ? `
                color: ${switchColor('white')} !important;
                background-color: ${switchColor('success')} !important;
                border-color: ${switchColor('success')} !important;
@@ -70,7 +70,7 @@ export const linkMenuSetStyle = component => styled(component)`
                   border-color: ${switchColor('primary')} !important;
                }
             `
-            : `
+          : `
                
                 
             `
@@ -93,61 +93,61 @@ export const linkMenuSetStyle = component => styled(component)`
 `
 
 export const btnSetStyle = component => styled(component)`
-   display: flex;
-   padding: 0.5em 1em;
-   border: 2px solid;
-   border-radius: 3px;
-   margin-top: 1.5rem;
-   opacity: 1;
-   abbr {
-      text-decoration: none;
-   }
-   &.--big {
-      font-size: 1.5rem;
-      margin-top: calc(2rem + 5vh);
-   }
-   transition: 0.3s;
-   z-index: 9999;
-   box-shadow: ${variables.shadows.init};
-   ${({ bgColor = 'primary', txColor = 'white', disabled, center }) => {
-      const colorOne = switchColor(bgColor)
-      return `
+  display: flex;
+  padding: 0.5em 1em;
+  border: 2px solid;
+  border-radius: 3px;
+  margin-top: 1.5rem;
+  opacity: 1;
+  abbr {
+    text-decoration: none;
+  }
+  &.--big {
+    font-size: 1.5rem;
+    margin-top: calc(2rem + 5vh);
+  }
+  transition: 0.3s;
+  z-index: 9999;
+  box-shadow: ${variables.shadows.init};
+  ${({ bgColor = 'primary', txColor = 'white', disabled, center }) => {
+    const colorOne = switchColor(bgColor)
+    return `
          ${setFont({ weight: 700, txColor })}
          background-color: ${colorOne};
          border-color: ${colorOne};
          ${
-            disabled
-               ? `
+           disabled
+             ? `
                opacity: 0.5;
                cursor: not-allowed;
             `
-               : `
+             : `
                
             `
          }
          ${
-            center
-               ? `
+           center
+             ? `
                   align-self: center;
                `
-               : ``
+             : ``
          }
       `
-   }}
-   &:hover, &:focus {
-      box-shadow: ${variables.shadows.base};
-      ${({ bgColor = 'primary', txColor = 'white', disabled }) => {
-         const colorOne = switchColor(bgColor)
-         const colorTwo = switchColor(txColor)
-         return disabled
-            ? ''
-            : `
+  }}
+  &:hover, &:focus {
+    box-shadow: ${variables.shadows.base};
+    ${({ bgColor = 'primary', txColor = 'white', disabled }) => {
+      const colorOne = switchColor(bgColor)
+      const colorTwo = switchColor(txColor)
+      return disabled
+        ? ''
+        : `
             color: ${colorOne};
             background-color: ${colorTwo};
             border-color: ${colorOne};
          `
-      }}
-   }
+    }}
+  }
 `
 
 export const boxContentSetStyle = component => styled(component)`

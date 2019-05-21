@@ -607,6 +607,5 @@ healthchecksdb
 
 # Custom
 
-app/public/initial.json
-**/dist
-**/build
+public/initial.json
+build

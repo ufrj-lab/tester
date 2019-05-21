@@ -1,14 +1,15 @@
-FROM node:slim AS build
+FROM node:alpine AS build
 
-ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
-ENV PATH=$PATH:/home/node/.npm-global/bin
+ENV NPM_CONFIG_PREFIX /home/node/.npm-global
+ENV PATH $PATH:/home/node/.npm-global/bin
 
 COPY ./ /app
 
 WORKDIR /app
 
-RUN   npm i -g prisma && \
-      npm i --no-optional && \
+RUN   npm i --ignore-scripts -g prisma && \
+      npm i --no-optional --ignore-scripts && \
+      npm run postinstall && \
       npm run build && \
       mkdir prod/ && \
       mkdir prod/db && \
@@ -21,27 +22,41 @@ RUN   npm i -g prisma && \
 
 
 
-FROM node:slim
+FROM node:alpine
 
-ENV NPM_CONFIG_PREFIX home/node/.npm-global
+RUN apk add --no-cache tini
+
+ARG PROTOCOL=https
+ARG HOST=api.tester.olimpo.tic.ufrj.br
+
+ENV HEALTHCHECK_URL $PROTOCOL://$HOST/.well-known/apollo/server-health
+
+ENV PRISMA_ENDPOINT http://orm:4466
+
+ENV NPM_CONFIG_PREFIX /home/node/.npm-global
 ENV PATH $PATH:/home/node/.npm-global/bin
 
-ENV NODE_ENV=production
+ENV NODE_ENV production
 
-ENV TINI_VERSION v0.18.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
-RUN chmod +x /tini
-ENTRYPOINT ["/tini", "--", "/app/docker-entrypoint.sh"]
+LABEL traefik.docker.network=web
+LABEL traefik.enable=true
+LABEL traefik.server.port=4000
+LABEL traefik.server.protocol=$PROTOCOL
+LABEL traefik.server.frontend.rule=Host:$HOST
 
 EXPOSE 4000
+
+ENTRYPOINT ["/sbin/tini", "--", "/app/docker-entrypoint.sh"]
+
+HEALTHCHECK --start-period=30s --interval=30s --timeout=3s --retries=3 CMD wget --quiet --tries=1 --spider $HEALTHCHECK_URL || exit 1
 
 COPY --from=build --chown=node:node /home/node/.npm-global /home/node/.npm-global
 COPY --from=build --chown=node:node /app/prod /app
 
-WORKDIR /app
-
-VOLUME ./dist/src/generated
-
 USER node
 
-RUN npm i --no-optional
+WORKDIR /app
+
+RUN npm i --no-optional --ignore-scripts --only=prod
+
+

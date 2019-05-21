@@ -1,4 +1,4 @@
-FROM node:slim AS build
+FROM node:alpine AS build
 
 COPY . /app
 
@@ -8,6 +8,19 @@ RUN npm i && npm run build
 
 FROM nginx:stable-alpine
 
+ARG PROTOCOL=https
+ARG HOST=tester.olimpo.tic.ufrj.br
+
+ENV HEALTHCHECK_URL $PROTOCOL://$HOST
+
+LABEL traefik.docker.network=web
+LABEL traefik.enable=true
+LABEL traefik.front.port=80
+LABEL traefik.front.protocol=$PROTOCOL
+LABEL traefik.front.frontend.rule=Host:$HOST
+
+HEALTHCHECK --start-period=3s --interval=30s --timeout=3s --retries=3 CMD wget --quiet --tries=1 --spider $HEALTHCHECK_URL || exit 1
+
 COPY --from=build /app/build /usr/share/nginx/html
 
-RUN ls /usr/share/nginx/html
+WORKDIR /usr/share/nginx/html

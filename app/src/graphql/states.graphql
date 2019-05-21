@@ -1,18 +1,18 @@
 #import "./generated/schema.graphql"
 
 extend type Query {
-   state: State!
+  state: State!
 }
 
 type State {
-   start: Datetime
-   test: ID
-   result: ID
-   finish: Boolean! @default(value: false)
-   current: Int! @default(value: 0)
-   pub: String! @default(value: "all")
+  start: Datetime
+  test: ID
+  result: ID
+  finish: Boolean! @default(value: false)
+  current: Int! @default(value: 0)
+  pub: String! @default(value: "all")
 }
 
 extend type Mutation {
-   updateState(start: DateTime, result: ID, test: ID, current: Int): State
+  updateState(start: DateTime, result: ID, test: ID, current: Int): State
 }

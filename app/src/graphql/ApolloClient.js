@@ -11,41 +11,58 @@ import resolvers from './resolvers'
 export const cache = new InMemoryCache()
 
 persistCache({
-   cache,
-   storage: window.localStorage,
+  cache,
+  storage: window.localStorage,
 })
 
 export const data = {
-   state: {
-      __typename: 'State',
-      start: null,
-      test: null,
-      result: null,
-      path: [],
-      finish: false,
-      current: 0,
-      pub: 'all',
-   },
+  state: {
+    __typename: 'State',
+    start: null,
+    test: null,
+    result: null,
+    path: [],
+    finish: false,
+    current: 0,
+    pub: 'all',
+  },
 }
 
-export default (uri = 'http://localhost:4000') =>
-   new ApolloClient({
-      link: ApolloLink.from([
-         onError(({ graphQLErrors, networkError }) => {
-            if (graphQLErrors)
-               graphQLErrors.map(({ message, locations, path }) =>
-                  console.error(
-                     `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-                  ),
-               )
-            if (networkError) console.error(`[Network error]: ${networkError}`)
-         }),
-         new HttpLink({
-            uri,
-            credentials: 'same-origin',
-         }),
-      ]),
-      cache,
-      typeDefs,
-      resolvers,
-   })
+const { NODE_ENV } = process.env
+
+const { protocol, hostname } = window.location
+
+const defaultUri =
+  NODE_ENV === 'production'
+    ? `${protocol}api.${hostname}`
+    : 'http://localhost:4000'
+
+console.log(defaultUri)
+
+export default (uri = defaultUri) => {
+  return new ApolloClient({
+    link: ApolloLink.from([
+      onError(({ graphQLErrors, networkError }) => {
+        if (graphQLErrors)
+          graphQLErrors.map(
+            ({ message, locations, path, extensions: { code } }) =>
+              console.error(
+                `[GraphQL error]: Code: ${code}, Message: ${message},  Path: ${path}, Location: ${JSON.stringify(
+                  locations,
+                  null,
+                  2,
+                )}`,
+              ),
+          )
+        if (networkError) console.error(`[Network error]: ${networkError}`)
+      }),
+      new HttpLink({
+        uri,
+        credentials: 'same-origin',
+      }),
+    ]),
+    cache,
+    typeDefs,
+    resolvers,
+  })
+}

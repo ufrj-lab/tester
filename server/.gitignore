@@ -606,7 +606,4 @@ healthchecksdb
 # End of https://www.gitignore.io/api/vim,node,macos,linux,emacs,windows,sublimetext,visualstudio,visualstudiocode
 
 # Custom
-
-app/public/initial.json
-**/dist
-**/build
+dist

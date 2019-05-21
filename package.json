@@ -17,6 +17,7 @@
     "start": "run-p start:*",
     "start:app": "cd app/ && npm start",
     "start:server": "cd server/ && npm start",
+    "copy": "cp server/src/generated/schema.graphql app/src/graphql/generated/schema.graphql && cp server/src/generated/initial.json app/public/initial.json",
     "release:test": "semantic-release --debug --no-ci --dry-run",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate",
