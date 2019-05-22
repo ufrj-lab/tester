@@ -26,6 +26,7 @@ const LinkMenu = ({
 
         if (last !== id) {
           const newPath = [...path.data, { id }]
+          console.log(newPath)
           path.set(newPath)
         }
 

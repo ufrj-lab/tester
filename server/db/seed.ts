@@ -130,6 +130,7 @@ export async function seedingDataBase() {
   logMenuDefinitions(flatObjMenus)
 
   const {
+    Persona,
     Alunos,
     Formacao,
     Iniciacoes,
@@ -147,6 +148,8 @@ export async function seedingDataBase() {
     Servidor,
     Sociedade,
     Servicos,
+    Imprensa,
+    Principal,
     AUniversidade,
     AReitoria,
     Transparencia,
@@ -162,9 +165,13 @@ export async function seedingDataBase() {
     Bolsas,
     Ingresso,
     Pessoal,
+    NosCampi,
     Secundario,
+    Noticias,
     Eventos,
     Sistemas,
+    RelacoesInternacionais,
+    Acessibilidade,
   } = flatObjMenus
 
   await updateMenus([
@@ -303,7 +310,7 @@ export async function seedingDataBase() {
       userType: [userAll],
     },
     {
-      paths: [[AUniversidade, Comunicacao]],
+      paths: [[AUniversidade, Comunicacao], [Imprensa]],
       question:
         'Encontre o contato da assessoria de imprensa do gabinete do reitor.',
       userType: [userAll],
@@ -610,7 +617,7 @@ function logMenuDefinitions(objMenus: any) {
       .map(key => `    ${key}`)
       .join(
         ',\n',
-      )}\n} = objMenus\n\nEnd menu definitions ===================\n\n`,
+      )}\n} = flatObjMenus\n\nEnd menu definitions ===================\n\n`,
   )
 }
 

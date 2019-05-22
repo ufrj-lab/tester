@@ -18,21 +18,34 @@ import Menus from './Menus'
 
 import { btnSetStyle, switchColor, variables } from './_styles'
 
-const arraysEqualIds = (a, b) => {
-  if (a === b) return true
-  if (a === null || b === null) return false
+export const arraysEqualIds = (a, b) => {
+  if (!a || !b) return false
+  if (!Array.isArray(a) || !Array.isArray(b)) return false
   if (a.length !== b.length) return false
 
   for (var i = 0; i < a.length; ++i) {
-    if (a[i].id !== b[i].id) return false
+    const { id: aID } = a[i]
+    const { id: bID } = b[i]
+    if (!aID || !bID) return false
+    if (aID !== bID) return false
   }
   return true
 }
 
-const testPath = (userPath, idealPath) => {
-  const { paths, targets } = idealPath
+export const statusStepResult = {
+  success: 'SUCCESS',
+  partial: 'PARTIAL',
+  fail: 'FAIL',
+}
+
+export const testPath = (userPath, possiblePaths, targets) => {
+  const { success, partial, fail } = statusStepResult
+
+  if (!userPath || !possiblePaths || !targets) return fail
 
   const userTarget = userPath.slice(-1).pop()
+
+  if (!userTarget) return fail
 
   let finalCorrect = false
 
@@ -45,17 +58,17 @@ const testPath = (userPath, idealPath) => {
   }
 
   if (finalCorrect) {
-    for (let i = 0; i < paths.length; i++) {
-      const { items: correctPath } = paths[i]
+    for (let i = 0; i < possiblePaths.length; i++) {
+      const { items: correctPath } = possiblePaths[i]
       const isEqual = arraysEqualIds(correctPath, userPath)
       if (isEqual) {
-        return 'SUCCESS'
+        return success
       }
     }
-    return 'PARTIAL'
+    return partial
   }
 
-  return 'FAIL'
+  return fail
 }
 
 const Btn = ({ mutations, ids, status, hooks, className, tests }) => (
@@ -64,6 +77,7 @@ const Btn = ({ mutations, ids, status, hooks, className, tests }) => (
     to="/test"
     onClick={async event => {
       const { running, timer, next, active, path } = hooks
+      const { data: userPath } = path
       if (!running.data && next.data) event.preventDefault()
       else return
 
@@ -72,8 +86,12 @@ const Btn = ({ mutations, ids, status, hooks, className, tests }) => (
       const end = new Date()
 
       const time = end - timer.data
-      console.log(path.data, tests)
-      const statusPath = testPath(path.data, tests)
+
+      const { paths: possiblePaths, targets } = tests
+
+      console.log(userPath, possiblePaths, targets)
+
+      const statusPath = testPath(userPath, possiblePaths, targets)
 
       console.log(statusPath)
 
@@ -82,7 +100,7 @@ const Btn = ({ mutations, ids, status, hooks, className, tests }) => (
           start: timer.data,
           end,
           time: time,
-          path: path.data,
+          path: userPath,
           result: ids.result,
           parent: ids.parent,
           status: statusPath,

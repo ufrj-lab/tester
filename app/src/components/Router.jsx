@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 
 import Home from './Home'
@@ -12,16 +12,7 @@ import { GET_HOME } from '../graphql/Query'
 
 import { configPrefix } from '../utils'
 
-export default ({ state }) => {
-  const [queryID, setQueryID] = useState(undefined)
-
-  useEffect(() => {
-    fetch('/generated/initial.json')
-      .then(response => response.json())
-      .then(({ id }) => setQueryID(id))
-  }, [queryID])
-
-  if (!queryID) return null
+export default ({ state, queryID }) => {
   return (
     <Query query={GET_HOME} variables={{ id: queryID }}>
       {({ loading, error, data }) => {
