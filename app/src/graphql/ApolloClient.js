@@ -34,10 +34,8 @@ const { protocol, hostname } = window.location
 
 const defaultUri =
   NODE_ENV === 'production'
-    ? `${protocol}api.${hostname}`
+    ? `${protocol}//api.${hostname}`
     : 'http://localhost:4000'
-
-console.log(defaultUri)
 
 export default (uri = defaultUri) => {
   return new ApolloClient({

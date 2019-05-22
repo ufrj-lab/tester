@@ -97,7 +97,6 @@ const Main = ({
 const MainStyled = boxContentSetStyle(Main)
 
 const Home = ({ prefixTitle, queryID, history, state, match: { params } }) => {
-  console.log('HOME', state)
   const { finish, result } = state
   const [running, setRunning] = useState(false)
 

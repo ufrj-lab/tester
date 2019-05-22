@@ -26,10 +26,11 @@ FROM node:alpine
 
 RUN apk add --no-cache tini
 
-ARG PROTOCOL=https
+ARG PROTOCOL=http
 ARG HOST=api.tester.olimpo.tic.ufrj.br
+ARG IP=146.164.170.41
 
-ENV HEALTHCHECK_URL $PROTOCOL://$HOST/.well-known/apollo/server-health
+ENV HEALTHCHECK_URL http://localhost:4000/.well-known/apollo/server-health
 
 ENV PRISMA_ENDPOINT http://orm:4466
 
@@ -43,6 +44,8 @@ LABEL traefik.enable=true
 LABEL traefik.server.port=4000
 LABEL traefik.server.protocol=$PROTOCOL
 LABEL traefik.server.frontend.rule=Host:$HOST
+LABEL traefik.server.frontend.allowedHosts=tester.olimpo.tic.ufrj.br,$HOST
+LABEL traefik.server.whiteList.sourceRange=$IP
 
 EXPOSE 4000
 

@@ -8,19 +8,23 @@ RUN npm i && npm run build
 
 FROM nginx:stable-alpine
 
-ARG PROTOCOL=https
+ARG PROTOCOL=http
 ARG HOST=tester.olimpo.tic.ufrj.br
+ARG IP=146.164.170.41
 
-ENV HEALTHCHECK_URL $PROTOCOL://$HOST
+ENV HEALTHCHECK_URL http://localhost:80
 
 LABEL traefik.docker.network=web
 LABEL traefik.enable=true
 LABEL traefik.front.port=80
 LABEL traefik.front.protocol=$PROTOCOL
 LABEL traefik.front.frontend.rule=Host:$HOST
+label traefik.front.frontend.allowedHosts=$HOST
+LABEL traefik.front.whiteList.sourceRange=$IP
 
 HEALTHCHECK --start-period=3s --interval=30s --timeout=3s --retries=3 CMD wget --quiet --tries=1 --spider $HEALTHCHECK_URL || exit 1
 
+COPY --from=build /app/nginx.conf /etc/nginx/conf.d/react.conf
 COPY --from=build /app/build /usr/share/nginx/html
 
 WORKDIR /usr/share/nginx/html

@@ -19,7 +19,6 @@ import Menus from './Menus'
 import { btnSetStyle, switchColor, variables } from './_styles'
 
 const arraysEqualIds = (a, b) => {
-  console.log(a, b)
   if (a === b) return true
   if (a === null || b === null) return false
   if (a.length !== b.length) return false
@@ -73,8 +72,10 @@ const Btn = ({ mutations, ids, status, hooks, className, tests }) => (
       const end = new Date()
 
       const time = end - timer.data
-
+      console.log(path.data, tests)
       const statusPath = testPath(path.data, tests)
+
+      console.log(statusPath)
 
       const result = {
         variables: {
@@ -231,7 +232,6 @@ const HeaderStyled = styled(Header)`
 `
 
 export default ({ prefixTitle, state }) => {
-  // console.log('TEST', state)
   const [runningData, setRunning] = useState(false)
 
   const [nextData, setNext] = useState(false)
