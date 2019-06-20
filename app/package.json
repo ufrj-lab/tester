@@ -27,7 +27,7 @@
     "@storybook/addon-a11y": "^5.1.9",
     "@storybook/addon-actions": "^5.1.9",
     "@storybook/addon-centered": "^5.1.9",
-    "@storybook/addon-events": "^5.0.11",
+    "@storybook/addon-events": "^5.1.9",
     "@storybook/addon-google-analytics": "^5.0.11",
     "@storybook/addon-info": "^5.0.11",
     "@storybook/addon-jest": "^5.0.11",
