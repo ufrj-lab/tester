@@ -21,7 +21,7 @@
   "devDependencies": {
     "@types/graphql": "^14.2.0",
     "nexus-prisma-generate": "^0.3.7",
-    "prisma": "1.33.0",
+    "prisma": "1.34.1",
     "ts-node-dev": "^1.0.0-pre.33",
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",
