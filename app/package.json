@@ -26,7 +26,7 @@
     "@babel/core": "^7.4.4",
     "@storybook/addon-a11y": "^5.3.13",
     "@storybook/addon-actions": "^5.3.13",
-    "@storybook/addon-centered": "^5.0.11",
+    "@storybook/addon-centered": "^5.3.13",
     "@storybook/addon-events": "^5.0.11",
     "@storybook/addon-google-analytics": "^5.0.11",
     "@storybook/addon-info": "^5.0.11",
